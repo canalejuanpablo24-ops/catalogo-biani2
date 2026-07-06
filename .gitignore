@@ -7,3 +7,7 @@ imagenes(Copy) (1).zip
 Thumbs.db
 *.pdf
 .gemini/
+
+# Ignorar archivos Excel y JSON temporales (son solo para edición local)
+*.xlsx
+pdf_order_temp.json
