@@ -335,6 +335,38 @@ body {
 .card.inc {
   border-color: var(--dr);
 }
+.card.oos {
+  opacity: 0.65;
+  filter: grayscale(40%);
+}
+.card.oos:hover {
+  transform: none;
+  box-shadow: var(--sh);
+  border-color: transparent;
+}
+.oos-badge {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  background: var(--rd);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  z-index: 2;
+}
+.oos-label {
+  text-align: center;
+  color: var(--rd);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 0;
+  background: rgba(230, 57, 70, 0.08);
+  border-radius: 6px;
+  border: 1px solid rgba(230, 57, 70, 0.2);
+  margin-top: auto;
+}
 .stbdg {
   position: absolute;
   top: 9px;
@@ -1548,6 +1580,7 @@ async function loadDatabase() {
       const csvRows = parseCSV(csvText);
       
       if (csvRows.length > 1) {
+        prods.forEach(p => p.outOfStock = true);
         processCSVRows(csvRows);
         toast("✅ Sincronizado desde Google Sheets", "ok");
       }
@@ -1634,6 +1667,7 @@ function processCSVRows(rows) {
     if (matchedProds.length > 0) {
       matchedProds.forEach(p => {
         p.price = price;
+        p.outOfStock = false;
       });
     } else {
       let cat = window.codeToCat[code] || "";
@@ -1649,7 +1683,8 @@ function processCSVRows(rows) {
         category: cat,
         price: price,
         image: image,
-        qty: 0
+        qty: 0,
+        outOfStock: false
       });
     }
   }
@@ -1821,10 +1856,11 @@ function cleanN(n) {
 function mkCard(p) {
   const isST = p.name.includes('SIN TACC') || p.name.includes('SIN TAC');
   const hq = p.qty > 0;
+  const isOOS = p.outOfStock === true;
   const pi = Math.floor(p.price);
   const pd = String(Math.round((p.price % 1) * 100)).padStart(2, '0');
   const d = document.createElement('div');
-  d.className = 'card' + (hq ? ' inc' : ''); d.id = 'card-' + p.code;
+  d.className = 'card' + (hq ? ' inc' : '') + (isOOS ? ' oos' : ''); d.id = 'card-' + p.code;
   
   let imgHTML = '';
   if (p.image) {
@@ -1832,6 +1868,14 @@ function mkCard(p) {
   } else {
     imgHTML = `<div class="card-img-container"><div class="card-img-placeholder">${CI[p.category] || '📦'}</div></div>`;
   }
+
+  const qcHTML = isOOS ? 
+    `<div class="oos-label">SIN STOCK</div>` : 
+    `<div class="qc${hq ? ' hq' : ''}" id="qc-${p.code}">
+      <button class="qb" onclick="chQ('${p.code}',-1)">−</button>
+      <span class="qd">${p.qty}</span>
+      <button class="qb" onclick="chQ('${p.code}',1)">+</button>
+    </div>`;
 
   d.innerHTML = `${ADMIN_ON ? `
   <div class="adm-card-bar">
@@ -1842,20 +1886,18 @@ function mkCard(p) {
     </div>
   </div>` : ''}
   ${isST ? '<span class="stbdg">SIN TACC</span>' : ''}
+  ${isOOS ? '<span class="oos-badge">SIN STOCK</span>' : ''}
   ${imgHTML}
   <div class="pc">#${p.code}</div>
   <div class="pn">${cleanN(p.name)}</div>
   <div class="pp">$${pi.toLocaleString('es-AR')}<span>,${pd}</span></div>
-  <div class="qc${hq ? ' hq' : ''}" id="qc-${p.code}">
-    <button class="qb" onclick="chQ('${p.code}',-1)">−</button>
-    <span class="qd">${p.qty}</span>
-    <button class="qb" onclick="chQ('${p.code}',1)">+</button>
-  </div>`;
+  ${qcHTML}`;
   return d;
 }
 
 function chQ(code, d) {
   const p = prods.find(x => x.code === code); if (!p) return;
+  if (p.outOfStock && d > 0) return;
   p.qty = Math.max(0, p.qty + d);
   const qc = document.getElementById('qc-' + code), cd = document.getElementById('card-' + code);
   if (qc) { qc.querySelector('.qd').textContent = p.qty; qc.classList.toggle('hq', p.qty > 0) }
