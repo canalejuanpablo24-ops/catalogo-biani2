@@ -1,6 +1,6 @@
 # Catálogo Online BIANI
 
-Este proyecto contiene un catálogo digital interactivo y responsivo listo para ser desplegado en **GitHub Pages**. Está integrado con **Google Sheets** como base de datos en tiempo real, permitiendo actualizar la lista de productos y precios al instante sin tocar el código.
+Este proyecto contiene un catálogo digital interactivo y responsivo listo para ser desplegado en **GitHub Pages**. Está integrado con **Google Sheets** como base de datos en tiempo real, permitiendo actualizar la lista de productos y precios al instante sin tocar el código. 
 
 ---
 
