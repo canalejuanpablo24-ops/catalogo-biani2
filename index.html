@@ -1666,6 +1666,7 @@ function processCSVRows(rows) {
     
     if (matchedProds.length > 0) {
       matchedProds.forEach(p => {
+        p.name = name;
         p.price = price;
         p.outOfStock = false;
       });
