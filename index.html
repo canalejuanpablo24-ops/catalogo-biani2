@@ -417,6 +417,18 @@ body {
   font-weight: 600;
   letter-spacing: .3px;
 }
+.card-min-info {
+  font-size: 10.5px;
+  color: #1e40af;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2px;
+  letter-spacing: .2px;
+}
 .pn {
   font-size: 13px;
   font-weight: 600;
@@ -1562,7 +1574,15 @@ async function loadDatabase() {
         let cat = p.category || "Varios";
         cat = normalizeCategory(cat);
         let image = window.codeToImg[p.code] || p.image || "";
-        return { ...p, category: cat, image: image, qty: 0 };
+        return { 
+          venta_tipo: 'ambos',
+          unidad_min: 1,
+          bulto_min: 1,
+          ...p, 
+          category: cat, 
+          image: image, 
+          qty: 0 
+        };
       });
       dataLoaded = true;
     }
@@ -1611,6 +1631,9 @@ function processCSVRows(rows) {
   let nameIdx = firstRow.findIndex(h => h.includes('art') || h.includes('nom') || h.includes('prod') || h.includes('det'));
   let catIdx = firstRow.findIndex(h => h.includes('cat'));
   let priceIdx = firstRow.findIndex(h => h.includes('prec') || h.includes('cost') || h.includes('val') || h.includes('monto'));
+  let vtIdx = firstRow.findIndex(h => h.includes('tipo') || h.includes('venta'));
+  let uMinIdx = firstRow.findIndex(h => h.includes('unidad_min') || h.includes('uni_min') || h.includes('min_uni') || h.includes('unidad min') || h.includes('unidadmin'));
+  let bMinIdx = firstRow.findIndex(h => h.includes('bulto_min') || h.includes('bul_min') || h.includes('min_bul') || h.includes('bulto min') || h.includes('bultomin'));
   
   let hasHeader = (codeIdx !== -1 || nameIdx !== -1 || priceIdx !== -1 || catIdx !== -1);
   let startRowIdx = hasHeader ? 1 : 0;
@@ -1669,6 +1692,9 @@ function processCSVRows(rows) {
         p.name = name;
         p.price = price;
         p.outOfStock = false;
+        if (vtIdx !== -1 && r[vtIdx]) p.venta_tipo = r[vtIdx].trim().toLowerCase();
+        if (uMinIdx !== -1 && r[uMinIdx]) p.unidad_min = parseInt(r[uMinIdx]) || 1;
+        if (bMinIdx !== -1 && r[bMinIdx]) p.bulto_min = parseInt(r[bMinIdx]) || 1;
       });
     } else {
       let cat = window.codeToCat[code] || "";
@@ -1685,7 +1711,10 @@ function processCSVRows(rows) {
         price: price,
         image: image,
         qty: 0,
-        outOfStock: false
+        outOfStock: false,
+        venta_tipo: (vtIdx !== -1 && r[vtIdx]) ? r[vtIdx].trim().toLowerCase() : 'ambos',
+        unidad_min: (uMinIdx !== -1 && r[uMinIdx]) ? (parseInt(r[uMinIdx]) || 1) : 1,
+        bulto_min: (bMinIdx !== -1 && r[bMinIdx]) ? (parseInt(r[bMinIdx]) || 1) : 1
       });
     }
   }
@@ -1878,6 +1907,28 @@ function mkCard(p) {
       <button class="qb" onclick="chQ('${p.code}',1)">+</button>
     </div>`;
 
+  let minHTML = '';
+  const vt = p.venta_tipo || 'ambos';
+  const uMin = p.unidad_min || 1;
+  const bMin = p.bulto_min || 1;
+  if (vt === 'bulto') {
+    if (bMin > 1) {
+      minHTML = `<div class="card-min-info">Mín. bulto: ${bMin} u.</div>`;
+    }
+  } else if (vt === 'unidad') {
+    if (uMin > 1) {
+      minHTML = `<div class="card-min-info">Mín. compra: ${uMin} u.</div>`;
+    }
+  } else {
+    if (uMin > 1 && bMin > 1) {
+      minHTML = `<div class="card-min-info">Mín: ${uMin} u. · Bulto: ${bMin} u.</div>`;
+    } else if (uMin > 1) {
+      minHTML = `<div class="card-min-info">Mín. compra: ${uMin} u.</div>`;
+    } else if (bMin > 1) {
+      minHTML = `<div class="card-min-info">Bulto: ${bMin} u.</div>`;
+    }
+  }
+
   d.innerHTML = `${ADMIN_ON ? `
   <div class="adm-card-bar">
     <span class="dh">☰</span>
@@ -1892,6 +1943,7 @@ function mkCard(p) {
   <div class="pc">#${p.code}</div>
   <div class="pn">${cleanN(p.name)}</div>
   <div class="pp">$${pi.toLocaleString('es-AR')}<span>,${pd}</span></div>
+  ${minHTML}
   ${qcHTML}`;
   return d;
 }
@@ -1899,7 +1951,41 @@ function mkCard(p) {
 function chQ(code, d) {
   const p = prods.find(x => x.code === code); if (!p) return;
   if (p.outOfStock && d > 0) return;
-  p.qty = Math.max(0, p.qty + d);
+  
+  const vt = p.venta_tipo || 'ambos';
+  const uMin = p.unidad_min || 1;
+  const bMin = p.bulto_min || 1;
+  
+  if (vt === 'bulto') {
+    if (d > 0) {
+      if (p.qty === 0) {
+        p.qty = bMin;
+      } else {
+        p.qty += bMin;
+      }
+    } else {
+      if (p.qty <= bMin) {
+        p.qty = 0;
+      } else {
+        p.qty = Math.max(0, p.qty - bMin);
+      }
+    }
+  } else {
+    if (d > 0) {
+      if (p.qty === 0) {
+        p.qty = uMin;
+      } else {
+        p.qty += 1;
+      }
+    } else {
+      if (p.qty <= uMin) {
+        p.qty = 0;
+      } else {
+        p.qty = Math.max(0, p.qty - 1);
+      }
+    }
+  }
+
   const qc = document.getElementById('qc-' + code), cd = document.getElementById('card-' + code);
   if (qc) { qc.querySelector('.qd').textContent = p.qty; qc.classList.toggle('hq', p.qty > 0) }
   if (cd) cd.classList.toggle('inc', p.qty > 0);
