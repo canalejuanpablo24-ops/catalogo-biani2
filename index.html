@@ -416,18 +416,6 @@ body {
   color: var(--g3);
   font-weight: 600;
   letter-spacing: .3px;
-  display: flex;
-  align-items: center;
-}
-.idx-text {
-  font-weight: 800;
-  color: #1e293b;
-  background: var(--dr);
-  padding: 1.5px 5.5px;
-  border-radius: 4px;
-  margin-right: 5px;
-  display: inline-block;
-  font-size: 9.5px;
 }
 .card-min-info {
   font-size: 10.5px;
@@ -1231,7 +1219,7 @@ header {
 <div class="nav2" id="nav2"></div>
 <div class="lay">
   <div class="tb">
-    <div><div class="ctitle" id="ctitle">Catálogo BIANI</div><div class="csub"><span id="pcnt">0</span> productos cargados <span style="font-size:10px;opacity:0.5;margin-left:5px;">(Categorías Nuevas)</span></div></div>
+    <div><div class="ctitle" id="ctitle">Catálogo BIANI</div><div class="csub"><span id="pcnt">0</span> productos cargados</div></div>
     <label class="stog" id="stog"><input type="checkbox" id="stChk" onchange="applyF()"> 🌾 Solo SIN TACC</label>
   </div>
   <div class="grid" id="grid"></div>
@@ -1433,12 +1421,6 @@ function normalizeCategory(cat) {
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]/g, '');
   
-  if (clean.includes("categoria1")) return "Categoría 1";
-  if (clean.includes("categoria2")) return "Categoría 2";
-  if (clean.includes("categoria3")) return "Categoría 3";
-  if (clean.includes("categoria4")) return "Categoría 4";
-  if (clean.includes("categoria5")) return "Categoría 5";
-  
   const map = {
     "almacencondimentosconservasycereales": "Almacén: Condimentos, Conservas y Cereales",
     "almacen": "Almacén: Condimentos, Conservas y Cereales",
@@ -1472,19 +1454,29 @@ function normalizeCategory(cat) {
 }
 
 const CI = {
-  "Categoría 1": "1️⃣",
-  "Categoría 2": "2️⃣",
-  "Categoría 3": "3️⃣",
-  "Categoría 4": "4️⃣",
-  "Categoría 5": "5️⃣"
+  "Almacén: Condimentos, Conservas y Cereales": "🛒",
+  "Bazar, Librería y Varios": "🔧",
+  "Bebidas": "🍷",
+  "Cuidado Personal e Higiene": "🧻",
+  "Galletitas, Snacks y Repostería": "🍪",
+  "Golosinas y Alfajores": "🍫",
+  "Limpieza del Hogar y Cuidado de la Ropa": "🧹",
+  "Papel y Descartables": "📦",
+  "Perfumería y Cosmética": "🧴",
+  "Pilas e Iluminación": "💡"
 };
 
 const GR = {
-  "1️⃣ Categoría 1": ["Categoría 1"],
-  "2️⃣ Categoría 2": ["Categoría 2"],
-  "3️⃣ Categoría 3": ["Categoría 3"],
-  "4️⃣ Categoría 4": ["Categoría 4"],
-  "5️⃣ Categoría 5": ["Categoría 5"]
+  "🛒 Almacén": ["Almacén: Condimentos, Conservas y Cereales"],
+  "🍷 Bebidas": ["Bebidas"],
+  "🍫 Golosinas y Alfajores": ["Golosinas y Alfajores"],
+  "🍪 Galletitas y Snacks": ["Galletitas, Snacks y Repostería"],
+  "🧹 Limpieza": ["Limpieza del Hogar y Cuidado de la Ropa"],
+  "🧻 Cuidado Personal": ["Cuidado Personal e Higiene"],
+  "🧴 Perfumería": ["Perfumería y Cosmética"],
+  "📦 Papel y Descartables": ["Papel y Descartables"],
+  "💡 Pilas e Iluminación": ["Pilas e Iluminación"],
+  "🔧 Bazar y Librería": ["Bazar, Librería y Varios"]
 };
 
 // CONFIGURATION VARIABLES
@@ -1579,7 +1571,7 @@ async function loadDatabase() {
     if (fallbackRes.ok) {
       const fallbackProds = await fallbackRes.json();
       prods = fallbackProds.map(p => {
-        let cat = window.codeToCat[p.code] || p.category || "Varios";
+        let cat = p.category || "Varios";
         cat = normalizeCategory(cat);
         let image = window.codeToImg[p.code] || p.image || "";
         return { 
@@ -1664,9 +1656,6 @@ function processCSVRows(rows) {
     }
     if (catIdx === -1) {
       catIdx = (rows[0].length === 3) ? -1 : 2;
-    }
-    if (catIdx === priceIdx) {
-      catIdx = -1;
     }
   }
   
@@ -1755,7 +1744,7 @@ function buildNav() {
   const allBtn = document.createElement('div');
   allBtn.className = 'g1tab active';
   allBtn.dataset.g = '';
-  const tot = prods.filter(p => p.category !== "Categoría 1" && p.category !== "Categoría 2" && p.category !== "Categoría 3" && p.category !== "Categoría 4" && p.category !== "Categoría 5").length;
+  const tot = prods.length;
   allBtn.innerHTML = `🏪 Todos <small style="margin-left:4px;font-size:11px;opacity:.7">${tot}</small>`;
   allBtn.onclick = function() { selG(this, '') };
   n1.appendChild(allBtn);
@@ -1820,9 +1809,6 @@ function applyF() {
   let r = prods;
   if (curC) r = r.filter(p => p.category === curC);
   else if (curG) r = r.filter(p => GR[curG] && GR[curG].includes(p.category));
-  else {
-    r = r.filter(p => p.category !== "Categoría 1" && p.category !== "Categoría 2" && p.category !== "Categoría 3" && p.category !== "Categoría 4" && p.category !== "Categoría 5");
-  }
   if (st) r = r.filter(p => p.name.includes('SIN TACC') || p.name.includes('SIN TAC'));
   if (q) {
     const nq = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -1920,8 +1906,6 @@ function mkCard(p) {
     minHTML = `<div class="card-min-info">Mín. compra: ${uMin} u.</div>`;
   }
 
-  const overallIdx = filt.indexOf(p) + 1;
-
   d.innerHTML = `${ADMIN_ON ? `
   <div class="adm-card-bar">
     <span class="dh">☰</span>
@@ -1933,7 +1917,7 @@ function mkCard(p) {
   ${isST ? '<span class="stbdg">SIN TACC</span>' : ''}
   ${isOOS ? '<span class="oos-badge">SIN STOCK</span>' : ''}
   ${imgHTML}
-  <div class="pc"><span class="idx-text">N° ${overallIdx}</span> · #${p.code}</div>
+  <div class="pc">#${p.code}</div>
   <div class="pn">${cleanN(p.name)}</div>
   <div class="pp">$${pi.toLocaleString('es-AR')}<span>,${pd}</span></div>
   ${minHTML}
