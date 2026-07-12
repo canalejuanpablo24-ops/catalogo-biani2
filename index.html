@@ -1573,7 +1573,7 @@ async function loadDatabase() {
     if (fallbackRes.ok) {
       const fallbackProds = await fallbackRes.json();
       prods = fallbackProds.map(p => {
-        let cat = p.category || "Varios";
+        let cat = window.codeToCat[p.code] || p.category || "Varios";
         cat = normalizeCategory(cat);
         let image = window.codeToImg[p.code] || p.image || "";
         return { 
