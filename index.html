@@ -1231,7 +1231,7 @@ header {
 <div class="nav2" id="nav2"></div>
 <div class="lay">
   <div class="tb">
-    <div><div class="ctitle" id="ctitle">Catálogo BIANI</div><div class="csub"><span id="pcnt">0</span> productos cargados</div></div>
+    <div><div class="ctitle" id="ctitle">Catálogo BIANI</div><div class="csub"><span id="pcnt">0</span> productos cargados <span style="font-size:10px;opacity:0.5;margin-left:5px;">(Categorías Nuevas)</span></div></div>
     <label class="stog" id="stog"><input type="checkbox" id="stChk" onchange="applyF()"> 🌾 Solo SIN TACC</label>
   </div>
   <div class="grid" id="grid"></div>
@@ -1432,6 +1432,12 @@ function normalizeCategory(cat) {
   const clean = cat.trim().toLowerCase()
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]/g, '');
+  
+  if (clean.includes("categoria1")) return "Categoría 1";
+  if (clean.includes("categoria2")) return "Categoría 2";
+  if (clean.includes("categoria3")) return "Categoría 3";
+  if (clean.includes("categoria4")) return "Categoría 4";
+  if (clean.includes("categoria5")) return "Categoría 5";
   
   const map = {
     "almacencondimentosconservasycereales": "Almacén: Condimentos, Conservas y Cereales",
@@ -1658,6 +1664,9 @@ function processCSVRows(rows) {
     }
     if (catIdx === -1) {
       catIdx = (rows[0].length === 3) ? -1 : 2;
+    }
+    if (catIdx === priceIdx) {
+      catIdx = -1;
     }
   }
   
