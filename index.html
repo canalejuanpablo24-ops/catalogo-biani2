@@ -1012,6 +1012,30 @@ body.adm .lay {margin-top:24px}
   align-self: flex-start;
 }
 
+/* Card click-to-move animations and pointer classes */
+.card.moving-source {
+  border: 2px dashed #f59e0b !important;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.45) !important;
+  animation: pulse-border 1.5s infinite alternate;
+}
+@keyframes pulse-border {
+  from {
+    border-color: #f59e0b;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+  }
+  to {
+    border-color: #fbbf24;
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.7);
+  }
+}
+body.moving-active .card:not(.moving-source) {
+  cursor: cell !important;
+}
+body.moving-active .card:not(.moving-source):hover {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.35) !important;
+}
+
 /* ════════════════════════════════════════════
    FORMULARIO DE DATOS DEL CLIENTE (CART)
    ════════════════════════════════════════════ */
@@ -2222,6 +2246,7 @@ async function enterAdmin() {
 }
 
 function exitAdmin() {
+  cancelCardMove();
   ADMIN_ON = false;
   document.body.classList.remove('adm');
   document.getElementById('adm-panel').classList.remove('on');
@@ -2561,9 +2586,98 @@ document.getElementById('adm-img-input').addEventListener('change', function(e) 
   this.value = '';
 });
 
-// Grid event delegation for editing/deleting cards
+let moveSourceCard = null;
+
+function startCardMove(p, cardEl) {
+  cancelCardMove();
+  moveSourceCard = p;
+  cardEl.classList.add('moving-source');
+  document.body.classList.add('moving-active');
+  toast('📍 Haz clic en la tarjeta de destino para colocar este producto antes', 'ok');
+}
+
+function cancelCardMove() {
+  if (moveSourceCard) {
+    const el = document.getElementById('card-' + moveSourceCard.code);
+    if (el) el.classList.remove('moving-source');
+    document.body.classList.remove('moving-active');
+    moveSourceCard = null;
+  }
+}
+
+function executeCardMove(destCode, destCardEl) {
+  const sourceCode = moveSourceCard.code;
+  const sourceCardEl = document.getElementById('card-' + sourceCode);
+  
+  if (sourceCardEl && destCardEl) {
+    destCardEl.parentNode.insertBefore(sourceCardEl, destCardEl);
+    
+    const gridEl = document.getElementById('grid');
+    const cards = gridEl.querySelectorAll('.card[id^="card-"]');
+    const codes = Array.from(cards).map(c => c.id.replace('card-', ''));
+    
+    const map = {};
+    prods.forEach(p => { map[p.code] = p; });
+    
+    const vis = new Set(codes);
+    const rest = prods.filter(p => !vis.has(p.code));
+    
+    prods = codes.map(c => map[c]).filter(Boolean).concat(rest);
+    
+    saveOrder();
+    updateAdmStat();
+    
+    sourceCardEl.classList.remove('moving-source');
+    document.body.classList.remove('moving-active');
+    moveSourceCard = null;
+    
+    toast('✅ Producto reubicado con éxito', 'ok');
+    applyF();
+  }
+}
+
+// Global click listener to cancel move on clicking outside
+document.addEventListener('click', function(e) {
+  if (moveSourceCard && !e.target.closest('#grid')) {
+    cancelCardMove();
+    toast('ℹ️ Movimiento cancelado', 'warn');
+  }
+});
+
+// Grid event delegation for editing/deleting/moving cards
 document.getElementById('grid').addEventListener('click', function(e) {
   if (!ADMIN_ON) return;
+  
+  // 1. Check if clicked move handle (.dh)
+  const dh = e.target.closest('.dh');
+  if (dh) {
+    e.stopPropagation();
+    const cardEl = dh.closest('.card');
+    const code = cardEl.id.replace('card-', '');
+    const p = prods.find(x => x.code === code);
+    if (!p) return;
+    
+    if (moveSourceCard === p) {
+      cancelCardMove();
+      toast('ℹ️ Movimiento cancelado', 'warn');
+    } else {
+      startCardMove(p, cardEl);
+    }
+    return;
+  }
+  
+  // 2. If moving is active, and they clicked anywhere on another card
+  if (moveSourceCard) {
+    const destCardEl = e.target.closest('.card');
+    if (destCardEl && destCardEl.id !== 'card-' + moveSourceCard.code) {
+      e.stopPropagation();
+      const destCode = destCardEl.id.replace('card-', '');
+      executeCardMove(destCode, destCardEl);
+      return;
+    }
+  }
+
+  // 3. Edit / Delete actions
   const act = e.target.dataset.act;
   if (!act) return;
   
