@@ -416,6 +416,18 @@ body {
   color: var(--g3);
   font-weight: 600;
   letter-spacing: .3px;
+  display: flex;
+  align-items: center;
+}
+.idx-text {
+  font-weight: 800;
+  color: #1e293b;
+  background: var(--dr);
+  padding: 1.5px 5.5px;
+  border-radius: 4px;
+  margin-right: 5px;
+  display: inline-block;
+  font-size: 9.5px;
 }
 .card-min-info {
   font-size: 10.5px;
@@ -1454,29 +1466,19 @@ function normalizeCategory(cat) {
 }
 
 const CI = {
-  "Almacén: Condimentos, Conservas y Cereales": "🛒",
-  "Bazar, Librería y Varios": "🔧",
-  "Bebidas": "🍷",
-  "Cuidado Personal e Higiene": "🧻",
-  "Galletitas, Snacks y Repostería": "🍪",
-  "Golosinas y Alfajores": "🍫",
-  "Limpieza del Hogar y Cuidado de la Ropa": "🧹",
-  "Papel y Descartables": "📦",
-  "Perfumería y Cosmética": "🧴",
-  "Pilas e Iluminación": "💡"
+  "Categoría 1": "1️⃣",
+  "Categoría 2": "2️⃣",
+  "Categoría 3": "3️⃣",
+  "Categoría 4": "4️⃣",
+  "Categoría 5": "5️⃣"
 };
 
 const GR = {
-  "🛒 Almacén": ["Almacén: Condimentos, Conservas y Cereales"],
-  "🍷 Bebidas": ["Bebidas"],
-  "🍫 Golosinas y Alfajores": ["Golosinas y Alfajores"],
-  "🍪 Galletitas y Snacks": ["Galletitas, Snacks y Repostería"],
-  "🧹 Limpieza": ["Limpieza del Hogar y Cuidado de la Ropa"],
-  "🧻 Cuidado Personal": ["Cuidado Personal e Higiene"],
-  "🧴 Perfumería": ["Perfumería y Cosmética"],
-  "📦 Papel y Descartables": ["Papel y Descartables"],
-  "💡 Pilas e Iluminación": ["Pilas e Iluminación"],
-  "🔧 Bazar y Librería": ["Bazar, Librería y Varios"]
+  "1️⃣ Categoría 1": ["Categoría 1"],
+  "2️⃣ Categoría 2": ["Categoría 2"],
+  "3️⃣ Categoría 3": ["Categoría 3"],
+  "4️⃣ Categoría 4": ["Categoría 4"],
+  "5️⃣ Categoría 5": ["Categoría 5"]
 };
 
 // CONFIGURATION VARIABLES
@@ -1906,6 +1908,8 @@ function mkCard(p) {
     minHTML = `<div class="card-min-info">Mín. compra: ${uMin} u.</div>`;
   }
 
+  const overallIdx = prods.indexOf(p) + 1;
+
   d.innerHTML = `${ADMIN_ON ? `
   <div class="adm-card-bar">
     <span class="dh">☰</span>
@@ -1917,7 +1921,7 @@ function mkCard(p) {
   ${isST ? '<span class="stbdg">SIN TACC</span>' : ''}
   ${isOOS ? '<span class="oos-badge">SIN STOCK</span>' : ''}
   ${imgHTML}
-  <div class="pc">#${p.code}</div>
+  <div class="pc"><span class="idx-text">N° ${overallIdx}</span> · #${p.code}</div>
   <div class="pn">${cleanN(p.name)}</div>
   <div class="pp">$${pi.toLocaleString('es-AR')}<span>,${pd}</span></div>
   ${minHTML}
