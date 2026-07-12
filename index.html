@@ -1746,7 +1746,7 @@ function buildNav() {
   const allBtn = document.createElement('div');
   allBtn.className = 'g1tab active';
   allBtn.dataset.g = '';
-  const tot = prods.length;
+  const tot = prods.filter(p => p.category !== "Categoría 1" && p.category !== "Categoría 2" && p.category !== "Categoría 3" && p.category !== "Categoría 4" && p.category !== "Categoría 5").length;
   allBtn.innerHTML = `🏪 Todos <small style="margin-left:4px;font-size:11px;opacity:.7">${tot}</small>`;
   allBtn.onclick = function() { selG(this, '') };
   n1.appendChild(allBtn);
@@ -1811,6 +1811,9 @@ function applyF() {
   let r = prods;
   if (curC) r = r.filter(p => p.category === curC);
   else if (curG) r = r.filter(p => GR[curG] && GR[curG].includes(p.category));
+  else {
+    r = r.filter(p => p.category !== "Categoría 1" && p.category !== "Categoría 2" && p.category !== "Categoría 3" && p.category !== "Categoría 4" && p.category !== "Categoría 5");
+  }
   if (st) r = r.filter(p => p.name.includes('SIN TACC') || p.name.includes('SIN TAC'));
   if (q) {
     const nq = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -1908,7 +1911,7 @@ function mkCard(p) {
     minHTML = `<div class="card-min-info">Mín. compra: ${uMin} u.</div>`;
   }
 
-  const overallIdx = prods.indexOf(p) + 1;
+  const overallIdx = filt.indexOf(p) + 1;
 
   d.innerHTML = `${ADMIN_ON ? `
   <div class="adm-card-bar">
