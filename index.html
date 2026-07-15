@@ -14,7 +14,7 @@
   --az2: #1e293b;      /* Pizarra 800 */
   --dr: #f8fafc;       /* Muted light gray */
   --dr2: #f1f5f9;      /* Light gray */
-  --g1: #fafafa;       /* Fondo ultra-claro */
+  --g1: #ffffff;       /* Fondo puro blanco */
   --g2: #e2e8f0;       /* Bordes */
   --g3: #64748b;       /* Texto secundario */
   --tx: #0f172a;       /* Texto primario */
@@ -317,7 +317,7 @@ body {
 /* RESPONSIVE GRID - 2 COLUMNS ON MOBILE */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 16px;
 }
 @media (max-width: 600px) {
@@ -399,7 +399,7 @@ body {
 }
 .card-img-container {
   width: 100%;
-  height: 140px;
+  height: 180px;
   border-radius: 12px;
   overflow: hidden;
   background: #f8fafc;
@@ -414,8 +414,8 @@ body {
   background: #f1f5f9;
 }
 .card-img {
-  max-width: 86%;
-  max-height: 86%;
+  max-width: 95%;
+  max-height: 95%;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -521,6 +521,16 @@ body {
   border-color: #0f172a;
   color: #0f172a;
   background: #f8fafc;
+}
+.btn-ver.active {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+.btn-ver.active:hover {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
 }
 
 /* CAPSULE QUANTITY SELECTOR - MODERNIZED */
@@ -1185,11 +1195,11 @@ body {
 }
 @media (max-width: 700px) {
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
   }
   .card-img-container {
-    height: 110px;
+    height: 160px !important;
   }
   .hl span, .bu span {
     display: none;
@@ -4453,12 +4463,7 @@ function getCardActionHTML(p) {
     return `<div class="oos-label">SIN STOCK</div>`;
   }
   if (p.qty > 0) {
-    return `
-      <div class="qc hq" id="qc-${p.code}" onclick="event.stopPropagation()">
-        <button class="qb" onclick="chQ('${p.code}',-1); event.stopPropagation()">−</button>
-        <span class="qd">${p.qty}</span>
-        <button class="qb" onclick="chQ('${p.code}',1); event.stopPropagation()">+</button>
-      </div>`;
+    return `<button class="btn-ver active" onclick="openProdModal('${p.code}'); event.stopPropagation()">✓ ${p.qty} u. →</button>`;
   }
   return `<button class="btn-ver" onclick="openProdModal('${p.code}'); event.stopPropagation()">Ver →</button>`;
 }
@@ -4512,7 +4517,6 @@ function mkCard(p) {
   <div class="card-brand">${parsed.brand}</div>
   <div class="card-title">${parsed.name}</div>
   <div class="card-subtitle">#${p.code}</div>
-  <div class="card-sizes"><span class="size-chip active">${parsed.size}</span></div>
   ${minHTML}
   <div class="card-footer">
     <div class="card-price">$${pi.toLocaleString('es-AR')}<span>,${pd}</span></div>
@@ -4525,7 +4529,6 @@ function chQ(code, d) {
   const p = prods.find(x => x.code === code); if (!p) return;
   if (p.outOfStock && d > 0) return;
   
-  const prevQty = p.qty;
   const step = p.unidad_min || 1;
   if (d > 0) {
     p.qty += step;
@@ -4536,12 +4539,7 @@ function chQ(code, d) {
   // Update card action container dynamically if quantity status changes
   const act = document.getElementById('act-' + code);
   if (act) {
-    if ((prevQty === 0 && p.qty > 0) || (prevQty > 0 && p.qty === 0)) {
-      act.innerHTML = getCardActionHTML(p);
-    } else if (p.qty > 0) {
-      const qd = act.querySelector('.qd');
-      if (qd) qd.textContent = p.qty;
-    }
+    act.innerHTML = getCardActionHTML(p);
   }
 
   const cd = document.getElementById('card-' + code);
