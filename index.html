@@ -3806,68 +3806,97 @@ const PDF_ORDER = [
   "3102",
   "3103"
 ];
-function normalizeCategory(cat) {
-  if (!cat) return "Bazar, Librería y Varios";
+function normalizeCategory(cat, name = "") {
+  if (!cat) return "Varios";
   const clean = cat.trim().toLowerCase()
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]/g, '');
   
+  // Custom split for combined Golosinas y Alfajores
+  if (clean === "golosinasyalfajores") {
+    if (name) {
+      const nm = name.toUpperCase();
+      if (nm.includes("ALFAJOR") || 
+          nm.includes("ALF.") || 
+          nm.includes("CHOCOLATE") || 
+          nm.includes("CHOC.") || 
+          nm.includes("BOCADITO") || 
+          nm.includes("BOMBON") || 
+          nm.includes("COBERTURA") ||
+          nm.includes("TURRON")) {
+        return "Chocolates y Alfajores";
+      }
+    }
+    return "Golosinas";
+  }
+
   const map = {
-    "almacencondimentosconservasycereales": "Almacén: Condimentos, Conservas y Cereales",
-    "almacen": "Almacén: Condimentos, Conservas y Cereales",
-    "bazarlibreriayvarios": "Bazar, Librería y Varios",
-    "bazar": "Bazar, Librería y Varios",
-    "libreria": "Bazar, Librería y Varios",
-    "varios": "Bazar, Librería y Varios",
-    "bebidas": "Bebidas",
-    "bebidasconysinalcohol": "Bebidas",
-    "cuidadopersonalehigiene": "Cuidado Personal e Higiene",
-    "higiene": "Cuidado Personal e Higiene",
-    "galletitassnacksyreposteria": "Galletitas, Snacks y Repostería",
-    "galletitas": "Galletitas, Snacks y Repostería",
-    "snacks": "Galletitas, Snacks y Repostería",
-    "golosinasyalfajores": "Golosinas y Alfajores",
-    "golosinas": "Golosinas y Alfajores",
-    "alfajores": "Golosinas y Alfajores",
-    "limpiezadelhogarycuidadodelaropa": "Limpieza del Hogar y Cuidado de la Ropa",
-    "limpieza": "Limpieza del Hogar y Cuidado de la Ropa",
-    "papelydescartables": "Papel y Descartables",
-    "papel": "Papel y Descartables",
-    "descartables": "Papel y Descartables",
-    "perfumeriaycosmetica": "Perfumería y Cosmética",
-    "perfumeria": "Perfumería y Cosmética",
-    "cosmetica": "Perfumería y Cosmética",
-    "pilaseiluminacion": "Pilas e Iluminación",
-    "pilas": "Pilas e Iluminación",
-    "iluminacion": "Pilas e Iluminación"
+    // Golosinas
+    "golosinas": "Golosinas",
+    
+    // Chocolates y Alfajores
+    "chocolates": "Chocolates y Alfajores",
+    "alfajores": "Chocolates y Alfajores",
+    "chocolatesyalfajores": "Chocolates y Alfajores",
+    
+    // Galletitas y Snacks
+    "galletitas": "Galletitas y Snacks",
+    "snacks": "Galletitas y Snacks",
+    "galletitassnacks": "Galletitas y Snacks",
+    "galletitassnacksyreposteria": "Galletitas y Snacks",
+    
+    // Almacen
+    "almacen": "Almacen",
+    "almacencondimentosconservasycereales": "Almacen",
+    "bebidas": "Almacen",
+    "bebidasconysinalcohol": "Almacen",
+    "limpieza": "Almacen",
+    "limpiezadelhogarycuidadodelaropa": "Almacen",
+    
+    // Cuidado Personal
+    "cuidadopersonal": "Cuidado Personal",
+    "cuidadopersonalehigiene": "Cuidado Personal",
+    "higiene": "Cuidado Personal",
+    "perfumeria": "Cuidado Personal",
+    "cosmetica": "Cuidado Personal",
+    "perfumeriaycosmetica": "Cuidado Personal",
+    
+    // Papeleria
+    "papeleria": "Papeleria",
+    "papel": "Papeleria",
+    "descartables": "Papeleria",
+    "papelydescartables": "Papeleria",
+    "libreria": "Papeleria",
+    
+    // Varios
+    "varios": "Varios",
+    "bazarlibreriayvarios": "Varios",
+    "bazar": "Varios",
+    "pilaseiluminacion": "Varios",
+    "pilas": "Varios",
+    "iluminacion": "Varios"
   };
-  return map[clean] || "Bazar, Librería y Varios";
+  return map[clean] || "Varios";
 }
 
 const CI = {
-  "Almacén: Condimentos, Conservas y Cereales": "🛒",
-  "Bazar, Librería y Varios": "🔧",
-  "Bebidas": "🍷",
-  "Cuidado Personal e Higiene": "🧻",
-  "Galletitas, Snacks y Repostería": "🍪",
-  "Golosinas y Alfajores": "🍫",
-  "Limpieza del Hogar y Cuidado de la Ropa": "🧹",
-  "Papel y Descartables": "📦",
-  "Perfumería y Cosmética": "🧴",
-  "Pilas e Iluminación": "💡"
+  "Golosinas": "🍭",
+  "Chocolates y Alfajores": "🍫",
+  "Galletitas y Snacks": "🍪",
+  "Almacen": "🛒",
+  "Cuidado Personal": "🧴",
+  "Papeleria": "📝",
+  "Varios": "📦"
 };
 
 const GR = {
-  "🛒 Almacén": ["Almacén: Condimentos, Conservas y Cereales"],
-  "🍷 Bebidas": ["Bebidas"],
-  "🍫 Golosinas y Alfajores": ["Golosinas y Alfajores"],
-  "🍪 Galletitas y Snacks": ["Galletitas, Snacks y Repostería"],
-  "🧹 Limpieza": ["Limpieza del Hogar y Cuidado de la Ropa"],
-  "🧻 Cuidado Personal": ["Cuidado Personal e Higiene"],
-  "🧴 Perfumería": ["Perfumería y Cosmética"],
-  "📦 Papel y Descartables": ["Papel y Descartables"],
-  "💡 Pilas e Iluminación": ["Pilas e Iluminación"],
-  "🔧 Bazar y Librería": ["Bazar, Librería y Varios"]
+  "🍭 Golosinas": ["Golosinas"],
+  "🍫 Chocolates y Alfajores": ["Chocolates y Alfajores"],
+  "🍪 Galletitas y Snacks": ["Galletitas y Snacks"],
+  "🛒 Almacen": ["Almacen"],
+  "🧴 Cuidado Personal": ["Cuidado Personal"],
+  "📝 Papeleria": ["Papeleria"],
+  "📦 Varios": ["Varios"]
 };
 
 // CONFIGURATION VARIABLES
@@ -3963,7 +3992,7 @@ async function loadDatabase() {
       const fallbackProds = await fallbackRes.json();
       prods = fallbackProds.map(p => {
         let cat = p.category || "Varios";
-        cat = normalizeCategory(cat);
+        cat = normalizeCategory(cat, p.name);
         let image = window.codeToImg[p.code] || p.image || "";
         return { 
           unidad_min: 1,
@@ -4087,7 +4116,7 @@ function processCSVRows(rows) {
       if (!cat && catIdx !== -1 && r[catIdx]) {
         cat = r[catIdx].trim();
       }
-      cat = normalizeCategory(cat || "Varios");
+      cat = normalizeCategory(cat || "Varios", name);
       const image = window.codeToImg[code] || "";
       
       prods.push({
