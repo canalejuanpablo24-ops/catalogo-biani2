@@ -317,7 +317,7 @@ body {
 /* RESPONSIVE GRID - 2 COLUMNS ON MOBILE */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 16px;
 }
 @media (max-width: 600px) {
@@ -399,7 +399,7 @@ body {
 }
 .card-img-container {
   width: 100%;
-  height: 180px;
+  height: 210px;
   border-radius: 12px;
   overflow: hidden;
   background: #f8fafc;
@@ -1199,7 +1199,7 @@ body {
     gap: 12px !important;
   }
   .card-img-container {
-    height: 160px !important;
+    height: 185px !important;
   }
   .hl span, .bu span {
     display: none;
@@ -1632,13 +1632,6 @@ body.cart-has-items #cart-form {
         <div id="pm-code" class="pm-code">#123</div>
         <div id="pm-price" class="pm-price">$10.00</div>
         <div id="pm-min" class="pm-min">Mínimo de compra: 1 unidad</div>
-        
-        <div class="pm-sizes-section">
-          <div class="pm-section-label">Presentación:</div>
-          <div id="pm-sizes" class="pm-sizes">
-            <span class="size-chip active">48 U</span>
-          </div>
-        </div>
         
         <div class="pm-qty-section">
           <div class="pm-section-label">Cantidad:</div>
@@ -4332,9 +4325,6 @@ function getCardActionHTML(p) {
   if (p.outOfStock) {
     return `<div class="oos-label">SIN STOCK</div>`;
   }
-  if (p.qty > 0) {
-    return `<button class="btn-ver active" onclick="openProdModal('${p.code}'); event.stopPropagation()">✓ ${p.qty} u. →</button>`;
-  }
   return `<button class="btn-ver" onclick="openProdModal('${p.code}'); event.stopPropagation()">Ver →</button>`;
 }
 
@@ -4452,10 +4442,6 @@ function openProdModal(code) {
   } else {
     minEl.style.display = 'none';
   }
-  
-  // Sizes Section
-  const sizesContainer = document.getElementById('pm-sizes');
-  sizesContainer.innerHTML = `<span class="size-chip active">${parsed.size}</span>`;
   
   // Qty Section
   const qtyVal = document.getElementById('pm-qty-val');
