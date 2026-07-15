@@ -5131,31 +5131,49 @@ function cancelCardMove() {
 
 function executeCardMove(destCode, destCardEl) {
   const sourceCode = moveSourceCard.code;
-  const sourceCardEl = document.getElementById('card-' + sourceCode);
+  const destP = prods.find(x => x.code === destCode);
   
-  if (sourceCardEl && destCardEl) {
-    destCardEl.parentNode.insertBefore(sourceCardEl, destCardEl);
+  if (destP) {
+    let catChanged = false;
+    // 1. Update category of the source product if it moved to a different category
+    if (moveSourceCard.category !== destP.category) {
+      moveSourceCard.category = destP.category;
+      
+      // Save this category edit in localStorage
+      const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
+      if (!edits[sourceCode]) {
+        edits[sourceCode] = {};
+      }
+      edits[sourceCode].name = moveSourceCard.name;
+      edits[sourceCode].price = moveSourceCard.price;
+      edits[sourceCode].image = moveSourceCard.image;
+      edits[sourceCode].category = destP.category;
+      
+      localStorage.setItem(LS_K.edits, JSON.stringify(edits));
+      catChanged = true;
+    }
     
-    const gridEl = document.getElementById('grid');
-    const cards = gridEl.querySelectorAll('.card[id^="card-"]');
-    const codes = Array.from(cards).map(c => c.id.replace('card-', ''));
-    
-    const map = {};
-    prods.forEach(p => { map[p.code] = p; });
-    
-    const vis = new Set(codes);
-    const rest = prods.filter(p => !vis.has(p.code));
-    
-    prods = codes.map(c => map[c]).filter(Boolean).concat(rest);
+    // 2. Reorder array
+    prods = prods.filter(x => x.code !== sourceCode);
+    const destIdx = prods.findIndex(x => x.code === destCode);
+    if (destIdx !== -1) {
+      prods.splice(destIdx, 0, moveSourceCard);
+    }
     
     saveOrder();
     updateAdmStat();
     
-    sourceCardEl.classList.remove('moving-source');
+    // Clear moving source UI classes
+    const sourceCardEl = document.getElementById('card-' + sourceCode);
+    if (sourceCardEl) sourceCardEl.classList.remove('moving-source');
     document.body.classList.remove('moving-active');
     moveSourceCard = null;
     
-    toast('✅ Producto reubicado con éxito', 'ok');
+    if (catChanged) {
+      toast(`✅ Reubicado y cambiado a: ${destP.category}`, 'ok');
+    } else {
+      toast('✅ Producto reubicado con éxito', 'ok');
+    }
     applyF();
   }
 }
