@@ -4339,7 +4339,8 @@ function mkCard(p) {
   const parsed = parseProductInfo(p);
   
   const d = document.createElement('div');
-  d.className = 'card' + (hq ? ' inc' : '') + (isOOS ? ' oos' : ''); 
+  const isMovingSource = typeof moveSourceCard !== 'undefined' && moveSourceCard && moveSourceCard.code === p.code;
+  d.className = 'card' + (hq ? ' inc' : '') + (isOOS ? ' oos' : '') + (isMovingSource ? ' moving-source' : ''); 
   d.id = 'card-' + p.code;
   
   // Set card click handler to open details modal (unless in admin mode)
@@ -5180,7 +5181,17 @@ function executeCardMove(destCode, destCardEl) {
 
 // Global click listener to cancel move on clicking outside
 document.addEventListener('click', function(e) {
-  if (moveSourceCard && !e.target.closest('#grid')) {
+  if (moveSourceCard) {
+    // Evitar cancelar si se hace clic en elementos de navegación, filtros, buscador o modales
+    if (e.target.closest('#grid') || 
+        e.target.closest('.nav1') || 
+        e.target.closest('.nav2') || 
+        e.target.closest('.stog') || 
+        e.target.closest('.search-banner') || 
+        e.target.closest('.adm-modal') ||
+        e.target.closest('.mo')) {
+      return;
+    }
     cancelCardMove();
     toast('ℹ️ Movimiento cancelado', 'warn');
   }
