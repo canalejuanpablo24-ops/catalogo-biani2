@@ -4036,7 +4036,7 @@ const DEFAULT_EDITS = {
       "name": "ANTOJITOS NACHOS ORIGINAL X 85 G (16)",
       "price": 1583.73,
       "image": "imagenes/ANTOJITOS NACHOS ORIGINAL X 85 G.jpeg",
-      "category": "Varios"
+      "category": "Galletitas y Snacks"
     },
     "3044": {
       "name": "DISMAR ALCOHOL FINO X 1 LITRO (8)",
@@ -4048,7 +4048,7 @@ const DEFAULT_EDITS = {
       "name": "SOL DE NOCHE PERFUME X 15 W",
       "price": 895.4,
       "image": "imagenes/1450-sol-de-noche-perfume-x-15-w.jpg",
-      "category": "Cuidado Personal"
+      "category": "Pilas"
     },
     "3088": {
       "name": "MC HARINA CAÑUELAS X 1 KG 000 (10)",
@@ -4312,7 +4312,7 @@ const DEFAULT_EDITS = {
       "name": "ALP ZORRO BAÑO X 500 ML DOY PACK (18)",
       "price": 1777.4,
       "image": "",
-      "category": "Limpieza"
+      "category": "Chocolates y Alfajores"
     },
     "5812": {
       "name": "JH GLADE DES. AMBIENTE X 360 CC NARANJO Y ORQUIDEAS",
@@ -4402,7 +4402,7 @@ const DEFAULT_EDITS = {
       "name": "MOLINOS DEL BOSQUE GALL DE ARROZ X 150 GS DULCE (18) SIN TACC",
       "price": 1708.01,
       "image": "imagenes/MOLINOS DEL BOSQUE GALL DE ARROZ X 150 GS DULCE.jpeg",
-      "category": "Galletitas y Snacks"
+      "category": "Despensa"
     },
     "6218": {
       "name": "MCA CHUPETE ANATOMICO SILICONA N° 3",
@@ -4507,20 +4507,47 @@ const DEFAULT_EDITS = {
       "category": "Cuidado Personal"
     }
   };
-function normalizeCategory(cat, name = "") {
+function normalizeCategory(cat, name = "", img = "") {
   const nm = name ? name.toUpperCase() : "";
+  const im = img ? img.toUpperCase() : "";
+  
+  // Extraer el nombre base del archivo de imagen limpio de números iniciales
+  let brand = "";
+  if (img) {
+    const fn = img.split('/').pop();
+    const clean_fn = fn.replace(/^\d+-/, "").toLowerCase();
+    brand = clean_fn.split('-')[0];
+  }
 
   // 1. Chocolates y Alfajores
   if (nm.includes("FELFORT") || nm.includes("FORT") || 
-      nm.includes("ALFAJOR") || nm.includes("ALF.") || nm.includes("ALF ") || 
-      nm.includes("CHOCOLATE") || nm.includes("CHOC.") || nm.includes("CHOC ") || 
+      nm.includes("ALFAJOR") || nm.includes("ALF.") || nm.includes("ALF-") || nm.includes("ALF ") || 
+      nm.includes("CHOCOLATE") || nm.includes("CHOC.") || nm.includes("CHOC-") || nm.includes("CHOC ") || 
       nm.includes("BOCADITO") || nm.includes("BOMBON") || nm.includes("COBERTURA") || 
       nm.includes("TURRON") || nm.includes("CACAO") || nm.includes("MILKA") || 
       nm.includes("AGUILA") || nm.includes("SHOCK") || nm.includes("BLOCK") || 
       nm.includes("TOBLERONE") || nm.includes("KINDER") || nm.includes("FERRERO") || 
       nm.includes("BON O BON") || nm.includes("BONOBON") || nm.includes("CABSHA") ||
-      nm.includes("NUGATON")) {
-    return "Chocolates y Alfajores";
+      nm.includes("NUGATON") || nm.includes("MARROC") || nm.includes("TOFI") || 
+      nm.includes("COFLER") || nm.includes("BANANITA") || nm.includes("VIZZIO") || 
+      nm.includes("SHOT") || nm.includes("MONEDA") || nm.includes("BAÑO") || 
+      nm.includes("ALFA-") || im.includes("FELFORT") || im.includes("FORT") || 
+      im.includes("ALFAJOR") || im.includes("ALF.") || im.includes("ALF-") || 
+      im.includes("CHOCOLATE") || im.includes("CHOC.") || im.includes("CHOC-") || 
+      im.includes("BOCADITO") || im.includes("BOMBON") || im.includes("COBERTURA") || 
+      im.includes("TURRON") || im.includes("CACAO") || im.includes("MILKA") || 
+      im.includes("AGUILA") || im.includes("SHOCK") || im.includes("BLOCK") || 
+      im.includes("TOBLERONE") || im.includes("KINDER") || im.includes("FERRERO") || 
+      im.includes("BON O BON") || im.includes("BONOBON") || im.includes("CABSHA") ||
+      im.includes("NUGATON") || im.includes("MARROC") || im.includes("TOFI") || 
+      im.includes("COFLER") || im.includes("BANANITA") || im.includes("VIZZIO") || 
+      im.includes("SHOT") || im.includes("MONEDA") || im.includes("BAÑO") || 
+      im.includes("ALFA-")) {
+    if (nm.includes("CEREALFORT") || im.includes("CEREALFORT")) {
+      // Excepción para Cerealfort que son barras de cereal
+    } else {
+      return "Chocolates y Alfajores";
+    }
   }
 
   // 2. Pilas
@@ -4528,7 +4555,14 @@ function normalizeCategory(cat, name = "") {
       nm.includes("FOCO") || nm.includes("FOCOS") || nm.includes("LAMPARA") || 
       nm.includes("LAMPARAS") || nm.includes("LAMPA") || nm.includes("LED") || 
       nm.includes("HALOGENA") || nm.includes("LINTERNA") || nm.includes("LINTERNAS") || 
-      nm.includes("LAMPARITA") || nm.includes("LAMPARITAS")) {
+      nm.includes("LAMPARITA") || nm.includes("LAMPARITAS") || nm.includes("ILUMINACION") || 
+      nm.includes("FAROL") || nm.includes("SOL DE NOCHE") || nm.includes("ENERGIZER") ||
+      im.includes("PILA") || im.includes("PILAS") || im.includes("BATERIA") || 
+      im.includes("FOCO") || im.includes("FOCOS") || im.includes("LAMPARA") || 
+      im.includes("LAMPARAS") || im.includes("LAMPA") || im.includes("LED") || 
+      im.includes("HALOGENA") || im.includes("LINTERNA") || im.includes("LINTERNAS") || 
+      im.includes("LAMPARITA") || im.includes("LAMPARITAS") || im.includes("ILUMINACION") || 
+      im.includes("FAROL") || im.includes("SOL DE NOCHE") || im.includes("ENERGIZER")) {
     return "Pilas";
   }
 
@@ -4537,7 +4571,7 @@ function normalizeCategory(cat, name = "") {
       nm.includes("JABON BLANCO") || nm.includes("J.BLANCO") || nm.includes("JABON DE PAN") ||
       nm.includes("JABON TOCADOR") || nm.includes("JABON PLUSBELLE") || nm.includes("JABON CAMPOS VERDES") || 
       nm.includes("JABON REXONA") || nm.includes("JABON LUX") || nm.includes("JABON DOVE") || 
-      nm.includes("DETERGENTE") || nm.includes("DET.") || nm.includes("DET ") || 
+      nm.includes("DETERGENTE") || nm.includes("DET.") || nm.includes("DET ") || nm.includes("DET-") ||
       nm.includes("PAPEL HIG") || nm.includes("P.HIG") || nm.includes("HIGIENICO") || 
       nm.includes("ROLLO DE COCINA") || nm.includes("ROLLOS DE COCINA") || nm.includes("R.COCINA") || 
       nm.includes("PAÑUELITO") || nm.includes("PAÑUELITOS") || nm.includes("CARILINA") || 
@@ -4552,7 +4586,31 @@ function normalizeCategory(cat, name = "") {
       nm.includes("BLEM") || nm.includes("CIF") || nm.includes("PROCENEX") || 
       nm.includes("SUIZA") || nm.includes("ALA") || nm.includes("SKIP") || 
       nm.includes("DRIVE") || nm.includes("ZORRO") || nm.includes("SINA") || 
-      nm.includes("SECTOR") || nm.includes("LIMPIADOR") || nm.includes("DESINFECTANTE")) {
+      nm.includes("SECTOR") || nm.includes("LIMPIADOR") || nm.includes("DESINFECTANTE") || 
+      nm.includes("ECOVITA") || nm.includes("REJILLA-") || nm.includes("BOLSA DE RESIDUOS") || 
+      nm.includes("BOLSA CONSORCIO") || nm.includes("BOLSAS DE RESIDUOS") || nm.includes("BOLSAS CONSORCIO") ||
+      im.includes("JABON IN POLVO") || im.includes("JABON EN POLVO") || im.includes("J.POLVO") || im.includes("JABON P/ROPA") ||
+      im.includes("JABON BLANCO") || im.includes("J.BLANCO") || im.includes("JABON DE PAN") ||
+      im.includes("JABON TOCADOR") || im.includes("JABON PLUSBELLE") || im.includes("JABON CAMPOS VERDES") || 
+      im.includes("JABON REXONA") || im.includes("JABON LUX") || im.includes("JABON DOVE") || 
+      im.includes("DETERGENTE") || im.includes("DET.") || im.includes("DET-") ||
+      im.includes("PAPEL HIG") || im.includes("P.HIG") || im.includes("HIGIENICO") || 
+      im.includes("ROLLO DE COCINA") || im.includes("ROLLOS DE COCINA") || im.includes("R.COCINA") || 
+      im.includes("PAÑUELITO") || im.includes("PAÑUELITOS") || im.includes("CARILINA") || 
+      im.includes("TRAPO DE PISO") || im.includes("TRAPO PISO") || 
+      im.includes("REJILLA") || 
+      im.includes("FRANELA") || im.includes("FRANELAS") || 
+      im.includes("SECADOR") || im.includes("SECADORES") || 
+      im.includes("ESCOBILLON") || im.includes("ESCOBILLONES") || im.includes("ESCOBA") || 
+      im.includes("ESPONJA") || im.includes("ESPONJAS") || 
+      im.includes("LAVANDINA") || im.includes("SUAVIZANTE") || im.includes("APRESTO") || 
+      im.includes("GLADE") || im.includes("POETT") || im.includes("LYSOFORM") || 
+      im.includes("BLEM") || im.includes("CIF") || im.includes("PROCENEX") || 
+      im.includes("SUIZA") || im.includes("ALA") || im.includes("SKIP") || 
+      im.includes("DRIVE") || im.includes("ZORRO") || im.includes("SINA") || 
+      im.includes("SECTOR") || im.includes("LIMPIADOR") || im.includes("DESINFECTANTE") || 
+      im.includes("ECOVITA") || im.includes("REJILLA-") || im.includes("BOLSA DE RESIDUOS") || 
+      im.includes("BOLSA CONSORCIO") || im.includes("BOLSAS DE RESIDUOS") || im.includes("BOLSAS CONSORCIO")) {
     return "Limpieza";
   }
 
@@ -4574,12 +4632,38 @@ function normalizeCategory(cat, name = "") {
       nm.includes("PANAL") || nm.includes("PAÑAL") || nm.includes("PAÑALES") || 
       nm.includes("DUFFY") || nm.includes("HISOPO") || nm.includes("HISOPOS") || 
       nm.includes("CREMA CORPORAL") || nm.includes("CREMA DE MANOS") || 
-      nm.includes("PLUSBELLE") || nm.includes("REXONA") || nm.includes("LUX") || nm.includes("DOVE")) {
+      nm.includes("PLUSBELLE") || nm.includes("REXONA") || nm.includes("LUX") || nm.includes("DOVE") ||
+      nm.includes("CANNON") || nm.includes("AKIABARA") || nm.includes("CIEL") || nm.includes("VERITAS") ||
+      nm.includes("ALLIANCE") || nm.includes("COLBERT") || nm.includes("PASIONARIA") ||
+      nm.includes("BROSS") || nm.includes("CARDON") || nm.includes("TOALLA-HUMEDA") ||
+      nm.includes("TOALLAS-HUMEDAS") || nm.includes("PROTECTOR") || nm.includes("ODORONO") || nm.includes("HINDS") ||
+      im.includes("CEPILLO DENTAL") || im.includes("CEPILLO DE DIENTES") || im.includes("CEPILLOS DENTALES") || 
+      im.includes("PASTA DENTAL") || im.includes("KOLYNOS") || im.includes("DENTIFRICO") || 
+      im.includes("ODOL") || im.includes("COLGATE") || 
+      (im.includes("DESODORANTE") && !im.includes("AMBIENTE")) || 
+      im.includes("DEO") || im.includes("DEOD.") || 
+      im.includes("PERFUME") || im.includes("COLONIA") || 
+      im.includes("KEVIN") || im.includes("PAULA CAHEN") || 
+      im.includes("SHAMPOO") || im.includes("ACONDICIONADOR") || im.includes("CREMA ENJUAGUE") || 
+      im.includes("TOALLITA") || im.includes("TOALLITAS") || 
+      im.includes("TALCO") || im.includes("TALCOS") || im.includes("EFECTO RAPIDO") || 
+      im.includes("GEL P/PELO") || im.includes("GEL PARA PELO") || im.includes("GEL CAPILAR") || 
+      im.includes("MAQUINA DE AFEITAR") || im.includes("MAQUINA AFEITAR") || 
+      im.includes("PRESTOBARBA") || im.includes("AFEITAR") || im.includes("GILLETTE") || 
+      im.includes("ALCOHOL GEL") || im.includes("ALCOHOL EN GEL") || im.includes("ALCOHOL FINO") || 
+      im.includes("PANAL") || im.includes("PAÑAL") || im.includes("PAÑALES") || 
+      im.includes("DUFFY") || im.includes("HISOPO") || im.includes("HISOPOS") || 
+      im.includes("CREMA CORPORAL") || im.includes("CREMA DE MANOS") || 
+      im.includes("PLUSBELLE") || im.includes("REXONA") || im.includes("LUX") || im.includes("DOVE") ||
+      im.includes("CANNON") || im.includes("AKIABARA") || im.includes("CIEL") || im.includes("VERITAS") ||
+      im.includes("ALLIANCE") || im.includes("COLBERT") || im.includes("PASIONARIA") ||
+      im.includes("BROSS") || im.includes("CARDON") || im.includes("TOALLA-HUMEDA") ||
+      im.includes("TOALLAS-HUMEDAS") || im.includes("PROTECTOR") || im.includes("ODORONO") || im.includes("HINDS")) {
     return "Cuidado Personal";
   }
 
   // 5. Galletitas y Snacks
-  if (nm.includes("GALLETITA") || nm.includes("GALLETITAS") || nm.includes("GALL.") || nm.includes("GALL ") || 
+  if (nm.includes("GALLETITA") || nm.includes("GALLETITAS") || nm.includes("GALL.") || nm.includes("GALL-") || nm.includes("GALL ") || 
       nm.includes("SNACK") || nm.includes("SNACKS") || nm.includes("PAPA FRITA") || 
       nm.includes("PAPAS FRITAS") || nm.includes("CHIZITO") || nm.includes("CHIZITOS") || 
       nm.includes("PALITO") || nm.includes("PALITOS") || nm.includes("MANI") || 
@@ -4589,7 +4673,34 @@ function normalizeCategory(cat, name = "") {
       nm.includes("TOSTADA") || nm.includes("TOSTADAS") || nm.includes("TOSTADITA") || 
       nm.includes("TOSTADITAS") || nm.includes("BIZCOCHITO") || nm.includes("BIZCOCHITOS") || 
       nm.includes("DON SATUR") || nm.includes("BIZCOCHO") || nm.includes("PEHUAJO") || 
-      nm.includes("PEHUA") || nm.includes("CRACKERS")) {
+      nm.includes("PEHUA") || nm.includes("CRACKERS") || nm.includes("TEREPIN") || 
+      nm.includes("MAURI") || nm.includes("KOKIS") || nm.includes("PITUSAS") || 
+      nm.includes("TURIMAR") || nm.includes("ANTOJITOS") || nm.includes("GRISSINOPOLI") || 
+      nm.includes("GRISINES") || nm.includes("SORIANO") || nm.includes("CILO") || 
+      nm.includes("CLUB SOCIAL") || nm.includes("CLUB-SOCIAL") || nm.includes("SOCIAL") || 
+      nm.includes("TRIO") || nm.includes("OKEBON") || nm.includes("TRAVIATA") || 
+      nm.includes("CRIOLLITAS") || nm.includes("TORTA") || nm.includes("MERENDINA") || 
+      nm.includes("PASTA FROLA") || nm.includes("PASTAFROLA") || nm.includes("MERENGUE") || 
+      nm.includes("MERENGUES") || nm.includes("TAPITAS") || nm.includes("CEREALFORT") ||
+      im.includes("GALLETITA") || im.includes("GALLETITAS") || im.includes("GALL.") || im.includes("GALL-") || 
+      im.includes("SNACK") || im.includes("SNACKS") || im.includes("PAPA FRITA") || 
+      im.includes("PAPAS FRITAS") || im.includes("CHIZITO") || im.includes("CHIZITOS") || 
+      im.includes("PALITO") || im.includes("PALITOS") || im.includes("MANI") || 
+      im.includes("SALADO") || im.includes("SALADITO") || 
+      im.includes("BARRA DE CEREAL") || im.includes("BARRITA") || im.includes("BARRA CEREAL") || 
+      im.includes("ALMOHADITA") || im.includes("ALMOHADITAS") || 
+      im.includes("TOSTADA") || im.includes("TOSTADAS") || im.includes("TOSTADITA") || 
+      im.includes("TOSTADITAS") || im.includes("BIZCOCHITO") || im.includes("BIZCOCHITOS") || 
+      im.includes("DON SATUR") || im.includes("BIZCOCHO") || im.includes("PEHUAJO") || 
+      im.includes("PEHUA") || im.includes("CRACKERS") || im.includes("TEREPIN") || 
+      im.includes("MAURI") || im.includes("KOKIS") || im.includes("PITUSAS") || 
+      im.includes("TURIMAR") || im.includes("ANTOJITOS") || im.includes("GRISSINOPOLI") || 
+      im.includes("GRISINES") || im.includes("SORIANO") || im.includes("CILO") || 
+      im.includes("CLUB SOCIAL") || im.includes("CLUB-SOCIAL") || im.includes("SOCIAL") || 
+      im.includes("TRIO") || im.includes("OKEBON") || im.includes("TRAVIATA") || 
+      im.includes("CRIOLLITAS") || im.includes("TORTA") || im.includes("MERENDINA") || 
+      im.includes("PASTA FROLA") || im.includes("PASTAFROLA") || im.includes("MERENGUE") || 
+      im.includes("MERENGUES") || im.includes("TAPITAS") || im.includes("CEREALFORT")) {
     return "Galletitas y Snacks";
   }
 
@@ -4617,7 +4728,41 @@ function normalizeCategory(cat, name = "") {
       nm.includes("PIMENTON") || nm.includes("OREGANO") || nm.includes("PROVENZAL") || 
       nm.includes("FIDEOS") || nm.includes("PASTA SECA") || nm.includes("ARROZ") || 
       nm.includes("CALDO") || nm.includes("SOPA") || 
-      nm.includes("AZUCAR") || nm.includes("EDULCORANTE")) {
+      nm.includes("AZUCAR") || nm.includes("EDULCORANTE") || nm.includes("HILERET") ||
+      nm.includes("NOEL") || nm.includes("MERMELADA") || nm.includes("MERMELADAS") ||
+      nm.includes("CABRALES") || nm.includes("JUMALA") || nm.includes("JUGO") ||
+      nm.includes("JUGOS") || nm.includes("TANG") || nm.includes("CLIGHT") ||
+      nm.includes("BAGGIO") || nm.includes("CONCENTRADO") || nm.includes("SABORIZADA") ||
+      nm.includes("SABORIZADAS") ||
+      im.includes("ACEITE") || 
+      im.includes("ENLATADO") || im.includes("LATA") || im.includes("CONSERVA") || 
+      im.includes("ARVEJAS") || im.includes("CHOCLO") || im.includes("TOMATE") || 
+      im.includes("ATUN") || im.includes("SARDINA") || 
+      im.includes("INALPA") || im.includes("OLINTO") || 
+      im.includes("VINO") || im.includes("VINOS") || 
+      im.includes("CERVEZA") || im.includes("CERVEZAS") || 
+      im.includes("HARINA") || im.includes("HARINAS") || im.includes("LEUDANTE") || 
+      im.includes("PREMEZCLA") || 
+      im.includes("MC ") || im.includes("MAMA COCINA") || im.includes("MAIZENA") || 
+      im.includes("YERBA") || im.includes("YERBAS") || 
+      im.includes("MENOYO") || im.includes("VINAGRE") || im.includes("ACETO") || im.includes("JUGO LIMON") || 
+      im.includes("LA VIRGINIA") || im.includes("VIRGINIA") || im.includes("CAFE") || 
+      im.includes("TE ") || im.includes("SAQUITO") || im.includes("POLVO SABORIZADOR") || 
+      im.includes("COCINA EN BOLSA") || 
+      im.includes("DULCE DE LECHE") || im.includes("D.D.L.") || im.includes("DON ELIO") || 
+      im.includes("CUMANA") || 
+      im.includes("SAL ") || im.includes("SALINA") || 
+      im.includes("MAYONESA") || im.includes("MOSTAZA") || im.includes("KETCHUP") || 
+      im.includes("SALSA") || im.includes("ADEREZO") || im.includes("CONDIMENTO") || 
+      im.includes("PIMENTON") || im.includes("OREGANO") || im.includes("PROVENZAL") || 
+      im.includes("FIDEOS") || im.includes("PASTA SECA") || im.includes("ARROZ") || 
+      im.includes("CALDO") || im.includes("SOPA") || 
+      im.includes("AZUCAR") || im.includes("EDULCORANTE") || im.includes("HILERET") ||
+      im.includes("NOEL") || im.includes("MERMELADA") || im.includes("MERMELADAS") ||
+      im.includes("CABRALES") || im.includes("JUMALA") || im.includes("JUGO") ||
+      im.includes("JUGOS") || im.includes("TANG") || im.includes("CLIGHT") ||
+      im.includes("BAGGIO") || im.includes("CONCENTRADO") || im.includes("SABORIZADA") ||
+      im.includes("SABORIZADAS")) {
     return "Despensa";
   }
 
@@ -4634,8 +4779,58 @@ function normalizeCategory(cat, name = "") {
       nm.includes("BELIDENT") || nm.includes("CLORETS") || nm.includes("TOPLINE") || 
       nm.includes("FLYNN") || nm.includes("YAPA") || nm.includes("MOGUL") || 
       nm.includes("DRF") || nm.includes("SUGUS") || nm.includes("LENGUETAZO") || 
-      nm.includes("PICO DULCE") || nm.includes("ALGODON")) {
+      nm.includes("PICO DULCE") || nm.includes("ALGODON") || nm.includes("PLENARIO") ||
+      nm.includes("GAM") || nm.includes("TEMBLEKE") || nm.includes("LRT") || nm.includes("CNY") ||
+      im.includes("CHUPETIN") || im.includes("CHUPETON") || im.includes("CHUPET") || im.includes("PALETA") || 
+      im.includes("CARAMELO") || im.includes("CARAM.") || im.includes("CARAMELOS") || 
+      im.includes("CHICLE") || im.includes("CHICL.") || im.includes("CHICLES") || 
+      im.includes("PASTILLA") || im.includes("PAST.") || im.includes("PASTILLAS") || 
+      im.includes("GOMITA") || im.includes("GOM.") || im.includes("GOMITAS") || 
+      im.includes("GIRASOL") || im.includes("SEMIYITA") || 
+      im.includes("PIPA") || im.includes("PIPAS") || 
+      im.includes("TUTUCA") || im.includes("MASTICABLE") || im.includes("GELATINA") || 
+      im.includes("ALKA") || im.includes("MENTHOHERB") || im.includes("HALLS") || 
+      im.includes("BELIDENT") || im.includes("CLORETS") || im.includes("TOPLINE") || 
+      im.includes("FLYNN") || im.includes("YAPA") || im.includes("MOGUL") || 
+      im.includes("DRF") || im.includes("SUGUS") || im.includes("LENGUETAZO") || 
+      im.includes("PICO DULCE") || im.includes("ALGODON") || im.includes("PLENARIO") ||
+      im.includes("GAM") || im.includes("TEMBLEKE") || im.includes("LRT") || im.includes("CNY")) {
     return "Golosinas";
+  }
+
+  // 8. Mapeos por prefijo de marca de la imagen
+  if (brand === "cp") return "Cuidado Personal";
+  if (brand === "menoyo" || brand === "yerba" || brand === "inalpa" || brand === "cabrales" || brand === "jumala" || brand === "mc") return "Despensa";
+  if (brand === "pila" || brand === "linterna") return "Pilas";
+  if (brand === "lrt" || brand === "plenario" || brand === "gam" || brand === "tembleke") return "Golosinas";
+  if (brand === "nvr" || brand === "cilo" || brand === "pitusas" || brand === "turimar" || brand === "antojitos" || brand === "grissinopoli" || brand === "soriano") return "Galletitas y Snacks";
+  if (brand === "psg" || brand === "ecovita" || brand === "argentum" || brand === "jh") return "Limpieza";
+  
+  if (brand === "fef") {
+    return (nm.includes("CEREALFORT") || nm.includes("BARRITA")) ? "Galletitas y Snacks" : "Chocolates y Alfajores";
+  }
+  if (brand === "cny") {
+    return (nm.includes("TIC TAC") || nm.includes("MENTOS") || nm.includes("PAST")) ? "Golosinas" : "Chocolates y Alfajores";
+  }
+  if (brand === "don") {
+    return nm.includes("SATUR") ? "Galletitas y Snacks" : "Despensa";
+  }
+  if (brand === "alp") {
+    if (nm.includes("JABON") || nm.includes("DET") || nm.includes("ZORRO") || nm.includes("SINA") || nm.includes("REJILLA") || nm.includes("SECADOR")) return "Limpieza";
+    if (nm.includes("PANAL") || nm.includes("PAÑAL") || nm.includes("SHAMPOO") || nm.includes("ACONDICIONADOR") || nm.includes("CREMA ENJUAGUE") || nm.includes("TRATAMIENTO") || nm.includes("TOALL")) return "Cuidado Personal";
+    return "Limpieza";
+  }
+  if (brand === "chac") {
+    return (nm.includes("POMADA") || nm.includes("WASSINGTON") || nm.includes("CINTA") || nm.includes("HILO")) ? "Varios" : "Cuidado Personal";
+  }
+  if (brand === "geo") {
+    return (nm.includes("BAZOKA") || nm.includes("BAZOOKA") || nm.includes("FLYNN") || nm.includes("FLYN") || nm.includes("CARAM") || nm.includes("CHUPET") || nm.includes("GOM") || nm.includes("MASTICABLE") || nm.includes("LENGUETAZO") || nm.includes("TURRON")) ? "Golosinas" : "Chocolates y Alfajores";
+  }
+  if (brand === "mdz") {
+    if (nm.includes("ALF") || nm.includes("CHOCOLATE") || nm.includes("CHOC") || nm.includes("BOMBON") || nm.includes("BOCADITO") || nm.includes("MILKA") || nm.includes("CADBURY") || nm.includes("SHOT")) return "Chocolates y Alfajores";
+    if (nm.includes("BELDENT") || nm.includes("BUBBALOO") || nm.includes("BUBBA") || nm.includes("SPARKIES") || nm.includes("CLORETS") || nm.includes("TOPLINE") || nm.includes("HALLS")) return "Golosinas";
+    if (nm.includes("CLUB SOCIAL") || nm.includes("SOCIAL") || nm.includes("PEPITOS") || nm.includes("OREO") || nm.includes("TITA") || nm.includes("RHODESIA") || nm.includes("MELBA") || nm.includes("DUQUESA") || nm.includes("TERRABUSI")) return "Galletitas y Snacks";
+    if (nm.includes("JUGO") || nm.includes("TANG") || nm.includes("CLIGHT")) return "Despensa";
   }
 
   if (!cat) return "Varios";
@@ -4795,8 +4990,8 @@ async function loadDatabase() {
       const fallbackProds = await fallbackRes.json();
       prods = fallbackProds.map(p => {
         let cat = p.category || "Varios";
-        cat = normalizeCategory(cat, p.name);
         let image = window.codeToImg[p.code] || p.image || "";
+        cat = normalizeCategory(cat, p.name, image);
         return { 
           unidad_min: 1,
           ...p, 
@@ -4915,12 +5110,12 @@ function processCSVRows(rows) {
         if (minIdx !== -1 && r[minIdx]) p.unidad_min = parseInt(r[minIdx]) || 1;
       });
     } else {
+      const image = window.codeToImg[code] || "";
       let cat = window.codeToCat[code] || "";
       if (!cat && catIdx !== -1 && r[catIdx]) {
         cat = r[catIdx].trim();
       }
-      cat = normalizeCategory(cat || "Varios", name);
-      const image = window.codeToImg[code] || "";
+      cat = normalizeCategory(cat || "Varios", name, image);
       
       prods.push({
         code: code,
@@ -5535,7 +5730,7 @@ function loadAdminState() {
       if (p) {
         if (edits[c].name) p.name = edits[c].name;
         if (edits[c].price !== undefined) p.price = edits[c].price;
-        if (edits[c].category) p.category = normalizeCategory(edits[c].category, p.name);
+        if (edits[c].category) p.category = normalizeCategory(edits[c].category, p.name, p.image);
         if (edits[c].image !== undefined) p.image = edits[c].image;
       }
     }

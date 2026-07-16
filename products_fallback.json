@@ -143,7 +143,7 @@
     "code": "6112",
     "name": "GEO CHUP. FLYM PAFF X 24 MANZANA SIN TAC",
     "price": 5650.59,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -1011,28 +1011,28 @@
     "code": "5841",
     "name": "PLENARIO GUSANITOS X 500 GS BOLSA",
     "price": 5609.06,
-    "category": "Varios",
+    "category": "Golosinas",
     "unidad_min": 1
   },
   {
     "code": "5845",
     "name": "PLENARIO ANIMALITOS X 800 GS BOLSA",
     "price": 7376.94,
-    "category": "Varios",
+    "category": "Golosinas",
     "unidad_min": 1
   },
   {
     "code": "5843",
     "name": "PLENARIO HUESITOS X 500 GS BOLSA",
     "price": 5609.06,
-    "category": "Varios",
+    "category": "Golosinas",
     "unidad_min": 1
   },
   {
     "code": "5842",
     "name": "PLENARIO VIAJAMOS X 500 GS BOLSA",
     "price": 5609.06,
-    "category": "Varios",
+    "category": "Golosinas",
     "unidad_min": 1
   },
   {
@@ -1375,7 +1375,7 @@
     "code": "2150",
     "name": "GEO PAST FULLMINT CHERRY MENTA X 12",
     "price": 6103.24,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -1466,14 +1466,14 @@
     "code": "661",
     "name": "MDZ PAST. CLIGHT X 12 UNI. NARANJA",
     "price": 9811.18,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "2516",
     "name": "MDZ PAST. CLIGHT X 12 UNI. FRAMBUESA",
     "price": 9811.18,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
@@ -1928,28 +1928,28 @@
     "code": "643",
     "name": "GEO MANTECOL BARRA X 41 GRS SIN TACC",
     "price": 1270.2,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2684",
     "name": "GEO MANTECOL BARRA X 64 GRS SIN TACC",
     "price": 1487.35,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "4127",
     "name": "GEO MANTECOL CUBANITO X 40 UNI",
     "price": 10788.99,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "699",
     "name": "GEO MANTECOL OBLEA X 18 UN",
     "price": 13561.37,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -1963,14 +1963,14 @@
     "code": "1237",
     "name": "GEO BAÑO REPOSTERO X 150 GRS \"SEMIAMARGO\" (12)",
     "price": 2756.68,
-    "category": "Varios",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "690",
     "name": "GEO BAÑO REPOSTERO X 150 GRS \"LECHE\" (12)",
     "price": 2756.68,
-    "category": "Varios",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -1991,7 +1991,7 @@
     "code": "3360",
     "name": "GEO CHOCOLATIN X 40 U. \"BLANCO\" SIN TACC",
     "price": 14414.81,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -2110,63 +2110,63 @@
     "code": "644",
     "name": "GEO MANTECOL X 111 GRS SIN TACC (40)",
     "price": 2537.09,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "34",
     "name": "ALFA. GUAYMALLEN SIMPLE X 38 GRS. BLANCO",
     "price": 273.86,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 20
   },
   {
     "code": "35",
     "name": "ALFA. GUAYMALLEN SIMPLE X 38 GRS. CHOCO",
     "price": 273.88,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 20
   },
   {
     "code": "33",
     "name": "ALFA. GUAYMALLEN TRIPLE X 70 GRS. BLANCO (24)",
     "price": 456.48,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 12
   },
   {
     "code": "32",
     "name": "ALFA. GUAYMALLEN TRIPLE X 70 GRS CHOCO (24)",
     "price": 456.48,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 12
   },
   {
     "code": "37",
     "name": "ALFA. GUAYMALLEN TRIPLE X 70 GRS FRUTA",
     "price": 456.48,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 12
   },
   {
     "code": "5740",
     "name": "ALFA FANTOCHE SIMPLE X 12 \"PESCADO RAUL\" BLANCO 4944",
     "price": 8016.95,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "5071",
     "name": "ALFA FANTOCHE SUPER TRIPLE X 12 X 100 G",
     "price": 11502.83,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "5739",
     "name": "ALFA FANTOCHE TRIPLE X 12 \"RED VELVET\" X 100 G",
     "price": 11502.83,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -2201,77 +2201,77 @@
     "code": "4201",
     "name": "ALFA. FANTOCHE ELIXIR 12 X 70 GRS",
     "price": 11309.16,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2534",
     "name": "ALFA. FANTOCHE TRIPLE X 12 UNI. NIGHT",
     "price": 9778.32,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2535",
     "name": "ALFA. FANTOCHE TRIPLE X 12 UNI. DAY",
     "price": 9778.32,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "6269",
     "name": "ALFA FANTOCHE ELIXIR 12 X 60 G BLANCO",
     "price": 15588.15,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "564",
     "name": "ALFA. FANTOCHE TRIPLE X 85 GRS CHOCO (24)",
     "price": 791.53,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 12
   },
   {
     "code": "565",
     "name": "ALFA. FANTOCHE TRIPLE X 85 GRS BLANCO (24)",
     "price": 791.53,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 12
   },
   {
     "code": "1457",
     "name": "ALFA. FANTOCHE BANDEJA X 150 GRS CHOCO (24)",
     "price": 1877.06,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "1458",
     "name": "ALFA. FANTOCHE BANDEJA X 150 GRS BLANCO (24)",
     "price": 1877.06,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "1452",
     "name": "ALFA. FANTOCHE MINI X 2.5 KG BLANCO",
     "price": 27240.11,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "1451",
     "name": "ALFA. FANTOCHE MINI X 2.5 KG CHOCO",
     "price": 27240.11,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "3105",
     "name": "MDZ ALFA. OREO TORTA TRIPLE X 61 GRS",
     "price": 1405.12,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -2285,63 +2285,63 @@
     "code": "2579",
     "name": "MDZ ALFA. TERRABUSI CLASICO X 50 GRS (48)",
     "price": 961.31,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2646",
     "name": "MDZ ALFA. TERRABUSI GLASEADO X 38 GRS",
     "price": 961.31,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2738",
     "name": "MDZ ALFA. TERRABUSI BLANCO X 70 G (36)",
     "price": 1405.12,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2733",
     "name": "MDZ ALFA. TERRABUSI CLASICO X 70 GRS",
     "price": 1405.12,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2517",
     "name": "MDZ ALFA. TERRABUSI TORTA X 70 GRS",
     "price": 1405.12,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "617",
     "name": "MDZ ALFA. TRIPLE SHOT X 60 GRS (36)",
     "price": 1405.12,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "620",
     "name": "MDZ ALFA. TRIPLE PEPITOS X 57 GRS",
     "price": 1405.12,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2585",
     "name": "MDZ ALFA. TRIPLE OREO X 56 GRS CLASICO",
     "price": 1405.12,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "979",
     "name": "MDZ ALFA. TRIPLE SHOT BLANCO X 60 G (36)",
     "price": 1405.12,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -2355,7 +2355,7 @@
     "code": "3201",
     "name": "ALFA. GULA X 72 GRS BLANCO (18)",
     "price": 1040.89,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 9
   },
   {
@@ -2404,21 +2404,21 @@
     "code": "6373",
     "name": "NVR ALFA. GENIO TRIPLE X 60 GRS CHOCO",
     "price": 340.0,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 12
   },
   {
     "code": "6372",
     "name": "NVR ALFA. GENIO TRIPLE X 60 GRS BLANCO",
     "price": 340.0,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 12
   },
   {
     "code": "3303",
     "name": "NVR. ALFA. FULBITO X 40 UNI BLACK",
     "price": 8000.59,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -2432,7 +2432,7 @@
     "code": "3302",
     "name": "NVR. ALFA. FULBITO X 44 UNI MANI",
     "price": 8799.99,
-    "category": "Galletitas y Snacks",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -2460,42 +2460,42 @@
     "code": "458",
     "name": "LDC ALFA CHOCOARROZ X 1 UNI PISTACHO SIN TACC (30)",
     "price": 1222.22,
-    "category": "Despensa",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "6126",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI LIMON SIN TACC",
     "price": 940.65,
-    "category": "Despensa",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "462",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI. DULCE DE LECHE SIN TACC",
     "price": 940.65,
-    "category": "Despensa",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "6125",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI MARROC SIN TACC",
     "price": 940.65,
-    "category": "Despensa",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "457",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI. BLANCO SIN TACC (30)",
     "price": 940.65,
-    "category": "Despensa",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "6398",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI FRUTILLA SIN TACC",
     "price": 940.65,
-    "category": "Despensa",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -2579,14 +2579,14 @@
     "code": "594",
     "name": "MDZ TITA X 1 UNI.",
     "price": 773.72,
-    "category": "Golosinas",
+    "category": "Galletitas y Snacks",
     "unidad_min": 18
   },
   {
     "code": "595",
     "name": "MDZ RHODESIA X 1 UNI.",
     "price": 851.1,
-    "category": "Golosinas",
+    "category": "Galletitas y Snacks",
     "unidad_min": 18
   },
   {
@@ -2600,14 +2600,14 @@
     "code": "6048",
     "name": "NVR. CUBANITO SMACK 48 X 27 GS",
     "price": 14412.37,
-    "category": "Golosinas",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4075",
     "name": "NVR. OBLEA SMACK X 48 UNI",
     "price": 14412.62,
-    "category": "Golosinas",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -2628,84 +2628,84 @@
     "code": "371",
     "name": "NVR BARRA SMACK BAR RELLENA BAÑADA LECHE 12U X 35 GRS",
     "price": 4673.38,
-    "category": "Golosinas",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "650",
     "name": "MDZ CADBURY YOGHURT FRUTILLA X 29 GRS",
     "price": 2159.8,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "959",
     "name": "MDZ CADBURY YOGHURT FRUTILLA X 82 GRS (28)",
     "price": 5496.3,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "649",
     "name": "MDZ CADBURY TRES SUEÑOS X 24 GRS SIN TACC",
     "price": 2159.8,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "982",
     "name": "MDZ CADBURY TRES SUEÑOS X 82 GRS SIN TACC",
     "price": 5496.3,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "980",
     "name": "MDZ CADBURY ALMENDRAS X 82 GRS SIN TACC (28)",
     "price": 5496.3,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "704",
     "name": "MDZ CADBURY X 162 GRS YOGHURT (GRANDE)",
     "price": 10255.22,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "607",
     "name": "MDZ SHOT TABLETA X 35 GRS",
     "price": 1261.04,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2734",
     "name": "MDZ SHOT TABLETA X 90 GRS",
     "price": 4113.51,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2518",
     "name": "MDZ SHOT TABLETA X 170 GRS",
     "price": 7338.28,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2691",
     "name": "MDZ CHOCOPAUSE X 45 GRS (24)",
     "price": 1974.91,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 12
   },
   {
     "code": "2650",
     "name": "MDZ CHOCOPAUSE OREO X 45 GRS (24) NUEVO",
     "price": 1974.91,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 12
   },
   {
@@ -2796,35 +2796,35 @@
     "code": "3376",
     "name": "NVR. RAPSODIA MINI TORTA 24 X 80 GRS",
     "price": 15752.17,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "5452",
     "name": "NVR PASTA FROLA X 50 GRS MEMBRILLO",
     "price": 272.05,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 12
   },
   {
     "code": "5453",
     "name": "NVR PASTA FROLA X 50 GRS FRUTOS ROJOS",
     "price": 272.05,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 12
   },
   {
     "code": "6045",
     "name": "NVR. MERENDINA X 30 GRS MEMBRILLO",
     "price": 260.33,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 12
   },
   {
     "code": "6044",
     "name": "NVR. MERENDINA X 30 GRS YOGURT VAINILLA",
     "price": 260.33,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 12
   },
   {
@@ -2964,21 +2964,21 @@
     "code": "534",
     "name": "FEF TORRONCINO X 23 GRS",
     "price": 1541.81,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "1043",
     "name": "FEF TORRONCINO 5 CEREALES X 23 GRS",
     "price": 1541.81,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "4188",
     "name": "FEF PARAGUITA (40)",
     "price": 650.04,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 20
   },
   {
@@ -2992,14 +2992,14 @@
     "code": "3441",
     "name": "FEF DISPLAY KOOKY BON 30 UNI X 10 GRS",
     "price": 9557.64,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "519",
     "name": "FEF DOS CORAZONES X 26 GRS",
     "price": 1129.0,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 10
   },
   {
@@ -3013,7 +3013,7 @@
     "code": "528",
     "name": "FEF DISPLAY MARROC X 14 GRS X 60 UNI",
     "price": 37974.61,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 0
   },
   {
@@ -3027,28 +3027,28 @@
     "code": "929",
     "name": "FEF TABLETON LECHE Y MANI X 75 GRS",
     "price": 3127.96,
-    "category": "Galletitas y Snacks",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "530",
     "name": "FEF MONEDAS PIRATAS 60 X 5 GRS",
     "price": 21348.72,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "533",
     "name": "FEF TIVIS X 25 GRS (20)",
     "price": 858.31,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 10
   },
   {
     "code": "535",
     "name": "FEF MONEDA JACK X 60 UNI",
     "price": 21348.66,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -3062,28 +3062,28 @@
     "code": "3093",
     "name": "FEF DISPLAY MARROC CRIC 60 UNI X 14 GRS",
     "price": 37974.78,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 0
   },
   {
     "code": "524",
     "name": "FEF JACKELINE X 30 UNI",
     "price": 24774.6,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "520",
     "name": "FEF FEELING X 20 GRS (30)",
     "price": 587.52,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 15
   },
   {
     "code": "514",
     "name": "FEF CHUPELATIN X 15 GRS",
     "price": 990.55,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -3104,21 +3104,21 @@
     "code": "512",
     "name": "FEF DISPLAY CERICET X 19 GRS X 24 UNI",
     "price": 41383.94,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "510",
     "name": "FEF BOTELLITAS DE WISKY X 20 UNID.",
     "price": 25899.47,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "3439",
     "name": "FEF WINNING 25 UNI X 20 GRS",
     "price": 18246.41,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -3132,21 +3132,21 @@
     "code": "527",
     "name": "FEF LICORITAS 25 X 20 GRS",
     "price": 22071.0,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "529",
     "name": "FEF MEDALLON DE MENTA X 16 GRS",
     "price": 521.11,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 15
   },
   {
     "code": "3583",
     "name": "CILO LENGUITAS DE COCO BAÑADAS X 150 G (24)",
     "price": 817.96,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -3370,7 +3370,7 @@
     "code": "1456",
     "name": "FANTOCHE TAPITAS CAJA X 3.5 KG",
     "price": 16630.23,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -3405,7 +3405,7 @@
     "code": "580",
     "name": "FANTOCHE TAPITAS BANDEJA X 350 GRS (12)",
     "price": 1764.12,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -3482,189 +3482,189 @@
     "code": "5476",
     "name": "MERENGUE LA AMISTAD X 100 GRS COLORES (20) SIN TACC",
     "price": 1337.52,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "10000",
     "name": "MERENGUE LA AMISTAD X 100 GRS BLANCO (20) SIN TACC",
     "price": 1248.96,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3293",
     "name": "MERENGUE LA AMISTAD X 150 GRS BLANCO (13) SIN TACC",
     "price": 1920.99,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3154",
     "name": "TEREPIN BATATA X 260 GRS (18)",
     "price": 1222.49,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "10002",
     "name": "TEREPIN RELLENA X 260 GRS MEMBRILLO (18)",
     "price": 1193.61,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "10001",
     "name": "TEREPIN RELLENA X 260 GRS FRUTOS DEL BOSQUE (18)",
     "price": 1193.61,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "1127",
     "name": "TEREPIN X 400 GRS CLASICA (14)",
     "price": 1576.57,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3157",
     "name": "TEREPIN DURAZNO X 260 G (18)",
     "price": 1222.49,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "5767",
     "name": "TEREPIN X 360 GRS SURTIPEPAS (14)",
     "price": 1695.6,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "5768",
     "name": "TEREPIN X 360 G SURTIBLACK (14)",
     "price": 1917.19,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3155",
     "name": "TEREPIN FRUTOS DEL BOSQUE X 260 GRS (18)",
     "price": 1222.49,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "588",
     "name": "MAURI VAINILLAS X 80 GRS (36)",
     "price": 480.33,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "589",
     "name": "MAURI VAINILLAS X 160 GRS (32)",
     "price": 1032.68,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "590",
     "name": "MAURI VAINILLAS X 320 GRS (16)",
     "price": 2007.54,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3197",
     "name": "MAURI VAINILLAS X 800 GRS (6)",
     "price": 4942.42,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "585",
     "name": "MAURI SIN SAL X 400 GRS (12)",
     "price": 2147.43,
-    "category": "Despensa",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "586",
     "name": "MAURI SIN SAL X 3 KG",
     "price": 14732.56,
-    "category": "Despensa",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "587",
     "name": "MAURI SURTIDO FAUNA X 400 GRS (12)",
     "price": 1683.11,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3315",
     "name": "KOKIS CAÑONCITOS X 500 GRS (8)",
     "price": 2840.87,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3316",
     "name": "KOKIS MEMBRILLITO X 500 GRS (8)",
     "price": 2840.87,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4158",
     "name": "PITUSAS MINI X 120 GRS MERENGUE (30)",
     "price": 1054.25,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4191",
     "name": "PITUSAS MINI X 140 GRS JALEA (30)",
     "price": 1054.25,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "5608",
     "name": "PITUSAS MINI X 160 GRS LIMON (30)",
     "price": 1054.25,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4157",
     "name": "PITUSAS MINI X 160 GRS FRUTILLA (30)",
     "price": 1054.25,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4154",
     "name": "PITUSAS MINI X 300 GRS FRUTILLA (16)",
     "price": 1884.86,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4156",
     "name": "PITUSAS MINI X 160 GRS VAINILLA (30)",
     "price": 1054.25,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4153",
     "name": "PITUSAS MINI X 300 GRS VAINILLA (16)",
     "price": 1884.86,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -3685,14 +3685,14 @@
     "code": "5607",
     "name": "PITUSAS MINI X 160 GRS MOUSSE (30)",
     "price": 1054.25,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "101",
     "name": "PITUSAS MINI X 130 GRS BLACK (30)",
     "price": 1054.25,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -3755,28 +3755,28 @@
     "code": "5505",
     "name": "TURIMAR SURTIDA X 350 GRS (18)",
     "price": 1533.68,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "1124",
     "name": "TURIMAR MIEL X 400 GRS (8)",
     "price": 1639.54,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "1125",
     "name": "TURIMAR CHIPS X 400 GRS (16)",
     "price": 2024.92,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "1198",
     "name": "TURIMAR PALMERITAS X 400 GRS (10)",
     "price": 3753.18,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -4007,49 +4007,49 @@
     "code": "3686",
     "name": "ANTOJITOS COMUNACHO QUESO X 70 G (15)",
     "price": 1900.5,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "1895",
     "name": "ANTOJITOS NACHOS FAKIN HOT ROJO \"FUEGO Y LIMA\" X 70 G (16)",
     "price": 1583.73,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "1894",
     "name": "ANTOJITOS NACHOS FAKIN HOT VERDE \"SPICY GUACAMOLE\" X 70 G (16)",
     "price": 1583.73,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3186",
     "name": "GRISINES MALTEADOS GRISSINOPOLI X 180 GRS (20)",
     "price": 1016.23,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3187",
     "name": "GRISINES DE SALVADO GRISSINOPILI X 180 GRS (20)",
     "price": 1016.23,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3188",
     "name": "GRISINES SIN SAL GRISSINOPILI X 180 GRS (20)",
     "price": 1016.23,
-    "category": "Despensa",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3185",
     "name": "SORIANO BISCUIT HJ X 130 GRS",
     "price": 1569.86,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -4259,14 +4259,14 @@
     "code": "3735",
     "name": "MC PASEO X 250 GRS PIZZA (14)",
     "price": 1589.83,
-    "category": "Despensa",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3734",
     "name": "MC PASEO X 250 GRS QUESO (14)",
     "price": 1589.83,
-    "category": "Despensa",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -4315,231 +4315,231 @@
     "code": "3823",
     "name": "CILO PEPAS X 400 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3580",
     "name": "CILO PEPAS DECORADAS X 300 GS (12)",
     "price": 1629.63,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3900",
     "name": "CILO PEPAS BAÑADAS X 300 GS (12)",
     "price": 1629.63,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3703",
     "name": "CILO ANILLOS DE VAINILLA X 400 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3702",
     "name": "CILO TOPINGS X 300 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3914",
     "name": "CILO MIEL X 350 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3707",
     "name": "CILO MINI SCONS X 400 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3708",
     "name": "CILO POLVORON DE VAINILLA X 400 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3705",
     "name": "CILO LENGUITAS X 400 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3821",
     "name": "CILO LENGUITAS MEMBRILLO X 400 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3901",
     "name": "CILO LENGUITAS BAÑADAS X 300 GS (12)",
     "price": 1629.63,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3902",
     "name": "CILO LENGUITAS COCO BAÑADAS X 300 GS (12)",
     "price": 1629.63,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3706",
     "name": "CILO LENGUITAS DE COCO X 340 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4207",
     "name": "CILO CHIPS BLANCA X 300 GRS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3825",
     "name": "CILO CHIP X 300 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3822",
     "name": "CILO DOBLINAS MEMBRILLO BATATA X 320 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "3709",
     "name": "CILO DOBLINAS FRAMBUESA FRUTILLA X 320 GS (12)",
     "price": 1500.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "536",
     "name": "FEF CEREALFORT X 23 GRS CLASICO",
     "price": 504.92,
-    "category": "Chocolates y Alfajores",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "541",
     "name": "FEF CEREALFORT X 22 GRS MANZANA Y ALMENDRAS",
     "price": 504.92,
-    "category": "Chocolates y Alfajores",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "539",
     "name": "FEF CEREALFORT X 21 GRS LIGHT FRUTILLA Y MANZANA (24)",
     "price": 504.92,
-    "category": "Chocolates y Alfajores",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "794",
     "name": "FEF CEREALFORT X 19 GRS LIGHT FRUTOS ROJOS (24)",
     "price": 504.92,
-    "category": "Chocolates y Alfajores",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "543",
     "name": "FEF CEREALFORT X 22 GRS CHOCOLATE ALMENDRAS Y MIEL",
     "price": 504.92,
-    "category": "Chocolates y Alfajores",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "540",
     "name": "FEF CEREALFORT X 19 GRS GRAN RICO",
     "price": 504.92,
-    "category": "Chocolates y Alfajores",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "544",
     "name": "FEF CEREALFORT X 21 GRS NUTRI",
     "price": 504.92,
-    "category": "Chocolates y Alfajores",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "562",
     "name": "FEF CEREALFORT X 19GRS LADY",
     "price": 504.92,
-    "category": "Chocolates y Alfajores",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "538",
     "name": "FEF CEREALFORT X 18 GRS LIGHT FLEKOS",
     "price": 504.92,
-    "category": "Chocolates y Alfajores",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4117",
     "name": "GEO FLOW CEREAL X 1 UNI \"GRANOLA FRUTAS Y ALMENDRAS\" (20)",
     "price": 699.75,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "4118",
     "name": "GEO FLOW CEREAL X 1 UNI \"CHIPS Y ALMENDRAS\" (20)",
     "price": 699.75,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "4119",
     "name": "GEO FLOW CEREAL X 1 UNI \"GRANOLA FRUTOS DEL BOSQUE\" (20)",
     "price": 699.75,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "4120",
     "name": "GEO FLOW CEREAL X 1 UNI. \"YOGHURT FRUTOS ROJOS\" (20)",
     "price": 699.75,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "4121",
     "name": "GEO FLOW CEREAL X 1 UNI. \"MANZANA LIGHT\" (20)",
     "price": 699.75,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "4122",
     "name": "GEO FLOW CEREAL X 1 UNI \"MIX FRUTAS\" (20)",
     "price": 699.75,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "6095",
     "name": "GEO FLOW CEREAL X 1 UNI. \"F. ROJOS YOGUR LIGHT\" (20)",
     "price": 699.75,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -4560,21 +4560,21 @@
     "code": "702",
     "name": "GEO DISPLAY FLOW CEREAL X 1 UNI \"TODDY\"",
     "price": 699.75,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2531",
     "name": "MDZ CLUB SOCIAL PACK X 6 UNI. ORIGINAL",
     "price": 2822.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
     "code": "4061",
     "name": "MDZ CLUB SOCIAL PACK X 6 UNI. JAMON",
     "price": 2822.39,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -4861,7 +4861,7 @@
     "code": "5702",
     "name": "DON BASILIO KIT MATERO",
     "price": 42552.83,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
@@ -5659,49 +5659,49 @@
     "code": "6025",
     "name": "MY NOEL MERMELADA DE CIRUELA X 454 GS",
     "price": 2190.18,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "6029",
     "name": "MY NOEL MERMELADA LIGHT CIRUELA X 390 GS",
     "price": 2322.94,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "6028",
     "name": "MY NOEL MERMELADA DE FRUTILLA X 454 GS",
     "price": 2847.21,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "6026",
     "name": "MY NOEL MERMELADA DE DAMASCO X 454 GS",
     "price": 2190.18,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "6030",
     "name": "MY NOEL MERMELADA LIGHT DAMASCO X 390 GS",
     "price": 2322.94,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "6105",
     "name": "MY NOEL MERMELADA DE NARANJA X 454 GS",
     "price": 2190.18,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "6033",
     "name": "MY NOEL MERMELADA LIGHT NARANJA X 390 GS",
     "price": 2322.94,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
@@ -5736,126 +5736,126 @@
     "code": "3140",
     "name": "HILERET EDULCO. 1A10 X 250 CC BOTELLA (9)",
     "price": 1891.16,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3141",
     "name": "HILERET EDULCO. 1A10 X 500 CC BOTELLA (9)",
     "price": 3467.98,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3139",
     "name": "HILERET EDULCO. 1A10 X 50U SOBRE (8)",
     "price": 1652.84,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "5577",
     "name": "HILERET EDULCO. 1A10 X 400 SOBRES",
     "price": 8071.43,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3461",
     "name": "HILERET EDULCO. 1A10 X 100 UNI SOBRE (8)",
     "price": 2832.02,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3143",
     "name": "HILERET EDULCO. SWEET X 200 CC BOTELLA (9)",
     "price": 1851.09,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "5579",
     "name": "HILERET EDULCO. SWEET X 400 CC BOTELLA (9)",
     "price": 3203.12,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3142",
     "name": "HILERET EDULCO. SWEET X 50U SOBRE (8)",
     "price": 1750.87,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "5578",
     "name": "HILERET EDULCO. SWEET X 400 SOBRES",
     "price": 8567.71,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3146",
     "name": "HILERET EDULCO. ZUCRA X 200 CC BOTELLA (9)",
     "price": 2363.0,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3145",
     "name": "HILERET EDULCO. ZUCRA X 50U SOBRE (8)",
     "price": 1805.49,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "4182",
     "name": "HILERET EDULCO. ZUCRA X 400 SOBRES",
     "price": 9571.81,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3148",
     "name": "HILERET EDULCO. STEVIA X 200 CC BOTELLA (9)",
     "price": 3683.36,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3147",
     "name": "HILERET EDULCO. STEVIA X 50U SOBRE (8)",
     "price": 2057.72,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "5580",
     "name": "HILERET EDULCO. STEVIA X 400 SOBRES",
     "price": 11004.62,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3464",
     "name": "HILERET EDULCO. STEVIA X 100 UNI SOBRE (8)",
     "price": 3570.39,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3466",
     "name": "HILERET EDULCO. LIGHT X 250 GRS (9)",
     "price": 1153.95,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
     "code": "3144",
     "name": "HILERET EDULCO. LIGHT X 500 GRS (9)",
     "price": 1936.45,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
@@ -5883,21 +5883,21 @@
     "code": "5524",
     "name": "LRT MALTA MALTIFE X 100 GRS D/PACK",
     "price": 1930.07,
-    "category": "Despensa",
+    "category": "Golosinas",
     "unidad_min": 1
   },
   {
     "code": "5525",
     "name": "LRT MALTA MALTIFE X 170 GRS POTE",
     "price": 3175.89,
-    "category": "Despensa",
+    "category": "Golosinas",
     "unidad_min": 1
   },
   {
     "code": "3074",
     "name": "LRT MALTA EL POCILLO X 100 GRS CON LECHE",
     "price": 2022.88,
-    "category": "Despensa",
+    "category": "Golosinas",
     "unidad_min": 1
   },
   {
@@ -5911,14 +5911,14 @@
     "code": "5554",
     "name": "LRT MALTA POCILLO X 100 GRS DOY PACK INTENSA",
     "price": 1952.09,
-    "category": "Despensa",
+    "category": "Golosinas",
     "unidad_min": 1
   },
   {
     "code": "5016",
     "name": "LRT MALTA EL POCILLO X 170 GRS DOY PACK",
     "price": 2772.51,
-    "category": "Despensa",
+    "category": "Golosinas",
     "unidad_min": 1
   },
   {
@@ -6422,7 +6422,7 @@
     "code": "2574",
     "name": "MDZ ROYAL GELATINA TANG MULTIFRUTA X 8",
     "price": 9458.52,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1
   },
   {
@@ -7493,21 +7493,21 @@
     "code": "1090",
     "name": "DISMAR BOLSA DE RESIDUOS 45 X 60 X 10 BOLSAS",
     "price": 693.75,
-    "category": "Varios",
+    "category": "Limpieza",
     "unidad_min": 1
   },
   {
     "code": "2706",
     "name": "DISMAR BOLSA CONSORCIO 80X110 (10)",
     "price": 2617.77,
-    "category": "Varios",
+    "category": "Limpieza",
     "unidad_min": 1
   },
   {
     "code": "2705",
     "name": "DISMAR BOLSA CONSORCIO 60X90 (25)",
     "price": 1136.34,
-    "category": "Varios",
+    "category": "Limpieza",
     "unidad_min": 1
   },
   {
@@ -7542,7 +7542,7 @@
     "code": "1469",
     "name": "MCA DOREE QUITAESMALTE X 65CC PROTECTOR CON LANOLINA",
     "price": 1682.51,
-    "category": "Despensa",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -7941,28 +7941,28 @@
     "code": "3171",
     "name": "CHAC. ENCENDEDORES SHARK X 25 UNI.",
     "price": 6381.38,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "2589",
     "name": "CHAC. GLOBO FELIZ/CUMPLE X 50 UNI. GLOBOLANDIA",
     "price": 4587.86,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "1105",
     "name": "CHAC. GLOBOS FIESTA LOCA X 50 UNI.",
     "price": 3461.86,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "5914",
     "name": "CHAC. GLOBO PIÑATA FIESTA LOCA",
     "price": 1258.4,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -7990,7 +7990,7 @@
     "code": "2049",
     "name": "CHAC. PALILLEROS IMPACTO X 16 UNI.",
     "price": 4640.66,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -8018,7 +8018,7 @@
     "code": "224",
     "name": "CHAC. FILTRO STOP X 2 UNI.",
     "price": 447.59,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -8067,14 +8067,14 @@
     "code": "1528",
     "name": "CHAC. NAIPES PADRINO X 40 C (6)",
     "price": 1824.44,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "1529",
     "name": "CHAC. NAIPES PADRINO X 50 C (6)",
     "price": 2147.65,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -8291,28 +8291,28 @@
     "code": "308",
     "name": "CHAC. AUTOBRILLO WASSINGTON X 60 CC NEGRO (12)",
     "price": 4526.34,
-    "category": "Limpieza",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "309",
     "name": "CHAC. AUTOBRILLO WASSINGTON X 60 CC MARRON (12)",
     "price": 4526.34,
-    "category": "Limpieza",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "1202",
     "name": "CHAC. AUTOBRILLO WASSINGTON X 60 CC BLANCO (12)",
     "price": 4526.34,
-    "category": "Limpieza",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "316",
     "name": "CHAC. AUTOBRILLO WASSIGTHON X 60 CC INCOLORO (12)",
     "price": 4526.34,
-    "category": "Limpieza",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -8375,14 +8375,14 @@
     "code": "4174",
     "name": "CARGADOR ENERGIZER MAXI (CHVCM4)",
     "price": 45425.46,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
     "code": "4173",
     "name": "CARGADOR ENERGIZER MINI (CH2PC4)",
     "price": 36009.76,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
@@ -8578,35 +8578,35 @@
     "code": "6001",
     "name": "VINCHA MANOS LIBRES ENERGIZER 400 LUMENS (HEADLAMP)",
     "price": 39856.67,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
     "code": "1275",
     "name": "VINCHA ENERGIZER RECARGABLE X 180 LUMENS",
     "price": 25795.63,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
     "code": "1307",
     "name": "VINCHA ENERGIZER RECARGABLE X 450 LUMENS (C/SENSOR DE MOVIMIENTO)",
     "price": 15802.36,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
     "code": "6000",
     "name": "VINCHA MANOS LIBRES ENERGIZER 60 LUMENS UNIVERSAL",
     "price": 23511.63,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
     "code": "6013",
     "name": "VINCHA MANOS LIBRES ENERGIZER 300 LUMENS (HEADLAMP)",
     "price": 29887.0,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
@@ -8788,7 +8788,7 @@
     "code": "6003",
     "name": "FAROL FLOTANTE",
     "price": 19899.46,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
@@ -8816,14 +8816,14 @@
     "code": "3045",
     "name": "SOL DE NOCHE PERFUME X 15 W",
     "price": 895.4,
-    "category": "Cuidado Personal",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
     "code": "3065",
     "name": "SOL DE NOCHE VELITA X 28 W",
     "price": 300.56,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
@@ -8844,14 +8844,14 @@
     "code": "3066",
     "name": "SOL DE NOCHE VELITA X 42 W = 60W",
     "price": 420.01,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
     "code": "3130",
     "name": "SOL DE NOCHE INCANDESCENTE X 25 W HONGO",
     "price": 653.4,
-    "category": "Despensa",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
@@ -9383,7 +9383,7 @@
     "code": "874",
     "name": "CP COQUETERIA FLOWERS X 40 ML. 7030",
     "price": 6631.87,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -9488,7 +9488,7 @@
     "code": "991",
     "name": "CP PACO FUTBOL DESO. X 150 CC TAPA VERDE 0240",
     "price": 3658.97,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -9523,14 +9523,14 @@
     "code": "3870",
     "name": "CP CREMA PARA MANOS Y CUERPO CIEL X 85 CC 7021",
     "price": 5152.68,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "1958",
     "name": "CP BOLSITO NESSESAIRE CIEL AZUL (PERF+CREMA) 2035",
     "price": 28383.34,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -9558,14 +9558,14 @@
     "code": "3871",
     "name": "CP CREMA P/ MANOS Y CUERPO CIEL CRYSTRAL X 85CC 7137",
     "price": 5152.68,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "6206",
     "name": "CP BOLSITO NESSESAIRE CIEL CRYSTAL (PERF +1 CREMA) 2363",
     "price": 28383.34,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -9600,14 +9600,14 @@
     "code": "3872",
     "name": "CP CREMA PARA MANOS Y CUERPO CIEL NUIT X 85 CC 7243",
     "price": 5152.68,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "1959",
     "name": "CP BOLSITO NESSESAIRE CIEL NUIT (PERF+CREMA) 2141",
     "price": 28383.34,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -9635,7 +9635,7 @@
     "code": "1957",
     "name": "CP BOLSITO NESSESAIRE NOIR (PERF+PERF) 2257",
     "price": 28383.34,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -9663,7 +9663,7 @@
     "code": "2114",
     "name": "CP BOLSITO NESSESAIRE FLOWER ROSE (PERF + DES) 7593",
     "price": 23580.0,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -9747,7 +9747,7 @@
     "code": "3875",
     "name": "CP BOLSITO NESSESAIRE CIEL LOVE (PERF + DES) 9589",
     "price": 28383.34,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10405,63 +10405,63 @@
     "code": "2067",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 1 5020",
     "price": 19264.7,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "1309",
     "name": "CP LA PASIONARIA DES X 123 CC HISTORIAS 3 5570",
     "price": 4175.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "2668",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 3 5358",
     "price": 19264.7,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "6217",
     "name": "CP LA PASIONARIA DES X 123 CC HISTORIAS (4) 5815",
     "price": 4175.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "392",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 4 5686",
     "price": 19264.7,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "6215",
     "name": "CP LA PASIONARIA DES X 123 CC HISTORIAS (5) 6140",
     "price": 4175.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "393",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 5 5921",
     "price": 19264.7,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "6214",
     "name": "CP LA PASIONARIA DES X 123 CC HISTORIAS (6) 6478",
     "price": 4175.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "3524",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 6 6256",
     "price": 19264.7,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10475,7 +10475,7 @@
     "code": "5053",
     "name": "CP AGUA DE BIENVENIDA LA PASIONARIA BEBE 9361",
     "price": 13821.03,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10510,7 +10510,7 @@
     "code": "2080",
     "name": "CP PRUNE DESO X 123 CC ( II COLOR BRONCE) 9461",
     "price": 4175.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10524,7 +10524,7 @@
     "code": "2081",
     "name": "CP PRUNE DESO X 123 CC ( III COLOR COBRE) 9577",
     "price": 4175.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10685,7 +10685,7 @@
     "code": "3286",
     "name": "CP BROSS LONDON WARRIOR DESO X 150 CC 2587",
     "price": 4336.55,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10769,14 +10769,14 @@
     "code": "2699",
     "name": "CP GINO BOGANI DESOD. X 123 CC MUJER 1356",
     "price": 4175.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "902595",
     "name": "CP GINO BOGANI CHIC TO CHEEK DESO. X 123 CC 2388",
     "price": 4175.79,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10804,7 +10804,7 @@
     "code": "902596",
     "name": "CP GINO BOGANI POUR HOMME DESO. X 150 CC 7738",
     "price": 4175.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10909,7 +10909,7 @@
     "code": "1990",
     "name": "CP LA MARTINA ESMERALDA DESO X 123 CC 9573",
     "price": 4175.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10951,7 +10951,7 @@
     "code": "3873",
     "name": "CP CREMA P/MANOS Y CUERPO SENS GROSELLAS ROSAS X 85 CC 7359",
     "price": 5152.68,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -10986,14 +10986,14 @@
     "code": "3874",
     "name": "CP CREMA P/MANOS Y CUERPO SENS MAGNOLIA PERA X 85 CC 7465",
     "price": 5152.68,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "5440",
     "name": "CP BODY MIST SENS MAGNOLIA PERA X 120 CC 3260",
     "price": 11250.6,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -11112,7 +11112,7 @@
     "code": "5852",
     "name": "ALP JABON LIQ. PLUSBELLE X 230 CC RECONEXION DOY PACK (15)",
     "price": 1634.24,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -11126,7 +11126,7 @@
     "code": "6289",
     "name": "ALP JABON ESENCIA ESPUMA \"GLICERINA VEGETAL\" FRASCO X 250 CC (12)",
     "price": 1939.16,
-    "category": "Varios",
+    "category": "Limpieza",
     "unidad_min": 1
   },
   {
@@ -11140,21 +11140,21 @@
     "code": "6128",
     "name": "ALP ANTIT. PLUSBELLE X 150 ML ORIGINAL (12)",
     "price": 3012.04,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "6241",
     "name": "ALP ANTIT. PLUSBELLE X 150 ML BAMBU (12)",
     "price": 3012.04,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "6242",
     "name": "ALP ANTIT. PLUSBELLE X 150 ML JAZMIN (12)",
     "price": 3012.04,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -11175,14 +11175,14 @@
     "code": "5099",
     "name": "ALP ACOND. PLUSBELLE ESENCIA X 970 ML LARGO SALUDABLE (12)",
     "price": 2794.04,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "10062",
     "name": "ALP D/PACK PLUSBELLE ESENCIA ACON. X 300 CC RESTAURACION",
     "price": 2088.59,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -11196,28 +11196,28 @@
     "code": "452",
     "name": "ALP TRATAMIENTO DE CABELLO ESENCIA \"NUTRI+COCO\" X 400 ML (10)",
     "price": 1777.4,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "453",
     "name": "ALP CREMA P/PEINAR PLUSBELLE X 300 ML \"NUTRI+COCO\"",
     "price": 4426.52,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "5825",
     "name": "ALP ACOND PLUSBELLE KIDS X 350 CC FUERZA NATURAL (12)",
     "price": 2685.16,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "6061",
     "name": "ALP ACOND PLUSBELLE KIDS X 350 CC PROTECCION (12)",
     "price": 2685.16,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -11252,7 +11252,7 @@
     "code": "433",
     "name": "CVL ACOND. SEDAL SACHET X 24 UNI. CERAM.",
     "price": 6650.64,
-    "category": "Varios",
+    "category": "Limpieza",
     "unidad_min": 1
   },
   {
@@ -11448,35 +11448,35 @@
     "code": "3396",
     "name": "CHAC. CREMA ODORONO X 60 CC",
     "price": 2491.63,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "447",
     "name": "CVLS CREMA HINDS X 75 CC",
     "price": 3079.69,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "449",
     "name": "CVLS CREMA HINDS X 250 CC",
     "price": 4912.95,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "448",
     "name": "CVLS CREMA HINDS X 125 CC",
     "price": 3032.74,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "2031",
     "name": "CVLS CREMA HINDS X 350 CC",
     "price": 8305.49,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -11651,21 +11651,21 @@
     "code": "3804",
     "name": "VERITAS JABON DE GLICERINA LAVANDA X 120 G (36)",
     "price": 1464.64,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "3807",
     "name": "VERITAS JABON DE GLICERINA MENTA Y EUCALIPTO X 120 G (36)",
     "price": 1464.64,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
     "code": "3806",
     "name": "VERITAS JABON DE GLICERINA NECTAR DE FRUTAS X 120 G (36)",
     "price": 1464.64,
-    "category": "Varios",
+    "category": "Cuidado Personal",
     "unidad_min": 1
   },
   {
@@ -11973,7 +11973,7 @@
     "code": "6089",
     "name": "ALP ZORRO BAÑO X 500 ML GATILLO (20)",
     "price": 3165.67,
-    "category": "Limpieza",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -12211,28 +12211,28 @@
     "code": "273",
     "name": "ARGENTUM BOLSAS RESIDUOS 45 X 60 X10UNI.",
     "price": 758.4,
-    "category": "Varios",
+    "category": "Limpieza",
     "unidad_min": 1
   },
   {
     "code": "271",
     "name": "ARGENTUM BOLSAS CONSORCIO 80 X 1,10 X 10UNI.",
     "price": 3441.18,
-    "category": "Varios",
+    "category": "Limpieza",
     "unidad_min": 1
   },
   {
     "code": "272",
     "name": "ARGENTUM BOLSAS CONSORCIO 60 X 90 X10UNI.",
     "price": 1932.54,
-    "category": "Varios",
+    "category": "Limpieza",
     "unidad_min": 1
   },
   {
     "code": "3668",
     "name": "ARGENTUM BOLSAS RESIDUOS 70 X 50",
     "price": 1073.73,
-    "category": "Varios",
+    "category": "Limpieza",
     "unidad_min": 1
   },
   {
@@ -12414,14 +12414,14 @@
     "code": "3554",
     "name": "SINA ESCOBILLA BAÑO CON VASO",
     "price": 3660.73,
-    "category": "Limpieza",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "3688",
     "name": "SINA ESCOBILLA DE BAÑO REDONDA",
     "price": 2347.88,
-    "category": "Limpieza",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -12813,14 +12813,14 @@
     "code": "1808",
     "name": "SINA ESPONJA DE BAÑO FLOR",
     "price": 2273.18,
-    "category": "Limpieza",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "1810",
     "name": "SINA ESPONJA DE BAÑO RECTA",
     "price": 1022.75,
-    "category": "Limpieza",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -13569,7 +13569,7 @@
     "code": "3763",
     "name": "FANTOCHE TAPITAS MARMOLADAS BANDEJA X 350 G (12)",
     "price": 1764.12,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -13639,7 +13639,7 @@
     "code": "20",
     "name": "ENERGIZER MUÑECO CABEZON",
     "price": 1.57,
-    "category": "Varios",
+    "category": "Pilas",
     "unidad_min": 1
   },
   {
@@ -13870,28 +13870,28 @@
     "code": "2151",
     "name": "GEO PAST FULLMINT CHOCO MENTA X 12",
     "price": 6103.24,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2152",
     "name": "GEO PAST FULLMINT MENTA X 12",
     "price": 6103.24,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2154",
     "name": "GEO PAST FULLMINT MIX DE FRUTAS X 12",
     "price": 6103.24,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
     "code": "2153",
     "name": "GEO PAST FULLMINT STRONG X 12",
     "price": 6103.24,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -14017,7 +14017,7 @@
     "code": "3584",
     "name": "CILO PEPAS BAÑADAS X 150 G (24)",
     "price": 817.96,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -14059,56 +14059,56 @@
     "code": "1327",
     "name": "GIN LA PAMPA X 200 CC CITRUS",
     "price": 10617.75,
-    "category": "Despensa",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "1328",
     "name": "GIN LA PAMPA X 200 CC FLOWERS AZUL",
     "price": 10617.75,
-    "category": "Despensa",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "1330",
     "name": "GIN LA PAMPA X 28 CC MINIATURA CITRUS",
     "price": 3267.0,
-    "category": "Despensa",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "1329",
     "name": "GIN LA PAMPA X 28 CC MINIATURA FLOWERS AZUL",
     "price": 3267.0,
-    "category": "Despensa",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "1325",
     "name": "GIN LA PAMPA X 375 CC CITRUS",
     "price": 19602.0,
-    "category": "Despensa",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "1326",
     "name": "GIN LA PAMPA X 375 CC FLOWERS AZUL",
     "price": 19602.0,
-    "category": "Despensa",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "1323",
     "name": "GIN LA PAMPA X 750 CC CITRUS",
     "price": 28042.29,
-    "category": "Despensa",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
     "code": "1324",
     "name": "GIN LA PAMPA X 750 CC FLOWERS AZUL",
     "price": 28042.29,
-    "category": "Despensa",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
@@ -14185,7 +14185,7 @@
     "code": "1725",
     "name": "JUGUITO FAN DEL 10 BULTO X 240 UNI",
     "price": 28701.9,
-    "category": "Despensa",
+    "category": "Varios",
     "unidad_min": 1
   },
   {
@@ -14199,7 +14199,7 @@
     "code": "4105",
     "name": "COMBO VUELTA AL COLE (1 JUGO PEPITO + 1 ALFA. GENIO TRIPLE)",
     "price": 733.25,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 24
   },
   {
@@ -14360,77 +14360,77 @@
     "code": "111",
     "name": "FECOVITA VINO BLANCO ESTANCIA MENDOZA CHENIN CHARDONNAY DULCE X 750 CC (6)",
     "price": 3352.69,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "112",
     "name": "FECOVITA VINO DILEMA BLANCO DULCE X 750 CC (6)",
     "price": 3352.69,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "118",
     "name": "FECOVITA VINO ESTANCIA MENDOZA BLANCO X 750 ML (6)",
     "price": 2511.4,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "109",
     "name": "FECOVITA VINO ESTANCIA MENDOZA MALBEC X 750 ML (6)",
     "price": 2486.91,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "110",
     "name": "FECOVITA VINO ESTANCIA MENDOZA MERLOT MALBEC X 750 ML (6)",
     "price": 2486.91,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "107",
     "name": "FECOVITA VINO NATIVO BLANCO TETRA X 1 L (12)",
     "price": 1623.7,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "108",
     "name": "FECOVITA VINO NATIVO TINTO TETRA X 1 L (12)",
     "price": 1614.59,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "114",
     "name": "FECOVITA VINO TORO BLANCO TETRA X 1 L (12)",
     "price": 1856.39,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "115",
     "name": "FECOVITA VINO TORO CLASICO TINTO 6 X 750 ML",
     "price": 11685.03,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "113",
     "name": "FECOVITA VINO TORO TINTO TETRA X 1 L",
     "price": 2424.5,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
     "code": "117",
     "name": "FECOVITA VIO ESTANCIA MENDOZA CABERNET MALBEC X 750 ML (6)",
     "price": 2487.02,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
@@ -14521,7 +14521,7 @@
     "code": "1018",
     "name": "PRAAT TAPITAS SABOR COCO X 90 G (18) SIN TACC",
     "price": 1198.69,
-    "category": "Varios",
+    "category": "Galletitas y Snacks",
     "unidad_min": 1
   },
   {
@@ -14640,7 +14640,7 @@
     "code": "116",
     "name": "FECOVITA VINO CANCILLER BLEND TINTO 6 X 1125 ML",
     "price": 2392.43,
-    "category": "Despensa",
+    "category": "Limpieza",
     "unidad_min": 6
   },
   {
@@ -14668,7 +14668,7 @@
     "code": "2502",
     "name": "MDZ ALFA. SIMPLE TITA X 36 GRS",
     "price": 755.81,
-    "category": "Golosinas",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   },
   {
@@ -14689,7 +14689,7 @@
     "code": "554",
     "name": "MC BROWNIE 9 DE ORO X 45 G (10)",
     "price": 731.92,
-    "category": "Despensa",
+    "category": "Chocolates y Alfajores",
     "unidad_min": 1
   }
 ]
