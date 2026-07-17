@@ -14763,7 +14763,7 @@
     "code": "111",
     "name": "FECOVITA VINO BLANCO ESTANCIA MENDOZA CHENIN CHARDONNAY DULCE X 750 CC (6)",
     "price": 3352.69,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/estancia mendoza chardonay chenin.jpeg"
   },
@@ -14771,7 +14771,7 @@
     "code": "112",
     "name": "FECOVITA VINO DILEMA BLANCO DULCE X 750 CC (6)",
     "price": 3352.69,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/dilema dulce.jpeg"
   },
@@ -14779,7 +14779,7 @@
     "code": "118",
     "name": "FECOVITA VINO ESTANCIA MENDOZA BLANCO X 750 ML (6)",
     "price": 2511.4,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/estancia mendoza blanco.jpeg"
   },
@@ -14787,7 +14787,7 @@
     "code": "109",
     "name": "FECOVITA VINO ESTANCIA MENDOZA MALBEC X 750 ML (6)",
     "price": 2486.91,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/fecovita-vino-estancia-mendoza-malbec-x-750-ml-6.jpg"
   },
@@ -14795,7 +14795,7 @@
     "code": "110",
     "name": "FECOVITA VINO ESTANCIA MENDOZA MERLOT MALBEC X 750 ML (6)",
     "price": 2486.91,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/fecovita-vino-estancia-mendoza-merlot-malbec-x-750-ml-6.jpg"
   },
@@ -14803,7 +14803,7 @@
     "code": "107",
     "name": "FECOVITA VINO NATIVO BLANCO TETRA X 1 L (12)",
     "price": 1623.7,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/nativo blanco tetra.jpeg"
   },
@@ -14811,7 +14811,7 @@
     "code": "108",
     "name": "FECOVITA VINO NATIVO TINTO TETRA X 1 L (12)",
     "price": 1614.59,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/nativo tinto tetra.jpeg"
   },
@@ -14819,7 +14819,7 @@
     "code": "114",
     "name": "FECOVITA VINO TORO BLANCO TETRA X 1 L (12)",
     "price": 1856.39,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/fecovita-vino-toro-blanco-tetra-x-1-l-12.jpg"
   },
@@ -14827,7 +14827,7 @@
     "code": "115",
     "name": "FECOVITA VINO TORO CLASICO TINTO 6 X 750 ML",
     "price": 11685.03,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/fecovita-vino-toro-clasico-tinto-6-x-750-ml.jpg"
   },
@@ -14835,7 +14835,7 @@
     "code": "113",
     "name": "FECOVITA VINO TORO TINTO TETRA X 1 L",
     "price": 2424.5,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/toro tinto tetra.jpeg"
   },
@@ -14843,7 +14843,7 @@
     "code": "117",
     "name": "FECOVITA VIO ESTANCIA MENDOZA CABERNET MALBEC X 750 ML (6)",
     "price": 2487.02,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6,
     "image": "imagenes/fecovita-vio-estancia-mendoza-cabernet-malbec-x-750-ml-6.jpg"
   },
@@ -15059,7 +15059,7 @@
     "code": "116",
     "name": "FECOVITA VINO CANCILLER BLEND TINTO 6 X 1125 ML",
     "price": 2392.43,
-    "category": "Limpieza",
+    "category": "Despensa",
     "unidad_min": 6
   },
   {

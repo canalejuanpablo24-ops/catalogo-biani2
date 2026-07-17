@@ -4622,67 +4622,67 @@ const DEFAULT_EDITS = {
       "name": "FECOVITA VINO NATIVO BLANCO TETRA X 1 L (12)",
       "price": 1623.7,
       "image": "imagenes/nativo blanco tetra.jpeg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "108": {
       "name": "FECOVITA VINO NATIVO TINTO TETRA X 1 L (12)",
       "price": 1614.59,
       "image": "imagenes/nativo tinto tetra.jpeg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "109": {
       "name": "FECOVITA VINO ESTANCIA MENDOZA MALBEC X 750 ML (6)",
       "price": 2486.91,
       "image": "imagenes/fecovita-vino-estancia-mendoza-malbec-x-750-ml-6.jpg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "110": {
       "name": "FECOVITA VINO ESTANCIA MENDOZA MERLOT MALBEC X 750 ML (6)",
       "price": 2486.91,
       "image": "imagenes/fecovita-vino-estancia-mendoza-merlot-malbec-x-750-ml-6.jpg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "111": {
       "name": "FECOVITA VINO BLANCO ESTANCIA MENDOZA CHENIN CHARDONNAY DULCE X 750 CC (6)",
       "price": 3352.69,
       "image": "imagenes/estancia mendoza chardonay chenin.jpeg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "112": {
       "name": "FECOVITA VINO DILEMA BLANCO DULCE X 750 CC (6)",
       "price": 3352.69,
       "image": "imagenes/dilema dulce.jpeg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "113": {
       "name": "FECOVITA VINO TORO TINTO TETRA X 1 L",
       "price": 2424.5,
       "image": "imagenes/toro tinto tetra.jpeg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "114": {
       "name": "FECOVITA VINO TORO BLANCO TETRA X 1 L (12)",
       "price": 1856.39,
       "image": "imagenes/fecovita-vino-toro-blanco-tetra-x-1-l-12.jpg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "115": {
       "name": "FECOVITA VINO TORO CLASICO TINTO 6 X 750 ML",
       "price": 11685.03,
       "image": "imagenes/fecovita-vino-toro-clasico-tinto-6-x-750-ml.jpg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "117": {
       "name": "FECOVITA VIO ESTANCIA MENDOZA CABERNET MALBEC X 750 ML (6)",
       "price": 2487.02,
       "image": "imagenes/fecovita-vio-estancia-mendoza-cabernet-malbec-x-750-ml-6.jpg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "118": {
       "name": "FECOVITA VINO ESTANCIA MENDOZA BLANCO X 750 ML (6)",
       "price": 2511.4,
       "image": "imagenes/estancia mendoza blanco.jpeg",
-      "category": "Limpieza"
+      "category": "Despensa"
     },
     "125": {
       "name": "VIMAR CONITOS DE DULCE DE LECHE X 12 U",
@@ -6787,7 +6787,7 @@ function normalizeCategory(cat, name = "", img = "") {
       nm.includes("SUIZA") || nm.includes("ALA") || nm.includes("SKIP") || 
       nm.includes("DRIVE") || nm.includes("ZORRO") || nm.includes("SINA") || 
       nm.includes("SECTOR") || nm.includes("LIMPIADOR") || nm.includes("DESINFECTANTE") || 
-      nm.includes("ECOVITA") || nm.includes("REJILLA-") || nm.includes("BOLSA DE RESIDUOS") || 
+      (nm.includes("ECOVITA") && !nm.includes("FECOVITA")) || nm.includes("REJILLA-") || nm.includes("BOLSA DE RESIDUOS") || 
       nm.includes("BOLSA CONSORCIO") || nm.includes("BOLSAS DE RESIDUOS") || nm.includes("BOLSAS CONSORCIO") ||
       im.includes("JABON IN POLVO") || im.includes("JABON EN POLVO") || im.includes("J.POLVO") || im.includes("JABON P/ROPA") ||
       im.includes("JABON BLANCO") || im.includes("J.BLANCO") || im.includes("JABON DE PAN") ||
@@ -6809,7 +6809,7 @@ function normalizeCategory(cat, name = "", img = "") {
       im.includes("SUIZA") || im.includes("ALA") || im.includes("SKIP") || 
       im.includes("DRIVE") || im.includes("ZORRO") || im.includes("SINA") || 
       im.includes("SECTOR") || im.includes("LIMPIADOR") || im.includes("DESINFECTANTE") || 
-      im.includes("ECOVITA") || im.includes("REJILLA-") || im.includes("BOLSA DE RESIDUOS") || 
+      (im.includes("ECOVITA") && !im.includes("FECOVITA")) || im.includes("REJILLA-") || im.includes("BOLSA DE RESIDUOS") || 
       im.includes("BOLSA CONSORCIO") || im.includes("BOLSAS DE RESIDUOS") || im.includes("BOLSAS CONSORCIO")) {
     return "Limpieza";
   }
@@ -6905,7 +6905,8 @@ function normalizeCategory(cat, name = "", img = "") {
   }
 
   // 6. Despensa
-  if (nm.includes("ACEITE") || 
+  if (nm.includes("FECOVITA") ||
+      nm.includes("ACEITE") || 
       nm.includes("ENLATADO") || nm.includes("LATA") || nm.includes("CONSERVA") || 
       nm.includes("ARVEJAS") || nm.includes("CHOCLO") || nm.includes("TOMATE") || 
       nm.includes("ATUN") || nm.includes("SARDINA") || 
@@ -6934,6 +6935,7 @@ function normalizeCategory(cat, name = "", img = "") {
       nm.includes("JUGOS") || nm.includes("TANG") || nm.includes("CLIGHT") ||
       nm.includes("BAGGIO") || nm.includes("CONCENTRADO") || nm.includes("SABORIZADA") ||
       nm.includes("SABORIZADAS") ||
+      im.includes("FECOVITA") ||
       im.includes("ACEITE") || 
       im.includes("ENLATADO") || im.includes("LATA") || im.includes("CONSERVA") || 
       im.includes("ARVEJAS") || im.includes("CHOCLO") || im.includes("TOMATE") || 
