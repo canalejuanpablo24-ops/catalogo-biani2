@@ -2953,7 +2953,7 @@
     "code": "6345",
     "name": "CNY NUTELLA X 140 GS",
     "price": 4572.1,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/2380-cny-nutella-x-140-gs.jpg"
   },
@@ -2961,7 +2961,7 @@
     "code": "6346",
     "name": "CNY NUTELLA X 350 GS",
     "price": 10085.45,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/2381-cny-nutella-x-350-gs.jpg"
   },
@@ -6032,7 +6032,7 @@
     "code": "5524",
     "name": "LRT MALTA MALTIFE X 100 GRS D/PACK",
     "price": 1930.07,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/1039-lrt-malta-maltife-x-100-grs-d-pack.jpg"
   },
@@ -6040,7 +6040,7 @@
     "code": "5525",
     "name": "LRT MALTA MALTIFE X 170 GRS POTE",
     "price": 3175.89,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/1040-lrt-malta-maltife-x-170-grs-pote.jpg"
   },
@@ -6048,7 +6048,7 @@
     "code": "3074",
     "name": "LRT MALTA EL POCILLO X 100 GRS CON LECHE",
     "price": 2022.88,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/1034-lrt-malta-el-pocillo-x-100-grs-con-leche.jpg"
   },
@@ -6063,7 +6063,7 @@
     "code": "5554",
     "name": "LRT MALTA POCILLO X 100 GRS DOY PACK INTENSA",
     "price": 1952.09,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/1041-lrt-malta-pocillo-x-100-grs-doy-pack-intensa.jpg"
   },
@@ -6071,7 +6071,7 @@
     "code": "5016",
     "name": "LRT MALTA EL POCILLO X 170 GRS DOY PACK",
     "price": 2772.51,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/1036-lrt-malta-el-pocillo-x-170-grs-doy-pack.jpg"
   },
@@ -6540,7 +6540,7 @@
     "code": "2569",
     "name": "MDZ ROYAL GELATINA NARANJA 8 X 22 GRS SIN TACC",
     "price": 9458.52,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0236-mdz-royal-gelatina-naranja-8-x-22-grs-sin-tacc.jpg"
   },
@@ -6548,7 +6548,7 @@
     "code": "2567",
     "name": "MDZ ROYAL GELATINA FRUTILLA 8 X 40 GRS SIN TACC",
     "price": 9458.52,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0231-mdz-royal-gelatina-frutilla-8-x-40-grs-sin-tacc.jpg"
   },
@@ -6556,7 +6556,7 @@
     "code": "2566",
     "name": "MDZ ROYAL GELATINA DURAZNO 8 X 40 GRS SIN TACC",
     "price": 9458.52,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0229-mdz-royal-gelatina-durazno-8-x-40-grs-sin-tacc.jpg"
   },
@@ -6564,7 +6564,7 @@
     "code": "2565",
     "name": "MDZ ROYAL GELATINA CEREZA 8 X 40 GRS SIN TACC",
     "price": 9458.52,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0228-mdz-royal-gelatina-cereza-8-x-40-grs-sin-tacc.jpg"
   },
@@ -6572,7 +6572,7 @@
     "code": "2564",
     "name": "MDZ ROYAL GELATINA FRAMBUESA 8 X 40 GRS SIN TACC",
     "price": 9458.52,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0230-mdz-royal-gelatina-frambuesa-8-x-40-grs-sin-tacc.jpg"
   },
@@ -6580,7 +6580,7 @@
     "code": "2575",
     "name": "MDZ ROYAL GELATINA LIGHT CEREZA 8 X 25 GRS SIN TACC",
     "price": 9458.52,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0232-mdz-royal-gelatina-light-cereza-8-x-25-grs-sin-tacc.jpg"
   },
@@ -6588,7 +6588,7 @@
     "code": "2572",
     "name": "MDZ ROYAL GELATINA LIGHT FRUTOS ROJOS 8 X 25 GRS SIN TACC",
     "price": 9458.52,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0234-mdz-royal-gelatina-light-frutos-rojos-8-x-25-grs-sin-tacc.jpg"
   },
@@ -6596,7 +6596,7 @@
     "code": "2573",
     "name": "MDZ ROYAL GELATINA LIGHT FRUTILLA 8 X 25 GRS SIN TACC",
     "price": 9458.52,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0233-mdz-royal-gelatina-light-frutilla-8-x-25-grs-sin-tacc.jpg"
   },
@@ -6604,7 +6604,7 @@
     "code": "2568",
     "name": "MDZ ROYAL GELATINA SIN SABOR 8 X 14 GRS SIN TACC",
     "price": 7154.25,
-    "category": "Golosinas",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0237-mdz-royal-gelatina-sin-sabor-8-x-14-grs-sin-tacc.jpg"
   },
@@ -6612,7 +6612,7 @@
     "code": "3039",
     "name": "MDZ ROYAL POLVO DE HORNEAR X 50 GRS",
     "price": 1439.01,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0239-mdz-royal-polvo-de-hornear-x-50-grs.jpg"
   },
@@ -6627,7 +6627,7 @@
     "code": "2558",
     "name": "MDZ ROYAL POSTRE VAINILLA 6 X 75 GRS SIN TACC",
     "price": 7448.75,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0245-mdz-royal-postre-vainilla-6-x-75-grs-sin-tacc.jpg"
   },
@@ -6635,7 +6635,7 @@
     "code": "2616",
     "name": "MDZ ROYAL POSTRE CHOCOLATE 6 X 65 GRS SIN TACC",
     "price": 7448.75,
-    "category": "Chocolates y Alfajores",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0240-mdz-royal-postre-chocolate-6-x-65-grs-sin-tacc.jpg"
   },
@@ -6643,7 +6643,7 @@
     "code": "2560",
     "name": "MDZ ROYAL POSTRE DDLECHE 6 X 75 GRS SIN TACC",
     "price": 7449.22,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0241-mdz-royal-postre-ddleche-6-x-75-grs-sin-tacc.jpg"
   },
@@ -6651,7 +6651,7 @@
     "code": "2588",
     "name": "MDZ ROYAL POSTRE FRUTILLA 6 X 75 GRS SIN TACC",
     "price": 7448.75,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0242-mdz-royal-postre-frutilla-6-x-75-grs-sin-tacc.jpg"
   },
@@ -6659,7 +6659,7 @@
     "code": "2587",
     "name": "MDZ ROYAL MOUSSE CHOCOLATE 6 X 65 GRS SIN TACC",
     "price": 14001.15,
-    "category": "Chocolates y Alfajores",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0238-mdz-royal-mousse-chocolate-6-x-65-grs-sin-tacc.jpg"
   },
@@ -6667,7 +6667,7 @@
     "code": "2555",
     "name": "MDZ ROYAL FLAN VAINILLA 6 X 60 GRS SIN TACC",
     "price": 6556.23,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0227-mdz-royal-flan-vainilla-6-x-60-grs-sin-tacc.jpg"
   },
@@ -6675,7 +6675,7 @@
     "code": "2617",
     "name": "MDZ ROYAL CHANTILLY 6 X 50 GRS",
     "price": 10793.15,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0225-mdz-royal-chantilly-6-x-50-grs.jpg"
   },
@@ -6683,7 +6683,7 @@
     "code": "2557",
     "name": "MDZ ROYAL FLAN LIGHT VAINILLA 10 X 16 GRS SIN TACC",
     "price": 10927,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0226-mdz-royal-flan-light-vainilla-10-x-16-grs-sin-tacc.jpg"
   },
@@ -6691,7 +6691,7 @@
     "code": "2562",
     "name": "MDZ ROYAL POSTRE LIGHT VAINILLA 6 X 43 GRS SIN TACC",
     "price": 7448.75,
-    "category": "Varios",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0244-mdz-royal-postre-light-vainilla-6-x-43-grs-sin-tacc.jpg"
   },
@@ -6699,7 +6699,7 @@
     "code": "2561",
     "name": "MDZ ROYAL POSTRE LIGHT CHOCOLATE 6 X 50 GRS SIN TACC",
     "price": 7448.75,
-    "category": "Chocolates y Alfajores",
+    "category": "Despensa",
     "unidad_min": 1,
     "image": "imagenes/0243-mdz-royal-postre-light-chocolate-6-x-50-grs-sin-tacc.jpg"
   },
