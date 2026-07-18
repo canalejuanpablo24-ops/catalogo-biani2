@@ -7,69 +7,6 @@
     "unidad_min": 1
   },
   {
-    "code": "995083",
-    "name": "CNY CONF. TIC TAC X 12 UNI CITRUS",
-    "price": 11424.78,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "10111",
-    "name": "CNY CONF. TIC TAC X 12 UNI FRUTILLAS Y CREMA",
-    "price": 11424.78,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "10112",
-    "name": "CNY CONF. TIC TAC X 12 UNI MENTA",
-    "price": 11424.78,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "5457",
-    "name": "CNY CONF. TIC TAC X 12 UNI MENTA FRESCA",
-    "price": 11424.78,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "932",
-    "name": "CNY CONF. TIC TAC X 12 UNI MENTA GRANDE",
-    "price": 29959.36,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "10114",
-    "name": "CNY CONF. TIC TAC X 12 UNI MIX DE FRUTAS",
-    "price": 11424.78,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "930",
-    "name": "CNY CONF. TIC TAC X 12 UNI MIX DE FRUTAS GRANDE",
-    "price": 29959.36,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "10113",
-    "name": "CNY CONF. TIC TAC X 12 UNI NARANJA",
-    "price": 11424.78,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "3667",
-    "name": "CNY CONF. TIC TAC X 12 UNI NARANJA GRANDE",
-    "price": 29959.36,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
     "code": "6305",
     "name": "CNY FERRERO ROCHER T 24",
     "price": 27391.0,
@@ -168,41 +105,6 @@
     "category": "Caramelos y Chicles",
     "unidad_min": 1,
     "image": "imagenes/2381-cny-nutella-x-350-gs.jpg"
-  },
-  {
-    "code": "186",
-    "name": "CNY PAST. MENTOS X 12 UNI FRUTAS",
-    "price": 9123.4,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "180",
-    "name": "CNY PAST. MENTOS X 12 UNI FRUTILLA",
-    "price": 9123.4,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "181",
-    "name": "CNY PAST. MENTOS X 12 UNI MAGIC",
-    "price": 9123.4,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "179",
-    "name": "CNY PAST. MENTOS X 12 UNI MINT",
-    "price": 9123.4,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "182",
-    "name": "CNY PAST. MENTOS X 12 UNI TUTTI",
-    "price": 9123.4,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
   },
   {
     "code": "6036",
@@ -405,46 +307,6 @@
     "unidad_min": 1
   },
   {
-    "code": "2150",
-    "name": "GEO PAST FULLMINT CHERRY MENTA X 12",
-    "price": 6103.24,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/2150-geo-past-fullmint-cherry-menta-x-12.jpg"
-  },
-  {
-    "code": "2151",
-    "name": "GEO PAST FULLMINT CHOCO MENTA X 12",
-    "price": 6103.24,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/2151-geo-past-fullmint-choco-menta-x-12.jpg"
-  },
-  {
-    "code": "2152",
-    "name": "GEO PAST FULLMINT MENTA X 12",
-    "price": 6103.24,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/2152-geo-past-fullmint-menta-x-12.jpg"
-  },
-  {
-    "code": "2154",
-    "name": "GEO PAST FULLMINT MIX DE FRUTAS X 12",
-    "price": 6103.24,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/2154-geo-past-fullmint-mix-de-frutas-x-12.jpg"
-  },
-  {
-    "code": "2153",
-    "name": "GEO PAST FULLMINT STRONG X 12",
-    "price": 6103.24,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/2153-geo-past-fullmint-strong-x-12.jpg"
-  },
-  {
     "code": "3620",
     "name": "GRABICH LENTEJA FRUTAL X 80 GRS (36)",
     "price": 620.73,
@@ -475,14 +337,6 @@
     "category": "Caramelos y Chicles",
     "unidad_min": 1,
     "image": "imagenes/1852-huevos-sorpresa-x-12-uni-transformer.jpg"
-  },
-  {
-    "code": "291",
-    "name": "JH RAID PASTILLAS MOSQUITOS X 24 UNI.",
-    "price": 6677.07,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/2053-jh-raid-pastillas-mosquitos-x-24-uni.jpg"
   },
   {
     "code": "5530",
@@ -600,76 +454,6 @@
     "code": "6180",
     "name": "LDC NUCITA NAPOLITANO X 48 UNI",
     "price": 6954.23,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "681",
-    "name": "LDC PAST. D.R.F. 12 X 23 GRS ANIS SIN TACC",
-    "price": 3686.44,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "5707",
-    "name": "LDC PAST. D.R.F. 12 X 23 GRS FRUTOS ROJOS SIN TACC",
-    "price": 3686.44,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "678",
-    "name": "LDC PAST. D.R.F. 12 X 23 GRS LIMON SIN TACC",
-    "price": 3686.44,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "680",
-    "name": "LDC PAST. D.R.F. 12 X 23 GRS MENTA SIN TACC",
-    "price": 3686.44,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "679",
-    "name": "LDC PAST. D.R.F. 12 X 23 GRS MENTOL SIN TACC",
-    "price": 3686.44,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "677",
-    "name": "LDC PAST. D.R.F. 12 X 23 GRS NARANJASIN TACC",
-    "price": 3686.44,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "3120",
-    "name": "LDC PAST. D.R.F. 24 X 23 GRS SURTIDA SIN TACC",
-    "price": 8032.54,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "6184",
-    "name": "LDC PAST. D.R.F. LATA X 8 U X 22 G MENTA",
-    "price": 17538.95,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "2009",
-    "name": "LDC PASTILLAS BIYU X 12 UNI TUTTI FRUTTI SIN TACC",
-    "price": 16336.14,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "3508",
-    "name": "LDC PASTILLAS LA YAPA X 36 U SIN TACC",
-    "price": 12539.48,
     "category": "Caramelos y Chicles",
     "unidad_min": 1
   },
@@ -1163,41 +947,6 @@
     "unidad_min": 1
   },
   {
-    "code": "36",
-    "name": "MY CARAM. ALKA X 400U ACIDOS",
-    "price": 10550.74,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "9",
-    "name": "MY CARAM. ALKA X 400U CHERRY",
-    "price": 10550.74,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "6",
-    "name": "MY CARAM. ALKA X 400U CREMOSO",
-    "price": 10550.74,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "7",
-    "name": "MY CARAM. ALKA X 400U MENTA",
-    "price": 10550.74,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "4",
-    "name": "MY CARAM. ALKA X 400U STRONG",
-    "price": 10550.74,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
     "code": "1820",
     "name": "MY CARAM. ARCOR CREMINO SURTIDO X 940 GRS",
     "price": 13687.98,
@@ -1325,34 +1074,6 @@
     "unidad_min": 1
   },
   {
-    "code": "1905",
-    "name": "MY MENTHOPLUS X 12U CHERRY SIN TACC",
-    "price": 6669.05,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "3098",
-    "name": "MY MENTHOPLUS X 12U LIMON SIN TACC",
-    "price": 6669.05,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "1913",
-    "name": "MY MENTHOPLUS X 12U MENTA SIN TACC",
-    "price": 6669.05,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "1906",
-    "name": "MY MENTHOPLUS X 12U MENTOL SIN TACC",
-    "price": 6669.05,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
     "code": "768",
     "name": "MY SAPITO X 24U CHOCOLATOSO SIN TACC",
     "price": 6883.45,
@@ -1384,97 +1105,6 @@
     "image": "imagenes/1829-my-sapito-x-24u-mani-sin-tacc.jpg"
   },
   {
-    "code": "3112",
-    "name": "PASTILLAS LUCKY 8 X 385 GRS SURTIDA (16)",
-    "price": 3191.37,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "3047",
-    "name": "PASTILLAS LUCKY X 200 GRS CELESTE (30)",
-    "price": 1870.8,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/1864-pastillas-lucky-x-200-grs-celeste-30.jpg"
-  },
-  {
-    "code": "5831",
-    "name": "PASTILLAS LUCKY X 200 GRS ROSA (30)",
-    "price": 1870.8,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "5845",
-    "name": "PLENARIO ANIMALITOS X 800 GS BOLSA",
-    "price": 7376.94,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/1682-plenario-animalitos-x-800-gs-bolsa.jpg"
-  },
-  {
-    "code": "3340",
-    "name": "PLENARIO BOLITAS DE LICOR X 350 GRS CHOCO",
-    "price": 9375.56,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/1684-plenario-bolitas-de-licor-x-350-grs-choco.jpg"
-  },
-  {
-    "code": "3341",
-    "name": "PLENARIO BOLITAS DE LICOR X 350 GRS MIX",
-    "price": 9375.56,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/1685-plenario-bolitas-de-licor-x-350-grs-mix.jpg"
-  },
-  {
-    "code": "5844",
-    "name": "PLENARIO DIENTITOS X 500 GS BOLSA",
-    "price": 5609.06,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "729",
-    "name": "PLENARIO DIENTITOS X 700 GRS (180)",
-    "price": 9629.5,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "5841",
-    "name": "PLENARIO GUSANITOS X 500 GS BOLSA",
-    "price": 5609.06,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/1688-plenario-gusanitos-x-500-gs-bolsa.jpg"
-  },
-  {
-    "code": "5843",
-    "name": "PLENARIO HUESITOS X 500 GS BOLSA",
-    "price": 5609.06,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/1690-plenario-huesitos-x-500-gs-bolsa.jpg"
-  },
-  {
-    "code": "3339",
-    "name": "PLENARIO LENTEJAS DE CHOCOLATE X 800 GRS",
-    "price": 20331.03,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1
-  },
-  {
-    "code": "5842",
-    "name": "PLENARIO VIAJAMOS X 500 GS BOLSA",
-    "price": 5609.06,
-    "category": "Caramelos y Chicles",
-    "unidad_min": 1,
-    "image": "imagenes/1693-plenario-viajamos-x-500-gs-bolsa.jpg"
-  },
-  {
     "code": "2102",
     "name": "PLIN GALLINITAS X 25 UNI.",
     "price": 4798.57,
@@ -1487,6 +1117,392 @@
     "price": 4027.39,
     "category": "Caramelos y Chicles",
     "unidad_min": 1
+  },
+  {
+    "code": "995083",
+    "name": "CNY CONF. TIC TAC X 12 UNI CITRUS",
+    "price": 11424.78,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "10111",
+    "name": "CNY CONF. TIC TAC X 12 UNI FRUTILLAS Y CREMA",
+    "price": 11424.78,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "10112",
+    "name": "CNY CONF. TIC TAC X 12 UNI MENTA",
+    "price": 11424.78,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "5457",
+    "name": "CNY CONF. TIC TAC X 12 UNI MENTA FRESCA",
+    "price": 11424.78,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "932",
+    "name": "CNY CONF. TIC TAC X 12 UNI MENTA GRANDE",
+    "price": 29959.36,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "10114",
+    "name": "CNY CONF. TIC TAC X 12 UNI MIX DE FRUTAS",
+    "price": 11424.78,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "930",
+    "name": "CNY CONF. TIC TAC X 12 UNI MIX DE FRUTAS GRANDE",
+    "price": 29959.36,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "10113",
+    "name": "CNY CONF. TIC TAC X 12 UNI NARANJA",
+    "price": 11424.78,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "3667",
+    "name": "CNY CONF. TIC TAC X 12 UNI NARANJA GRANDE",
+    "price": 29959.36,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "186",
+    "name": "CNY PAST. MENTOS X 12 UNI FRUTAS",
+    "price": 9123.4,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "180",
+    "name": "CNY PAST. MENTOS X 12 UNI FRUTILLA",
+    "price": 9123.4,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "181",
+    "name": "CNY PAST. MENTOS X 12 UNI MAGIC",
+    "price": 9123.4,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "179",
+    "name": "CNY PAST. MENTOS X 12 UNI MINT",
+    "price": 9123.4,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "182",
+    "name": "CNY PAST. MENTOS X 12 UNI TUTTI",
+    "price": 9123.4,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "2150",
+    "name": "GEO PAST FULLMINT CHERRY MENTA X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/2150-geo-past-fullmint-cherry-menta-x-12.jpg"
+  },
+  {
+    "code": "2151",
+    "name": "GEO PAST FULLMINT CHOCO MENTA X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/2151-geo-past-fullmint-choco-menta-x-12.jpg"
+  },
+  {
+    "code": "2152",
+    "name": "GEO PAST FULLMINT MENTA X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/2152-geo-past-fullmint-menta-x-12.jpg"
+  },
+  {
+    "code": "2154",
+    "name": "GEO PAST FULLMINT MIX DE FRUTAS X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/2154-geo-past-fullmint-mix-de-frutas-x-12.jpg"
+  },
+  {
+    "code": "2153",
+    "name": "GEO PAST FULLMINT STRONG X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/2153-geo-past-fullmint-strong-x-12.jpg"
+  },
+  {
+    "code": "291",
+    "name": "JH RAID PASTILLAS MOSQUITOS X 24 UNI.",
+    "price": 6677.07,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/2053-jh-raid-pastillas-mosquitos-x-24-uni.jpg"
+  },
+  {
+    "code": "681",
+    "name": "LDC PAST. D.R.F. 12 X 23 GRS ANIS SIN TACC",
+    "price": 3686.44,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "5707",
+    "name": "LDC PAST. D.R.F. 12 X 23 GRS FRUTOS ROJOS SIN TACC",
+    "price": 3686.44,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "678",
+    "name": "LDC PAST. D.R.F. 12 X 23 GRS LIMON SIN TACC",
+    "price": 3686.44,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "680",
+    "name": "LDC PAST. D.R.F. 12 X 23 GRS MENTA SIN TACC",
+    "price": 3686.44,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "679",
+    "name": "LDC PAST. D.R.F. 12 X 23 GRS MENTOL SIN TACC",
+    "price": 3686.44,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "677",
+    "name": "LDC PAST. D.R.F. 12 X 23 GRS NARANJASIN TACC",
+    "price": 3686.44,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "3120",
+    "name": "LDC PAST. D.R.F. 24 X 23 GRS SURTIDA SIN TACC",
+    "price": 8032.54,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "6184",
+    "name": "LDC PAST. D.R.F. LATA X 8 U X 22 G MENTA",
+    "price": 17538.95,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "2009",
+    "name": "LDC PASTILLAS BIYU X 12 UNI TUTTI FRUTTI SIN TACC",
+    "price": 16336.14,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "3508",
+    "name": "LDC PASTILLAS LA YAPA X 36 U SIN TACC",
+    "price": 12539.48,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "2516",
+    "name": "MDZ PAST. CLIGHT X 12 UNI. FRAMBUESA",
+    "price": 9811.18,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/0222-mdz-past-clight-x-12-uni-frambuesa.jpg"
+  },
+  {
+    "code": "661",
+    "name": "MDZ PAST. CLIGHT X 12 UNI. NARANJA",
+    "price": 9811.18,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/0223-mdz-past-clight-x-12-uni-naranja.jpg"
+  },
+  {
+    "code": "36",
+    "name": "MY CARAM. ALKA X 400U ACIDOS",
+    "price": 10550.74,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "9",
+    "name": "MY CARAM. ALKA X 400U CHERRY",
+    "price": 10550.74,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "6",
+    "name": "MY CARAM. ALKA X 400U CREMOSO",
+    "price": 10550.74,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "7",
+    "name": "MY CARAM. ALKA X 400U MENTA",
+    "price": 10550.74,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "4",
+    "name": "MY CARAM. ALKA X 400U STRONG",
+    "price": 10550.74,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "1905",
+    "name": "MY MENTHOPLUS X 12U CHERRY SIN TACC",
+    "price": 6669.05,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "3098",
+    "name": "MY MENTHOPLUS X 12U LIMON SIN TACC",
+    "price": 6669.05,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "1913",
+    "name": "MY MENTHOPLUS X 12U MENTA SIN TACC",
+    "price": 6669.05,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "1906",
+    "name": "MY MENTHOPLUS X 12U MENTOL SIN TACC",
+    "price": 6669.05,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "3112",
+    "name": "PASTILLAS LUCKY 8 X 385 GRS SURTIDA (16)",
+    "price": 3191.37,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "3047",
+    "name": "PASTILLAS LUCKY X 200 GRS CELESTE (30)",
+    "price": 1870.8,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/1864-pastillas-lucky-x-200-grs-celeste-30.jpg"
+  },
+  {
+    "code": "5831",
+    "name": "PASTILLAS LUCKY X 200 GRS ROSA (30)",
+    "price": 1870.8,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "5845",
+    "name": "PLENARIO ANIMALITOS X 800 GS BOLSA",
+    "price": 7376.94,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/1682-plenario-animalitos-x-800-gs-bolsa.jpg"
+  },
+  {
+    "code": "3340",
+    "name": "PLENARIO BOLITAS DE LICOR X 350 GRS CHOCO",
+    "price": 9375.56,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/1684-plenario-bolitas-de-licor-x-350-grs-choco.jpg"
+  },
+  {
+    "code": "3341",
+    "name": "PLENARIO BOLITAS DE LICOR X 350 GRS MIX",
+    "price": 9375.56,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/1685-plenario-bolitas-de-licor-x-350-grs-mix.jpg"
+  },
+  {
+    "code": "5844",
+    "name": "PLENARIO DIENTITOS X 500 GS BOLSA",
+    "price": 5609.06,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "729",
+    "name": "PLENARIO DIENTITOS X 700 GRS (180)",
+    "price": 9629.5,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "5841",
+    "name": "PLENARIO GUSANITOS X 500 GS BOLSA",
+    "price": 5609.06,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/1688-plenario-gusanitos-x-500-gs-bolsa.jpg"
+  },
+  {
+    "code": "5843",
+    "name": "PLENARIO HUESITOS X 500 GS BOLSA",
+    "price": 5609.06,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/1690-plenario-huesitos-x-500-gs-bolsa.jpg"
+  },
+  {
+    "code": "3339",
+    "name": "PLENARIO LENTEJAS DE CHOCOLATE X 800 GRS",
+    "price": 20331.03,
+    "category": "Pastillas",
+    "unidad_min": 1
+  },
+  {
+    "code": "5842",
+    "name": "PLENARIO VIAJAMOS X 500 GS BOLSA",
+    "price": 5609.06,
+    "category": "Pastillas",
+    "unidad_min": 1,
+    "image": "imagenes/1693-plenario-viajamos-x-500-gs-bolsa.jpg"
   },
   {
     "code": "6112",
@@ -7912,22 +7928,6 @@
     "price": 7593.35,
     "category": "Bebidas y Jugos",
     "unidad_min": 1
-  },
-  {
-    "code": "2516",
-    "name": "MDZ PAST. CLIGHT X 12 UNI. FRAMBUESA",
-    "price": 9811.18,
-    "category": "Bebidas y Jugos",
-    "unidad_min": 1,
-    "image": "imagenes/0222-mdz-past-clight-x-12-uni-frambuesa.jpg"
-  },
-  {
-    "code": "661",
-    "name": "MDZ PAST. CLIGHT X 12 UNI. NARANJA",
-    "price": 9811.18,
-    "category": "Bebidas y Jugos",
-    "unidad_min": 1,
-    "image": "imagenes/0223-mdz-past-clight-x-12-uni-naranja.jpg"
   },
   {
     "code": "4978",
