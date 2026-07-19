@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f172a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BIANI">
+<link rel="apple-touch-icon" href="icon-192.png">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo BIANI · Lista de Precios</title>
@@ -6711,24 +6721,20 @@ const DEFAULT_EDITS = {
     }
   };
 function normalizeCategory(cat, name = "", img = "") {
-  if (cat && cat.trim() && cat.trim() !== "Varios") {
-    const validCats = [
-      "Alfajores", "Varios", "Chocolates", "Cereales", "Pastillas", "Galletitas",
-      "Chicles", "Gomitas", "Caramelos", "Jugos", "Despensa", "Yerbas", "Bic",
-      "Pilas", "Lámparas", "Pegamentos", "Higiene", "Chupetines", "Turrones",
-      "Papelería", "Perfumería", "Detergentes", "Limpieza", "Pipas", "Bebidas", "Snacks"
-    ];
-    if (validCats.includes(cat.trim())) return cat.trim();
-  }
-
-  const u = (name || "").toUpperCase();
-  if (u.includes('9 DE ORO') || u.includes('9 DEORO') || u.includes('BIZCOCHO') || u.includes('CRUJITAS') || u.includes('MINIBUDIN')) {
-    return 'Bizcochos y 9 de Oro';
+  const validCats = [
+    "Alfajores", "Varios", "Chocolates", "Cereales", "Pastillas", "Galletitas",
+    "Chicles", "Gomitas", "Caramelos", "Jugos", "Despensa", "Yerbas", "Bic",
+    "Pilas", "Lámparas", "Pegamentos", "Higiene", "Chupetines", "Turrones",
+    "Papelería", "Perfumería", "Detergentes", "Limpieza", "Pipas", "Bebidas", "Snacks"
+  ];
+  
+  if (cat && validCats.includes(cat.trim())) {
+    return cat.trim();
   }
 
   if (!cat) cat = "Varios";
   const clean = cat.trim().toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]/g, '');
 
   const map = {
@@ -6758,37 +6764,37 @@ function normalizeCategory(cat, name = "", img = "") {
     "bebidas": "Bebidas",
     "snack": "Snacks",
     "snacks": "Snacks",
-    "bizcochosy9deoro": "Bizcochos y 9 de Oro",
-    "fideosypastas": "Fideos y Pastas",
-    "caramelosychicles": "Caramelos y Chicles",
-    "turronesymasticables": "Turrones y Masticables",
-    "galletitasdulces": "Galletitas Dulces",
-    "galletitassaladasytostadas": "Galletitas Saladas y Tostadas",
-    "snacksypapas": "Snacks y Papas",
-    "yerbacafeyte": "Yerba, Café y Té",
-    "bebidasyjugos": "Bebidas y Jugos",
-    "aceitesyaderezos": "Aceites y Aderezos",
-    "conservasyenlatados": "Conservas y Enlatados",
-    "postresyreposteria": "Postres y Repostería",
-    "harinasarrozygranos": "Harinas, Arroz y Granos",
-    "esponjasyutensilios": "Esponjas y Utensilios",
-    "cuidadodelaropa": "Cuidado de la Ropa",
-    "limpiadoresydesinfectantes": "Limpiadores y Desinfectantes",
-    "papelesydescartables": "Papeles y Descartables",
-    "desodorantesyfragancias": "Desodorantes y Fragancias",
-    "saludehigienefemenina": "Salud e Higiene Femenina",
-    "jabonesycuidadocorporal": "Jabones y Cuidado Corporal",
-    "cuidadocapilar": "Cuidado Capilar",
-    "higienebucal": "Higiene Bucal",
-    "panalesybebe": "Pañales y Bebé",
-    "pilasybaterias": "Pilas y Baterías",
-    "iluminacionylinternas": "Iluminación y Linternas",
-    "bazaryferreteria": "Bazar y Ferretería",
+    "bizcochosy9deoro": "Galletitas",
+    "fideosypastas": "Despensa",
+    "caramelosychicles": "Caramelos",
+    "turronesymasticables": "Turrones",
+    "galletitasdulces": "Galletitas",
+    "galletitassaladasytostadas": "Galletitas",
+    "snacksypapas": "Snacks",
+    "yerbacafeyte": "Yerbas",
+    "bebidasyjugos": "Jugos",
+    "aceitesyaderezos": "Despensa",
+    "conservasyenlatados": "Despensa",
+    "postresyreposteria": "Despensa",
+    "harinasarrozygranos": "Despensa",
+    "esponjasyutensilios": "Limpieza",
+    "cuidadodelaropa": "Limpieza",
+    "limpiadoresydesinfectantes": "Limpieza",
+    "papelesydescartables": "Limpieza",
+    "desodorantesyfragancias": "Perfumería",
+    "saludehigienefemenina": "Higiene",
+    "jabonesycuidadocorporal": "Higiene",
+    "cuidadocapilar": "Higiene",
+    "higienebucal": "Higiene",
+    "panalesybebe": "Higiene",
+    "pilasybaterias": "Pilas",
+    "iluminacionylinternas": "Lámparas",
+    "bazaryferreteria": "Varios",
     "varios": "Varios"
   };
-  
+
   if (map[clean]) return map[clean];
-  return cat || "Varios";
+  return "Varios";
 }
 
 const CI = {
@@ -6801,60 +6807,33 @@ const CI = {
   "Chicles": "🍬",
   "Gomitas": "🧸",
   "Caramelos": "🍬",
-  "Caramelos y Chicles": "🍬",
   "Jugos": "🧃",
   "Despensa": "🛒",
   "Yerbas": "🧉",
-  "Yerba, Café y Té": "🧉",
   "Bic": "✏️",
   "Pilas": "🔋",
-  "Pilas y Baterías": "🔋",
   "Lámparas": "💡",
-  "Iluminación y Linternas": "💡",
   "Pegamentos": "🧪",
   "Higiene": "🧴",
   "Chupetines": "🍭",
   "Turrones": "🥜",
-  "Turrones y Masticables": "🥜",
   "Papelería": "📄",
   "Perfumería": "✨",
   "Detergentes": "🧼",
   "Limpieza": "🧹",
   "Pipas": "🌻",
   "Bebidas": "🥤",
-  "Bebidas y Jugos": "🧃",
-  "Snacks": "🍿",
-  "Snacks y Papas": "🍿",
-  "Bizcochos y 9 de Oro": "🍪",
-  "Galletitas Dulces": "🍪",
-  "Galletitas Saladas y Tostadas": "🥨",
-  "Fideos y Pastas": "🍝",
-  "Aceites y Aderezos": "🍾",
-  "Conservas y Enlatados": "🥫",
-  "Postres y Repostería": "🍮",
-  "Harinas, Arroz y Granos": "🌾",
-  "Esponjas y Utensilios": "🧽",
-  "Cuidado de la Ropa": "🧺",
-  "Limpiadores y Desinfectantes": "🧼",
-  "Papeles y Descartables": "🧻",
-  "Desodorantes y Fragancias": "✨",
-  "Salud e Higiene Femenina": "🌸",
-  "Jabones y Cuidado Corporal": "🧴",
-  "Cuidado Capilar": "🧴",
-  "Higiene Bucal": "🪥",
-  "Pañales y Bebé": "👶",
-  "Cigarrillos y Tabaco": "🚬",
-  "Bazar y Ferretería": "🛠️"
+  "Snacks": "🍿"
 };
 
 const GR = {
-  "🍫 Chocolates y Alfajores": ["Alfajores", "Chocolates", "Bombones y Bocaditos"],
-  "🍭 Golosinas y Dulces": ["Caramelos", "Caramelos y Chicles", "Pastillas", "Chupetines", "Gomitas", "Turrones", "Turrones y Masticables", "Chicles", "Pipas"],
-  "🍪 Galletitas y Cereales": ["Galletitas", "Galletitas Dulces", "Galletitas Saladas y Tostadas", "Bizcochos y 9 de Oro", "Cereales", "Snacks", "Snacks y Papas"],
-  "🛒 Despensa y Bebidas": ["Despensa", "Yerbas", "Yerba, Café y Té", "Jugos", "Bebidas", "Bebidas y Jugos", "Fideos y Pastas", "Aceites y Aderezos", "Conservas y Enlatados", "Postres y Repostería", "Harinas, Arroz y Granos"],
-  "🧴 Higiene y Perfumería": ["Higiene", "Perfumería", "Desodorantes y Fragancias", "Salud e Higiene Femenina", "Jabones y Cuidado Corporal", "Cuidado Capilar", "Higiene Bucal", "Pañales y Bebé"],
-  "🧼 Limpieza": ["Limpieza", "Detergentes", "Esponjas y Utensilios", "Cuidado de la Ropa", "Limpiadores y Desinfectantes", "Papeles y Descartables"],
-  "🔋 Bazar y Varios": ["Bic", "Pilas", "Pilas y Baterías", "Lámparas", "Iluminación y Linternas", "Pegamentos", "Papelería", "Cigarrillos y Tabaco", "Bazar y Ferretería", "Varios"]
+  "🥮 Chocolates y Alfajores": ["Alfajores", "Chocolates"],
+  "🍭 Golosinas": ["Caramelos", "Pastillas", "Chupetines", "Gomitas", "Turrones", "Chicles", "Pipas"],
+  "🍪 Galletitas y Snacks": ["Galletitas", "Cereales", "Snacks"],
+  "🛒 Despensa y Bebidas": ["Despensa", "Yerbas", "Jugos", "Bebidas"],
+  "🧴 Cuidado Personal": ["Higiene", "Perfumería"],
+  "🧼 Limpieza": ["Limpieza", "Detergentes"],
+  "🔋 Bazar y Varios": ["Bic", "Pilas", "Lámparas", "Pegamentos", "Papelería", "Varios"]
 };
 
 // CONFIGURATION VARIABLES
@@ -8279,6 +8258,15 @@ function scrollToTop() {
     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846l.369.219c1.61.955 3.578 1.46 5.6 1.461 5.487 0 9.954-4.466 9.957-9.954.002-2.659-1.031-5.158-2.908-7.037a9.88 9.88 0 0 0-7.042-2.916c-5.49 0-9.957 4.467-9.96 9.956-.001 2.083.541 4.117 1.571 5.9l.241.417L3.487 20.53l3.16-.83zM18.006 14.86c-.328-.164-1.942-.959-2.242-1.068-.3-.11-.519-.164-.737.164-.219.329-.848 1.068-1.039 1.287-.192.219-.383.246-.711.082-.328-.164-1.386-.511-2.64-1.63-1.042-.93-1.746-2.081-1.951-2.433-.205-.352-.022-.543.142-.706.148-.147.328-.384.492-.575.164-.192.219-.329.328-.548.11-.219.055-.411-.027-.575-.082-.164-.737-1.777-1.01-2.434-.267-.64-.539-.553-.737-.563-.19-.01-.41-.01-.629-.01-.219 0-.575.082-.876.411-.3.329-1.148 1.122-1.148 2.735 0 1.612 1.176 3.172 1.34 3.391.164.22 2.313 3.532 5.6 4.95.782.338 1.392.54 1.868.692.785.25 1.5.214 2.065.13.629-.094 1.942-.794 2.215-1.56.273-.766.273-1.423.191-1.56-.081-.137-.3-.219-.628-.383z"/></svg>
   </a>
 </div>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(err => console.error('SW Error:', err));
+  });
+}
+</script>
 
 </body>
 </html>
