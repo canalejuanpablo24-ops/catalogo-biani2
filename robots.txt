@@ -1,2 +1,5 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+# Prevent search engines from indexing any part of this catalog
+Noindex: /
