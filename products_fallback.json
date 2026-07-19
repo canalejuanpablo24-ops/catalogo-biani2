@@ -7,186 +7,11 @@
     "image": "imagenes/1732-caramelo-liquido-abejitas-8.jpg"
   },
   {
-    "code": "6305",
-    "name": "CNY FERRERO ROCHER T 24",
-    "price": 27391.0,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2367-cny-ferrero-rocher-t-24.jpg"
-  },
-  {
-    "code": "10118",
-    "name": "CNY FERRERO ROCHER T.12",
-    "price": 14846.01,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2368-cny-ferrero-rocher-t-12.jpg"
-  },
-  {
-    "code": "10116",
-    "name": "CNY FERRERO ROCHER T.3",
-    "price": 3274.99,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2369-cny-ferrero-rocher-t-3.jpg"
-  },
-  {
-    "code": "10115",
-    "name": "CNY FERRERO ROCHER T.4",
-    "price": 4925.69,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2370-cny-ferrero-rocher-t-4.jpg"
-  },
-  {
-    "code": "10117",
-    "name": "CNY FERRERO ROCHER T.8",
-    "price": 9844.18,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2371-cny-ferrero-rocher-t-8.jpg"
-  },
-  {
-    "code": "10150",
-    "name": "CNY KINDER BUENO X 39 GRS WHITE",
-    "price": 2888.03,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2372-cny-kinder-bueno-x-39-grs-white.jpg"
-  },
-  {
-    "code": "10128",
-    "name": "CNY KINDER BUENO X 43 GRS",
-    "price": 2888.03,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2373-cny-kinder-bueno-x-43-grs.jpg"
-  },
-  {
-    "code": "10119",
-    "name": "CNY KINDER CHOCOLATE MAXI T.10",
-    "price": 14210.48,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2374-cny-kinder-chocolate-maxi-t-10.jpg"
-  },
-  {
-    "code": "10127",
-    "name": "CNY KINDER CHOCOLATE X 24 UNI",
-    "price": 21460.44,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2375-cny-kinder-chocolate-x-24-uni.jpg"
-  },
-  {
-    "code": "10121",
-    "name": "CNY KINDER SORPRESA X 12 UNI NENA",
-    "price": 30467.44,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2377-cny-kinder-sorpresa-x-12-uni-nena.jpg"
-  },
-  {
-    "code": "10120",
-    "name": "CNY KINDER SORPRESA X 12 UNI NENE",
-    "price": 30467.44,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2378-cny-kinder-sorpresa-x-12-uni-nene.jpg"
-  },
-  {
-    "code": "290",
-    "name": "CNY KINDER T.4 (CHICO)",
-    "price": 3300.78,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2379-cny-kinder-t-4-chico.jpg"
-  },
-  {
-    "code": "6345",
-    "name": "CNY NUTELLA X 140 GS",
-    "price": 4572.1,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2380-cny-nutella-x-140-gs.jpg"
-  },
-  {
-    "code": "6346",
-    "name": "CNY NUTELLA X 350 GS",
-    "price": 10085.45,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/2381-cny-nutella-x-350-gs.jpg"
-  },
-  {
-    "code": "6036",
-    "name": "GAM GELATINES X 250 G \"BANANA\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/6036-gam-gelatines-x-250-g-banana.jpg"
-  },
-  {
-    "code": "6034",
-    "name": "GAM GELATINES X 250 G \"CORAZON\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/6034-gam-gelatines-x-250-g-corazon.jpg"
-  },
-  {
-    "code": "6037",
-    "name": "GAM GELATINES X 250 G \"DENTADURAS\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/6037-gam-gelatines-x-250-g-dentaduras.jpg"
-  },
-  {
-    "code": "4198",
-    "name": "GAM GELATINES X 250 G \"JELLY BEANS ACIDAS\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/4198-gam-gelatines-x-250-g-jelly-beans-acidas.jpg"
-  },
-  {
-    "code": "5003",
-    "name": "GAM GELATINES X 250 G \"MINI MORAS\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/5003-gam-gelatines-x-250-g-mini-moras.jpeg"
-  },
-  {
-    "code": "6035",
-    "name": "GAM GELATINES X 250 G \"MORA\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/6035-gam-gelatines-x-250-g-mora.jpg"
-  },
-  {
-    "code": "6038",
-    "name": "GAM GELATINES X 250 G \"SNACK FOOD\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/6038-gam-gelatines-x-250-g-snack-food.jpg"
-  },
-  {
-    "code": "4100",
-    "name": "GAM GELATINES X 250 G \"TENIS ACIDOS\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/4100-gam-gelatines-x-250-g-tenis-acidos.jpg"
-  },
-  {
-    "code": "4107",
-    "name": "GAM GELATINES X 250 G \"TIBURON AZUL Y ROJO\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/4107-gam-gelatines-x-250-g-tiburon-azul-y-rojo.jpg"
-  },
-  {
-    "code": "4106",
-    "name": "GAM GELATINES X 250 G \"TIBURON AZUL\"",
-    "price": 3098.81,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/4106-gam-gelatines-x-250-g-tiburon-azul.jpg"
-  },
-  {
     "code": "5513",
     "name": "GAM KROOMY X 12 UNI \"NAPOLITANO\"",
     "price": 5680.73,
     "category": "Caramelos y Chicles",
     "image": "imagenes/5513-gam-kroomy-x-12-uni-napolitano.jpg"
-  },
-  {
-    "code": "5512",
-    "name": "GAM REPELENTE EN AEROSOL ABOVE PROTECT X 150 ML (24)",
-    "price": 2000.01,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/0725-gam-repelente-en-aerosol-above-protect-x-150-ml-24.jpg"
   },
   {
     "code": "1339",
@@ -305,7 +130,7 @@
     "name": "GRABICH LENTEJA FRUTAL X 80 GRS (36)",
     "price": 620.73,
     "category": "Caramelos y Chicles",
-    "image": "imagenes/grabich-lenteja-frutal-x-80-grs-36.jpg"
+    "image": "imagenes/GRABICH LENTEJA FRUTAL X 80 GRS (36).jpeg"
   },
   {
     "code": "177",
@@ -705,69 +530,6 @@
     "price": 3130.27,
     "category": "Caramelos y Chicles",
     "image": "imagenes/1052-lrt-chicle-plop-x-400-gr-tutti-frutti.jpg"
-  },
-  {
-    "code": "6366",
-    "name": "LRT EL POCILLO ENDULZANTE CLASICO X 180 ML (6)",
-    "price": 1352.78,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/180.jpg"
-  },
-  {
-    "code": "3074",
-    "name": "LRT MALTA EL POCILLO X 100 GRS CON LECHE",
-    "price": 2022.88,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/1034-lrt-malta-el-pocillo-x-100-grs-con-leche.jpg"
-  },
-  {
-    "code": "348",
-    "name": "LRT MALTA EL POCILLO X 115 GRS D/P SIN CAFEINA (12)",
-    "price": 1898.61,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/115.jpg"
-  },
-  {
-    "code": "5016",
-    "name": "LRT MALTA EL POCILLO X 170 GRS DOY PACK",
-    "price": 2772.51,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/1036-lrt-malta-el-pocillo-x-170-grs-doy-pack.jpg"
-  },
-  {
-    "code": "349",
-    "name": "LRT MALTA EL POCILLO X 170 GRS FRASCO SIN CAFEINA (6)",
-    "price": 3144.43,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/1037-lrt-malta-el-pocillo-x-170-grs-frasco-sin-cafeina-6.jpg"
-  },
-  {
-    "code": "4113",
-    "name": "LRT MALTA EL POCILLO X 170 GRS POTE INTENSA",
-    "price": 3234.09,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/1038-lrt-malta-el-pocillo-x-170-grs-pote-intensa.jpg"
-  },
-  {
-    "code": "5524",
-    "name": "LRT MALTA MALTIFE X 100 GRS D/PACK",
-    "price": 1930.07,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/1039-lrt-malta-maltife-x-100-grs-d-pack.jpg"
-  },
-  {
-    "code": "5525",
-    "name": "LRT MALTA MALTIFE X 170 GRS POTE",
-    "price": 3175.89,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/1040-lrt-malta-maltife-x-170-grs-pote.jpg"
-  },
-  {
-    "code": "5554",
-    "name": "LRT MALTA POCILLO X 100 GRS DOY PACK INTENSA",
-    "price": 1952.09,
-    "category": "Caramelos y Chicles",
-    "image": "imagenes/1041-lrt-malta-pocillo-x-100-grs-doy-pack-intensa.jpg"
   },
   {
     "code": "6392",
@@ -1463,6 +1225,13 @@
     "image": "imagenes/1693-plenario-viajamos-x-500-gs-bolsa.jpg"
   },
   {
+    "code": "514",
+    "name": "FEF CHUPELATIN X 15 GRS",
+    "price": 990.55,
+    "category": "Chupetines",
+    "image": "imagenes/0022-fef-chupelatin-x-15-grs.jpg"
+  },
+  {
     "code": "6112",
     "name": "GEO CHUP. FLYM PAFF X 24 MANZANA SIN TAC",
     "price": 5650.59,
@@ -1755,6 +1524,76 @@
     "price": 4363.5,
     "category": "Chupetines",
     "image": "imagenes/1436-sw-chupetin-open-candy-pop-emox-x-80-un.jpg"
+  },
+  {
+    "code": "6036",
+    "name": "GAM GELATINES X 250 G \"BANANA\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/6036-gam-gelatines-x-250-g-banana.jpg"
+  },
+  {
+    "code": "6034",
+    "name": "GAM GELATINES X 250 G \"CORAZON\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/6034-gam-gelatines-x-250-g-corazon.jpg"
+  },
+  {
+    "code": "6037",
+    "name": "GAM GELATINES X 250 G \"DENTADURAS\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/6037-gam-gelatines-x-250-g-dentaduras.jpg"
+  },
+  {
+    "code": "4198",
+    "name": "GAM GELATINES X 250 G \"JELLY BEANS ACIDAS\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/4198-gam-gelatines-x-250-g-jelly-beans-acidas.jpg"
+  },
+  {
+    "code": "5003",
+    "name": "GAM GELATINES X 250 G \"MINI MORAS\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/5003-gam-gelatines-x-250-g-mini-moras.jpeg"
+  },
+  {
+    "code": "6035",
+    "name": "GAM GELATINES X 250 G \"MORA\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/6035-gam-gelatines-x-250-g-mora.jpg"
+  },
+  {
+    "code": "6038",
+    "name": "GAM GELATINES X 250 G \"SNACK FOOD\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/6038-gam-gelatines-x-250-g-snack-food.jpg"
+  },
+  {
+    "code": "4100",
+    "name": "GAM GELATINES X 250 G \"TENIS ACIDOS\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/4100-gam-gelatines-x-250-g-tenis-acidos.jpg"
+  },
+  {
+    "code": "4107",
+    "name": "GAM GELATINES X 250 G \"TIBURON AZUL Y ROJO\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/4107-gam-gelatines-x-250-g-tiburon-azul-y-rojo.jpg"
+  },
+  {
+    "code": "4106",
+    "name": "GAM GELATINES X 250 G \"TIBURON AZUL\"",
+    "price": 3098.81,
+    "category": "Gomitas",
+    "image": "imagenes/4106-gam-gelatines-x-250-g-tiburon-azul.jpg"
   },
   {
     "code": "3425",
@@ -2744,20 +2583,6 @@
     "image": "imagenes/0800-ldc-mentitas-la-casa-x-12-uni-menta-sin-tacc.jpg"
   },
   {
-    "code": "5857",
-    "name": "MC 9 DE ORO ALFAJOR SIMPLE X 45 BLANCO",
-    "price": 609.54,
-    "category": "Alfajores",
-    "image": "imagenes/4.jpg"
-  },
-  {
-    "code": "5856",
-    "name": "MC 9 DE ORO ALFAJOR SIMPLE X 45 G CHOCO",
-    "price": 609.54,
-    "category": "Alfajores",
-    "image": "imagenes/4.jpg"
-  },
-  {
     "code": "6417",
     "name": "MC GALLETITAS CON CANELA X 160 GRS (10)",
     "price": 1204.37,
@@ -2765,11 +2590,46 @@
     "image": "imagenes/0319-mc-galletitas-con-canela-x-160-grs-10.jpg"
   },
   {
+    "code": "5002",
+    "name": "MDZ ALFA TERRABUSI INTENSO SIN TACC X 55 G",
+    "price": 1494.36,
+    "category": "Alfajores",
+    "image": "imagenes/0091-mdz-alfa-terrabusi-intenso-sin-tacc-x-55-g.jpg"
+  },
+  {
     "code": "2502",
     "name": "MDZ ALFA. SIMPLE TITA X 36 GRS",
     "price": 755.81,
     "category": "Alfajores",
     "image": "imagenes/0097-mdz-alfa-simple-tita-x-36-grs.jpg"
+  },
+  {
+    "code": "2738",
+    "name": "MDZ ALFA. TERRABUSI BLANCO X 70 G (36)",
+    "price": 1405.12,
+    "category": "Alfajores",
+    "image": "imagenes/2738-mdz-alfa-terrabusi-blanco-x-70-g-36.jpg"
+  },
+  {
+    "code": "2579",
+    "name": "MDZ ALFA. TERRABUSI CLASICO X 50 GRS (48)",
+    "price": 961.31,
+    "category": "Alfajores",
+    "image": "imagenes/0098-mdz-alfa-terrabusi-clasico-x-50-grs.jpg"
+  },
+  {
+    "code": "2733",
+    "name": "MDZ ALFA. TERRABUSI CLASICO X 70 GRS",
+    "price": 1405.12,
+    "category": "Alfajores",
+    "image": "imagenes/0099-mdz-alfa-terrabusi-clasico-x-70-grs.jpg"
+  },
+  {
+    "code": "2646",
+    "name": "MDZ ALFA. TERRABUSI GLASEADO X 38 GRS",
+    "price": 961.31,
+    "category": "Alfajores",
+    "image": "imagenes/0100-mdz-alfa-terrabusi-glaseado-x-38-grs.jpg"
   },
   {
     "code": "595",
@@ -2891,6 +2751,90 @@
     "image": "imagenes/0425-barrita-chocobar.jpg"
   },
   {
+    "code": "6305",
+    "name": "CNY FERRERO ROCHER T 24",
+    "price": 27391.0,
+    "category": "Chocolates",
+    "image": "imagenes/2367-cny-ferrero-rocher-t-24.jpg"
+  },
+  {
+    "code": "10118",
+    "name": "CNY FERRERO ROCHER T.12",
+    "price": 14846.01,
+    "category": "Chocolates",
+    "image": "imagenes/2368-cny-ferrero-rocher-t-12.jpg"
+  },
+  {
+    "code": "10116",
+    "name": "CNY FERRERO ROCHER T.3",
+    "price": 3274.99,
+    "category": "Chocolates",
+    "image": "imagenes/2369-cny-ferrero-rocher-t-3.jpg"
+  },
+  {
+    "code": "10115",
+    "name": "CNY FERRERO ROCHER T.4",
+    "price": 4925.69,
+    "category": "Chocolates",
+    "image": "imagenes/2370-cny-ferrero-rocher-t-4.jpg"
+  },
+  {
+    "code": "10117",
+    "name": "CNY FERRERO ROCHER T.8",
+    "price": 9844.18,
+    "category": "Chocolates",
+    "image": "imagenes/2371-cny-ferrero-rocher-t-8.jpg"
+  },
+  {
+    "code": "10150",
+    "name": "CNY KINDER BUENO X 39 GRS WHITE",
+    "price": 2888.03,
+    "category": "Chocolates",
+    "image": "imagenes/2372-cny-kinder-bueno-x-39-grs-white.jpg"
+  },
+  {
+    "code": "10128",
+    "name": "CNY KINDER BUENO X 43 GRS",
+    "price": 2888.03,
+    "category": "Chocolates",
+    "image": "imagenes/2373-cny-kinder-bueno-x-43-grs.jpg"
+  },
+  {
+    "code": "10119",
+    "name": "CNY KINDER CHOCOLATE MAXI T.10",
+    "price": 14210.48,
+    "category": "Chocolates",
+    "image": "imagenes/2374-cny-kinder-chocolate-maxi-t-10.jpg"
+  },
+  {
+    "code": "10127",
+    "name": "CNY KINDER CHOCOLATE X 24 UNI",
+    "price": 21460.44,
+    "category": "Chocolates",
+    "image": "imagenes/2375-cny-kinder-chocolate-x-24-uni.jpg"
+  },
+  {
+    "code": "10121",
+    "name": "CNY KINDER SORPRESA X 12 UNI NENA",
+    "price": 30467.44,
+    "category": "Chocolates",
+    "image": "imagenes/2377-cny-kinder-sorpresa-x-12-uni-nena.jpg"
+  },
+  {
+    "code": "10120",
+    "name": "CNY KINDER SORPRESA X 12 UNI NENE",
+    "price": 30467.44,
+    "category": "Chocolates",
+    "image": "imagenes/2378-cny-kinder-sorpresa-x-12-uni-nene.jpg"
+  },
+  {
+    "code": "290",
+    "name": "CNY KINDER T.4 (CHICO)",
+    "price": 3300.78,
+    "category": "Chocolates",
+    "image": "imagenes/2379-cny-kinder-t-4-chico.jpg"
+  },
+  {
     "code": "3422",
     "name": "DON SATUR MAGDALENA X 220 GS CHOCOLATE CON DULCE DE LECHE",
     "price": 2582.14,
@@ -2919,11 +2863,25 @@
     "image": "imagenes/0020-fef-chocolate-de-a-2-20-uni-x-12-grs.jpg"
   },
   {
+    "code": "518",
+    "name": "FEF DIAB FORT X 50 GRS",
+    "price": 3700.36,
+    "category": "Chocolates",
+    "image": "imagenes/0023-fef-diab-fort-x-50-grs.jpg"
+  },
+  {
     "code": "519",
     "name": "FEF DOS CORAZONES X 26 GRS",
     "price": 1129.0,
     "category": "Chocolates",
     "image": "imagenes/0027-fef-dos-corazones-x-26-grs.jpg"
+  },
+  {
+    "code": "520",
+    "name": "FEF FEELING X 20 GRS (30)",
+    "price": 587.52,
+    "category": "Chocolates",
+    "image": "imagenes/0030-fef-feeling-x-20-grs-30.jpg"
   },
   {
     "code": "1915",
@@ -2982,6 +2940,13 @@
     "image": "imagenes/4.jpg"
   },
   {
+    "code": "533",
+    "name": "FEF TIVIS X 25 GRS (20)",
+    "price": 858.31,
+    "category": "Chocolates",
+    "image": "imagenes/0046-fef-tivis-x-25-grs-20.jpg"
+  },
+  {
     "code": "1043",
     "name": "FEF TORRONCINO 5 CEREALES X 23 GRS",
     "price": 1541.81,
@@ -2994,6 +2959,13 @@
     "price": 1541.81,
     "category": "Chocolates",
     "image": "imagenes/0048-fef-torroncino-x-23-grs.jpg"
+  },
+  {
+    "code": "3439",
+    "name": "FEF WINNING 25 UNI X 20 GRS",
+    "price": 18246.41,
+    "category": "Chocolates",
+    "image": "imagenes/0049-fef-winning-25-uni-x-20-grs.jpg"
   },
   {
     "code": "691",
@@ -3521,6 +3493,20 @@
     "image": "imagenes/0505-fef-bombonera-lovers-x-264-grs.jpg"
   },
   {
+    "code": "510",
+    "name": "FEF BOTELLITAS DE WISKY X 20 UNID.",
+    "price": 25899.47,
+    "category": "Bombones y Bocaditos",
+    "image": "imagenes/0510-fef-botellitas-de-wisky-x-20-unid.jpg"
+  },
+  {
+    "code": "512",
+    "name": "FEF DISPLAY CERICET X 19 GRS X 24 UNI",
+    "price": 41383.94,
+    "category": "Bombones y Bocaditos",
+    "image": "imagenes/0024-fef-display-cericet-x-19-grs-x-24-uni.jpg"
+  },
+  {
     "code": "3441",
     "name": "FEF DISPLAY KOOKY BON 30 UNI X 10 GRS",
     "price": 9557.64,
@@ -3561,6 +3547,13 @@
     "price": 997.09,
     "category": "Bombones y Bocaditos",
     "image": "imagenes/0745-ldc-alfa-chocoarroz-x-1-uni-marroc-sin-tacc.jpg"
+  },
+  {
+    "code": "10064",
+    "name": "LDC BOMB. BILLIKEN CORAZON X 200 GRS SIN TACC",
+    "price": 2693.45,
+    "category": "Bombones y Bocaditos",
+    "image": "imagenes/0749-ldc-bomb-billiken-corazon-x-200-grs-sin-tacc.jpg"
   },
   {
     "code": "6072",
@@ -3647,6 +3640,412 @@
     "image": "imagenes/0412-sina-esponja-de-bano-recta.jpg"
   },
   {
+    "code": "3851",
+    "name": "CILO BIZCOCHOS AZUCARADOS X 350 G (12)",
+    "price": 1263.12,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/CILO BIZCOCHOS AZUCARADOS X 350 G (12).jpeg"
+  },
+  {
+    "code": "3582",
+    "name": "CILO BIZCOCHOS DE GRASA X 350 G (12)",
+    "price": 1263.12,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/CILO BIZCOCHOS DE GRASA X 350 G (12).jpeg"
+  },
+  {
+    "code": "3709",
+    "name": "CILO DOBLINAS FRAMBUESA FRUTILLA X 320 GS (12)",
+    "price": 1500.39,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1463-cilo-doblinas-frambuesa-frutilla-x-320-gs-12.jpg"
+  },
+  {
+    "code": "3822",
+    "name": "CILO DOBLINAS MEMBRILLO BATATA X 320 GS (12)",
+    "price": 1500.39,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1464-cilo-doblinas-membrillo-batata-x-320-gs-12.jpg"
+  },
+  {
+    "code": "3707",
+    "name": "CILO MINI SCONS X 400 GS (12)",
+    "price": 1500.39,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1471-cilo-mini-scons-x-400-gs-12.jpg"
+  },
+  {
+    "code": "3708",
+    "name": "CILO POLVORON DE VAINILLA X 400 GS (12)",
+    "price": 1500.39,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1475-cilo-polvoron-de-vainilla-x-400-gs-12.jpg"
+  },
+  {
+    "code": "3030",
+    "name": "DON SATUR BIZCOCHO X 200 GRS DULCES (30)",
+    "price": 1342.45,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1870-don-satur-bizcocho-x-200-grs-dulces-30.jpg"
+  },
+  {
+    "code": "3031",
+    "name": "DON SATUR BIZCOCHO X 200 GRS NEGRITOS (30)",
+    "price": 1342.45,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1871-don-satur-bizcocho-x-200-grs-negritos-30.jpg"
+  },
+  {
+    "code": "3029",
+    "name": "DON SATUR BIZCOCHO X 200 GRS SALADO (30)",
+    "price": 1342.45,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1872-don-satur-bizcocho-x-200-grs-salado-30.jpg"
+  },
+  {
+    "code": "3077",
+    "name": "DON SATUR MAGDALENA X 200 GRS VAINILLA CON CHIPS CHOCO (10)",
+    "price": 2582.14,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1873-don-satur-magdalena-x-200-grs-vainilla-con-chips-choco.jpg"
+  },
+  {
+    "code": "3027",
+    "name": "DON SATUR MAGDALENA X 250 GRS MARMOLADA (10)",
+    "price": 2582.14,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1875-don-satur-magdalena-x-250-grs-marmolada.jpg"
+  },
+  {
+    "code": "3026",
+    "name": "DON SATUR MAGDALENA X 250 GRS RELL DDLECHE",
+    "price": 2582.14,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1876-don-satur-magdalena-x-250-grs-rell-ddleche.jpg"
+  },
+  {
+    "code": "3025",
+    "name": "DON SATUR MAGDALENA X 250 GRS VAINILLA (10)",
+    "price": 2582.14,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1877-don-satur-magdalena-x-250-grs-vainilla.jpg"
+  },
+  {
+    "code": "1174",
+    "name": "GALL. PALMERITAS SARAVA X 200 GRS (16)",
+    "price": 1429.15,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/200.jpg"
+  },
+  {
+    "code": "6387",
+    "name": "GRIMALDI BIZCOCHOS X 500 GRS AZUCARADOS (12)",
+    "price": 2147.15,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/2331-grimaldi-bizcochos-x-500-grs-azucarados-12.jpg"
+  },
+  {
+    "code": "6386",
+    "name": "GRIMALDI BIZCOCHOS X 500 GRS SALADOS",
+    "price": 2147.15,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/2332-grimaldi-bizcochos-x-500-grs-salados.jpg"
+  },
+  {
+    "code": "5857",
+    "name": "MC 9 DE ORO ALFAJOR SIMPLE X 45 BLANCO",
+    "price": 609.54,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/4.jpg"
+  },
+  {
+    "code": "5856",
+    "name": "MC 9 DE ORO ALFAJOR SIMPLE X 45 G CHOCO",
+    "price": 609.54,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/4.jpg"
+  },
+  {
+    "code": "4223",
+    "name": "MC 9 DE ORO COOKIES C/CHIPS X 120 GRS BLANCO (16)",
+    "price": 1159.84,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0281-mc-9-de-oro-cookies-c-chips-x-120-grs-blanco-16.jpg"
+  },
+  {
+    "code": "902569",
+    "name": "MC 9 DE ORO COOKIES C/CHIPS X 120 GRS CHOCO (16)",
+    "price": 1159.84,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0282-mc-9-de-oro-cookies-c-chips-x-120-grs-choco-16.jpg"
+  },
+  {
+    "code": "4224",
+    "name": "MC 9 DE ORO COOKIES C/CHIPS X 120 GRS COLORES (16)",
+    "price": 1159.84,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0283-mc-9-de-oro-cookies-c-chips-x-120-grs-colores-16.jpg"
+  },
+  {
+    "code": "5814",
+    "name": "MC 9 DE ORO CRUJITAS X 120 G CEBOLLA Y CREMA (16)",
+    "price": 1134.76,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0284-mc-9-de-oro-crujitas-x-120-g-cebolla-y-crema-16.jpg"
+  },
+  {
+    "code": "5816",
+    "name": "MC 9 DE ORO CRUJITAS X 120 G CLASICAS (16)",
+    "price": 1134.76,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0285-mc-9-de-oro-crujitas-x-120-g-clasicas-16.jpg"
+  },
+  {
+    "code": "5815",
+    "name": "MC 9 DE ORO CRUJITAS X 120 G HIERBAS (16)",
+    "price": 1134.76,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0286-mc-9-de-oro-crujitas-x-120-g-hierbas-16.jpg"
+  },
+  {
+    "code": "5717",
+    "name": "MC 9 DE ORO CRUJITAS X 120 G JAMON SERRANO (16)",
+    "price": 1134.76,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0287-mc-9-de-oro-crujitas-x-120-g-jamon-serrano-16.jpg"
+  },
+  {
+    "code": "5835",
+    "name": "MC 9 DE ORO CRUJITAS X 120 G QUESO (16)",
+    "price": 1134.76,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0288-mc-9-de-oro-crujitas-x-120-g-queso-16.jpg"
+  },
+  {
+    "code": "5847",
+    "name": "MC 9 DE ORO CRUJITAS X 80 G CEBOLLA Y CREMA (10)",
+    "price": 715.72,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/8.jpg"
+  },
+  {
+    "code": "5846",
+    "name": "MC 9 DE ORO CRUJITAS X 80 G JAMON (10)",
+    "price": 715.72,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/8.jpg"
+  },
+  {
+    "code": "902570",
+    "name": "MC 9 DE ORO MADALENAS VAINILLA X 200 GRS (10)",
+    "price": 2182.65,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0289-mc-9-de-oro-madalenas-vainilla-x-200-grs-10.jpg"
+  },
+  {
+    "code": "902572",
+    "name": "MC 9 DE ORO MADALENAS VAINILLA/ DULCE DE LECHE X 230 GRS (10)",
+    "price": 2547.43,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0290-mc-9-de-oro-madalenas-vainilla-dulce-de-leche-x-230-grs-10.jpg"
+  },
+  {
+    "code": "4056",
+    "name": "MC 9 DE ORO MINIBUDIN X 210 GRS VAINILLA (10)",
+    "price": 1948.63,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0291-mc-9-de-oro-minibudin-x-210-grs-vainilla-10.jpg"
+  },
+  {
+    "code": "902573",
+    "name": "MC 9 DE ORO MINIBUDIN X 215 GRS VAINI/DDLECHE (10)",
+    "price": 2196.27,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0292-mc-9-de-oro-minibudin-x-215-grs-vaini-ddleche-10.jpg"
+  },
+  {
+    "code": "3167",
+    "name": "MC 9 DE ORO OBLEA X 100 GRS CHOCO/NARANJA (28)",
+    "price": 888.81,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0293-mc-9-de-oro-oblea-x-100-grs-choco-naranja-28.jpg"
+  },
+  {
+    "code": "4088",
+    "name": "MC 9 DE ORO OBLEA X 100 GRS NARANJA-FRUTILLA-VAINILLA (28)",
+    "price": 888.81,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0294-mc-9-de-oro-oblea-x-100-grs-naranja-frutilla-vainilla-28.jpg"
+  },
+  {
+    "code": "3166",
+    "name": "MC 9 DE ORO OBLEA X 100 GRS VAINILLA/NARANJA (28)",
+    "price": 888.81,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0295-mc-9-de-oro-oblea-x-100-grs-vainilla-naranja-28.jpg"
+  },
+  {
+    "code": "3498",
+    "name": "MC 9 DE ORO PEPA MEMBRILLO X 200 GRS (16)",
+    "price": 1445.95,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0297-mc-9-de-oro-pepa-membrillo-x-200-grs-16.jpg"
+  },
+  {
+    "code": "3526",
+    "name": "MC 9 DE ORO PEPA MEMBRILLO X 350 GRS (12)",
+    "price": 2124.1,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0298-mc-9-de-oro-pepa-membrillo-x-350-grs-12.jpg"
+  },
+  {
+    "code": "3499",
+    "name": "MC 9 DE ORO X 180 GRS SCONS / LIMON (16)",
+    "price": 1462.59,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0299-mc-9-de-oro-x-180-grs-scons-limon-16.jpg"
+  },
+  {
+    "code": "569",
+    "name": "MC 9 DE ORO X 200 GRS AGRIDULCES (20)",
+    "price": 1186.12,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0301-mc-9-de-oro-x-200-grs-agridulces-20.jpg"
+  },
+  {
+    "code": "559",
+    "name": "MC 9 DE ORO X 200 GRS AZUCARADAS(28)",
+    "price": 1186.12,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0302-mc-9-de-oro-x-200-grs-azucaradas-28.jpg"
+  },
+  {
+    "code": "4230",
+    "name": "MC 9 DE ORO X 200 GRS CARA SUCIA (20)",
+    "price": 1186.12,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/200.jpg"
+  },
+  {
+    "code": "558",
+    "name": "MC 9 DE ORO X 200 GRS CLASICA(24)",
+    "price": 1186.12,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0303-mc-9-de-oro-x-200-grs-clasica-24.jpg"
+  },
+  {
+    "code": "571",
+    "name": "MC 9 DE ORO X 200 GRS LIGHT(24)",
+    "price": 1186.12,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0304-mc-9-de-oro-x-200-grs-light-24.jpg"
+  },
+  {
+    "code": "577",
+    "name": "MC 9 DE ORO X 200 GRS SALVADO(24)",
+    "price": 1186.12,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0305-mc-9-de-oro-x-200-grs-salvado-24.jpg"
+  },
+  {
+    "code": "570",
+    "name": "MC 9 DE ORO X 200 GRS SCONCITOS(20)",
+    "price": 1212.31,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0306-mc-9-de-oro-x-200-grs-sconcitos-20.jpg"
+  },
+  {
+    "code": "995070",
+    "name": "MC 9 DE ORO X 420 GRS AGRIDULCES (GRANDE) (15)",
+    "price": 1682.04,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/4.jpg"
+  },
+  {
+    "code": "5840",
+    "name": "MC 9 DEORO CRUJITAS X 80 G QUESO (10)",
+    "price": 715.72,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/8.jpg"
+  },
+  {
+    "code": "2517",
+    "name": "MDZ ALFA. TERRABUSI TORTA X 70 GRS",
+    "price": 1405.12,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0101-mdz-alfa-terrabusi-torta-x-70-grs.jpg"
+  },
+  {
+    "code": "10000",
+    "name": "MERENGUE LA AMISTAD X 100 GRS BLANCO (20) SIN TACC",
+    "price": 1248.96,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1854-merengue-la-amistad-x-100-grs-blanco-20-sin-tacc.jpg"
+  },
+  {
+    "code": "5476",
+    "name": "MERENGUE LA AMISTAD X 100 GRS COLORES (20) SIN TACC",
+    "price": 1337.52,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1855-merengue-la-amistad-x-100-grs-colores-20-sin-tacc.jpg"
+  },
+  {
+    "code": "3293",
+    "name": "MERENGUE LA AMISTAD X 150 GRS BLANCO (13) SIN TACC",
+    "price": 1920.99,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1856-merengue-la-amistad-x-150-grs-blanco-13-sin-tacc.jpg"
+  },
+  {
+    "code": "5453",
+    "name": "NVR PASTA FROLA X 50 GRS FRUTOS ROJOS",
+    "price": 272.05,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/5453-nvr-pasta-frola-x-50-grs-frutos-rojos.jpeg"
+  },
+  {
+    "code": "5452",
+    "name": "NVR PASTA FROLA X 50 GRS MEMBRILLO",
+    "price": 272.05,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/5452-nvr-pasta-frola-x-50-grs-membrillo.jpeg"
+  },
+  {
+    "code": "6045",
+    "name": "NVR. MERENDINA X 30 GRS MEMBRILLO",
+    "price": 260.33,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1956-nvr-merendina-x-30-grs-membrillo.jpg"
+  },
+  {
+    "code": "6044",
+    "name": "NVR. MERENDINA X 30 GRS YOGURT VAINILLA",
+    "price": 260.33,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/1957-nvr-merendina-x-30-grs-yogurt-vainilla.jpg"
+  },
+  {
+    "code": "4158",
+    "name": "PITUSAS MINI X 120 GRS MERENGUE (30)",
+    "price": 1054.25,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/2006-pitusas-mini-x-120-grs-merengue-30.jpg"
+  },
+  {
+    "code": "1018",
+    "name": "PRAAT TAPITAS SABOR COCO X 90 G (18) SIN TACC",
+    "price": 1198.69,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/8.jpg"
+  },
+  {
+    "code": "1198",
+    "name": "TURIMAR PALMERITAS X 400 GRS (10)",
+    "price": 3753.18,
+    "category": "Bizcochos y 9 de Oro",
+    "image": "imagenes/0885-turimar-palmeritas-x-400-grs-10.jpg"
+  },
+  {
     "code": "3686",
     "name": "ANTOJITOS COMUNACHO QUESO X 70 G (15)",
     "price": 1900.5,
@@ -3675,53 +4074,32 @@
     "image": "imagenes/2451-antojitos-nachos-original-x-85-g-16-sin-tacc.jpg"
   },
   {
+    "code": "3701",
+    "name": "CILO ANILLOS DE LIMON X 400 GS (12)",
+    "price": 1500.39,
+    "category": "Galletitas Dulces",
+    "image": "imagenes/1459-cilo-anillos-de-limon-x-400-gs-12.jpg"
+  },
+  {
+    "code": "3703",
+    "name": "CILO ANILLOS DE VAINILLA X 400 GS (12)",
+    "price": 1500.39,
+    "category": "Galletitas Dulces",
+    "image": "imagenes/1460-cilo-anillos-de-vainilla-x-400-gs-12.jpg"
+  },
+  {
+    "code": "3825",
+    "name": "CILO CHIP X 300 GS (12)",
+    "price": 1500.39,
+    "category": "Galletitas Dulces",
+    "image": "imagenes/1461-cilo-chip-x-300-gs-12.jpg"
+  },
+  {
     "code": "4207",
     "name": "CILO CHIPS BLANCA X 300 GRS (12)",
     "price": 1500.39,
     "category": "Galletitas Dulces",
     "image": "imagenes/1462-cilo-chips-blanca-x-300-grs-12.jpg"
-  },
-  {
-    "code": "3901",
-    "name": "CILO LENGUITAS BAÑADAS X 300 GS (12)",
-    "price": 1629.63,
-    "category": "Galletitas Dulces",
-    "image": "imagenes/1465-cilo-lenguitas-banadas-x-300-gs-18.jpg"
-  },
-  {
-    "code": "3902",
-    "name": "CILO LENGUITAS COCO BAÑADAS X 300 GS (12)",
-    "price": 1629.63,
-    "category": "Galletitas Dulces",
-    "image": "imagenes/1466-cilo-lenguitas-coco-banadas-x-300-gs-18.jpg"
-  },
-  {
-    "code": "3583",
-    "name": "CILO LENGUITAS DE COCO BAÑADAS X 150 G (24)",
-    "price": 817.96,
-    "category": "Galletitas Dulces",
-    "image": "imagenes/24.jpg"
-  },
-  {
-    "code": "3706",
-    "name": "CILO LENGUITAS DE COCO X 340 GS (12)",
-    "price": 1500.39,
-    "category": "Galletitas Dulces",
-    "image": "imagenes/1467-cilo-lenguitas-de-coco-x-340-gs-12.jpg"
-  },
-  {
-    "code": "3821",
-    "name": "CILO LENGUITAS MEMBRILLO X 400 GS (12)",
-    "price": 1500.39,
-    "category": "Galletitas Dulces",
-    "image": "imagenes/1468-cilo-lenguitas-membrillo-x-400-gs-12.jpg"
-  },
-  {
-    "code": "3705",
-    "name": "CILO LENGUITAS X 400 GS (12)",
-    "price": 1500.39,
-    "category": "Galletitas Dulces",
-    "image": "imagenes/1469-cilo-lenguitas-x-400-gs-12.jpg"
   },
   {
     "code": "3914",
@@ -3757,6 +4135,13 @@
     "price": 1500.39,
     "category": "Galletitas Dulces",
     "image": "imagenes/1474-cilo-pepas-x-400-gs-12.jpg"
+  },
+  {
+    "code": "3724",
+    "name": "CILO SURTIDAS X 400 GS (12)",
+    "price": 1500.39,
+    "category": "Galletitas Dulces",
+    "image": "imagenes/1476-cilo-surtidas-x-400-gs-12.jpg"
   },
   {
     "code": "3702",
@@ -4393,7 +4778,7 @@
     "name": "TEREPIN X 360 G SURTIBLACK (14)",
     "price": 1917.19,
     "category": "Galletitas Dulces",
-    "image": "imagenes/terepin-x-360-g-surtiblack-14.jpg"
+    "image": "imagenes/TEREPIN X 360 G SURTIBLACK (14).jpeg"
   },
   {
     "code": "5767",
@@ -4592,188 +4977,6 @@
     "image": "imagenes/4.jpg"
   },
   {
-    "code": "4223",
-    "name": "MC 9 DE ORO COOKIES C/CHIPS X 120 GRS BLANCO (16)",
-    "price": 1159.84,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0281-mc-9-de-oro-cookies-c-chips-x-120-grs-blanco-16.jpg"
-  },
-  {
-    "code": "902569",
-    "name": "MC 9 DE ORO COOKIES C/CHIPS X 120 GRS CHOCO (16)",
-    "price": 1159.84,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0282-mc-9-de-oro-cookies-c-chips-x-120-grs-choco-16.jpg"
-  },
-  {
-    "code": "4224",
-    "name": "MC 9 DE ORO COOKIES C/CHIPS X 120 GRS COLORES (16)",
-    "price": 1159.84,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0283-mc-9-de-oro-cookies-c-chips-x-120-grs-colores-16.jpg"
-  },
-  {
-    "code": "5814",
-    "name": "MC 9 DE ORO CRUJITAS X 120 G CEBOLLA Y CREMA (16)",
-    "price": 1134.76,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0284-mc-9-de-oro-crujitas-x-120-g-cebolla-y-crema-16.jpg"
-  },
-  {
-    "code": "5816",
-    "name": "MC 9 DE ORO CRUJITAS X 120 G CLASICAS (16)",
-    "price": 1134.76,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0285-mc-9-de-oro-crujitas-x-120-g-clasicas-16.jpg"
-  },
-  {
-    "code": "5815",
-    "name": "MC 9 DE ORO CRUJITAS X 120 G HIERBAS (16)",
-    "price": 1134.76,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0286-mc-9-de-oro-crujitas-x-120-g-hierbas-16.jpg"
-  },
-  {
-    "code": "5717",
-    "name": "MC 9 DE ORO CRUJITAS X 120 G JAMON SERRANO (16)",
-    "price": 1134.76,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0287-mc-9-de-oro-crujitas-x-120-g-jamon-serrano-16.jpg"
-  },
-  {
-    "code": "5835",
-    "name": "MC 9 DE ORO CRUJITAS X 120 G QUESO (16)",
-    "price": 1134.76,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0288-mc-9-de-oro-crujitas-x-120-g-queso-16.jpg"
-  },
-  {
-    "code": "5847",
-    "name": "MC 9 DE ORO CRUJITAS X 80 G CEBOLLA Y CREMA (10)",
-    "price": 715.72,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/8.jpg"
-  },
-  {
-    "code": "5846",
-    "name": "MC 9 DE ORO CRUJITAS X 80 G JAMON (10)",
-    "price": 715.72,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/8.jpg"
-  },
-  {
-    "code": "902570",
-    "name": "MC 9 DE ORO MADALENAS VAINILLA X 200 GRS (10)",
-    "price": 2182.65,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0289-mc-9-de-oro-madalenas-vainilla-x-200-grs-10.jpg"
-  },
-  {
-    "code": "902572",
-    "name": "MC 9 DE ORO MADALENAS VAINILLA/ DULCE DE LECHE X 230 GRS (10)",
-    "price": 2547.43,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0290-mc-9-de-oro-madalenas-vainilla-dulce-de-leche-x-230-grs-10.jpg"
-  },
-  {
-    "code": "3167",
-    "name": "MC 9 DE ORO OBLEA X 100 GRS CHOCO/NARANJA (28)",
-    "price": 888.81,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0293-mc-9-de-oro-oblea-x-100-grs-choco-naranja-28.jpg"
-  },
-  {
-    "code": "4088",
-    "name": "MC 9 DE ORO OBLEA X 100 GRS NARANJA-FRUTILLA-VAINILLA (28)",
-    "price": 888.81,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0294-mc-9-de-oro-oblea-x-100-grs-naranja-frutilla-vainilla-28.jpg"
-  },
-  {
-    "code": "3166",
-    "name": "MC 9 DE ORO OBLEA X 100 GRS VAINILLA/NARANJA (28)",
-    "price": 888.81,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0295-mc-9-de-oro-oblea-x-100-grs-vainilla-naranja-28.jpg"
-  },
-  {
-    "code": "3498",
-    "name": "MC 9 DE ORO PEPA MEMBRILLO X 200 GRS (16)",
-    "price": 1445.95,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0297-mc-9-de-oro-pepa-membrillo-x-200-grs-16.jpg"
-  },
-  {
-    "code": "3526",
-    "name": "MC 9 DE ORO PEPA MEMBRILLO X 350 GRS (12)",
-    "price": 2124.1,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0298-mc-9-de-oro-pepa-membrillo-x-350-grs-12.jpg"
-  },
-  {
-    "code": "569",
-    "name": "MC 9 DE ORO X 200 GRS AGRIDULCES (20)",
-    "price": 1186.12,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0301-mc-9-de-oro-x-200-grs-agridulces-20.jpg"
-  },
-  {
-    "code": "559",
-    "name": "MC 9 DE ORO X 200 GRS AZUCARADAS(28)",
-    "price": 1186.12,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0302-mc-9-de-oro-x-200-grs-azucaradas-28.jpg"
-  },
-  {
-    "code": "4230",
-    "name": "MC 9 DE ORO X 200 GRS CARA SUCIA (20)",
-    "price": 1186.12,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/200.jpg"
-  },
-  {
-    "code": "558",
-    "name": "MC 9 DE ORO X 200 GRS CLASICA(24)",
-    "price": 1186.12,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0303-mc-9-de-oro-x-200-grs-clasica-24.jpg"
-  },
-  {
-    "code": "571",
-    "name": "MC 9 DE ORO X 200 GRS LIGHT(24)",
-    "price": 1186.12,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0304-mc-9-de-oro-x-200-grs-light-24.jpg"
-  },
-  {
-    "code": "577",
-    "name": "MC 9 DE ORO X 200 GRS SALVADO(24)",
-    "price": 1186.12,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0305-mc-9-de-oro-x-200-grs-salvado-24.jpg"
-  },
-  {
-    "code": "570",
-    "name": "MC 9 DE ORO X 200 GRS SCONCITOS(20)",
-    "price": 1212.31,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/0306-mc-9-de-oro-x-200-grs-sconcitos-20.jpg"
-  },
-  {
-    "code": "995070",
-    "name": "MC 9 DE ORO X 420 GRS AGRIDULCES (GRANDE) (15)",
-    "price": 1682.04,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/4.jpg"
-  },
-  {
-    "code": "5840",
-    "name": "MC 9 DEORO CRUJITAS X 80 G QUESO (10)",
-    "price": 715.72,
-    "category": "Galletitas Saladas y Tostadas",
-    "image": "imagenes/8.jpg"
-  },
-  {
     "code": "2690",
     "name": "MC PASEO CINCO SEMILLAS X 300 GRS (14)",
     "price": 1596.6,
@@ -4907,216 +5110,6 @@
     "image": "imagenes/1915-tostadas-natural-tost-x-200-grs-sin-sal-12.jpg"
   },
   {
-    "code": "3851",
-    "name": "CILO BIZCOCHOS AZUCARADOS X 350 G (12)",
-    "price": 1263.12,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/cilo-bizcochos-azucarados-x-350-g-12.jpg"
-  },
-  {
-    "code": "3582",
-    "name": "CILO BIZCOCHOS DE GRASA X 350 G (12)",
-    "price": 1263.12,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/cilo-bizcochos-de-grasa-x-350-g-12.jpg"
-  },
-  {
-    "code": "3709",
-    "name": "CILO DOBLINAS FRAMBUESA FRUTILLA X 320 GS (12)",
-    "price": 1500.39,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1463-cilo-doblinas-frambuesa-frutilla-x-320-gs-12.jpg"
-  },
-  {
-    "code": "3822",
-    "name": "CILO DOBLINAS MEMBRILLO BATATA X 320 GS (12)",
-    "price": 1500.39,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1464-cilo-doblinas-membrillo-batata-x-320-gs-12.jpg"
-  },
-  {
-    "code": "3707",
-    "name": "CILO MINI SCONS X 400 GS (12)",
-    "price": 1500.39,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1471-cilo-mini-scons-x-400-gs-12.jpg"
-  },
-  {
-    "code": "3708",
-    "name": "CILO POLVORON DE VAINILLA X 400 GS (12)",
-    "price": 1500.39,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1475-cilo-polvoron-de-vainilla-x-400-gs-12.jpg"
-  },
-  {
-    "code": "3030",
-    "name": "DON SATUR BIZCOCHO X 200 GRS DULCES (30)",
-    "price": 1342.45,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1870-don-satur-bizcocho-x-200-grs-dulces-30.jpg"
-  },
-  {
-    "code": "3031",
-    "name": "DON SATUR BIZCOCHO X 200 GRS NEGRITOS (30)",
-    "price": 1342.45,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1871-don-satur-bizcocho-x-200-grs-negritos-30.jpg"
-  },
-  {
-    "code": "3029",
-    "name": "DON SATUR BIZCOCHO X 200 GRS SALADO (30)",
-    "price": 1342.45,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1872-don-satur-bizcocho-x-200-grs-salado-30.jpg"
-  },
-  {
-    "code": "3077",
-    "name": "DON SATUR MAGDALENA X 200 GRS VAINILLA CON CHIPS CHOCO (10)",
-    "price": 2582.14,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1873-don-satur-magdalena-x-200-grs-vainilla-con-chips-choco.jpg"
-  },
-  {
-    "code": "3027",
-    "name": "DON SATUR MAGDALENA X 250 GRS MARMOLADA (10)",
-    "price": 2582.14,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1875-don-satur-magdalena-x-250-grs-marmolada.jpg"
-  },
-  {
-    "code": "3026",
-    "name": "DON SATUR MAGDALENA X 250 GRS RELL DDLECHE",
-    "price": 2582.14,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1876-don-satur-magdalena-x-250-grs-rell-ddleche.jpg"
-  },
-  {
-    "code": "3025",
-    "name": "DON SATUR MAGDALENA X 250 GRS VAINILLA (10)",
-    "price": 2582.14,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1877-don-satur-magdalena-x-250-grs-vainilla.jpg"
-  },
-  {
-    "code": "1174",
-    "name": "GALL. PALMERITAS SARAVA X 200 GRS (16)",
-    "price": 1429.15,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/200.jpg"
-  },
-  {
-    "code": "6387",
-    "name": "GRIMALDI BIZCOCHOS X 500 GRS AZUCARADOS (12)",
-    "price": 2147.15,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/2331-grimaldi-bizcochos-x-500-grs-azucarados-12.jpg"
-  },
-  {
-    "code": "6386",
-    "name": "GRIMALDI BIZCOCHOS X 500 GRS SALADOS",
-    "price": 2147.15,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/2332-grimaldi-bizcochos-x-500-grs-salados.jpg"
-  },
-  {
-    "code": "4056",
-    "name": "MC 9 DE ORO MINIBUDIN X 210 GRS VAINILLA (10)",
-    "price": 1948.63,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/0291-mc-9-de-oro-minibudin-x-210-grs-vainilla-10.jpg"
-  },
-  {
-    "code": "902573",
-    "name": "MC 9 DE ORO MINIBUDIN X 215 GRS VAINI/DDLECHE (10)",
-    "price": 2196.27,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/0292-mc-9-de-oro-minibudin-x-215-grs-vaini-ddleche-10.jpg"
-  },
-  {
-    "code": "3499",
-    "name": "MC 9 DE ORO X 180 GRS SCONS / LIMON (16)",
-    "price": 1462.59,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/0299-mc-9-de-oro-x-180-grs-scons-limon-16.jpg"
-  },
-  {
-    "code": "2517",
-    "name": "MDZ ALFA. TERRABUSI TORTA X 70 GRS",
-    "price": 1405.12,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/0101-mdz-alfa-terrabusi-torta-x-70-grs.jpg"
-  },
-  {
-    "code": "10000",
-    "name": "MERENGUE LA AMISTAD X 100 GRS BLANCO (20) SIN TACC",
-    "price": 1248.96,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1854-merengue-la-amistad-x-100-grs-blanco-20-sin-tacc.jpg"
-  },
-  {
-    "code": "5476",
-    "name": "MERENGUE LA AMISTAD X 100 GRS COLORES (20) SIN TACC",
-    "price": 1337.52,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1855-merengue-la-amistad-x-100-grs-colores-20-sin-tacc.jpg"
-  },
-  {
-    "code": "3293",
-    "name": "MERENGUE LA AMISTAD X 150 GRS BLANCO (13) SIN TACC",
-    "price": 1920.99,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1856-merengue-la-amistad-x-150-grs-blanco-13-sin-tacc.jpg"
-  },
-  {
-    "code": "5453",
-    "name": "NVR PASTA FROLA X 50 GRS FRUTOS ROJOS",
-    "price": 272.05,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/5453-nvr-pasta-frola-x-50-grs-frutos-rojos.jpeg"
-  },
-  {
-    "code": "5452",
-    "name": "NVR PASTA FROLA X 50 GRS MEMBRILLO",
-    "price": 272.05,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/5452-nvr-pasta-frola-x-50-grs-membrillo.jpeg"
-  },
-  {
-    "code": "6045",
-    "name": "NVR. MERENDINA X 30 GRS MEMBRILLO",
-    "price": 260.33,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1956-nvr-merendina-x-30-grs-membrillo.jpg"
-  },
-  {
-    "code": "6044",
-    "name": "NVR. MERENDINA X 30 GRS YOGURT VAINILLA",
-    "price": 260.33,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/1957-nvr-merendina-x-30-grs-yogurt-vainilla.jpg"
-  },
-  {
-    "code": "4158",
-    "name": "PITUSAS MINI X 120 GRS MERENGUE (30)",
-    "price": 1054.25,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/2006-pitusas-mini-x-120-grs-merengue-30.jpg"
-  },
-  {
-    "code": "1018",
-    "name": "PRAAT TAPITAS SABOR COCO X 90 G (18) SIN TACC",
-    "price": 1198.69,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/8.jpg"
-  },
-  {
-    "code": "1198",
-    "name": "TURIMAR PALMERITAS X 400 GRS (10)",
-    "price": 3753.18,
-    "category": "Bizcochos y Pastelería",
-    "image": "imagenes/0885-turimar-palmeritas-x-400-grs-10.jpg"
-  },
-  {
     "code": "929",
     "name": "FEF TABLETON LECHE Y MANI X 75 GRS",
     "price": 3127.96,
@@ -5178,6 +5171,160 @@
     "price": 1027.72,
     "category": "Snacks y Papas",
     "image": "imagenes/0650-prif-palito-brochettes-ideal-x-25-uni.jpg"
+  },
+  {
+    "code": "3901",
+    "name": "CILO LENGUITAS BAÑADAS X 300 GS (12)",
+    "price": 1629.63,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1465-cilo-lenguitas-banadas-x-300-gs-18.jpg"
+  },
+  {
+    "code": "3902",
+    "name": "CILO LENGUITAS COCO BAÑADAS X 300 GS (12)",
+    "price": 1629.63,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1466-cilo-lenguitas-coco-banadas-x-300-gs-18.jpg"
+  },
+  {
+    "code": "3583",
+    "name": "CILO LENGUITAS DE COCO BAÑADAS X 150 G (24)",
+    "price": 817.96,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/24.jpg"
+  },
+  {
+    "code": "3706",
+    "name": "CILO LENGUITAS DE COCO X 340 GS (12)",
+    "price": 1500.39,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1467-cilo-lenguitas-de-coco-x-340-gs-12.jpg"
+  },
+  {
+    "code": "3821",
+    "name": "CILO LENGUITAS MEMBRILLO X 400 GS (12)",
+    "price": 1500.39,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1468-cilo-lenguitas-membrillo-x-400-gs-12.jpg"
+  },
+  {
+    "code": "3705",
+    "name": "CILO LENGUITAS X 400 GS (12)",
+    "price": 1500.39,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1469-cilo-lenguitas-x-400-gs-12.jpg"
+  },
+  {
+    "code": "10037",
+    "name": "MC PREMEZCLA ÑOQUIS X 400 GRS",
+    "price": 2689.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/0351-mc-premezcla-noquis-x-400-grs.jpg"
+  },
+  {
+    "code": "3479",
+    "name": "MTA FIDEOS CABELLITO X 500 G (15)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1965-mta-fideos-celentano-x-500-gs-15.jpg"
+  },
+  {
+    "code": "5619",
+    "name": "MTA FIDEOS CELENTANO X 500 GS (15)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1965-mta-fideos-celentano-x-500-gs-15.jpg"
+  },
+  {
+    "code": "5618",
+    "name": "MTA FIDEOS CODITOS X 500 GS (15)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1966-mta-fideos-coditos-x-500-gs-15.jpg"
+  },
+  {
+    "code": "5615",
+    "name": "MTA FIDEOS CODOS X 500 GS (15)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1967-mta-fideos-codos-x-500-gs-15.jpg"
+  },
+  {
+    "code": "5741",
+    "name": "MTA FIDEOS DEDALITOS X 500 GS (15)",
+    "price": 850.82,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1969-mta-fideos-dedalitos-x-500-gs-15.jpg"
+  },
+  {
+    "code": "5621",
+    "name": "MTA FIDEOS FORATTINES X 500 GS (20)",
+    "price": 935.91,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1970-mta-fideos-forattines-x-500-gs-20.jpg"
+  },
+  {
+    "code": "5624",
+    "name": "MTA FIDEOS MOSTACHOL LISO X 500 GS(15)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1972-mta-fideos-mostachol-liso-x-500-gs-15.jpg"
+  },
+  {
+    "code": "5616",
+    "name": "MTA FIDEOS MOSTACHOL RAYADO X 500 GS (15)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1973-mta-fideos-mostachol-rayado-x-500-gs-15.jpg"
+  },
+  {
+    "code": "5497",
+    "name": "MTA FIDEOS MOSTACHOL TRISABOR X 500 GRS (15)",
+    "price": 1108.26,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1974-mta-fideos-mostachol-trisabor-x-500-grs-15.jpg"
+  },
+  {
+    "code": "5622",
+    "name": "MTA FIDEOS MOÑOS X 500 GS (15)",
+    "price": 1166.4,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1971-mta-fideos-monos-x-500-gs-15.jpg"
+  },
+  {
+    "code": "5617",
+    "name": "MTA FIDEOS RIGATTIS X 500 GS (15)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1975-mta-fideos-rigattis-x-500-gs-15.jpg"
+  },
+  {
+    "code": "5620",
+    "name": "MTA FIDEOS SPAGUETTIS X 500 GS (20)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1976-mta-fideos-spaguettis-x-500-gs-20.jpg"
+  },
+  {
+    "code": "5623",
+    "name": "MTA FIDEOS TALLARIN X 500 GS (20)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1977-mta-fideos-tallarin-x-500-gs-20.jpg"
+  },
+  {
+    "code": "1677",
+    "name": "MTA FIDEOS TIRABUZON TRISABOR X 500 GRS (15)",
+    "price": 1108.26,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1978-mta-fideos-tirabuzon-trisabor-x-500-grs-15.jpg"
+  },
+  {
+    "code": "5613",
+    "name": "MTA FIDEOS TIRABUZON X 500 GS (15)",
+    "price": 850.83,
+    "category": "Fideos y Pastas",
+    "image": "imagenes/1979-mta-fideos-tirabuzon-x-500-gs-15.jpg"
   },
   {
     "code": "3445",
@@ -5345,14 +5492,14 @@
     "name": "CAPSA ALK CEPILLO SANITARIO CON SOPORTE (12) 420",
     "price": 3817.34,
     "category": "Yerba, Café y Té",
-    "image": "imagenes/capsa-alk-cepillo-sanitario-con-soporte-12-420.jpg"
+    "image": "imagenes/CAPSA ALK CEPILLO SANITARIO CON SOPORTE (12) 420.jpeg"
   },
   {
     "code": "5215",
     "name": "CAPSA ALK CEPILLO SANITARIO SIN SOPORTE (12) 437",
     "price": 2263.34,
     "category": "Yerba, Café y Té",
-    "image": "imagenes/capsa-alk-cepillo-sanitario-sin-soporte-12-437.jpg"
+    "image": "imagenes/CAPSA ALK CEPILLO SANITARIO SIN SOPORTE (12) 437.jpeg"
   },
   {
     "code": "2657",
@@ -5523,6 +5670,27 @@
     "image": "imagenes/1108-cp-bross-london-gold-desodorante-x-150-cc.jpg"
   },
   {
+    "code": "6207",
+    "name": "CP CARO CUORE AMORE DESODORANTE X 123 CC 2641",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1122-cp-caro-cuore-amore-desodorante-x-123-cc.jpg"
+  },
+  {
+    "code": "5106",
+    "name": "CP CARO CUORE BLANCO DESODORANTE X 123 CC",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1124-cp-caro-cuore-blanco-desodorante-x-123-cc.png"
+  },
+  {
+    "code": "2097",
+    "name": "CP CARO CUORE DESODORANTE X 123 CC 5478",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1125-cp-caro-cuore-desodorante-x-123-cc.jpg"
+  },
+  {
     "code": "897",
     "name": "CP CHESTER ICE DESODORANTE X 150 CC 0473",
     "price": 4697.93,
@@ -5635,6 +5803,13 @@
     "image": "imagenes/1173-cp-colbert-verde-desodorante-x-250-cc.jpg"
   },
   {
+    "code": "1462",
+    "name": "CP COQUETERIA FLOWER DESODORANTE X 123 CC 7474",
+    "price": 3884.83,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1175-cp-coqueteria-flower-desodorante-x-123-cc.jpg"
+  },
+  {
     "code": "895",
     "name": "CP CRANDALL LEGEND DESODORANTE X 150 CC 0915",
     "price": 4697.93,
@@ -5661,6 +5836,13 @@
     "price": 4246.21,
     "category": "Yerba, Café y Té",
     "image": "imagenes/1207-cp-flower-rose-desodorante-x-123-ml.jpg"
+  },
+  {
+    "code": "3575",
+    "name": "CP GINO BOGANI TOUT NOIR DESODORANTE X 123 CC 1959",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1216-cp-gino-bogani-tout-noir-desodorante-x-123-cc.jpg"
   },
   {
     "code": "5110",
@@ -5831,6 +6013,20 @@
     "image": "imagenes/1260-cp-l-extreme-desodorante-x-123-ml.jpg"
   },
   {
+    "code": "6334",
+    "name": "CP LA MARTINA RIO NEGRO DESODORANTE X 150 ML 8576",
+    "price": 4666.87,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1269-cp-la-martina-rio-negro-desodorante-x-150-ml.jpg"
+  },
+  {
+    "code": "1711",
+    "name": "CP LA MARTINA RUBI DESODORANTE X 123 CC 5028",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1271-cp-la-martina-rubi-desodorante-x-123-cc.png"
+  },
+  {
     "code": "867",
     "name": "CP MUJERCITAS DESODORANTE X 123 ML 5340",
     "price": 3884.83,
@@ -5850,6 +6046,20 @@
     "price": 3252.41,
     "category": "Yerba, Café y Té",
     "image": "imagenes/102.jpg"
+  },
+  {
+    "code": "882",
+    "name": "CP PACO DESODORANTE X 150 CC TAPA ROJA 3357",
+    "price": 3975.17,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1308-cp-paco-desodorante-x-150-cc-tapa-roja.jpg"
+  },
+  {
+    "code": "2070",
+    "name": "CP PACO SURF DESODORANTE X 150 CC 7237",
+    "price": 3975.17,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1311-cp-paco-surf-desodorante-x-150-cc.jpg"
   },
   {
     "code": "3572",
@@ -5873,6 +6083,13 @@
     "image": "imagenes/1315-cp-paloma-herrera-passion-desodorante-x-123-cc.jpg"
   },
   {
+    "code": "6348",
+    "name": "CP PAULA AURA DESODORANTE X 123 CC",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/6348-cp-paula-aura-desodorante-x-123-cc.jpeg"
+  },
+  {
     "code": "914",
     "name": "CP PINO COLBERT DESODORANTE X 150 CC 1535",
     "price": 4697.93,
@@ -5885,6 +6102,34 @@
     "price": 5420.69,
     "category": "Yerba, Café y Té",
     "image": "imagenes/1341-cp-pino-colbert-desodorante-x-250-cc.jpg"
+  },
+  {
+    "code": "2079",
+    "name": "CP PRUNE DESODORANTE X 123 CC ( I COLOR GRIS) 9355",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1344-cp-prune-desodorante-x-123-cc-i-color-gris.jpg"
+  },
+  {
+    "code": "5116",
+    "name": "CP PRUNE DESODORANTE X 123 CC ICON 9127",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1343-cp-prune-desodorante-x-123-cc-icon.jpg"
+  },
+  {
+    "code": "2066",
+    "name": "CP PRUNE DESODORANTE X 123 CC IV 9782",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1347-cp-prune-desodorante-x-123-cc-iv.jpg"
+  },
+  {
+    "code": "3772",
+    "name": "CP PRUNE DESODORANTE X 123 ML (MOI) 3139",
+    "price": 4503.13,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1348-cp-prune-desodorante-x-123-ml-moi.jpg"
   },
   {
     "code": "5108",
@@ -6067,6 +6312,13 @@
     "price": 19899.46,
     "category": "Yerba, Café y Té",
     "image": "imagenes/0476-farol-flotante.jpg"
+  },
+  {
+    "code": "5512",
+    "name": "GAM REPELENTE EN AEROSOL ABOVE PROTECT X 150 ML (24)",
+    "price": 2000.01,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/0725-gam-repelente-en-aerosol-above-protect-x-150-ml-24.jpg"
   },
   {
     "code": "5663",
@@ -6496,6 +6748,69 @@
     "image": "imagenes/2330-la-virginia-te-x-50-saq-clasico.jpg"
   },
   {
+    "code": "6366",
+    "name": "LRT EL POCILLO ENDULZANTE CLASICO X 180 ML (6)",
+    "price": 1352.78,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/180.jpg"
+  },
+  {
+    "code": "3074",
+    "name": "LRT MALTA EL POCILLO X 100 GRS CON LECHE",
+    "price": 2022.88,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1034-lrt-malta-el-pocillo-x-100-grs-con-leche.jpg"
+  },
+  {
+    "code": "348",
+    "name": "LRT MALTA EL POCILLO X 115 GRS D/P SIN CAFEINA (12)",
+    "price": 1898.61,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/115.jpg"
+  },
+  {
+    "code": "5016",
+    "name": "LRT MALTA EL POCILLO X 170 GRS DOY PACK",
+    "price": 2772.51,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1036-lrt-malta-el-pocillo-x-170-grs-doy-pack.jpg"
+  },
+  {
+    "code": "349",
+    "name": "LRT MALTA EL POCILLO X 170 GRS FRASCO SIN CAFEINA (6)",
+    "price": 3144.43,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1037-lrt-malta-el-pocillo-x-170-grs-frasco-sin-cafeina-6.jpg"
+  },
+  {
+    "code": "4113",
+    "name": "LRT MALTA EL POCILLO X 170 GRS POTE INTENSA",
+    "price": 3234.09,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1038-lrt-malta-el-pocillo-x-170-grs-pote-intensa.jpg"
+  },
+  {
+    "code": "5524",
+    "name": "LRT MALTA MALTIFE X 100 GRS D/PACK",
+    "price": 1930.07,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1039-lrt-malta-maltife-x-100-grs-d-pack.jpg"
+  },
+  {
+    "code": "5525",
+    "name": "LRT MALTA MALTIFE X 170 GRS POTE",
+    "price": 3175.89,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1040-lrt-malta-maltife-x-170-grs-pote.jpg"
+  },
+  {
+    "code": "5554",
+    "name": "LRT MALTA POCILLO X 100 GRS DOY PACK INTENSA",
+    "price": 1952.09,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/1041-lrt-malta-pocillo-x-100-grs-doy-pack-intensa.jpg"
+  },
+  {
     "code": "935",
     "name": "MATE COCIDO AMANDA X 25 SAQ.",
     "price": 1155.45,
@@ -6881,6 +7196,27 @@
     "image": "imagenes/6065-sina-rollo-de-film-adherente-x-20-mt-aprox.jpg"
   },
   {
+    "code": "1032",
+    "name": "SINA SOPAPA GOMA NEGRA (24)",
+    "price": 1819.61,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/0457-sina-sopapa-goma-negra.jpg"
+  },
+  {
+    "code": "3458",
+    "name": "SINA SOPAPA PLASTICA MATRIPLASTER CON CABO",
+    "price": 4261.7,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/0458-sina-sopapa-plastica-matriplaster-con-cabo.jpg"
+  },
+  {
+    "code": "5888",
+    "name": "SINA SOPAPITA FLOPY",
+    "price": 4402.28,
+    "category": "Yerba, Café y Té",
+    "image": "imagenes/0459-sina-sopapita-flopy.jpg"
+  },
+  {
     "code": "3130",
     "name": "SOL DE NOCHE INCANDESCENTE X 25 W HONGO",
     "price": 653.4,
@@ -6892,7 +7228,7 @@
     "name": "TAHITI SALSA DE AJI PICANTE X 285 GS (6)",
     "price": 2755.9,
     "category": "Yerba, Café y Té",
-    "image": "imagenes/tahiti-salsa-de-aji-picante-x-285-gs-6.jpg"
+    "image": "imagenes/TAHITI SALSA DE AJI PICANTE X 285 GS (6).jpeg"
   },
   {
     "code": "3803",
@@ -7249,14 +7585,14 @@
     "name": "FECOVITA VINO ESTANCIA MENDOZA MALBEC X 750 ML (6)",
     "price": 2486.91,
     "category": "Bebidas y Jugos",
-    "image": "imagenes/fecovita-vino-estancia-mendoza-malbec-x-750-ml-6.jpg"
+    "image": "imagenes/FECOVITA VINO ESTANCIA MENDOZA MALBEC X 750 ML (6).jpeg"
   },
   {
     "code": "110",
     "name": "FECOVITA VINO ESTANCIA MENDOZA MERLOT MALBEC X 750 ML (6)",
     "price": 2486.91,
     "category": "Bebidas y Jugos",
-    "image": "imagenes/fecovita-vino-estancia-mendoza-merlot-malbec-x-750-ml-6.jpg"
+    "image": "imagenes/FECOVITA VINO ESTANCIA MENDOZA MERLOT MALBEC X 750 ML (6).jpeg"
   },
   {
     "code": "107",
@@ -7277,14 +7613,14 @@
     "name": "FECOVITA VINO TORO BLANCO TETRA X 1 L (12)",
     "price": 1856.39,
     "category": "Bebidas y Jugos",
-    "image": "imagenes/fecovita-vino-toro-blanco-tetra-x-1-l-12.jpg"
+    "image": "imagenes/FECOVITA VINO TORO BLANCO TETRA X 1 L (12).jpeg"
   },
   {
     "code": "115",
     "name": "FECOVITA VINO TORO CLASICO TINTO 6 X 750 ML",
     "price": 11685.03,
     "category": "Bebidas y Jugos",
-    "image": "imagenes/fecovita-vino-toro-clasico-tinto-6-x-750-ml.jpg"
+    "image": "imagenes/FECOVITA VINO TORO CLASICO TINTO 6 X 750 ML.jpeg"
   },
   {
     "code": "113",
@@ -7298,7 +7634,7 @@
     "name": "FECOVITA VIO ESTANCIA MENDOZA CABERNET MALBEC X 750 ML (6)",
     "price": 2487.02,
     "category": "Bebidas y Jugos",
-    "image": "imagenes/fecovita-vio-estancia-mendoza-cabernet-malbec-x-750-ml-6.jpg"
+    "image": "imagenes/FECOVITA VIO ESTANCIA MENDOZA CABERNET MALBEC X 750 ML (6.jpeg"
   },
   {
     "code": "1327",
@@ -7784,6 +8120,20 @@
     "image": "imagenes/1869-vino-vinas-de-rama-caida-x-1125-ml-tinto.jpg"
   },
   {
+    "code": "6345",
+    "name": "CNY NUTELLA X 140 GS",
+    "price": 4572.1,
+    "category": "Aceites y Aderezos",
+    "image": "imagenes/2380-cny-nutella-x-140-gs.jpg"
+  },
+  {
+    "code": "6346",
+    "name": "CNY NUTELLA X 350 GS",
+    "price": 10085.45,
+    "category": "Aceites y Aderezos",
+    "image": "imagenes/2381-cny-nutella-x-350-gs.jpg"
+  },
+  {
     "code": "3811",
     "name": "MC MAYONESA CAÑUELAS X 500 CC (12)",
     "price": 1967.82,
@@ -8243,42 +8593,42 @@
     "name": "TAHITI MOSTAZA PREMIUM X 285 G (6)",
     "price": 3056.65,
     "category": "Aceites y Aderezos",
-    "image": "imagenes/tahiti-mostaza-premium-x-285-g-6.jpg"
+    "image": "imagenes/TAHITI MOSTAZA PREMIUM X 285 G (6).jpeg"
   },
   {
     "code": "5482",
     "name": "TAHITI SALSA AGRIDULCE X 270 G (6)",
     "price": 2597.34,
     "category": "Aceites y Aderezos",
-    "image": "imagenes/tahiti-salsa-agridulce-x-270-g-6.jpg"
+    "image": "imagenes/TAHITI SALSA AGRIDULCE X 270 G (6).jpeg"
   },
   {
     "code": "5484",
     "name": "TAHITI SALSA AJI AHUMADO X 285 G (6)",
     "price": 2597.34,
     "category": "Aceites y Aderezos",
-    "image": "imagenes/tahiti-salsa-aji-ahumado-x-285-g-6.jpg"
+    "image": "imagenes/TAHITI SALSA AJI AHUMADO X 285 G (6).jpeg"
   },
   {
     "code": "5946",
     "name": "TAHITI SALSA AJI SUAVE X 285 G (6)",
     "price": 2597.34,
     "category": "Aceites y Aderezos",
-    "image": "imagenes/tahiti-salsa-aji-suave-x-285-g-6.jpg"
+    "image": "imagenes/TAHITI SALSA AJI SUAVE X 285 G (6).jpeg"
   },
   {
     "code": "3696",
     "name": "TAHITI SALSA BARBACOA X 270 GS (6)",
     "price": 2755.9,
     "category": "Aceites y Aderezos",
-    "image": "imagenes/tahiti-salsa-barbacoa-x-270-gs-6.jpg"
+    "image": "imagenes/TAHITI SALSA BARBACOA X 270 GS (6).jpeg"
   },
   {
     "code": "5723",
     "name": "TAHITI SALSA CHEDDAR X 265 G (6)",
     "price": 3294.18,
     "category": "Aceites y Aderezos",
-    "image": "imagenes/tahiti-salsa-cheddar-x-265-g-6.jpg"
+    "image": "imagenes/TAHITI SALSA CHEDDAR X 265 G (6).jpeg"
   },
   {
     "code": "3969",
@@ -8292,7 +8642,7 @@
     "name": "TAHITI SALSA CHIMICHURRI X 270 GS (6)",
     "price": 2114.27,
     "category": "Aceites y Aderezos",
-    "image": "imagenes/tahiti-salsa-chimichurri-x-270-gs-6.jpg"
+    "image": "imagenes/TAHITI SALSA CHIMICHURRI X 270 GS (6).jpeg"
   },
   {
     "code": "3700",
@@ -8306,7 +8656,7 @@
     "name": "TAHITI SALSA PROVENZAL X 265 G (6)",
     "price": 2114.27,
     "category": "Aceites y Aderezos",
-    "image": "imagenes/tahiti-salsa-provenzal-x-265-g-6.jpg"
+    "image": "imagenes/TAHITI SALSA PROVENZAL X 265 G (6).jpeg"
   },
   {
     "code": "6000",
@@ -8351,6 +8701,27 @@
     "image": "imagenes/1191-cp-danielle-lata-shampoo-colonia.jpg"
   },
   {
+    "code": "2069",
+    "name": "CP LATA CORAZON CARO CUORE (PERF + DES) 9479",
+    "price": 36761.88,
+    "category": "Conservas y Enlatados",
+    "image": "imagenes/1288-cp-lata-corazon-caro-cuore-perf-des.jpg"
+  },
+  {
+    "code": "3266",
+    "name": "CP LATA CORAZON CARO CUORE AMORE (PERF + DES) 6281",
+    "price": 36761.88,
+    "category": "Conservas y Enlatados",
+    "image": "imagenes/1289-cp-lata-corazon-caro-cuore-amore-perf-des.jpg"
+  },
+  {
+    "code": "6216",
+    "name": "CP LATA CORAZON CARO CUORE COMBINADA (PERF + DES) 5475",
+    "price": 36761.88,
+    "category": "Conservas y Enlatados",
+    "image": "imagenes/1290-cp-lata-corazon-caro-cuore-combinada-perf-des.jpg"
+  },
+  {
     "code": "2552",
     "name": "CP LATA MUJERCITAS FUNNY (DEO+PERF) 3135",
     "price": 14584.67,
@@ -8363,6 +8734,13 @@
     "price": 14584.67,
     "category": "Conservas y Enlatados",
     "image": "imagenes/1292-cp-lata-mujercitas-sunny-deo-perf.jpg"
+  },
+  {
+    "code": "1830",
+    "name": "CP PACO SURF COLONIA X 60 CC LATA 7350",
+    "price": 10971.25,
+    "category": "Conservas y Enlatados",
+    "image": "imagenes/1310-cp-paco-surf-colonia-x-60-cc-lata.jpg"
   },
   {
     "code": "4214",
@@ -8848,13 +9226,6 @@
     "image": "imagenes/0354-mc-premezcla-pizza-x-500-grs-gourmet.jpg"
   },
   {
-    "code": "10037",
-    "name": "MC PREMEZCLA ÑOQUIS X 400 GRS",
-    "price": 2689.83,
-    "category": "Postres y Repostería",
-    "image": "imagenes/0351-mc-premezcla-noquis-x-400-grs.jpg"
-  },
-  {
     "code": "3500",
     "name": "MC PURE DE PAPA TRADICIONAL \"ESTILO CASERO\" X 125 G (12)",
     "price": 1829.4,
@@ -9261,132 +9632,6 @@
     "image": "imagenes/0323-mc-harina-pureza-x-1kg-0000-10.jpg"
   },
   {
-    "code": "3479",
-    "name": "MTA FIDEOS CABELLITO X 500 G (15)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1965-mta-fideos-celentano-x-500-gs-15.jpg"
-  },
-  {
-    "code": "5619",
-    "name": "MTA FIDEOS CELENTANO X 500 GS (15)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1965-mta-fideos-celentano-x-500-gs-15.jpg"
-  },
-  {
-    "code": "5618",
-    "name": "MTA FIDEOS CODITOS X 500 GS (15)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1966-mta-fideos-coditos-x-500-gs-15.jpg"
-  },
-  {
-    "code": "5615",
-    "name": "MTA FIDEOS CODOS X 500 GS (15)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1967-mta-fideos-codos-x-500-gs-15.jpg"
-  },
-  {
-    "code": "5741",
-    "name": "MTA FIDEOS DEDALITOS X 500 GS (15)",
-    "price": 850.82,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1969-mta-fideos-dedalitos-x-500-gs-15.jpg"
-  },
-  {
-    "code": "5621",
-    "name": "MTA FIDEOS FORATTINES X 500 GS (20)",
-    "price": 935.91,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1970-mta-fideos-forattines-x-500-gs-20.jpg"
-  },
-  {
-    "code": "5624",
-    "name": "MTA FIDEOS MOSTACHOL LISO X 500 GS(15)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1972-mta-fideos-mostachol-liso-x-500-gs-15.jpg"
-  },
-  {
-    "code": "5616",
-    "name": "MTA FIDEOS MOSTACHOL RAYADO X 500 GS (15)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1973-mta-fideos-mostachol-rayado-x-500-gs-15.jpg"
-  },
-  {
-    "code": "5497",
-    "name": "MTA FIDEOS MOSTACHOL TRISABOR X 500 GRS (15)",
-    "price": 1108.26,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1974-mta-fideos-mostachol-trisabor-x-500-grs-15.jpg"
-  },
-  {
-    "code": "5622",
-    "name": "MTA FIDEOS MOÑOS X 500 GS (15)",
-    "price": 1166.4,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1971-mta-fideos-monos-x-500-gs-15.jpg"
-  },
-  {
-    "code": "5617",
-    "name": "MTA FIDEOS RIGATTIS X 500 GS (15)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1975-mta-fideos-rigattis-x-500-gs-15.jpg"
-  },
-  {
-    "code": "5620",
-    "name": "MTA FIDEOS SPAGUETTIS X 500 GS (20)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1976-mta-fideos-spaguettis-x-500-gs-20.jpg"
-  },
-  {
-    "code": "5623",
-    "name": "MTA FIDEOS TALLARIN X 500 GS (20)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1977-mta-fideos-tallarin-x-500-gs-20.jpg"
-  },
-  {
-    "code": "1677",
-    "name": "MTA FIDEOS TIRABUZON TRISABOR X 500 GRS (15)",
-    "price": 1108.26,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1978-mta-fideos-tirabuzon-trisabor-x-500-grs-15.jpg"
-  },
-  {
-    "code": "5613",
-    "name": "MTA FIDEOS TIRABUZON X 500 GS (15)",
-    "price": 850.83,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/1979-mta-fideos-tirabuzon-x-500-gs-15.jpg"
-  },
-  {
-    "code": "1032",
-    "name": "SINA SOPAPA GOMA NEGRA (24)",
-    "price": 1819.61,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/0457-sina-sopapa-goma-negra.jpg"
-  },
-  {
-    "code": "3458",
-    "name": "SINA SOPAPA PLASTICA MATRIPLASTER CON CABO",
-    "price": 4261.7,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/0458-sina-sopapa-plastica-matriplaster-con-cabo.jpg"
-  },
-  {
-    "code": "5888",
-    "name": "SINA SOPAPITA FLOPY",
-    "price": 4402.28,
-    "category": "Fideos y Pastas",
-    "image": "imagenes/0459-sina-sopapita-flopy.jpg"
-  },
-  {
     "code": "274",
     "name": "ARGENTUM ESCOBILLON BARI S/PALO",
     "price": 2740.8,
@@ -9447,14 +9692,14 @@
     "name": "CAPSA ALK ESCOBA INTERIOR CON PALO (12) 132",
     "price": 5025.79,
     "category": "Esponjas y Utensilios",
-    "image": "imagenes/capsa-alk-escoba-interior-con-palo-12-132.jpg"
+    "image": "imagenes/CAPSA ALK ESCOBA INTERIOR CON PALO (12) 132.jpeg"
   },
   {
     "code": "5209",
     "name": "CAPSA ALK ESCOBILLON CON PALO (12) 149",
     "price": 5407.87,
     "category": "Esponjas y Utensilios",
-    "image": "imagenes/capsa-alk-escobillon-con-palo-12-149.jpg"
+    "image": "imagenes/CAPSA ALK ESCOBILLON CON PALO (12) 149.jpeg"
   },
   {
     "code": "5210",
@@ -9468,14 +9713,14 @@
     "name": "CAPSA ALK ESPONJA CUIDA UÑAS (944) 944",
     "price": 350.56,
     "category": "Esponjas y Utensilios",
-    "image": "imagenes/4.jpg"
+    "image": "imagenes/CAPSA ALK ESPONJA CUIDA UÑAS (944) 944.jpeg"
   },
   {
     "code": "5205",
     "name": "CAPSA ALK FRANELA 28 X 38 (24) 405",
     "price": 797.96,
     "category": "Esponjas y Utensilios",
-    "image": "imagenes/capsa-alk-franela-28-x-38-24-405.jpg"
+    "image": "imagenes/CAPSA ALK FRANELA 28 X 38 (24) 405.jpeg"
   },
   {
     "code": "5203",
@@ -9492,6 +9737,13 @@
     "image": "imagenes/24.jpg"
   },
   {
+    "code": "5221",
+    "name": "CAPSA BRK CEPILLO MULTIUSO CON MANGO (12)",
+    "price": 1450.22,
+    "category": "Esponjas y Utensilios",
+    "image": "imagenes/CAPSA ALK CEPILLO SANITARIO CON SOPORTE (12) 420.jpeg"
+  },
+  {
     "code": "5213",
     "name": "CAPSA BRK DESTAPADOR PARA PILETA C/CABO (12) 497",
     "price": 3003.28,
@@ -9503,7 +9755,7 @@
     "name": "CAPSA BRK ESCOBA MARGARITA CON PALO (12) 128",
     "price": 4265.58,
     "category": "Esponjas y Utensilios",
-    "image": "imagenes/capsa-brk-escoba-margarita-con-palo-12-128.jpg"
+    "image": "imagenes/CAPSA BRK ESCOBA MARGARITA CON PALO (12) 128.jpeg"
   },
   {
     "code": "5207",
@@ -9524,7 +9776,7 @@
     "name": "CAPSA BRK PAÑO PARA PISO AZUL 40 X 67 (24) 909",
     "price": 807.13,
     "category": "Esponjas y Utensilios",
-    "image": "imagenes/24.jpg"
+    "image": "imagenes/CAPSA BRK PAÑO PARA PISO AZUL 40 X 67 (24) 909.jpeg"
   },
   {
     "code": "5218",
@@ -10231,21 +10483,21 @@
     "name": "CAPSA BRK PALA DOMESTICA (12) 534",
     "price": 2578.46,
     "category": "Cuidado de la Ropa",
-    "image": "imagenes/capsa-brk-pala-domestica-12-534.jpg"
+    "image": "imagenes/CAPSA BRK PALA DOMESTICA (12) 534.jpeg"
   },
   {
     "code": "5217",
     "name": "CAPSA BRK SUPER PALA CON PALO 90 CM (12) 527",
     "price": 5314.12,
     "category": "Cuidado de la Ropa",
-    "image": "imagenes/capsa-brk-super-pala-con-palo-90-cm-12-527.png"
+    "image": "imagenes/CAPSA BRK SUPER PALA CON PALO 90 CM (12) 527.png"
   },
   {
     "code": "5217",
     "name": "CAPSA BRK SUPER PALA CON PALO 90 CM (12) 527",
     "price": 5314.12,
     "category": "Cuidado de la Ropa",
-    "image": "imagenes/capsa-brk-super-pala-con-palo-90-cm-12-527.png"
+    "image": "imagenes/CAPSA BRK SUPER PALA CON PALO 90 CM (12) 527.png"
   },
   {
     "code": "4301",
@@ -10948,32 +11200,11 @@
     "image": "imagenes/100.jpg"
   },
   {
-    "code": "6207",
-    "name": "CP CARO CUORE AMORE DESODORANTE X 123 CC 2641",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1122-cp-caro-cuore-amore-desodorante-x-123-cc.jpg"
-  },
-  {
-    "code": "5106",
-    "name": "CP CARO CUORE BLANCO DESODORANTE X 123 CC",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1124-cp-caro-cuore-blanco-desodorante-x-123-cc.png"
-  },
-  {
     "code": "6058",
     "name": "CP CARO CUORE BLANCO PERFUME X 60 ML",
     "price": 24581.76,
     "category": "Desodorantes y Fragancias",
     "image": "imagenes/6.jpg"
-  },
-  {
-    "code": "2097",
-    "name": "CP CARO CUORE DESODORANTE X 123 CC 5478",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1125-cp-caro-cuore-desodorante-x-123-cc.jpg"
   },
   {
     "code": "2096",
@@ -11165,13 +11396,6 @@
     "image": "imagenes/1026-cp-colbert-verde-perfume-x-60-cc.jpeg"
   },
   {
-    "code": "1462",
-    "name": "CP COQUETERIA FLOWER DESODORANTE X 123 CC 7474",
-    "price": 3884.83,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1175-cp-coqueteria-flower-desodorante-x-123-cc.jpg"
-  },
-  {
     "code": "6359",
     "name": "CP COQUETERIA FLOWER PERFUME X 80 CC GRANDE 7115",
     "price": 8105.63,
@@ -11347,13 +11571,6 @@
     "image": "imagenes/1215-cp-gino-bogani-pour-homme-perfume-x-90-cc.jpg"
   },
   {
-    "code": "3575",
-    "name": "CP GINO BOGANI TOUT NOIR DESODORANTE X 123 CC 1959",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1216-cp-gino-bogani-tout-noir-desodorante-x-123-cc.jpg"
-  },
-  {
     "code": "3573",
     "name": "CP GINO BOGANI TOUT NOIR PERFUME X 60 CC 1843",
     "price": 28511.76,
@@ -11522,25 +11739,11 @@
     "image": "imagenes/100.jpg"
   },
   {
-    "code": "6334",
-    "name": "CP LA MARTINA RIO NEGRO DESODORANTE X 150 ML 8576",
-    "price": 4666.87,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1269-cp-la-martina-rio-negro-desodorante-x-150-ml.jpg"
-  },
-  {
     "code": "6333",
     "name": "CP LA MARTINA RIO NEGRO PERFUME X 80 CC C/VAP 8460",
     "price": 29282.35,
     "category": "Desodorantes y Fragancias",
     "image": "imagenes/1270-cp-la-martina-rio-negro-perfume-x-80-cc-c-vap.jpg"
-  },
-  {
-    "code": "1711",
-    "name": "CP LA MARTINA RUBI DESODORANTE X 123 CC 5028",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1271-cp-la-martina-rubi-desodorante-x-123-cc.png"
   },
   {
     "code": "5721",
@@ -11613,27 +11816,6 @@
     "image": "imagenes/1281-cp-la-pasionaria-x-50-cc-historias-6.jpg"
   },
   {
-    "code": "2069",
-    "name": "CP LATA CORAZON CARO CUORE (PERF + DES) 9479",
-    "price": 36761.88,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1288-cp-lata-corazon-caro-cuore-perf-des.jpg"
-  },
-  {
-    "code": "3266",
-    "name": "CP LATA CORAZON CARO CUORE AMORE (PERF + DES) 6281",
-    "price": 36761.88,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1289-cp-lata-corazon-caro-cuore-amore-perf-des.jpg"
-  },
-  {
-    "code": "6216",
-    "name": "CP LATA CORAZON CARO CUORE COMBINADA (PERF + DES) 5475",
-    "price": 36761.88,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1290-cp-lata-corazon-caro-cuore-combinada-perf-des.jpg"
-  },
-  {
     "code": "1075",
     "name": "CP MUJERCITAS FUNNY PERFUME X 40 CC VAP 2743",
     "price": 8105.63,
@@ -11669,13 +11851,6 @@
     "image": "imagenes/1307-cp-paco-colonia-x-60-ml-c-vap.jpg"
   },
   {
-    "code": "882",
-    "name": "CP PACO DESODORANTE X 150 CC TAPA ROJA 3357",
-    "price": 3975.17,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1308-cp-paco-desodorante-x-150-cc-tapa-roja.jpg"
-  },
-  {
     "code": "991",
     "name": "CP PACO FUTBOL DESO. X 150 CC TAPA VERDE 0240",
     "price": 3975.17,
@@ -11688,20 +11863,6 @@
     "price": 9972.66,
     "category": "Desodorantes y Fragancias",
     "image": "imagenes/6.jpg"
-  },
-  {
-    "code": "1830",
-    "name": "CP PACO SURF COLONIA X 60 CC LATA 7350",
-    "price": 10971.25,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1310-cp-paco-surf-colonia-x-60-cc-lata.jpg"
-  },
-  {
-    "code": "2070",
-    "name": "CP PACO SURF DESODORANTE X 150 CC 7237",
-    "price": 3975.17,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1311-cp-paco-surf-desodorante-x-150-cc.jpg"
   },
   {
     "code": "6247",
@@ -11730,13 +11891,6 @@
     "price": 26585.29,
     "category": "Desodorantes y Fragancias",
     "image": "imagenes/1319-cp-paloma-herrera-perfume-x-60-ml.jpg"
-  },
-  {
-    "code": "6348",
-    "name": "CP PAULA AURA DESODORANTE X 123 CC",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/6348-cp-paula-aura-desodorante-x-123-cc.jpeg"
   },
   {
     "code": "6347",
@@ -11898,34 +12052,6 @@
     "price": 4503.13,
     "category": "Desodorantes y Fragancias",
     "image": "imagenes/23.jpg"
-  },
-  {
-    "code": "2079",
-    "name": "CP PRUNE DESODORANTE X 123 CC ( I COLOR GRIS) 9355",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1344-cp-prune-desodorante-x-123-cc-i-color-gris.jpg"
-  },
-  {
-    "code": "5116",
-    "name": "CP PRUNE DESODORANTE X 123 CC ICON 9127",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1343-cp-prune-desodorante-x-123-cc-icon.jpg"
-  },
-  {
-    "code": "2066",
-    "name": "CP PRUNE DESODORANTE X 123 CC IV 9782",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1347-cp-prune-desodorante-x-123-cc-iv.jpg"
-  },
-  {
-    "code": "3772",
-    "name": "CP PRUNE DESODORANTE X 123 ML (MOI) 3139",
-    "price": 4503.13,
-    "category": "Desodorantes y Fragancias",
-    "image": "imagenes/1348-cp-prune-desodorante-x-123-ml-moi.jpg"
   },
   {
     "code": "2076",
@@ -13202,6 +13328,13 @@
     "image": "imagenes/0891-alp-crema-p-peinar-plusbelle-x-300-ml-nutri-coco.jpg"
   },
   {
+    "code": "10062",
+    "name": "ALP D/PACK PLUSBELLE ESENCIA ACON. X 300 CC RESTAURACION",
+    "price": 2088.59,
+    "category": "Cuidado Capilar",
+    "image": "imagenes/0892-alp-d-pack-plusbelle-esencia-acon-x-300-cc-restauracion.jpg"
+  },
+  {
     "code": "10065",
     "name": "ALP D/PACK PLUSBELLE ESENCIA ACOND. NUTRICION X 300 CC (12)",
     "price": 2072.65,
@@ -14158,7 +14291,7 @@
     "name": "CAPSA ALK CUERDA PARA TENDER NRO 5 (12) 619",
     "price": 1009.66,
     "category": "Bazar y Ferretería",
-    "image": "imagenes/capsa-alk-cuerda-para-tender-nro-5-12-619.jpg"
+    "image": "imagenes/CAPSA ALK CUERDA PARA TENDER NRO 5 (12) 619.jpeg"
   },
   {
     "code": "316",
@@ -14581,6 +14714,13 @@
     "image": "imagenes/1412-mca-macao-gas-x-400-cc-grande.jpg"
   },
   {
+    "code": "3373",
+    "name": "MCA MACAO GOMA DE HONDA REFORZADA X 10 PARES",
+    "price": 6546.25,
+    "category": "Bazar y Ferretería",
+    "image": "imagenes/1413-mca-macao-goma-de-honda-reforzada-x-10-pares.jpg"
+  },
+  {
     "code": "4081",
     "name": "MCA MACAO GOMINES X 250 UNI",
     "price": 2001.85,
@@ -14859,145 +14999,5 @@
     "price": 23363.77,
     "category": "Bazar y Ferretería",
     "image": "imagenes/0579-vincha-sport-pack.jpg"
-  },
-  {
-    "code": "10062",
-    "name": "ALP D/PACK PLUSBELLE ESENCIA ACON. X 300 CC RESTAURACION",
-    "price": 2088.59,
-    "category": "Varios",
-    "image": "imagenes/0892-alp-d-pack-plusbelle-esencia-acon-x-300-cc-restauracion.jpg"
-  },
-  {
-    "code": "5221",
-    "name": "CAPSA BRK CEPILLO MULTIUSO CON MANGO (12)",
-    "price": 1450.22,
-    "category": "Varios",
-    "image": "imagenes/capsa-alk-cepillo-sanitario-con-soporte-12-420.jpg"
-  },
-  {
-    "code": "3701",
-    "name": "CILO ANILLOS DE LIMON X 400 GS (12)",
-    "price": 1500.39,
-    "category": "Varios",
-    "image": "imagenes/1459-cilo-anillos-de-limon-x-400-gs-12.jpg"
-  },
-  {
-    "code": "3703",
-    "name": "CILO ANILLOS DE VAINILLA X 400 GS (12)",
-    "price": 1500.39,
-    "category": "Varios",
-    "image": "imagenes/1460-cilo-anillos-de-vainilla-x-400-gs-12.jpg"
-  },
-  {
-    "code": "3825",
-    "name": "CILO CHIP X 300 GS (12)",
-    "price": 1500.39,
-    "category": "Varios",
-    "image": "imagenes/1461-cilo-chip-x-300-gs-12.jpg"
-  },
-  {
-    "code": "3724",
-    "name": "CILO SURTIDAS X 400 GS (12)",
-    "price": 1500.39,
-    "category": "Varios",
-    "image": "imagenes/1476-cilo-surtidas-x-400-gs-12.jpg"
-  },
-  {
-    "code": "510",
-    "name": "FEF BOTELLITAS DE WISKY X 20 UNID.",
-    "price": 25899.47,
-    "category": "Varios",
-    "image": "imagenes/0510-fef-botellitas-de-wisky-x-20-unid.jpg"
-  },
-  {
-    "code": "514",
-    "name": "FEF CHUPELATIN X 15 GRS",
-    "price": 990.55,
-    "category": "Varios",
-    "image": "imagenes/0022-fef-chupelatin-x-15-grs.jpg"
-  },
-  {
-    "code": "518",
-    "name": "FEF DIAB FORT X 50 GRS",
-    "price": 3700.36,
-    "category": "Varios",
-    "image": "imagenes/0023-fef-diab-fort-x-50-grs.jpg"
-  },
-  {
-    "code": "512",
-    "name": "FEF DISPLAY CERICET X 19 GRS X 24 UNI",
-    "price": 41383.94,
-    "category": "Varios",
-    "image": "imagenes/0024-fef-display-cericet-x-19-grs-x-24-uni.jpg"
-  },
-  {
-    "code": "520",
-    "name": "FEF FEELING X 20 GRS (30)",
-    "price": 587.52,
-    "category": "Varios",
-    "image": "imagenes/0030-fef-feeling-x-20-grs-30.jpg"
-  },
-  {
-    "code": "533",
-    "name": "FEF TIVIS X 25 GRS (20)",
-    "price": 858.31,
-    "category": "Varios",
-    "image": "imagenes/0046-fef-tivis-x-25-grs-20.jpg"
-  },
-  {
-    "code": "3439",
-    "name": "FEF WINNING 25 UNI X 20 GRS",
-    "price": 18246.41,
-    "category": "Varios",
-    "image": "imagenes/0049-fef-winning-25-uni-x-20-grs.jpg"
-  },
-  {
-    "code": "10064",
-    "name": "LDC BOMB. BILLIKEN CORAZON X 200 GRS SIN TACC",
-    "price": 2693.45,
-    "category": "Varios",
-    "image": "imagenes/0749-ldc-bomb-billiken-corazon-x-200-grs-sin-tacc.jpg"
-  },
-  {
-    "code": "3373",
-    "name": "MCA MACAO GOMA DE HONDA REFORZADA X 10 PARES",
-    "price": 6546.25,
-    "category": "Varios",
-    "image": "imagenes/1413-mca-macao-goma-de-honda-reforzada-x-10-pares.jpg"
-  },
-  {
-    "code": "5002",
-    "name": "MDZ ALFA TERRABUSI INTENSO SIN TACC X 55 G",
-    "price": 1494.36,
-    "category": "Varios",
-    "image": "imagenes/0091-mdz-alfa-terrabusi-intenso-sin-tacc-x-55-g.jpg"
-  },
-  {
-    "code": "2738",
-    "name": "MDZ ALFA. TERRABUSI BLANCO X 70 G (36)",
-    "price": 1405.12,
-    "category": "Varios",
-    "image": "imagenes/2738-mdz-alfa-terrabusi-blanco-x-70-g-36.jpg"
-  },
-  {
-    "code": "2579",
-    "name": "MDZ ALFA. TERRABUSI CLASICO X 50 GRS (48)",
-    "price": 961.31,
-    "category": "Varios",
-    "image": "imagenes/0098-mdz-alfa-terrabusi-clasico-x-50-grs.jpg"
-  },
-  {
-    "code": "2733",
-    "name": "MDZ ALFA. TERRABUSI CLASICO X 70 GRS",
-    "price": 1405.12,
-    "category": "Varios",
-    "image": "imagenes/0099-mdz-alfa-terrabusi-clasico-x-70-grs.jpg"
-  },
-  {
-    "code": "2646",
-    "name": "MDZ ALFA. TERRABUSI GLASEADO X 38 GRS",
-    "price": 961.31,
-    "category": "Varios",
-    "image": "imagenes/0100-mdz-alfa-terrabusi-glaseado-x-38-grs.jpg"
   }
 ]
