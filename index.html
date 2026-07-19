@@ -6729,13 +6729,18 @@ const DEFAULT_EDITS = {
     }
   };
 function normalizeCategory(cat, name = "", img = "") {
-  if (!cat) return "Varios";
+  const u = (name || "").toUpperCase();
+  if (u.includes('9 DE ORO') || u.includes('9 DEORO') || u.includes('BIZCOCHO') || u.includes('CRUJITAS') || u.includes('MINIBUDIN')) {
+    return 'Bizcochos y 9 de Oro';
+  }
+
+  if (!cat) cat = "Varios";
   const clean = cat.trim().toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]/g, '');
 
   const map = {
-        "bizcochosy9deoro": "Bizcochos y 9 de Oro",
+    "bizcochosy9deoro": "Bizcochos y 9 de Oro",
     "bizcochosypasteleria": "Bizcochos y 9 de Oro",
     "fideosypastas": "Fideos y Pastas",
     "cigarrillosytabaco": "Cigarrillos y Tabaco",
@@ -6770,7 +6775,10 @@ function normalizeCategory(cat, name = "", img = "") {
     "bazaryferreteria": "Bazar y Ferretería",
     "varios": "Bazar y Ferretería"
   };
-  return map[clean] || cat || "Varios";
+  
+  if (map[clean]) return map[clean];
+  if (clean.includes('bizcocho') || clean.includes('9deoro')) return "Bizcochos y 9 de Oro";
+  return cat || "Varios";
 }
 
 const CI = {
@@ -6996,12 +7004,8 @@ function processCSVRows(rows) {
     // Fallbacks for found headers
     if (codeIdx === -1) codeIdx = 0;
     if (nameIdx === -1) nameIdx = 1;
-    if (priceIdx === -1) {
-      priceIdx = (rows[0].length === 3) ? 2 : 3;
-    }
-    if (catIdx === -1) {
-      catIdx = (rows[0].length === 3) ? -1 : 2;
-    }
+    if (priceIdx === -1) priceIdx = 2;
+    // Don't default catIdx to column 2 if it's already used by price
   }
   
   for (let i = startRowIdx; i < rows.length; i++) {
@@ -7034,12 +7038,15 @@ function processCSVRows(rows) {
         p.name = name;
         p.price = price;
         p.outOfStock = false;
+        if (!p.category || p.category === "Varios" || p.category.includes(',')) {
+          p.category = window.codeToCat[p.code] || normalizeCategory("", name, p.image);
+        }
         if (minIdx !== -1 && r[minIdx]) p.unidad_min = parseInt(r[minIdx]) || 1;
       });
     } else {
       const image = window.codeToImg[code] || "";
       let cat = window.codeToCat[code] || "";
-      if (!cat && catIdx !== -1 && r[catIdx]) {
+      if (!cat && catIdx !== -1 && catIdx !== priceIdx && r[catIdx]) {
         cat = r[catIdx].trim();
       }
       cat = normalizeCategory(cat || "Varios", name, image);
