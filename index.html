@@ -204,69 +204,109 @@ body {
   font-size: 15px;
 }
 
-/* CATEGORY CAPSULES / CHIPS - MATCHING THE SCREENSHOT */
-.nav1, .nav2 {
-  background: #ffffff;
-  padding: 10px 16px;
+/* CATEGORY CAPSULES / CHIPS - VERTICAL SIDEBAR LAYOUT */
+.catalog-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 16px 20px;
   display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  border-bottom: 1px solid #e2e8f0;
-  align-items: center;
+  gap: 24px;
+  align-items: flex-start;
+}
+.catalog-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.sidebar-sec-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+.nav1, .nav2 {
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-x: visible;
+  border-bottom: none;
+  align-items: stretch;
+  width: 100%;
 }
 .nav1::-webkit-scrollbar, .nav2::-webkit-scrollbar {
   display: none;
 }
 .g1tab, .g2tab {
-  padding: 8px 16px;
+  width: 100%;
+  padding: 9px 12px;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  color: #64748b;
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 100px;
-  white-space: nowrap;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  white-space: normal;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: space-between;
+  gap: 8px;
   transition: all 0.2s ease;
   flex-shrink: 0;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
+  box-sizing: border-box;
 }
 .g1tab:hover, .g2tab:hover {
   color: #0f172a;
   border-color: #0f172a;
-  background: #f8fafc;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
 }
 .g1tab.active, .g2tab.active {
   color: #ffffff;
   background: #0f172a;
   border-color: #0f172a;
 }
+.g2tab {
+  font-size: 11px;
+}
 .g2tab .ico {
   font-size: 13px;
 }
 .g2tab .cnt {
-  background: #f1f5f9;
-  color: #64748b;
-  font-size: 9px;
-  padding: 1px 5px;
-  border-radius: 10px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 8px;
   font-weight: 700;
-  margin-left: 2px;
+  margin-left: auto;
 }
 .g2tab.active .cnt {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   color: #ffffff;
 }
 
 .lay {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px;
+  flex: 1;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 .tb {
   display: flex;
@@ -1214,6 +1254,30 @@ body {
 .toast.warn {
   background: var(--dr);
 }
+@media (max-width: 850px) {
+  .catalog-container {
+    flex-direction: column;
+    padding: 12px 10px;
+    gap: 12px;
+  }
+  .catalog-sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+    box-sizing: border-box;
+  }
+  .nav1, .nav2 {
+    flex-direction: row;
+    overflow-x: auto;
+    width: auto;
+  }
+  .g1tab, .g2tab {
+    width: auto;
+    white-space: nowrap;
+    border-radius: 100px;
+  }
+}
+
 @media (max-width: 700px) {
   .grid {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -1438,14 +1502,20 @@ body.cart-has-items #cart-form {
     <input type="text" id="sinp" placeholder="BUSCAR PRODUCTOS O CÓDIGO...">
   </div>
 </div>
-<div class="nav1" id="nav1"></div>
-<div class="nav2" id="nav2"></div>
-<div class="lay">
+<div class="catalog-container">
+  <aside class="catalog-sidebar">
+    <div class="sidebar-sec-title">Categorías</div>
+    <div class="nav1" id="nav1"></div>
+    <div class="sidebar-sec-title" style="margin-top: 14px;">Subcategorías</div>
+    <div class="nav2" id="nav2"></div>
+  </aside>
+  <div class="lay">
   <div class="tb">
     <div><div class="ctitle" id="ctitle">Catálogo BIANI</div><div class="csub"><span id="pcnt">0</span> productos cargados</div></div>
     <label class="stog" id="stog"><input type="checkbox" id="stChk" onchange="applyF()"> 🌾 Solo SIN TACC</label>
   </div>
   <div class="grid" id="grid"></div>
+</div>
 </div>
 <div class="cov" id="cov" onclick="togCart()"></div>
 <div class="cp" id="cp">
