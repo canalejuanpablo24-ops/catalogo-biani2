@@ -7697,6 +7697,20 @@ function loadAdminState() {
   try {
     // 1. Apply edits
     const localEdits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
+
+    // Sanitize localEdits for updated categories
+    const fecovitaSet = new Set(['107', '108', '109', '110', '111', '112', '113', '114', '115', '116', '117', '118', '1334', '4195']);
+    let localEditsModified = false;
+    for (const code in localEdits) {
+      if (fecovitaSet.has(code) && localEdits[code].category !== 'Bebidas') {
+        localEdits[code].category = 'Bebidas';
+        localEditsModified = true;
+      }
+    }
+    if (localEditsModified) {
+      localStorage.setItem(LS_K.edits, JSON.stringify(localEdits));
+    }
+
     const edits = { ...DEFAULT_EDITS, ...localEdits };
     for (const c in edits) {
       const p = prods.find(x => x.code === c);
