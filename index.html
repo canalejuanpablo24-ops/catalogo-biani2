@@ -6747,7 +6747,7 @@ function normalizeCategory(cat, name = "", img = "") {
     "Alfajores", "Varios", "Chocolates", "Cereales", "Pastillas", "Galletitas",
     "Chicles", "Gomitas", "Caramelos", "Jugos", "Despensa", "Yerbas", "Bic",
     "Pilas", "Lámparas", "Pegamentos", "Higiene", "Chupetines", "Turrones",
-    "Papelería", "Perfumería", "Detergentes", "Limpieza", "Pipas", "Bebidas", "Snacks"
+    "Nuevos y Sin Imagen", "Papelería", "Perfumería", "Detergentes", "Limpieza", "Pipas", "Bebidas", "Snacks"
   ];
   
   if (cat && validCats.includes(cat.trim())) {
@@ -6760,6 +6760,7 @@ function normalizeCategory(cat, name = "", img = "") {
     .replace(/[^a-z0-9]/g, '');
 
   const map = {
+    "nuevosysinimagen": "Nuevos y Sin Imagen",
     "alfajores": "Alfajores",
     "chocolates": "Chocolates",
     "cereales": "Cereales",
@@ -6820,6 +6821,7 @@ function normalizeCategory(cat, name = "", img = "") {
 }
 
 const CI = {
+  "Nuevos y Sin Imagen": "🆕",
   "Alfajores": "🥮",
   "Varios": "📦",
   "Chocolates": "🍫",
@@ -6849,6 +6851,7 @@ const CI = {
 };
 
 const GR = {
+  "🆕 Nuevos / Sin Imagen": ["Nuevos y Sin Imagen"],
   "🥮 Chocolates y Alfajores": ["Alfajores", "Chocolates"],
   "🍭 Golosinas": ["Caramelos", "Pastillas", "Chupetines", "Gomitas", "Turrones", "Chicles", "Pipas"],
   "🍪 Galletitas y Snacks": ["Galletitas", "Cereales", "Snacks"],
@@ -6955,7 +6958,11 @@ async function loadDatabase() {
       prods = fallbackProds.map(p => {
         let cat = p.category || "Varios";
         let image = window.codeToImg[p.code] || p.image || "";
-        cat = normalizeCategory(cat, p.name, image);
+        if (!image || image.trim() === "") {
+          cat = "Nuevos y Sin Imagen";
+        } else {
+          cat = normalizeCategory(cat, p.name, image);
+        }
         return { 
           unidad_min: 1,
           ...p, 
@@ -7067,18 +7074,23 @@ function processCSVRows(rows) {
         p.name = name;
         p.price = price;
         p.outOfStock = false;
-        if (!p.category || p.category === "Varios" || p.category.includes(',')) {
+        if (!p.image || p.image.trim() === "") {
+          p.category = "Nuevos y Sin Imagen";
+        } else if (!p.category || p.category === "Varios" || p.category.includes(',')) {
           p.category = window.codeToCat[p.code] || normalizeCategory("", name, p.image);
         }
         if (minIdx !== -1 && r[minIdx]) p.unidad_min = parseInt(r[minIdx]) || 1;
       });
     } else {
       const image = window.codeToImg[code] || "";
-      let cat = window.codeToCat[code] || "";
-      if (!cat && catIdx !== -1 && catIdx !== priceIdx && r[catIdx]) {
-        cat = r[catIdx].trim();
+      let cat = "Nuevos y Sin Imagen";
+      if (image && image.trim() !== "") {
+        cat = window.codeToCat[code] || "";
+        if (!cat && catIdx !== -1 && catIdx !== priceIdx && r[catIdx]) {
+          cat = r[catIdx].trim();
+        }
+        cat = normalizeCategory(cat || "Varios", name, image);
       }
-      cat = normalizeCategory(cat || "Varios", name, image);
       
       prods.push({
         code: code,
@@ -7743,7 +7755,8 @@ function loadAdminState() {
       order = window.pdfOrder;
     }
     if (order.length > 0) {
-      const map = {};
+      const map = {
+    "nuevosysinimagen": "Nuevos y Sin Imagen",};
       prods.forEach(p => { map[p.code] = p; });
       const inOrder = new Set(order);
       const ordered = [];
@@ -7832,7 +7845,8 @@ function initSortable() {
       
       const vis = new Set(codes);
       const rest = prods.filter(p => !vis.has(p.code));
-      const map = {};
+      const map = {
+    "nuevosysinimagen": "Nuevos y Sin Imagen",};
       prods.forEach(p => { map[p.code] = p; });
       const reordered = codes.map(c => map[c]).filter(Boolean);
       prods = reordered.concat(rest);
