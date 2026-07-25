@@ -1,0 +1,21 @@
+{
+  "name": "catalogo-biani",
+  "version": "2.0.0",
+  "description": "Catálogo digital profesional responsivo con integración a Google Sheets y WhatsApp",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "lint": "node ./scripts/lint_check.js",
+    "validate": "npm run lint && npm run test"
+  },
+  "keywords": [
+    "catalogo",
+    "pwa",
+    "google-sheets",
+    "whatsapp",
+    "ecommerce"
+  ],
+  "author": "BIANI",
+  "license": "MIT"
+}
