@@ -7636,24 +7636,30 @@ function levenshteinDist(a, b) {
 function isWordFuzzyMatch(qWord, targetWords) {
   if (!qWord || qWord.length === 0) return true;
   
-  // 1. Direct substring in any target word
+  // 1. Direct substring or prefix in any target word
   for (let i = 0; i < targetWords.length; i++) {
     const tWord = targetWords[i];
-    if (tWord.includes(qWord) || (qWord.length >= 3 && qWord.includes(tWord))) {
+    if (tWord.includes(qWord) || tWord.startsWith(qWord) || (qWord.length >= 3 && qWord.includes(tWord))) {
       return true;
     }
   }
 
   // 2. Typo distance tolerance based on word length
   const qLen = qWord.length;
-  if (qLen < 3) return false;
+  if (qLen < 2) return false;
 
   const maxDist = qLen <= 4 ? 1 : (qLen <= 7 ? 2 : 3);
 
   for (let i = 0; i < targetWords.length; i++) {
     const tWord = targetWords[i];
-    if (Math.abs(tWord.length - qLen) <= maxDist) {
+    // Check full Levenshtein
+    if (Math.abs(tWord.length - qLen) <= maxDist + 1) {
       if (levenshteinDist(qWord, tWord) <= maxDist) return true;
+    }
+    // Check prefix Levenshtein (e.g. "galet" matching "galletitas")
+    if (tWord.length > qLen && qLen >= 3) {
+      const tPrefix = tWord.substring(0, qLen);
+      if (levenshteinDist(qWord, tPrefix) <= 1) return true;
     }
   }
 
@@ -7667,12 +7673,21 @@ function matchesProductSearch(product, query) {
   const normCode = String(product.code || '').toLowerCase().trim();
   if (normCode.includes(normQ) || normCode === normQ) return true;
 
-  const fullTargetStr = normSearchText(`${product.code} ${product.name} ${product.category || ''}`);
+  const extraDesc = (window.codeToDesc && window.codeToDesc[product.code]) ? window.codeToDesc[product.code] : '';
+  const fullTargetStr = normSearchText(`${product.code} ${product.name} ${product.category || ''} ${extraDesc}`);
+  
+  // Direct substring match across whole product text (fast path)
   if (fullTargetStr.includes(normQ)) return true;
+
+  // No-spaces match (e.g. "cocacola" vs "coca cola", "9deoro" vs "9 de oro")
+  const noSpaceTarget = fullTargetStr.replace(/\s+/g, '');
+  const noSpaceQ = normQ.replace(/\s+/g, '');
+  if (noSpaceTarget.includes(noSpaceQ)) return true;
 
   const queryWords = normQ.split(' ').filter(w => w.length > 0);
   const targetWords = fullTargetStr.split(' ').filter(w => w.length > 0);
 
+  // Every word typed in query must match at least one word in target
   return queryWords.every(qWord => isWordFuzzyMatch(qWord, targetWords));
 }
 
@@ -7680,12 +7695,23 @@ function applyF() {
   st = document.getElementById('stChk').checked;
   document.getElementById('stog').classList.toggle('active', st);
   let r = prods;
-  if (curC) r = r.filter(p => p.category === curC);
-  else if (curG) r = r.filter(p => GR[curG] && GR[curG].includes(p.category));
-  if (st) r = r.filter(p => p.name.includes('SIN TACC') || p.name.includes('SIN TAC'));
-  if (q) {
-    r = r.filter(p => matchesProductSearch(p, q));
+
+  const trimmedQ = (q || '').trim();
+
+  // CRITICAL: When typing a search query, search across ALL products in the store
+  if (trimmedQ) {
+    r = r.filter(p => matchesProductSearch(p, trimmedQ));
+    const titleEl = document.getElementById('ctitle');
+    if (titleEl) titleEl.textContent = `Búsqueda: "${trimmedQ}"`;
+  } else {
+    if (curC) r = r.filter(p => p.category === curC);
+    else if (curG) r = r.filter(p => GR[curG] && GR[curG].includes(p.category));
+    const titleEl = document.getElementById('ctitle');
+    if (titleEl) titleEl.textContent = curC || 'Catálogo BIANI';
   }
+
+  if (st) r = r.filter(p => p.name.includes('SIN TACC') || p.name.includes('SIN TAC'));
+
   filt = r;
   renderProds();
 }
