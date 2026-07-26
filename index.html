@@ -7702,41 +7702,72 @@ const SEARCH_SYNONYMS = {
   'chocolate': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot']
 };
 
-function matchesProductSearch(product, query) {
+function getProductSearchScore(product, query) {
   const normQ = normSearchText(query);
-  if (!normQ) return true;
-
-  const normCode = String(product.code || '').toLowerCase().trim();
-  if (normCode.includes(normQ) || normCode === normQ) return true;
+  if (!normQ) return 1;
 
   const extraDesc = (window.codeToDesc && window.codeToDesc[product.code]) ? window.codeToDesc[product.code] : '';
   const imgFilename = String(product.image || '').toLowerCase();
-  
-  // Include code, name, category, description and image filename in search
-  const fullTargetStr = normSearchText(`${product.code} ${product.name} ${product.category || ''} ${extraDesc} ${imgFilename}`);
-  
-  // Direct substring match across whole product text (fast path)
-  if (fullTargetStr.includes(normQ)) return true;
 
-  // No-spaces match (e.g. "cocacola" vs "coca cola", "9deoro" vs "9 de oro")
-  const noSpaceTarget = fullTargetStr.replace(/\s+/g, '');
+  const nameNorm = normSearchText(product.name);
+  const catNorm = normSearchText(product.category || '');
+  const codeNorm = String(product.code || '').toLowerCase().trim();
+  const descNorm = normSearchText(extraDesc);
+  const imgNorm = normSearchText(imgFilename);
+
+  const fullTarget = `${codeNorm} ${nameNorm} ${catNorm} ${descNorm} ${imgNorm}`;
+
+  let score = 0;
+
+  // 1. Exact full query match in title or target
+  if (nameNorm.includes(normQ)) score += 1000;
+  else if (fullTarget.includes(normQ)) score += 800;
+
+  const noSpaceTarget = fullTarget.replace(/\s+/g, '');
   const noSpaceQ = normQ.replace(/\s+/g, '');
-  if (noSpaceTarget.includes(noSpaceQ)) return true;
+  if (noSpaceTarget.includes(noSpaceQ)) score += 500;
 
   const queryWords = normQ.split(' ').filter(w => w.length > 0);
-  const targetWords = fullTargetStr.split(' ').filter(w => w.length > 0);
+  const targetWords = fullTarget.split(' ').filter(w => w.length > 0);
+  const targetStems = targetWords.map(stripSpanishPlural);
 
-  // Synonyms expansion check
+  let matchedWordsCount = 0;
+
   for (const qWord of queryWords) {
-    const synList = SEARCH_SYNONYMS[qWord];
-    if (synList) {
-      const hasSynMatch = synList.some(syn => targetWords.some(tw => tw.includes(syn) || syn.includes(tw)));
-      if (hasSynMatch) return true;
+    const qStem = stripSpanishPlural(qWord);
+    let wordMatched = false;
+
+    // Direct word or stem match in title/code
+    if (nameNorm.includes(qWord) || nameNorm.includes(qStem) || codeNorm.includes(qWord)) {
+      score += 200;
+      wordMatched = true;
+    } else if (targetWords.some(tw => tw.includes(qWord) || tw.includes(qStem) || qWord.includes(tw))) {
+      score += 100;
+      wordMatched = true;
+    } else if (targetStems.some(ts => ts.includes(qStem) || qStem.includes(ts))) {
+      score += 80;
+      wordMatched = true;
+    }
+
+    if (wordMatched) {
+      matchedWordsCount++;
     }
   }
 
-  // Every word typed in query must match at least one word in target
-  return queryWords.every(qWord => isWordFuzzyMatch(qWord, targetWords));
+  // Multi-word query require ALL query words or stems to match unless score is high
+  if (queryWords.length > 1 && matchedWordsCount < queryWords.length && score < 500) {
+    return 0;
+  }
+
+  if (matchedWordsCount === 0 && score === 0) {
+    return 0;
+  }
+
+  return score;
+}
+
+function matchesProductSearch(product, query) {
+  return getProductSearchScore(product, query) > 0;
 }
 
 function applyF() {
@@ -7746,9 +7777,16 @@ function applyF() {
 
   const trimmedQ = (q || '').trim();
 
-  // CRITICAL: When typing a search query, search across ALL products in the store
   if (trimmedQ) {
-    r = r.filter(p => matchesProductSearch(p, trimmedQ));
+    const scoredList = [];
+    r.forEach(p => {
+      const s = getProductSearchScore(p, trimmedQ);
+      if (s > 0) {
+        scoredList.push({ score: s, prod: p });
+      }
+    });
+    scoredList.sort((a, b) => b.score - a.score);
+    r = scoredList.map(item => item.prod);
     const titleEl = document.getElementById('ctitle');
     if (titleEl) titleEl.textContent = `Búsqueda: "${trimmedQ}"`;
   } else {
