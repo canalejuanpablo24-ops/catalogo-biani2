@@ -214,28 +214,6 @@ body {
   pointer-events: none;
   font-size: 15px;
 }
-.vision-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: #0f172a;
-  color: #ffffff;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-  margin-left: 8px;
-  margin-right: 6px;
-  user-select: none;
-  box-shadow: 0 2px 6px rgba(15,23,42,0.15);
-}
-.vision-btn:hover {
-  background: #e63946;
-  transform: scale(1.04);
-}
 
 /* CATEGORY CAPSULES / CHIPS - VERTICAL SIDEBAR LAYOUT */
 .catalog-container {
@@ -1323,7 +1301,7 @@ body {
     gap: 12px !important;
   }
   .card-img-container {
-    height: 185px !important;
+    height: 160px !important;
   }
   .hl span, .bu span {
     display: none;
@@ -1536,11 +1514,9 @@ body.cart-has-items #cart-form {
   </div>
 </header>
 <div class="search-banner">
-  <div class="sw" style="display: flex; align-items: center; width: 100%;">
+  <div class="sw">
     <span class="si">🔍</span>
-    <input type="text" id="sinp" placeholder="BUSCAR PRODUCTOS O CÓDIGO..." style="flex: 1;">
-    <label for="visionFileInp" class="vision-btn" title="Buscar por Foto / Visión AI">📷 Visión AI</label>
-    <input type="file" id="visionFileInp" accept="image/*" style="display:none" onchange="handleVisionImageSearch(this)">
+    <input type="text" id="sinp" placeholder="BUSCAR PRODUCTOS O CÓDIGO...">
   </div>
 </div>
 <div class="catalog-container">
@@ -7627,11 +7603,20 @@ function selC(el, c) {
   if (titleEl) titleEl.textContent = c || 'Catálogo BIANI';
 }
 
+function stripSpanishPlural(w) {
+  if (!w || w.length <= 3) return w;
+  if (w.endsWith('es') && w.length > 4) return w.slice(0, -2);
+  if (w.endsWith('s') && !w.endsWith('is') && !w.endsWith('us')) return w.slice(0, -1);
+  return w;
+}
+
 // HELPER FOR FUZZY & TYPO-TOLERANT SEARCH
 function normSearchText(str) {
   if (!str) return '';
   return String(str)
     .toLowerCase()
+    .replace(/\ufffd/g, 'n')
+    .replace(/ñ/g, 'n')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]/g, ' ')
@@ -7660,30 +7645,36 @@ function levenshteinDist(a, b) {
 function isWordFuzzyMatch(qWord, targetWords) {
   if (!qWord || qWord.length === 0) return true;
   
-  // 1. Direct substring or prefix in any target word
+  const qStem = stripSpanishPlural(qWord);
+
+  // 1. Direct substring, prefix or stem match in any target word
   for (let i = 0; i < targetWords.length; i++) {
     const tWord = targetWords[i];
-    if (tWord.includes(qWord) || tWord.startsWith(qWord) || (qWord.length >= 3 && qWord.includes(tWord))) {
+    const tStem = stripSpanishPlural(tWord);
+
+    if (tWord.includes(qWord) || tWord.includes(qStem) || qWord.includes(tWord) || qWord.includes(tStem) ||
+        tWord.startsWith(qWord) || tWord.startsWith(qStem) || tStem.startsWith(qStem)) {
       return true;
     }
   }
 
   // 2. Typo distance tolerance based on word length
-  const qLen = qWord.length;
+  const qLen = qStem.length;
   if (qLen < 2) return false;
 
   const maxDist = qLen <= 4 ? 1 : (qLen <= 7 ? 2 : 3);
 
   for (let i = 0; i < targetWords.length; i++) {
     const tWord = targetWords[i];
-    // Check full Levenshtein
+    const tStem = stripSpanishPlural(tWord);
+    // Check full Levenshtein on word and stem
     if (Math.abs(tWord.length - qLen) <= maxDist + 1) {
-      if (levenshteinDist(qWord, tWord) <= maxDist) return true;
+      if (levenshteinDist(qWord, tWord) <= maxDist || levenshteinDist(qStem, tStem) <= maxDist) return true;
     }
     // Check prefix Levenshtein (e.g. "galet" matching "galletitas")
     if (tWord.length > qLen && qLen >= 3) {
       const tPrefix = tWord.substring(0, qLen);
-      if (levenshteinDist(qWord, tPrefix) <= 1) return true;
+      if (levenshteinDist(qWord, tPrefix) <= 1 || levenshteinDist(qStem, tPrefix) <= 1) return true;
     }
   }
 
@@ -7691,10 +7682,10 @@ function isWordFuzzyMatch(qWord, targetWords) {
 }
 
 const SEARCH_SYNONYMS = {
-  'panal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg'],
-  'panales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg'],
-  'pañal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg'],
-  'pañales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg'],
+  'panal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
+  'panales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
+  'pañal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
+  'pañales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
   'gaseosa': ['gaseosa', 'gaseosas', 'coca', 'pepsi', 'manaos', 'secco', 'sprite', '7up', 'bebida', 'bebidas'],
   'gaseosas': ['gaseosa', 'gaseosas', 'coca', 'pepsi', 'manaos', 'secco', 'sprite', '7up', 'bebida', 'bebidas'],
   'galletita': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas', 'snack'],
@@ -7710,45 +7701,6 @@ const SEARCH_SYNONYMS = {
   'chocolates': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot'],
   'chocolate': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot']
 };
-
-function handleVisionImageSearch(input) {
-  if (!input.files || !input.files[0]) return;
-  const file = input.files[0];
-  showToast('📷 Analizando foto con Visión AI...', 'ok');
-  
-  const fileName = file.name.toLowerCase();
-  let terms = fileName.replace(/\.[^/.]+$/, "").replace(/[^a-z0-9]/g, " ").trim();
-  
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const img = new Image();
-    img.onload = function() {
-      let detectedQuery = terms;
-
-      if (terms.includes("panal") || terms.includes("pañal") || terms.includes("huggies") || terms.includes("duffy") || terms.includes("diaper") || terms.includes("baby")) {
-        detectedQuery = "pañal";
-      } else if (terms.includes("coca") || terms.includes("drink") || terms.includes("botella") || terms.includes("gaseosa")) {
-        detectedQuery = "gaseosa";
-      } else if (terms.includes("galleta") || terms.includes("biscuit") || terms.includes("snack")) {
-        detectedQuery = "galletita";
-      }
-
-      if (!detectedQuery || detectedQuery.length < 2) {
-        detectedQuery = "pañal";
-      }
-
-      const sinp = document.getElementById('sinp');
-      if (sinp) {
-        sinp.value = detectedQuery;
-        q = detectedQuery;
-        applyF();
-        showToast(`🔍 Visión AI identificó: "${detectedQuery}"`, 'ok');
-      }
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
 
 function matchesProductSearch(product, query) {
   const normQ = normSearchText(query);
