@@ -1592,7 +1592,7 @@ body.cart-has-items #cart-form {
     <div class="logo-text">BIANI</div>
   </div>
   <div class="ha">
-    <button class="bu btn-settings" onclick="openMod()" title="Configuración">⚙️</button>
+    <button class="bu btn-settings" onclick="openProtectedAdminSettings()" title="Configuración y Administración Protegida">⚙️</button>
     <button class="cb btn-cart" onclick="togCart()">🛒 <span class="cc" id="ccnt">0</span></button>
   </div>
 </header>
@@ -1652,11 +1652,29 @@ body.cart-has-items #cart-form {
     <button class="clr" onclick="clrCart()">🗑 Vaciar pedido</button>
   </div>
 </div>
-<!-- SETTINGS AND PDF UPDATE MODAL -->
+<!-- SETTINGS AND ADMIN MODAL -->
 <div class="mo" id="mo" onclick="closeBg(event)">
   <div class="mb">
-    <div class="mh"><span>⚙️</span><div class="mt">Configuración y Precios</div><button class="mc" onclick="closeMod()">✕</button></div>
+    <div class="mh"><span>⚙️</span><div class="mt">Configuración y Administración</div><button class="mc" onclick="closeMod()">✕</button></div>
     <div class="mbd">
+      <!-- ADMIN ACTIONS SECTION -->
+      <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 20px;">
+        <h3 style="font-size: 14px; color: #0f172a; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+          <span>🔒 Panel de Administración</span>
+          <span style="font-size: 11px; background: #dcfce7; color: #166534; padding: 3px 8px; border-radius: 12px; font-weight: 700;">AUTENTICADO</span>
+        </h3>
+        <p style="font-size: 12px; color: #475569; margin-bottom: 12px; line-height: 1.4;">
+          Acceso concedido mediante clave. Podés editar precios, títulos, categorías, imágenes, eliminar productos o reordenar tarjetas en el catálogo.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+          <button class="bp" onclick="openAddModal(); closeMod();" style="font-size: 12px; padding: 8px 10px; background: #e63946;">➕ Agregar Producto</button>
+          <button class="bp" onclick="saveOrder(); toast('💾 Orden guardado', 'ok');" style="font-size: 12px; padding: 8px 10px; background: #0f172a;">💾 Guardar Orden</button>
+          <button class="bp" onclick="exportAdminConfig()" style="font-size: 12px; padding: 8px 10px; background: #4f46e5;">📤 Exportar Cambios</button>
+          <button class="bs" onclick="admReset()" style="font-size: 12px; padding: 8px 10px; color: #ef4444; border-color: #fca5a5;">🗑️ Restablecer Todo</button>
+        </div>
+        <button class="bs" onclick="exitAdmin(); closeMod();" style="width: 100%; margin-top: 10px; font-size: 12px; padding: 8px; color: #64748b;">🔒 Salir de Administración</button>
+      </div>
+
       <!-- GOOGLE SHEETS INTEGRATION -->
       <h3 style="font-size: 15px; color: var(--az2); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">🔗 Google Sheets Database</h3>
       <p class="md">Ingresá el ID de tu Google Sheet compartida públicamente. El catálogo se sincronizará automáticamente al instante.</p>
@@ -1695,10 +1713,6 @@ body.cart-has-items #cart-form {
 
 <!-- ADMIN HTML COMPONENTS -->
 <div class="adm-badge" id="adm-badge">⚙️ Modo Administrador Activo · Los cambios se guardan localmente</div>
-
-<div class="adm-fab" id="adm-fab-container">
-  <button class="adm-fab-btn" id="adm-fab">🔒</button>
-</div>
 
 <div class="adm-login" id="adm-login">
   <div class="adm-login-box">
@@ -8473,6 +8487,19 @@ function loadAdminState() {
   }
 }
 
+function openProtectedAdminSettings() {
+  if (ADMIN_ON) {
+    openMod();
+  } else {
+    pinBuf = '';
+    updatePinDots();
+    const errEl = document.getElementById('pin-err');
+    if (errEl) errEl.style.display = 'none';
+    const loginModal = document.getElementById('adm-login');
+    if (loginModal) loginModal.classList.add('on');
+  }
+}
+
 async function enterAdmin() {
   if (typeof Sortable === 'undefined') {
     showLoading(true);
@@ -8489,9 +8516,13 @@ async function enterAdmin() {
 
   ADMIN_ON = true;
   document.body.classList.add('adm');
-  document.getElementById('adm-panel').classList.add('on');
-  document.getElementById('adm-fab').classList.add('active');
-  document.getElementById('adm-fab').textContent = '🔓';
+  const panel = document.getElementById('adm-panel');
+  if (panel) panel.classList.add('on');
+  const fab = document.getElementById('adm-fab');
+  if (fab) {
+    fab.classList.add('active');
+    fab.textContent = '🔓';
+  }
   updateAdmStat();
   applyF(); // re-render with handles
   initSortable();
@@ -8502,9 +8533,13 @@ function exitAdmin() {
   cancelCardMove();
   ADMIN_ON = false;
   document.body.classList.remove('adm');
-  document.getElementById('adm-panel').classList.remove('on');
-  document.getElementById('adm-fab').classList.remove('active');
-  document.getElementById('adm-fab').textContent = '🔒';
+  const panel = document.getElementById('adm-panel');
+  if (panel) panel.classList.remove('on');
+  const fab = document.getElementById('adm-fab');
+  if (fab) {
+    fab.classList.remove('active');
+    fab.textContent = '🔒';
+  }
   if (sortInst) {
     sortInst.destroy();
     sortInst = null;
@@ -8732,6 +8767,7 @@ document.querySelectorAll('.pin-key').forEach(btn => {
       if (pinBuf === ADMIN_PIN) {
         document.getElementById('adm-login').classList.remove('on');
         enterAdmin();
+        openMod();
       } else {
         document.getElementById('pin-err').style.display = 'block';
         pinBuf = '';
@@ -8743,6 +8779,7 @@ document.querySelectorAll('.pin-key').forEach(btn => {
           setTimeout(function() {
             document.getElementById('adm-login').classList.remove('on');
             enterAdmin();
+            openMod();
           }, 150);
         } else {
           document.getElementById('pin-err').style.display = 'block';
@@ -8752,17 +8789,6 @@ document.querySelectorAll('.pin-key').forEach(btn => {
     }
     updatePinDots();
   });
-});
-
-document.getElementById('adm-fab').addEventListener('click', function() {
-  if (ADMIN_ON) {
-    exitAdmin();
-  } else {
-    pinBuf = '';
-    updatePinDots();
-    document.getElementById('pin-err').style.display = 'none';
-    document.getElementById('adm-login').classList.add('on');
-  }
 });
 
 document.getElementById('adm-panel-close').addEventListener('click', function() {
@@ -8776,7 +8802,7 @@ document.getElementById('adm-save-btn').addEventListener('click', function() {
   updateAdmStat();
   toast('💾 Orden guardado', 'ok');
 });
-document.getElementById('adm-export-btn').addEventListener('click', function() {
+function exportAdminConfig() {
   const config = {
     order: JSON.parse(localStorage.getItem(LS_K.order) || '[]'),
     edits: JSON.parse(localStorage.getItem(LS_K.edits) || '{}'),
@@ -8791,7 +8817,10 @@ document.getElementById('adm-export-btn').addEventListener('click', function() {
   document.execCommand('copy');
   document.body.removeChild(el);
   alert("¡Configuración copiada al portapapeles! Pegala en el chat para que el asistente la guarde permanentemente.");
-});
+}
+
+const exportBtn = document.getElementById('adm-export-btn');
+if (exportBtn) exportBtn.addEventListener('click', exportAdminConfig);
 document.getElementById('adm-reset-btn').addEventListener('click', admReset);
 document.getElementById('adm-modal-close').addEventListener('click', closeEditModal);
 document.getElementById('adm-modal-cancel').addEventListener('click', closeEditModal);
