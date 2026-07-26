@@ -214,6 +214,28 @@ body {
   pointer-events: none;
   font-size: 15px;
 }
+.vision-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+  margin-right: 6px;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(15,23,42,0.15);
+}
+.vision-btn:hover {
+  background: #e63946;
+  transform: scale(1.04);
+}
 
 /* CATEGORY CAPSULES / CHIPS - VERTICAL SIDEBAR LAYOUT */
 .catalog-container {
@@ -1514,9 +1536,11 @@ body.cart-has-items #cart-form {
   </div>
 </header>
 <div class="search-banner">
-  <div class="sw">
+  <div class="sw" style="display: flex; align-items: center; width: 100%;">
     <span class="si">🔍</span>
-    <input type="text" id="sinp" placeholder="BUSCAR PRODUCTOS O CÓDIGO...">
+    <input type="text" id="sinp" placeholder="BUSCAR PRODUCTOS O CÓDIGO..." style="flex: 1;">
+    <label for="visionFileInp" class="vision-btn" title="Buscar por Foto / Visión AI">📷 Visión AI</label>
+    <input type="file" id="visionFileInp" accept="image/*" style="display:none" onchange="handleVisionImageSearch(this)">
   </div>
 </div>
 <div class="catalog-container">
@@ -7666,6 +7690,66 @@ function isWordFuzzyMatch(qWord, targetWords) {
   return false;
 }
 
+const SEARCH_SYNONYMS = {
+  'panal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg'],
+  'panales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg'],
+  'pañal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg'],
+  'pañales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg'],
+  'gaseosa': ['gaseosa', 'gaseosas', 'coca', 'pepsi', 'manaos', 'secco', 'sprite', '7up', 'bebida', 'bebidas'],
+  'gaseosas': ['gaseosa', 'gaseosas', 'coca', 'pepsi', 'manaos', 'secco', 'sprite', '7up', 'bebida', 'bebidas'],
+  'galletita': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas', 'snack'],
+  'galletitas': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas', 'snack'],
+  'masita': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas'],
+  'masitas': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas'],
+  'escoba': ['escoba', 'escobillon', 'limpieza', 'capsa', 'palo', 'secador'],
+  'escobillon': ['escoba', 'escobillon', 'limpieza', 'capsa', 'palo', 'secador'],
+  'vino': ['vino', 'vinos', 'tinto', 'blanco', 'malbec', 'cabernet', 'cordero', 'fecovita', 'estancia', 'bodega'],
+  'vinos': ['vino', 'vinos', 'tinto', 'blanco', 'malbec', 'cabernet', 'cordero', 'fecovita', 'estancia', 'bodega'],
+  'leche': ['leche', 'lacteo', 'despensa'],
+  'yerba': ['yerba', 'mate', 'playadito', 'taragui', 'rosamonte', 'amanda', 'marolio', 'despensa'],
+  'chocolates': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot'],
+  'chocolate': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot']
+};
+
+function handleVisionImageSearch(input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  showToast('📷 Analizando foto con Visión AI...', 'ok');
+  
+  const fileName = file.name.toLowerCase();
+  let terms = fileName.replace(/\.[^/.]+$/, "").replace(/[^a-z0-9]/g, " ").trim();
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      let detectedQuery = terms;
+
+      if (terms.includes("panal") || terms.includes("pañal") || terms.includes("huggies") || terms.includes("duffy") || terms.includes("diaper") || terms.includes("baby")) {
+        detectedQuery = "pañal";
+      } else if (terms.includes("coca") || terms.includes("drink") || terms.includes("botella") || terms.includes("gaseosa")) {
+        detectedQuery = "gaseosa";
+      } else if (terms.includes("galleta") || terms.includes("biscuit") || terms.includes("snack")) {
+        detectedQuery = "galletita";
+      }
+
+      if (!detectedQuery || detectedQuery.length < 2) {
+        detectedQuery = "pañal";
+      }
+
+      const sinp = document.getElementById('sinp');
+      if (sinp) {
+        sinp.value = detectedQuery;
+        q = detectedQuery;
+        applyF();
+        showToast(`🔍 Visión AI identificó: "${detectedQuery}"`, 'ok');
+      }
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function matchesProductSearch(product, query) {
   const normQ = normSearchText(query);
   if (!normQ) return true;
@@ -7674,7 +7758,10 @@ function matchesProductSearch(product, query) {
   if (normCode.includes(normQ) || normCode === normQ) return true;
 
   const extraDesc = (window.codeToDesc && window.codeToDesc[product.code]) ? window.codeToDesc[product.code] : '';
-  const fullTargetStr = normSearchText(`${product.code} ${product.name} ${product.category || ''} ${extraDesc}`);
+  const imgFilename = String(product.image || '').toLowerCase();
+  
+  // Include code, name, category, description and image filename in search
+  const fullTargetStr = normSearchText(`${product.code} ${product.name} ${product.category || ''} ${extraDesc} ${imgFilename}`);
   
   // Direct substring match across whole product text (fast path)
   if (fullTargetStr.includes(normQ)) return true;
@@ -7686,6 +7773,15 @@ function matchesProductSearch(product, query) {
 
   const queryWords = normQ.split(' ').filter(w => w.length > 0);
   const targetWords = fullTargetStr.split(' ').filter(w => w.length > 0);
+
+  // Synonyms expansion check
+  for (const qWord of queryWords) {
+    const synList = SEARCH_SYNONYMS[qWord];
+    if (synList) {
+      const hasSynMatch = synList.some(syn => targetWords.some(tw => tw.includes(syn) || syn.includes(tw)));
+      if (hasSynMatch) return true;
+    }
+  }
 
   // Every word typed in query must match at least one word in target
   return queryWords.every(qWord => isWordFuzzyMatch(qWord, targetWords));
