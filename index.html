@@ -1271,27 +1271,115 @@ body {
 .toast.warn {
   background: var(--dr);
 }
+.mobile-cat-btn {
+  display: none;
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+.mobile-cat-btn:hover, .mobile-cat-btn:active {
+  background: #e63946;
+  border-color: #e63946;
+}
+.sidebar-header-mobile {
+  display: none;
+}
+.cat-cov {
+  display: none;
+}
+
 @media (max-width: 850px) {
+  .mobile-cat-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .cat-cov {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 350;
+    backdrop-filter: blur(2px);
+    transition: opacity 0.3s ease;
+  }
+  .cat-cov.open {
+    display: block;
+  }
+
   .catalog-container {
     flex-direction: column;
     padding: 12px 10px;
     gap: 12px;
   }
   .catalog-sidebar {
-    width: 100%;
-    position: static;
-    max-height: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 290px;
+    max-width: 85vw;
+    background: #ffffff;
+    z-index: 360;
+    box-shadow: 4px 0 28px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 16px 14px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
   }
-  .nav1, .nav2 {
-    flex-direction: row;
-    overflow-x: auto;
-    width: auto;
+  .catalog-sidebar.open {
+    transform: translateX(0);
   }
-  .g1tab, .g2tab {
-    width: auto;
-    white-space: nowrap;
-    border-radius: 100px;
+  .sidebar-header-mobile {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1.5px solid #e2e8f0;
+  }
+  .sidebar-header-mobile h3 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .sidebar-close-btn {
+    background: #f1f5f9;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 700;
+    color: #475569;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav2 {
+    flex-direction: column !important;
+    overflow-x: visible !important;
+    width: 100% !important;
+  }
+  .g2tab {
+    width: 100% !important;
+    white-space: normal !important;
+    border-radius: 8px !important;
   }
 }
 
@@ -1308,14 +1396,6 @@ body {
   }
   .lay {
     padding: 12px 10px;
-  }
-  .g1tab {
-    padding: 9px 13px;
-    font-size: 12px;
-  }
-  .g2tab {
-    padding: 8px 12px;
-    font-size: 12px;
   }
 }
 
@@ -1503,8 +1583,11 @@ body.cart-has-items #cart-form {
   <div style="margin-top: 15px; font-weight: 600; color: var(--az2); font-size: 15px;">Sincronizando catálogo...</div>
 </div>
 
+<div class="cat-cov" id="catCov" onclick="toggleMobileCatMenu()"></div>
+
 <header class="hd">
-  <div class="logo-container">
+  <div class="logo-container" style="display: flex; align-items: center; gap: 8px;">
+    <button class="mobile-cat-btn" id="mobileCatBtn" onclick="toggleMobileCatMenu()" title="Categorías">☰ Categorías</button>
     <div class="logo-box">B</div>
     <div class="logo-text">BIANI</div>
   </div>
@@ -1520,7 +1603,11 @@ body.cart-has-items #cart-form {
   </div>
 </div>
 <div class="catalog-container">
-  <aside class="catalog-sidebar">
+  <aside class="catalog-sidebar" id="catalogSidebar">
+    <div class="sidebar-header-mobile">
+      <h3>Categorías</h3>
+      <button class="sidebar-close-btn" onclick="toggleMobileCatMenu()">✕</button>
+    </div>
     <div class="sidebar-sec-title">Categorías</div>
     <div class="nav2" id="nav2"></div>
   </aside>
@@ -7593,6 +7680,22 @@ function renderNav2(counts) {
   });
 }
 
+function toggleMobileCatMenu() {
+  const sb = document.getElementById('catalogSidebar');
+  const cov = document.getElementById('catCov');
+  if (!sb || !cov) return;
+  const isOpen = sb.classList.contains('open');
+  if (isOpen) {
+    sb.classList.remove('open');
+    cov.classList.remove('open');
+    document.body.style.overflow = '';
+  } else {
+    sb.classList.add('open');
+    cov.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
 function selC(el, c) {
   document.querySelectorAll('.g2tab').forEach(t => t.classList.remove('active'));
   if (el) el.classList.add('active');
@@ -7601,6 +7704,15 @@ function selC(el, c) {
   applyF();
   const titleEl = document.getElementById('ctitle');
   if (titleEl) titleEl.textContent = c || 'Catálogo BIANI';
+
+  // Close mobile sidebar drawer if open
+  const sb = document.getElementById('catalogSidebar');
+  const cov = document.getElementById('catCov');
+  if (sb && sb.classList.contains('open')) {
+    sb.classList.remove('open');
+    if (cov) cov.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 }
 
 function stripSpanishPlural(w) {
