@@ -1522,8 +1522,6 @@ body.cart-has-items #cart-form {
 <div class="catalog-container">
   <aside class="catalog-sidebar">
     <div class="sidebar-sec-title">Categorías</div>
-    <div class="nav1" id="nav1"></div>
-    <div class="sidebar-sec-title" style="margin-top: 14px;">Subcategorías</div>
     <div class="nav2" id="nav2"></div>
   </aside>
   <div class="lay">
@@ -7566,70 +7564,43 @@ function getCounts() {
 }
 
 function buildNav() {
-  const n1 = document.getElementById('nav1');
   const counts = getCounts();
-  n1.innerHTML = '';
-  
-  const allBtn = document.createElement('div');
-  allBtn.className = 'g1tab active';
-  allBtn.dataset.g = '';
-  const tot = prods.length;
-  allBtn.innerHTML = `<span style="flex:1">🏪 Todos</span> <small>${tot}</small>`;
-  allBtn.onclick = function() { selG(this, '') };
-  n1.appendChild(allBtn);
-  
-  for (const [gname, gcats] of Object.entries(GR)) {
-    const gtot = gcats.reduce((s, c) => s + (counts[c] || 0), 0);
-    const el = document.createElement('div');
-    el.className = 'g1tab';
-    el.dataset.g = gname;
-    el.innerHTML = `<span style="flex:1">${gname}</span> <small>${gtot}</small>`;
-    el.onclick = function() { selG(this, gname) };
-    n1.appendChild(el);
-  }
-  renderNav2(counts, '');
+  renderNav2(counts);
 }
 
-function renderNav2(counts, g) {
+function renderNav2(counts) {
   const n2 = document.getElementById('nav2');
+  if (!n2) return;
   n2.innerHTML = '';
-  let cats = [];
-  if (!g) {
-    cats = Object.keys(CI);
-  } else {
-    cats = GR[g] || [];
-  }
+  const cats = Object.keys(CI);
   
+  const totalProds = prods.length;
   const allBtn = document.createElement('div');
-  allBtn.className = 'g2tab active';
+  allBtn.className = `g2tab ${curC === '' || curC === 'all' ? 'active' : ''}`;
   allBtn.dataset.c = '';
-  allBtn.innerHTML = `<span class="ico">🛒</span> <span style="flex:1">Todo</span> <span class="cnt">${cats.reduce((s, c) => s + (counts[c] || 0), 0)}</span>`;
+  allBtn.innerHTML = `<span class="ico">🛒</span> <span style="flex:1">Todos los productos</span> <span class="cnt">${totalProds}</span>`;
   allBtn.onclick = function() { selC(this, '') };
   n2.appendChild(allBtn);
   
   cats.forEach(cat => {
     const el = document.createElement('div');
-    el.className = 'g2tab';
+    el.className = `g2tab ${curC === cat ? 'active' : ''}`;
     el.dataset.c = cat;
-    el.innerHTML = `<span class="ico">${CI[cat] || '📦'}</span> <span style="flex:1">${cat}</span> <span class="cnt">${counts[cat] || 0}</span>`;
+    const cnt = counts[cat] || 0;
+    el.innerHTML = `<span class="ico">${CI[cat] || '📦'}</span> <span style="flex:1">${cat}</span> <span class="cnt">${cnt}</span>`;
     el.onclick = function() { selC(this, cat) };
     n2.appendChild(el);
   });
 }
 
-function selG(el, g) {
-  document.querySelectorAll('.g1tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  curG = g; curC = '';
-  renderNav2(getCounts(), g);
-  applyF();
-}
-
 function selC(el, c) {
   document.querySelectorAll('.g2tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  curC = c; applyF();
-  document.getElementById('ctitle').textContent = c || 'Catálogo BIANI';
+  if (el) el.classList.add('active');
+  curC = c;
+  curG = '';
+  applyF();
+  const titleEl = document.getElementById('ctitle');
+  if (titleEl) titleEl.textContent = c || 'Catálogo BIANI';
 }
 
 // HELPER FOR FUZZY & TYPO-TOLERANT SEARCH
