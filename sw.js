@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biani-catalog-v23';
+const CACHE_NAME = 'biani-catalog-v24';
 const ASSETS = [
   './',
   './index.html',
