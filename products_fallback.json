@@ -2,28 +2,28 @@
   {
     "code": "4082",
     "name": "MCA MATE DE MADERA FORRADO EN ALUMINIO",
-    "category": "Varios",
+    "category": "Yerbas",
     "price": 6210.57,
     "image": "imagenes/1430-mca-mate-de-madera-forrado-en-aluminio.jpg"
   },
   {
     "code": "6284",
     "name": "SINA MATE LISTO FLUVION 500 CC",
-    "category": "Varios",
+    "category": "Yerbas",
     "price": 5905.42,
     "image": "imagenes/0429-sina-mate-listo-fluvion-500-cc.jpg"
   },
   {
     "code": "6154",
     "name": "SINA MATE VIAJERO METAMATE PLASTICO CON BOMBILLA",
-    "category": "Varios",
+    "category": "Yerbas",
     "price": 3157.19,
     "image": "imagenes/0430-sina-mate-viajero-metamate-plastico-con-bombilla.jpg"
   },
   {
     "code": "303",
     "name": "CHAC. MATE PLASTICO CON BOMBILLA",
-    "category": "Bazar y Ferretería",
+    "category": "Yerbas",
     "price": 1626.24,
     "image": "imagenes/2248-chac-mate-plastico-con-bombilla.jpg"
   },
@@ -44,14 +44,14 @@
   {
     "code": "5836",
     "name": "SINA BOMBILLA EL CHUCARO COLOR RESORTE",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1000.68,
     "image": "imagenes/0390-sina-bombilla-el-chucaro-color-resorte.jpg"
   },
   {
     "code": "6282",
     "name": "SINA BOMBILLA RESORTE LARGA RECTA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1279.04,
     "image": "imagenes/0391-sina-bombilla-resorte-larga-recta.jpg"
   },
@@ -86,14 +86,14 @@
   {
     "code": "3010",
     "name": "PG ACEITE WD-40 220G (FLEX)",
-    "category": "Pegamentos",
+    "category": "Despensa",
     "price": 10748.78,
     "image": "imagenes/0580-pg-aceite-wd-40-220g-flex.jpg"
   },
   {
     "code": "3192",
     "name": "PG ACEITE WD-40 X 311 GRS",
-    "category": "Pegamentos",
+    "category": "Despensa",
     "price": 11245.41,
     "image": "imagenes/0582-pg-aceite-wd-40-x-311-grs.png"
   },
@@ -254,7 +254,7 @@
   {
     "code": "1453",
     "name": "PG ACEITE WD-40 X 155 GRS",
-    "category": "Pegamentos",
+    "category": "Despensa",
     "price": 7225.67,
     "image": "imagenes/0581-pg-aceite-wd-40-x-155-grs.jpg"
   },
@@ -485,7 +485,7 @@
   {
     "code": "1469",
     "name": "MCA DOREE QUITAESMALTE X 65CC PROTECTOR CON LANOLINA",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1682.51,
     "image": "imagenes/1396-mca-doree-quitaesmalte-x-65cc-protector-con-lanolina.jpg"
   },
@@ -527,14 +527,14 @@
   {
     "code": "3694",
     "name": "SINA BROCHES PLASTICOS ECONOMICOS",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1170.55,
     "image": "imagenes/0393-sina-broches-plasticos-economicos.jpg"
   },
   {
     "code": "845",
     "name": "SINA BROCHES DE MADERA X 12 UNI.",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1259.32,
     "image": "imagenes/0392-sina-broches-de-madera-x-12-uni.jpg"
   },
@@ -576,70 +576,70 @@
   {
     "code": "6065",
     "name": "SINA ROLLO DE FILM ADHERENTE X 20 MT APROX",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 1608.71,
     "image": "imagenes/6065-sina-rollo-de-film-adherente-x-20-mt-aprox.jpg"
   },
   {
     "code": "6067",
     "name": "SINA ROLLO PAPEL MANTECA 28 CM X 5 MTS",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 1592.19,
     "image": "imagenes/1834-alpac-papel-manteca-28-cm-x-5-mts.jpg"
   },
   {
     "code": "6260",
     "name": "SINA EMBUDO PLASTICO 15 CM",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2105.98,
     "image": "imagenes/0402-sina-embudo-plastico-15-cm.jpg"
   },
   {
     "code": "1032",
     "name": "SINA SOPAPA GOMA NEGRA (24)",
-    "category": "Despensa",
+    "category": "Limpieza",
     "price": 1819.61,
     "image": "imagenes/0457-sina-sopapa-goma-negra.jpg"
   },
   {
     "code": "3458",
     "name": "SINA SOPAPA PLASTICA MATRIPLASTER CON CABO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 4261.7,
     "image": "imagenes/0458-sina-sopapa-plastica-matriplaster-con-cabo.jpg"
   },
   {
     "code": "5888",
     "name": "SINA SOPAPITA FLOPY",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 4402.28,
     "image": "imagenes/0459-sina-sopapita-flopy.jpg"
   },
   {
     "code": "3642",
     "name": "SINA PALETA MATAMOSCA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 996.07,
     "image": "imagenes/0437-sina-paleta-matamosca.jpg"
   },
   {
     "code": "1196",
     "name": "SINA HILO DE ALGODON X 35 MTS (10)",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 409.1,
     "image": "imagenes/0424-sina-hilo-de-algodon-amarillo-x-35-mts-10.jpg"
   },
   {
     "code": "1943",
     "name": "SINA HILO DE ALGODON AMARILLO X 35 MTS (10)",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 538.95,
     "image": "imagenes/0424-sina-hilo-de-algodon-amarillo-x-35-mts-10.jpg"
   },
   {
     "code": "6022",
     "name": "SINA ANILINA EN FRIO AZUL",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2622.82,
     "image": "imagenes/0385-sina-anilina-en-frio-azul.jpg"
   },
@@ -723,14 +723,14 @@
   {
     "code": "3371",
     "name": "MCA MACAO PINZA DE DEPILAR PLATEADA X 12",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 9755.27,
     "image": "imagenes/1424-mca-macao-pinza-de-depilar-12.jpg"
   },
   {
     "code": "3378",
     "name": "MCA MACAO PINZA DE DEPILAR NEGRA X 12",
-    "category": "Pilas",
+    "category": "Higiene",
     "price": 11828.96,
     "image": "imagenes/1424-mca-macao-pinza-de-depilar-12.jpg"
   },
@@ -1227,7 +1227,7 @@
   {
     "code": "1541",
     "name": "LA VIRGINIA FILTROS DE PAPEL Nº 4 X 40 U",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 4456.42,
     "image": "imagenes/1541-la-virginia-filtros-de-papel-n-4-x-40-u.jpeg"
   },
@@ -1458,7 +1458,7 @@
   {
     "code": "5554",
     "name": "LRT MALTA POCILLO X 100 GRS DOY PACK   INTENSA",
-    "category": "Yerbas",
+    "category": "Varios",
     "price": 1952.09,
     "image": "imagenes/1041-lrt-malta-pocillo-x-100-grs-doy-pack-intensa.jpg"
   },
@@ -1493,7 +1493,7 @@
   {
     "code": "5663",
     "name": "HILERET EDULCO. MATE X 200 CC BOTELLA (9)",
-    "category": "Despensa",
+    "category": "Yerbas",
     "price": 1896.66,
     "image": "imagenes/1895-hileret-edulco-mate-x-200-cc-botella-9.jpg"
   },
@@ -1557,7 +1557,7 @@
     "code": "3146",
     "name": "HILERET EDULCO. ZUCRA X 200 CC BOTELLA (9)",
     "category": "Despensa",
-    "price": 2363.0,
+    "price": 2363,
     "image": "imagenes/1906-hileret-edulco-zucra-x-200-cc-botella-9.jpg"
   },
   {
@@ -1731,7 +1731,7 @@
   {
     "code": "3525",
     "name": "TANTO DULCE DE LECHE X 400 GRS SIN TACC (POTE) (24)",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 1893.89,
     "image": "imagenes/3525-tanto-dulce-de-leche-x-400-grs-pote-24.jpeg"
   },
@@ -2200,7 +2200,7 @@
   {
     "code": "6406",
     "name": "PREMIER ACEITE DE GIRASOL X 900 CC",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 3204.2,
     "image": "imagenes/6406-premier-aceite-de-girasol-x-900-cc.jpeg"
   },
@@ -2208,7 +2208,7 @@
     "code": "4982",
     "name": "PRODUCTO 4982",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
@@ -2354,14 +2354,14 @@
   {
     "code": "5503",
     "name": "MENOYO ACEITE DE OLIVA EXTRA VIRGEN  PET X 500 CC (6) 3271",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 16492.65,
     "image": "imagenes/2065-menoyo-aceite-de-oliva-extra-virgen-pet-x-500-cc-6.jpg"
   },
   {
     "code": "5028",
     "name": "MENOYO ACEITE DE OLIVA EXTRA VIRGEN PET  X 250 CC (6) 3264",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 8473.18,
     "image": "imagenes/2066-menoyo-aceite-de-oliva-extra-virgen-pet-x-250-cc-6.jpg"
   },
@@ -2452,7 +2452,7 @@
   {
     "code": "3695",
     "name": "TAHITI SALSA DE AJI PICANTE X 285 GS (6)",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 2755.9,
     "image": "imagenes/TAHITI SALSA DE AJI PICANTE X 285 GS (6).jpeg"
   },
@@ -2943,7 +2943,7 @@
     "code": "2557",
     "name": "MDZ ROYAL FLAN LIGHT VAINILLA 10 X 16 GRS SIN TACC",
     "category": "Despensa",
-    "price": 10927.0,
+    "price": 10927,
     "image": "imagenes/0226-mdz-royal-flan-light-vainilla-10-x-16-grs-sin-tacc.jpg"
   },
   {
@@ -3328,14 +3328,14 @@
     "code": "6373",
     "name": "NVR ALFA. GENIO TRIPLE X 60 GRS CHOCO",
     "category": "Alfajores",
-    "price": 340.0,
+    "price": 340,
     "image": "imagenes/1945-nvr-alfa-genio-triple-x-60-grs-choco.jpg"
   },
   {
     "code": "6372",
     "name": "NVR ALFA. GENIO TRIPLE X 60 GRS BLANCO",
     "category": "Alfajores",
-    "price": 340.0,
+    "price": 340,
     "image": "imagenes/1944-nvr-alfa-genio-triple-x-60-grs-blanco.jpg"
   },
   {
@@ -3376,42 +3376,42 @@
   {
     "code": "6398",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI FRUTILLA SIN TACC",
-    "category": "Alfajores",
+    "category": "Despensa",
     "price": 997.09,
     "image": "imagenes/0743-ldc-alfa-chocoarroz-x-1-uni-frutilla-sin-tacc.jpg"
   },
   {
     "code": "6126",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI LIMON SIN TACC",
-    "category": "Alfajores",
+    "category": "Despensa",
     "price": 997.09,
     "image": "imagenes/0744-ldc-alfa-chocoarroz-x-1-uni-limon-sin-tacc.jpg"
   },
   {
     "code": "457",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI. BLANCO SIN TACC (30)",
-    "category": "Alfajores",
+    "category": "Despensa",
     "price": 997.09,
     "image": "imagenes/0746-ldc-alfa-chocoarroz-x-1-uni-blanco-sin-tacc.jpg"
   },
   {
     "code": "458",
     "name": "LDC ALFA CHOCOARROZ X 1 UNI PISTACHO SIN TACC (30)",
-    "category": "Alfajores",
+    "category": "Despensa",
     "price": 1295.55,
     "image": "imagenes/0742-ldc-alfa-chocoarroz-x-1-uni-pistacho-sin-tacc.jpg"
   },
   {
     "code": "462",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI. DULCE DE LECHE SIN TACC",
-    "category": "Alfajores",
+    "category": "Despensa",
     "price": 997.09,
     "image": "imagenes/0726-ldc-alfa-chocoarroz-x-1-uni-super-dulce-de-leche-sin-tacc.jpg"
   },
   {
     "code": "6125",
     "name": "LDC ALFA. CHOCOARROZ X 1 UNI MARROC SIN TACC",
-    "category": "Alfajores",
+    "category": "Despensa",
     "price": 997.09,
     "image": "imagenes/0745-ldc-alfa-chocoarroz-x-1-uni-marroc-sin-tacc.jpg"
   },
@@ -3628,7 +3628,7 @@
   {
     "code": "1542",
     "name": "MY CARAM. BUTTER TOFFEES X 822 GS CHOKKOMINT",
-    "category": "Yerbas",
+    "category": "Caramelos",
     "price": 11437.68,
     "image": "imagenes/1716-my-caram-butter-toffees-x-822-gs-blanco.jpg"
   },
@@ -4314,7 +4314,7 @@
   {
     "code": "5768",
     "name": "TEREPIN X 360 G SURTIBLACK (14)",
-    "category": "Yerbas",
+    "category": "Galletitas",
     "price": 1917.19,
     "image": "imagenes/5768-terepin-x-360-g-surtiblack.jpeg"
   },
@@ -4356,7 +4356,7 @@
   {
     "code": "3157",
     "name": "TEREPIN DURAZNO X 260 G (18)",
-    "category": "Yerbas",
+    "category": "Galletitas",
     "price": 1222.49,
     "image": "imagenes/1917-terepin-durazno-x-260-g.jpg"
   },
@@ -4574,7 +4574,7 @@
     "code": "1017",
     "name": "PRAAT GALL AVENTURA VAINILLA Y FRUTOS ROJOS X 85 G (20) SIN TACC",
     "category": "galletitas dulces",
-    "price": 0.0,
+    "price": 0,
     "image": "imagenes/8.jpg"
   },
   {
@@ -4699,21 +4699,21 @@
   {
     "code": "5833",
     "name": "LEIVA TOSTADITA DE ARROZ X 125 GRS CLASICA SIN TACC (16)",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1062.26,
     "image": "imagenes/1940-leiva-tostadita-de-arroz-x-125-grs-clasica-sin-tacc-16.jpg"
   },
   {
     "code": "3354",
     "name": "LEIVA TOSTADAS DE ARROZ X 150 GR INTEGRAL (12)",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1341.98,
     "image": "imagenes/1938-leiva-tostadas-de-arroz-x-150-gr-integral-12.jpg"
   },
   {
     "code": "6195",
     "name": "MOLINOS DEL BOSQUE GALL DE ARROZ X 150 GS DULCE (18) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1708.01,
     "image": "imagenes/2334-molinos-del-bosque-gall-de-arroz-x-150-gs-dulce-18-sin-tacc.jpg"
   },
@@ -4721,7 +4721,7 @@
     "code": "3368",
     "name": "MY GALL. MEDIA TARDE 3 X 110 GRS CLASICA (14)",
     "category": "Galletitas",
-    "price": 1451.0,
+    "price": 1451,
     "image": "imagenes/1769-my-gall-media-tarde-3-x-110-grs-clasica-14.jpg"
   },
   {
@@ -4783,7 +4783,7 @@
   {
     "code": "5044",
     "name": "LEIVA ALMOHADITAS DE ARROZ X 125 GRS CHOCOLATE (14) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1238.64,
     "image": "imagenes/1932-leiva-almohaditas-de-arroz-x-125-grs-chocolate-14-sin-tacc.jpg"
   },
@@ -4972,8 +4972,8 @@
   {
     "code": "3352",
     "name": "LEIVA TOSTADAS DE ARROZ X 160 GRS CHIA-LINO-SESAMO (12) VIOLETA SIN TACC",
-    "category": "galletitas saladas y tostadas",
-    "price": 0.0,
+    "category": "Despensa",
+    "price": 0,
     "image": "imagenes/1937-leiva-tostadas-de-arroz-x-160-grs-chia-lino-sesamo-12-violeta-sin-tacc.jpg"
   },
   {
@@ -4986,63 +4986,63 @@
   {
     "code": "3103",
     "name": "LIBERA TOSTADA DE ARROZ SIN SAL X 140 G (12) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1121.23,
     "image": "imagenes/1936-leiva-tostadas-de-arroz-x-150-grs-sin-sal-12-sin-tacc.jpg"
   },
   {
     "code": "3102",
     "name": "LIBERA TOSTADA DE ARROZ CLASICA X 140 G (12) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1121.23,
     "image": "imagenes/1939-leiva-tostadas-de-arroz-x-150-grs-clasica-12-sin-tacc.jpg"
   },
   {
     "code": "3161",
     "name": "LEIVA TOSTADAS DE ARROZ  X 150 GRS CLASICA (12) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1338.45,
     "image": "imagenes/1939-leiva-tostadas-de-arroz-x-150-grs-clasica-12-sin-tacc.jpg"
   },
   {
     "code": "3163",
     "name": "LEIVA TOSTADAS DE ARROZ  X 150 GRS DULCE (12) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1338.45,
     "image": "imagenes/1935-leiva-tostadas-de-arroz-x-150-grs-dulce-12-sin-tacc.jpg"
   },
   {
     "code": "3162",
     "name": "LEIVA TOSTADAS DE ARROZ  X 150 GRS SIN SAL (12) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1338.45,
     "image": "imagenes/1936-leiva-tostadas-de-arroz-x-150-grs-sin-sal-12-sin-tacc.jpg"
   },
   {
     "code": "6194",
     "name": "MOLINOS DEL BOSQUE GALL DE ARROZ X 150 GS CLASICA (18) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1708.01,
     "image": "imagenes/2333-molinos-del-bosque-gall-de-arroz-x-150-gs-clasica-18-sin-tacc.jpg"
   },
   {
     "code": "6193",
     "name": "MOLINOS DEL BOSQUE GALL DE ARROZ X 150 GS S/SAL (18) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1708.01,
     "image": "imagenes/2337-molinos-del-bosque-gall-de-arroz-x-150-gs-s-sal-18-sin-tacc.jpg"
   },
   {
     "code": "6196",
     "name": "MOLINOS DEL BOSQUE GALL DE ARROZ X 150 GS LIGHT (18) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1708.01,
     "image": "imagenes/2336-molinos-del-bosque-gall-de-arroz-x-150-gs-light-18-sin-tacc.jpg"
   },
   {
     "code": "321",
     "name": "MOLINOS DEL BOSQUE GALL DE ARROZ X 150 GS INTEGRAL SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1708.01,
     "image": "imagenes/2335-molinos-del-bosque-gall-de-arroz-x-150-gs-integral-sin-tacc.jpg"
   },
@@ -5112,7 +5112,7 @@
   {
     "code": "3045",
     "name": "SOL DE NOCHE PERFUME X 15 W",
-    "category": "Lámparas",
+    "category": "Perfumería",
     "price": 895.4,
     "image": "imagenes/1450-sol-de-noche-perfume-x-15-w.jpg"
   },
@@ -5126,28 +5126,28 @@
   {
     "code": "2576",
     "name": "LAMPARA RAYOVAC X 12 W  (85W)",
-    "category": "Pilas",
-    "price": 1346.0,
+    "category": "Lámparas",
+    "price": 1346,
     "image": "imagenes/0484-lampara-led-rayovac-x-12-w.jpg"
   },
   {
     "code": "5708",
     "name": "LAMPARA LED EVEREADY 8 W CALIDA  (57W)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 962.46,
     "image": "imagenes/0481-lampara-led-eveready-8-w-calida.jpg"
   },
   {
     "code": "1395",
     "name": "LAMPARA LED EVEREADY 8 W FRIA   (60W)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 962.46,
     "image": "imagenes/0482-lampara-led-eveready-8-w-fria.jpg"
   },
   {
     "code": "2635",
     "name": "LAMPARA LED EVEREADY 10 W FRIA  (75W)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 1192.3,
     "image": "imagenes/0479-lampara-led-eveready-10-w-fria.jpg"
   },
@@ -5252,7 +5252,7 @@
   {
     "code": "3242",
     "name": "LEIVA ALMOHADITAS DE ARROZ X 125 GRS LIMON (14) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1238.64,
     "image": "imagenes/1934-leiva-almohaditas-de-arroz-x-125-grs-limon-14-sin-tacc.jpg"
   },
@@ -5581,7 +5581,7 @@
   {
     "code": "945",
     "name": "TEMBLEKE DINO X 12UNI. SIN TAC",
-    "category": "Yerbas",
+    "category": "Caramelos",
     "price": 10899.07,
     "image": "imagenes/1562-tembleke-dino-x-14-uni-sin-tac.jpg"
   },
@@ -5896,7 +5896,7 @@
   {
     "code": "1634",
     "name": "PRES. PRIME X 3 UNI. TEXTURADO (24)",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 3670.6,
     "image": "imagenes/2292-pres-prime-x-3-uni-texturado.jpg"
   },
@@ -5994,28 +5994,28 @@
   {
     "code": "9025",
     "name": "PROTECTOR NOSOTRAS LACTICOS X 12 UNI. (12) 1269",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 2947.16,
     "image": "imagenes/1498-protector-nosotras-lacticos-x-12-uni-12.jpg"
   },
   {
     "code": "223",
     "name": "TOALLA NOSOTRAS NORMAL X 16 UNI. (15) 1912",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 3066.65,
     "image": "imagenes/1548-toalla-nosotras-normal-x-16-uni-15.jpg"
   },
   {
     "code": "2278",
     "name": "PROTECTOR CALIPSO COLA LESS X 50 UNI (10) 2278",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 2219.46,
     "image": "imagenes/2278-protector-calipso-cola-less-x-50-uni-10-2278.jpg"
   },
   {
     "code": "5083",
     "name": "PROTECTOR CALIPSO DIARIOS X 80 UNI (10) 2209",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 2535.89,
     "image": "imagenes/1486-protector-calipso-diarios-x-80-uni-10.jpg"
   },
@@ -6071,364 +6071,364 @@
   {
     "code": "1715",
     "name": "TOALLA NOSOTRAS DELGADA X 16 UNI. (15) 2377",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 3750.65,
     "image": "imagenes/1526-toalla-nosotras-buenas-noches-ultra-delgada-x-14-12.jpg"
   },
   {
     "code": "216",
     "name": "TOALLA NOSOTRAS DELGADA X 8 UNI. (30) 2360",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 2110.35,
     "image": "imagenes/1538-toalla-nosotras-delgada-x-30-uni-8.jpg"
   },
   {
     "code": "1701",
     "name": "TOALLA NOSOTRAS NORMAL X 8 UNI. (30) 1905",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1726.74,
     "image": "imagenes/1549-toalla-nosotras-normal-x-8-uni-30.jpg"
   },
   {
     "code": "1702",
     "name": "TOALLA NOSOTRAS CLASICA RAPISEC X 8 UNI. (30) 5830",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1425.77,
     "image": "imagenes/1533-toalla-nosotras-clasica-rapisec-x-8-uni-30.jpg"
   },
   {
     "code": "2688",
     "name": "TOALLA NOSOTRAS CLASICA RAPISEC X 16 UNI. (15) 5847",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 2696.62,
     "image": "imagenes/1532-toalla-nosotras-clasica-rapisec-x-16-uni-15.jpg"
   },
   {
     "code": "1717",
     "name": "TOALLA NOSOTRAS DELGADA X 30 UNI (8) 1684",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 6726.29,
     "image": "imagenes/1538-toalla-nosotras-delgada-x-30-uni-8.jpg"
   },
   {
     "code": "5113",
     "name": "TOALLA NOSOTRAS CLASICA SUAVE X 16 UNI (15) 1899",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 2693.83,
     "image": "imagenes/1534-toalla-nosotras-clasica-suave-x-16-uni-15.jpg"
   },
   {
     "code": "5112",
     "name": "TOALLA NOSOTRAS CLASICA SUAVE X 8 UNI (30) 1882",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1424.42,
     "image": "imagenes/1535-toalla-nosotras-clasica-suave-x-30-uni-8.jpg"
   },
   {
     "code": "1703",
     "name": "TOALLA NOSOTRAS ULTRA RAPISEC X 8 UNI. (30) 5823",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 2091.38,
     "image": "imagenes/1552-toalla-nosotras-ultra-rapisec-x-8-uni-30.jpg"
   },
   {
     "code": "3021",
     "name": "TOALLA NOSOTRAS LARGA TELA X 16 UNI (24)  3748",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 4258.85,
     "image": "imagenes/1545-toalla-nosotras-larga-tela-x-16-uni.jpg"
   },
   {
     "code": "1704",
     "name": "TOALLA NOSOTRAS ULTRA TELA X 8 UNI. (30) 5878",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 2091.14,
     "image": "imagenes/1553-toalla-nosotras-ultra-tela-x-8-uni-30.jpg"
   },
   {
     "code": "1709",
     "name": "TOALLA NOSOTRAS ESENCIAL X 16 UNI 1967",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 2073.48,
     "image": "imagenes/1542-toalla-nosotras-esencial-x-16-uni.jpg"
   },
   {
     "code": "204",
     "name": "TOALLA NOSOTRAS ESENCIAL X 8 UNI 1950 (30)",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 1105.12,
     "image": "imagenes/1543-toalla-nosotras-esencial-x-8-uni.jpg"
   },
   {
     "code": "3294",
     "name": "TOALLA NOSOTRAS CLASICA SUAVE X 30 UNI (8) 2339",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 4759.72,
     "image": "imagenes/1535-toalla-nosotras-clasica-suave-x-30-uni-8.jpg"
   },
   {
     "code": "10036",
     "name": "TOALLA NOSOTRAS MATERNIDAD X 10 UNI 1245",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 5693.19,
     "image": "imagenes/1547-toalla-nosotras-maternidad-x-10-uni.jpg"
   },
   {
     "code": "501",
     "name": "TOALLA NOSOTRAS BUENAS NOCHES X 30 UNI (6) 2605",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 8754.39,
     "image": "imagenes/1530-toalla-nosotras-buenas-noches-x-30-uni-6.jpg"
   },
   {
     "code": "5105",
     "name": "TOALLA NOSOTRAS BUENAS NOCHES X 16 UNI (12) 2292",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 4951.68,
     "image": "imagenes/1526-toalla-nosotras-buenas-noches-ultra-delgada-x-14-12.jpg"
   },
   {
     "code": "5111",
     "name": "TOALLA NOSOTRAS BUENAS NOCHES X 8 UNI (24) 1851",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 2787.59,
     "image": "imagenes/1527-toalla-nosotras-buenas-noches-invisible-x-8-uni-12.jpg"
   },
   {
     "code": "2685",
     "name": "TOALLA CALIPSO C/A X 16 UNI CORTA (25) (2131)(2087)",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1390.2,
     "image": "imagenes/1512-toalla-calipso-c-a-x-16-uni-corta-25.jpg"
   },
   {
     "code": "219",
     "name": "TOALLA NOSOTRAS BUENAS NOCHES ULTRA DEL. X 14 (12) 1546",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 5424.65,
     "image": "imagenes/1526-toalla-nosotras-buenas-noches-ultra-delgada-x-14-12.jpg"
   },
   {
     "code": "207",
     "name": "TOALLA NOSOTRAS BUENAS NOCHES INVISIBLE X 8 UNI. (12) 5026",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 2981.73,
     "image": "imagenes/1527-toalla-nosotras-buenas-noches-invisible-x-8-uni-12.jpg"
   },
   {
     "code": "2686",
     "name": "TOALLA CALIPSO SUPER ANATOMICA X 16 UNI. (25) 2100",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1555.13,
     "image": "imagenes/1523-toalla-calipso-super-anatomica-x-16-uni-25.jpg"
   },
   {
     "code": "205",
     "name": "TOALLA CALIPSO SUPER ANATOMICA X 8 UNI. (50) 2094",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 864.31,
     "image": "imagenes/1524-toalla-calipso-super-anatomica-x-8-uni-50.jpg"
   },
   {
     "code": "206",
     "name": "TOALLA CALIPSO NOCTURNAS X 8 UNI. (50) 2117",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 1415.01,
     "image": "imagenes/1517-toalla-calipso-nocturnas-x-8-uni-50.jpg"
   },
   {
     "code": "10058",
     "name": "TOALLA CALIPSO NORMAL CON FRAGANCIA X 8 UNI (50) 1455",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 773.24,
     "image": "imagenes/1519-toalla-calipso-normal-con-fragancia-x-8-uni-50.jpg"
   },
   {
     "code": "10057",
     "name": "TOALLA CALIPSO INCONTINENCIA EXTRA ABSOR. X 8 UNI (50) 1493",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 2375.27,
     "image": "imagenes/1516-toalla-calipso-incontinencia-extra-absor-x-8-uni-50.jpg"
   },
   {
     "code": "1710",
     "name": "TOALLA CALIPSO INCONTINENCIA LEVE X 8 UNI. (50) 1080",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1978.36,
     "image": "imagenes/1515-toalla-calipso-incontinencia-activa-x-8-uni-50.jpg"
   },
   {
     "code": "6099",
     "name": "TOALLA NOSOTRAS DIA Y NOCHE LARGAS TELA X 16 UNI 3618",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 4257.47,
     "image": "imagenes/1540-toalla-nosotras-dia-y-noche-largas-tela-x-16-uni.jpg"
   },
   {
     "code": "2737",
     "name": "PROTECTOR CALIPSO DIARIOS X 50 UNI. (20) 2193",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1736.29,
     "image": "imagenes/1483-protector-calipso-diarios-x-20-uni-40.jpg"
   },
   {
     "code": "2581",
     "name": "TOALLA CALIPSO NORMAL CON FRAGANCIA X 16 UNI 1462",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1390.2,
     "image": "imagenes/1518-toalla-calipso-normal-con-fragancia-x-16-uni.jpg"
   },
   {
     "code": "3818",
     "name": "PROTECTOR CALIPSO DIARIOS X 30 UNI (32) 3015",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1059.43,
     "image": "imagenes/1484-protector-calipso-diarios-x-30-uni-32.jpg"
   },
   {
     "code": "5798",
     "name": "PROTECTOR NOSOTRAS RESPIRABLE X 50 UNI (12) 1615",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 4375.72,
     "image": "imagenes/1491-protector-nosotras-respirable-x-15-uni-48.jpg"
   },
   {
     "code": "5797",
     "name": "PROTECTOR NOSOTRAS RESPIRABLE X 15 UNI (48) 2001",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1466.04,
     "image": "imagenes/1491-protector-nosotras-respirable-x-15-uni-48.jpg"
   },
   {
     "code": "1699",
     "name": "PROTECTOR NOSOTRAS MULTIESTILO X 20 UNI. (36) 1875",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1954.9,
     "image": "imagenes/1499-protector-nosotras-multiestilo-x-100-uni-12.jpg"
   },
   {
     "code": "3260",
     "name": "PROTECTOR NOSOTRAS DIARIOS LARGOS X 50 UNI (12) 2032",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 4895.28,
     "image": "imagenes/1493-protector-nosotras-diarios-largos-x-15-uni-36.jpg"
   },
   {
     "code": "211",
     "name": "PROTECTOR CALIPSO DIARIOS X 20 UNI. (40) 2186",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 854.07,
     "image": "imagenes/1483-protector-calipso-diarios-x-20-uni-40.jpg"
   },
   {
     "code": "10026",
     "name": "PROTECTOR CALIPSO RESPIRABLE X 50 UNI 1486",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1736.24,
     "image": "imagenes/1486-protector-calipso-diarios-x-80-uni-10.jpg"
   },
   {
     "code": "10027",
     "name": "PROTECTOR CALIPSO RESPIRABLE X 20 UNI 2230",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 854.07,
     "image": "imagenes/1489-protector-calipso-respirable-x-20-uni.jpg"
   },
   {
     "code": "209",
     "name": "PROTECTOR CALIPSO COLA LESS X 20 UNI. (40) 2261",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 1028.25,
     "image": "imagenes/1481-protector-calipso-cola-less-x-20-uni-40.jpg"
   },
   {
     "code": "2223",
     "name": "PROTECTOR CALIPSO C FRAGANCIA X 50 UNI. (20) 2254",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1736.22,
     "image": "imagenes/1479-protector-calipso-c-fragancia-x-20-uni-40.jpg"
   },
   {
     "code": "215",
     "name": "PROTECTOR CALIPSO C FRAGANCIA X 20 UNI. (40) 2285",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 854.07,
     "image": "imagenes/1479-protector-calipso-c-fragancia-x-20-uni-40.jpg"
   },
   {
     "code": "2540",
     "name": "PROTECTOR CALIPSO MULTIESTILO X 50 UNI. (10) 2223",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 2219.46,
     "image": "imagenes/1487-protector-calipso-multiestilo-x-20-uni-40.jpg"
   },
   {
     "code": "210",
     "name": "PROTECTOR CALIPSO MULTIESTILO X 20 UNI. (40) 2216",
-    "category": "Salud e Higiene Femenina",
+    "category": "Higiene",
     "price": 1028.25,
     "image": "imagenes/1487-protector-calipso-multiestilo-x-20-uni-40.jpg"
   },
   {
     "code": "1919",
     "name": "PROTECTOR NOSOTRAS NORMAL X160 UNI (10) PACK FAMI. 2919",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 9744.56,
     "image": "imagenes/1503-protector-nosotras-normal-x-160-uni-10-pack-familiar.jpg"
   },
   {
     "code": "1707",
     "name": "PROTECTOR NOSOTRAS NORMAL X 100 UNI (12) 2917",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 6766.81,
     "image": "imagenes/1502-protector-nosotras-normal-x-100-uni-12.jpg"
   },
   {
     "code": "5562",
     "name": "PROTECTOR NOSOTRAS NORMAL X 30 UNI (32) 3008",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 2221.39,
     "image": "imagenes/1505-protector-nosotras-normal-x-30-uni-32.jpg"
   },
   {
     "code": "1708",
     "name": "PROTECTOR NOSOTRAS NORMAL X 20 UNI. (36) 1974",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1791.19,
     "image": "imagenes/1502-protector-nosotras-normal-x-100-uni-12.jpg"
   },
   {
     "code": "2100",
     "name": "PROTECTOR NOSOTRAS DIARIOS LARGOS  X 20 UNI (36) 3107",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 2275.57,
     "image": "imagenes/1493-protector-nosotras-diarios-largos-x-15-uni-36.jpg"
   },
   {
     "code": "1705",
     "name": "PROTECTOR NOSOTRAS DOBLES X 25 UNI. (12) 4562",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 3220.84,
     "image": "imagenes/1496-protector-nosotras-dobles-x-25-uni-12.jpg"
   },
   {
     "code": "2113",
     "name": "PROTECTOR NOSOTRAS ESENCIAL X 20 UNI. 2964 (40)",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1182.88,
     "image": "imagenes/1497-protector-nosotras-esencial-x-20-uni.jpg"
   },
   {
     "code": "902564",
     "name": "PROTECTOR NOSOTRAS MULTIESTILO X 100 UNI (12) 1561",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 7865.63,
     "image": "imagenes/1499-protector-nosotras-multiestilo-x-100-uni-12.jpg"
   },
   {
     "code": "1719",
     "name": "PROTECTOR NOSOTRAS MULTIESTILO X 60 UNI. (12) 2955",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 5275.55,
     "image": "imagenes/1501-protector-nosotras-multiestilo-x-60-uni-12.jpg"
   },
@@ -6491,35 +6491,35 @@
   {
     "code": "3086",
     "name": "SINA ESPONJA PLATEADA X 15 GRS (24)",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 486.47,
     "image": "imagenes/0418-sina-esponja-plateada-x-15-grs.jpg"
   },
   {
     "code": "5153",
     "name": "ECOVITA SUAVIZANTE D/P X 900 CC ORQUIDEAS Y F (16)",
-    "category": "Detergentes",
+    "category": "Limpieza",
     "price": 1911.26,
     "image": "imagenes/2462-ecovita-suavizante-d-p-x-900-cc-orquideas-y-f-16.jpg"
   },
   {
     "code": "5152",
     "name": "ECOVITA SUAVIZANTE D/P X 900 CC LIRIOS E YLANG (16)",
-    "category": "Detergentes",
+    "category": "Limpieza",
     "price": 1911.26,
     "image": "imagenes/2461-ecovita-suavizante-d-p-x-900-cc-lirios-e-ylang-16.jpg"
   },
   {
     "code": "5154",
     "name": "ECOVITA SUAVIZANTE D/P X 900 CC UNICO (16)",
-    "category": "Detergentes",
+    "category": "Limpieza",
     "price": 2052.72,
     "image": "imagenes/2463-ecovita-suavizante-d-p-x-900-cc-unico-16.jpg"
   },
   {
     "code": "5145",
     "name": "ECOVITA SUAVIZANTE D/P X 900 CC EPICO (16)",
-    "category": "Detergentes",
+    "category": "Limpieza",
     "price": 1968.33,
     "image": "imagenes/2460-ecovita-suavizante-d-p-x-900-cc-epico-16.jpg"
   },
@@ -6561,7 +6561,7 @@
   {
     "code": "1179",
     "name": "ALP SUAVIZANTE FEDERAL X 900 CC CARICIAS ALGOD (14)",
-    "category": "Detergentes",
+    "category": "Limpieza",
     "price": 2433.78,
     "image": "imagenes/0994-alp-suavizante-federal-x-900-cc-caricias-algod-14.jpg"
   },
@@ -6575,14 +6575,14 @@
   {
     "code": "3936",
     "name": "ALP SUAVIZANTE ZORRO X 3 L ELEGANTE  (4)",
-    "category": "Detergentes",
+    "category": "Limpieza",
     "price": 9771.21,
     "image": "imagenes/0997-alp-suavizante-zorro-x-3-l-elegante-4.jpg"
   },
   {
     "code": "3889",
     "name": "ALP SUAVIZANTE ZORRO X 3 L ORIENTAL (4)",
-    "category": "Detergentes",
+    "category": "Limpieza",
     "price": 9771.21,
     "image": "imagenes/0998-alp-suavizante-zorro-x-3-l-oriental-4.jpg"
   },
@@ -6617,21 +6617,21 @@
   {
     "code": "80",
     "name": "ALP DET. LIQUIDO ROPA X 800 CC BOTELLA C/SUAVIZANTE (15)",
-    "category": "Cuidado de la Ropa",
+    "category": "Limpieza",
     "price": 2834.1,
     "image": "imagenes/0913-alp-det-liquido-ropa-x-800-cc-botella-c-suavizante-15.jpg"
   },
   {
     "code": "1627",
     "name": "ALP JABON BLANCO ZORRO X 150 GRS SUAVIZANTE (84)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 1081.32,
     "image": "imagenes/0933-alp-jabon-blanco-zorro-x-150-grs-suavizante-84.jpg"
   },
   {
     "code": "1920",
     "name": "ALP JABON BLANCO FEDERAL X 150 GRS SUAVIZANTE (84)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 1127.91,
     "image": "imagenes/0928-alp-jabon-blanco-federal-x-150-grs-suavizante-84.jpg"
   },
@@ -6694,7 +6694,7 @@
   {
     "code": "3174",
     "name": "ALP JABON ZORRO X 800 GRS LAVADO A MANO CLASICO!",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 2559.94,
     "image": "imagenes/0931-alp-jabon-blanco-zorro-x-150-grs-clasico-84.jpg"
   },
@@ -6702,7 +6702,7 @@
     "code": "7001",
     "name": "ALP DET. LIQUIDO DILUIBLE EVOLUTION FRAGANCIA DURADERA X 500 ML (12)",
     "category": "limpiadores y desinfectantes",
-    "price": 0.0,
+    "price": 0,
     "image": "imagenes/0907-alp-det-liquido-ropa-evolution-x-3-l-fragancia-duradera-doy-pack-4.jpg"
   },
   {
@@ -6715,7 +6715,7 @@
   {
     "code": "3177",
     "name": "ALP DOBLE JABON BLANCO ZORRO 2 X 150 GRS TRADICIONAL (42)",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1963.67,
     "image": "imagenes/0925-alp-doble-jabon-blanco-federal-2-x-150-grs-tradicional-42.jpg"
   },
@@ -6723,20 +6723,20 @@
     "code": "5056",
     "name": "ALP DET. LIQUIDO ROPA EVOLUTION QUITAMANCHAS X 3 LITROS DOY PACK (4)",
     "category": "cuidado de la ropa",
-    "price": 0.0,
+    "price": 0,
     "image": "imagenes/0905-alp-det-liquido-ropa-evolution-quitamanchas-x-3-litros-doy-pack-4.jpg"
   },
   {
     "code": "995055",
     "name": "ALP DET LIQUIDO ROPA EVOLUTION QUITAMANCHAS X 800 CC DOY PACK",
     "category": "cuidado de la ropa",
-    "price": 0.0,
+    "price": 0,
     "image": "imagenes/0897-alp-det-liquido-ropa-evolution-quitamanchas-x-800-cc-doy-pack-14.jpg"
   },
   {
     "code": "5763",
     "name": "ALP JABON EN POLVO ZORRO X 900 GRS MATIC",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1807.01,
     "image": "imagenes/0961-alp-jabon-polvo-zorro-escudo-x-3-kg-b-e-6.jpg"
   },
@@ -6750,42 +6750,42 @@
   {
     "code": "5058",
     "name": "ALP JABON POLVO ZORRO EVOLUTION QUITAMANCHAS X 800 GRS (20)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 2821.96,
     "image": "imagenes/0966-alp-jabon-polvo-zorro-evolution-quitamanchas-x-800-grs-20.jpg"
   },
   {
     "code": "5059",
     "name": "ALP JABON POLVO ZORRO EVOLUTION QUITAMANCHAS X 3 K (6)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 8820.27,
     "image": "imagenes/0964-alp-jabon-polvo-zorro-evolution-quitamanchas-x-3-k-6.jpg"
   },
   {
     "code": "1165",
     "name": "ALP JABON ZORRO X 3 KG REG (6)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 8901.92,
     "image": "imagenes/0973-alp-jabon-zorro-x-3-kg-bicarbonato-reg-6.jpg"
   },
   {
     "code": "5055",
     "name": "ALP JABON ZORRO X 3 KG BICARBONATO B/E (6)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 8901.92,
     "image": "imagenes/0972-alp-jabon-zorro-x-3-kg-bicarbonato-b-e-6.jpg"
   },
   {
     "code": "487",
     "name": "ALP JABON ZORRO X 800 GRS B/E (20)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 2559.94,
     "image": "imagenes/0963-alp-jabon-polvo-zorro-escudo-x-800-gs-b-e-20.jpg"
   },
   {
     "code": "5492",
     "name": "ALP JABON ZORRO X 3 KG BICARBONATO REG (6)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 8901.92,
     "image": "imagenes/0973-alp-jabon-zorro-x-3-kg-bicarbonato-reg-6.jpg"
   },
@@ -6813,42 +6813,42 @@
   {
     "code": "480",
     "name": "ALP JABON BLANCO ZORRO X 150 GRS CLASICO (84)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 1081.32,
     "image": "imagenes/0931-alp-jabon-blanco-zorro-x-150-grs-clasico-84.jpg"
   },
   {
     "code": "5544",
     "name": "ALP JABON BLANCO ZORRO X 150 GRS FLORAL (84)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 1081.32,
     "image": "imagenes/0932-alp-jabon-blanco-zorro-x-150-grs-floral-84.jpg"
   },
   {
     "code": "5967",
     "name": "ALP JABON BLANCO ZORRO X 150 GRS ANTIBACTERIAL (84)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 1081.32,
     "image": "imagenes/0930-alp-jabon-blanco-zorro-x-150-grs-antibacterial-84.jpg"
   },
   {
     "code": "3878",
     "name": "ALP DOBLE JABON BLANCO FEDERAL 2 X 150 GRS TRADICIONAL (42)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 2048.42,
     "image": "imagenes/0925-alp-doble-jabon-blanco-federal-2-x-150-grs-tradicional-42.jpg"
   },
   {
     "code": "469",
     "name": "ALP JABON BLANCO FEDERAL X 150 GRS TRADICIONAL (84)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 1127.91,
     "image": "imagenes/0929-alp-jabon-blanco-federal-x-150-grs-tradicional-84.jpg"
   },
   {
     "code": "468",
     "name": "ALP JABON BLANCO FEDERAL X 150 GRS ROPA DELICADA (84)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 1127.91,
     "image": "imagenes/0927-alp-jabon-blanco-federal-x-150-grs-ropa-delicada-84.jpg"
   },
@@ -6862,7 +6862,7 @@
   {
     "code": "2712",
     "name": "SIGNO JABON BLANCO X 150 GRS (70)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 582.01,
     "image": "imagenes/2169-signo-jabon-blanco-x-150-grs-70.jpg"
   },
@@ -6883,7 +6883,7 @@
   {
     "code": "2595",
     "name": "JABON BLANCO X 300 GRS SEISEME",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 2769.58,
     "image": "imagenes/1853-jabon-blanco-x-300-grs-seiseme.jpg"
   },
@@ -6904,7 +6904,7 @@
   {
     "code": "3154",
     "name": "TEREPIN BATATA X 260 GRS (18)",
-    "category": "Yerbas",
+    "category": "Galletitas",
     "price": 1222.49,
     "image": "imagenes/1916-terepin-batata-x-300-grs-14.jpg"
   },
@@ -7198,7 +7198,7 @@
   {
     "code": "3657",
     "name": "LRT CHUPETIN BOLA LOCA X 24 UNI \"PICANTE\"",
-    "category": "Yerbas",
+    "category": "Chupetines",
     "price": 3492.06,
     "image": "imagenes/3657-lrt-chupetin-bola-loca-x-24-uni-picante.jpg"
   },
@@ -7289,14 +7289,14 @@
   {
     "code": "5977",
     "name": "LDC CHUPETIN PICOLE X 50 UNI  FRUTILLA",
-    "category": "Varios",
+    "category": "Chupetines",
     "price": 4791.2,
     "image": "imagenes/0771-ldc-chupetin-picole-x-25-uni-frutilla.jpg"
   },
   {
     "code": "724",
     "name": "LRT CHUPETIN BABY DOLL 12 X 4 UN SIN TACC",
-    "category": "Varios",
+    "category": "Chupetines",
     "price": 7432.43,
     "image": "imagenes/1061-lrt-chupetin-baby-doll-18-x-4-un-sin-tacc.jpg"
   },
@@ -7310,7 +7310,7 @@
   {
     "code": "2542",
     "name": "LRT CHUPETIN BOLA LOCA X 24 UNI \"TRICAMPEONES\" SIN TACC",
-    "category": "Varios",
+    "category": "Chupetines",
     "price": 3492.06,
     "image": "imagenes/2542-lrt-chupetin-bola-loca-x-24-uni-tricampeones-sin-tacc.jpg"
   },
@@ -7345,7 +7345,7 @@
   {
     "code": "5978",
     "name": "LDC CHUPETIN PICOLE X 50 UNI  CHOCOLATE",
-    "category": "Chocolates",
+    "category": "Chupetines",
     "price": 4791.2,
     "image": "imagenes/0770-ldc-chupetin-picole-x-25-uni-chocolate.jpg"
   },
@@ -7450,63 +7450,63 @@
   {
     "code": "4107",
     "name": "GAM GELATINES X 250 G \"TIBURON AZUL Y ROJO\"",
-    "category": "Varios",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/4107-gam-gelatines-x-250-g-tiburon-azul-y-rojo.jpg"
   },
   {
     "code": "4106",
     "name": "GAM GELATINES X 250 G \"TIBURON AZUL\"",
-    "category": "Varios",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/4106-gam-gelatines-x-250-g-tiburon-azul.jpg"
   },
   {
     "code": "4100",
     "name": "GAM GELATINES X 250 G \"TENIS ACIDOS\"",
-    "category": "Yerbas",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/4100-gam-gelatines-x-250-g-tenis-acidos.jpg"
   },
   {
     "code": "6036",
     "name": "GAM GELATINES X 250 G \"BANANA\"",
-    "category": "Varios",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/6036-gam-gelatines-x-250-g-banana.jpg"
   },
   {
     "code": "6034",
     "name": "GAM GELATINES X 250 G \"CORAZON\"",
-    "category": "Varios",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/6034-gam-gelatines-x-250-g-corazon.jpg"
   },
   {
     "code": "4198",
     "name": "GAM GELATINES X 250 G \"JELLY BEANS ACIDAS\"",
-    "category": "Varios",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/4198-gam-gelatines-x-250-g-jelly-beans-acidas.jpg"
   },
   {
     "code": "6037",
     "name": "GAM GELATINES X 250  G \"DENTADURAS\"",
-    "category": "Varios",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/6037-gam-gelatines-x-250-g-dentaduras.jpg"
   },
   {
     "code": "5003",
     "name": "GAM GELATINES X 250 G \"MINI MORAS\"",
-    "category": "Varios",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/5003-gam-gelatines-x-250-g-mini-moras.jpeg"
   },
   {
     "code": "6035",
     "name": "GAM GELATINES X 250 G \"MORA\"",
-    "category": "Varios",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/6035-gam-gelatines-x-250-g-mora.jpg"
   },
@@ -8080,14 +8080,14 @@
   {
     "code": "2105",
     "name": "PLIN TURRON DE ARROZ X 20 UNI.",
-    "category": "Turrones",
+    "category": "Despensa",
     "price": 4836.79,
     "image": "imagenes/1556-plin-turron-de-arroz-x-1-u.jpg"
   },
   {
     "code": "4094",
     "name": "PLIN TURRON DE ARROZ X 1 U",
-    "category": "Turrones",
+    "category": "Despensa",
     "price": 232.8,
     "image": "imagenes/1556-plin-turron-de-arroz-x-1-u.jpg"
   },
@@ -8220,7 +8220,7 @@
   {
     "code": "6038",
     "name": "GAM GELATINES X 250 G \"SNACK FOOD\"",
-    "category": "Snacks",
+    "category": "Gomitas",
     "price": 3098.81,
     "image": "imagenes/6038-gam-gelatines-x-250-g-snack-food-alt.jpg"
   },
@@ -8605,7 +8605,7 @@
   {
     "code": "12045",
     "name": "OLINTO LENTEJON X 400 GRS (20)",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 1748.22,
     "image": "imagenes/2428-olinto-lentejon-x-400-grs.jpg"
   },
@@ -8613,48 +8613,48 @@
     "code": "12123",
     "name": "OLINTO POROTOS ALUBIA X 400 GRS (10)",
     "category": "Despensa",
-    "price": 1540.0,
+    "price": 1540,
     "image": "imagenes/2430-olinto-porotos-alubia-x-400-grs.jpg"
   },
   {
     "code": "12124",
     "name": "OLINTO ARVEJAS PARTIDAS X 400 GRS (10)",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 712.57,
     "image": "imagenes/2425-olinto-arvejas-partidas-x-400-grs.jpg"
   },
   {
     "code": "12125",
     "name": "OLINTO MAIZ PISADO BLANCO X 400 GRS (10)",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 1804.23,
     "image": "imagenes/2429-olinto-maiz-pisado-blanco-x-400-grs.jpg"
   },
   {
     "code": "12044",
     "name": "OLINTO LENTEJAS NACIONALES X 400 GRS (20)",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 1192.3,
     "image": "imagenes/2427-olinto-lentejas-nacionales-x-400-grs.jpg"
   },
   {
     "code": "6325",
     "name": "DON ELIO LENTEJAS X 400 GRS (20)",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 1384.79,
     "image": "imagenes/2419-don-elio-lentejas-x-400-grs.jpg"
   },
   {
     "code": "3521",
     "name": "DON ELIO MAIZ PISADO BLANCO X 400 GRS (10)",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 2197.51,
     "image": "imagenes/2421-don-elio-maiz-pisado-blanco-x-400-grs.jpg"
   },
   {
     "code": "6324",
     "name": "DON ELIO ARVEJAS PARTIDAS X 400 G (10)",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 893.54,
     "image": "imagenes/2417-don-elio-arvejas-enteras-x-400-grs.jpg"
   },
@@ -8675,7 +8675,7 @@
   {
     "code": "6323",
     "name": "DON ELIO MAIZ PISADO COLORADO X 500 GRS (10)",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 1203.35,
     "image": "imagenes/2422-don-elio-maiz-pisado-colorado-x-500-grs.jpg"
   },
@@ -8689,7 +8689,7 @@
   {
     "code": "10010",
     "name": "DON ELIO LENTEJON X 400 GRS (20)",
-    "category": "Yerbas",
+    "category": "Despensa",
     "price": 1953.64,
     "image": "imagenes/2420-don-elio-lentejon-x-400-grs.jpg"
   },
@@ -9019,7 +9019,7 @@
     "code": "3594",
     "name": "PEPITO JUGO/CONGELAR 110CC X 30 UNI.",
     "category": "Jugos",
-    "price": 8190.0,
+    "price": 8190,
     "image": "imagenes/1986-pepito-jugo-congelar-110cc-x-30-uni.jpg"
   },
   {
@@ -9039,7 +9039,7 @@
   {
     "code": "1210",
     "name": "INALPA TOMATE TRITURADO X 970 CC (8)",
-    "category": "Despensa",
+    "category": "Yerbas",
     "price": 2232.75,
     "image": "imagenes/2415-inalpa-tomate-triturado-x-970-cc-8.jpg"
   },
@@ -9152,7 +9152,7 @@
     "code": "519",
     "name": "FEF DOS CORAZONES X 26 GRS",
     "category": "Chocolates",
-    "price": 1129.0,
+    "price": 1129,
     "image": "imagenes/0027-fef-dos-corazones-x-26-grs.jpg"
   },
   {
@@ -9508,7 +9508,7 @@
   {
     "code": "1972",
     "name": "LDC DISPLAY GALLO OBLEA DE ARROZ X 24 UNI.",
-    "category": "Chocolates",
+    "category": "Despensa",
     "price": 22244.42,
     "image": "imagenes/0773-ldc-display-gallo-oblea-de-arroz-x-24-uni.jpg"
   },
@@ -9544,7 +9544,7 @@
     "code": "81",
     "name": "LDC CHOCO MILKYBAR X 100 G LECHE Y MANI SIN TACC (24)",
     "category": "Nuevos y Sin Imagen",
-    "price": 1739.0,
+    "price": 1739,
     "image": ""
   },
   {
@@ -9698,7 +9698,7 @@
     "code": "79",
     "name": "LDC CHOCO MILKYBAR X 100 G LECHE SIN TACC (24)",
     "category": "Nuevos y Sin Imagen",
-    "price": 1739.0,
+    "price": 1739,
     "image": ""
   },
   {
@@ -9725,7 +9725,7 @@
   {
     "code": "3620",
     "name": "GRABICH LENTEJA FRUTAL X 80 GRS (36)",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 620.73,
     "image": "imagenes/GRABICH LENTEJA FRUTAL X 80 GRS (36).jpeg"
   },
@@ -9782,7 +9782,7 @@
     "code": "6305",
     "name": "CNY FERRERO ROCHER T 24",
     "category": "Chocolates",
-    "price": 27391.0,
+    "price": 27391,
     "image": "imagenes/2367-cny-ferrero-rocher-t-24.jpg"
   },
   {
@@ -9803,7 +9803,7 @@
     "code": "6046",
     "name": "NVR. BOMBON SMACK X 10 UNI (BOLSA)",
     "category": "Chocolates",
-    "price": 1925.0,
+    "price": 1925,
     "image": "imagenes/1954-nvr-bombon-smack-x-10-uni-bolsa.jpg"
   },
   {
@@ -9873,7 +9873,7 @@
     "code": "527",
     "name": "FEF LICORITAS 25 X 20 GRS",
     "category": "Chocolates",
-    "price": 22071.0,
+    "price": 22071,
     "image": "imagenes/0035-fef-licoritas-25-x-20-grs.jpg"
   },
   {
@@ -9901,7 +9901,7 @@
     "code": "1513",
     "name": "PRODUCTO 1513",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
@@ -9914,14 +9914,14 @@
   {
     "code": "510",
     "name": "FEF BOTELLITAS DE WISKY X 20 UNID.",
-    "category": "Yerbas",
+    "category": "Caramelos",
     "price": 25899.47,
     "image": "imagenes/0510-fef-botellitas-de-wisky-x-20-unid.jpg"
   },
   {
     "code": "3339",
     "name": "PLENARIO LENTEJAS DE CHOCOLATE X 800 GRS",
-    "category": "Chocolates",
+    "category": "Despensa",
     "price": 20331.03,
     "image": "imagenes/1692-plenario-lentejas-de-chocolate-x-800-grs.jpg"
   },
@@ -9935,7 +9935,7 @@
   {
     "code": "5045",
     "name": "LEIVA ALMOHADITAS DE ARROZ X 125 GRS FRUTILLA (14) SIN TACC",
-    "category": "Galletitas",
+    "category": "Despensa",
     "price": 1238.64,
     "image": "imagenes/1933-leiva-almohaditas-de-arroz-x-125-grs-frutilla-14-sin-tacc.jpg"
   },
@@ -9950,7 +9950,7 @@
     "code": "5080",
     "name": "BYN DISCOS DE ALGODON ESTRELLA X 80 GRS (12)",
     "category": "Higiene",
-    "price": 2062.0,
+    "price": 2062,
     "image": "imagenes/1619-byn-discos-de-algodon-estrella-x-80-grs-12.jpg"
   },
   {
@@ -9984,21 +9984,21 @@
   {
     "code": "1808",
     "name": "SINA ESPONJA DE BAÑO FLOR",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2435.04,
     "image": "imagenes/0409-sina-esponja-bano-flor.jpg"
   },
   {
     "code": "1810",
     "name": "SINA ESPONJA DE BAÑO RECTA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1022.75,
     "image": "imagenes/0412-sina-esponja-de-bano-recta.jpg"
   },
   {
     "code": "1468",
     "name": "MCA DOREE QUITAESMALTE X 65CC FORTALECEDOR CON VIT. (12)",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1682.51,
     "image": "imagenes/1393-mca-doree-quitaesmalte-x-65cc-fortalecedor-con-vit.jpg"
   },
@@ -10019,7 +10019,7 @@
   {
     "code": "3266",
     "name": "CP LATA CORAZON CARO CUORE AMORE (PERF + DES) 6281",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 36761.88,
     "image": "imagenes/1289-cp-lata-corazon-caro-cuore-amore-perf-des.jpg"
   },
@@ -10047,28 +10047,28 @@
   {
     "code": "6216",
     "name": "CP LATA CORAZON CARO CUORE COMBINADA (PERF + DES) 5475",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 36761.88,
     "image": "imagenes/1290-cp-lata-corazon-caro-cuore-combinada-perf-des.jpg"
   },
   {
     "code": "1467",
     "name": "MCA DOREE QUITAESMALTE X 65CC HUMECTANTE (12)",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 1682.51,
     "image": "imagenes/1395-mca-doree-quitaesmalte-x-65cc-humectante.jpg"
   },
   {
     "code": "2665",
     "name": "MCA DOREE QUITAESMALTE X 65CC REPARADOR  C/KERATINA",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1682.51,
     "image": "imagenes/1397-mca-doree-quitaesmalte-x-65cc-reparador-c-keratina.jpg"
   },
   {
     "code": "2666",
     "name": "MCA DOREE QUITAESMALTE X 65CC HIPOALERGENICO SIN ACETONA",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1682.51,
     "image": "imagenes/1394-mca-doree-quitaesmalte-x-65cc-hipoalergenico-sin-acetona.jpg"
   },
@@ -10138,7 +10138,7 @@
   {
     "code": "3685",
     "name": "ALP JABON CAMPOS VERDES X 120 GRS AROMETERAPIA (90)",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 919.36,
     "image": "imagenes/0934-alp-jabon-campos-verdes-x-120-grs-aromaterapia-90.jpg"
   },
@@ -10215,77 +10215,77 @@
   {
     "code": "5861",
     "name": "CHAC. JABON DOVE X 90 GS",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 2245.46,
     "image": "imagenes/2236-chac-jabon-dove-antibacterial-x-90-gs.jpg"
   },
   {
     "code": "6289",
     "name": "ALP JABON ESENCIA ESPUMA",
-    "category": "jabones y cuidado corporal",
-    "price": 0.0,
+    "category": "Higiene",
+    "price": 0,
     "image": "imagenes/0940-alp-jabon-esencia-espuma-glicerina-vegetal-frasco-x-250-cc-12.jpg"
   },
   {
     "code": "1561",
     "name": "TOALLA CALIPSO C/ALAS X 8 UNI. CORTA (50) 2070",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 773.24,
     "image": "imagenes/1513-toalla-calipso-c-alas-x-8-uni-corta-50.jpg"
   },
   {
     "code": "203",
     "name": "TOALLA CALIPSO PLANA X 8 UNI. CON ALAS (50) 2148",
-    "category": "Cuidado Personal",
+    "category": "Higiene",
     "price": 797.94,
     "image": "imagenes/1520-toalla-calipso-plana-x-8-uni-con-alas-50.jpg"
   },
   {
     "code": "902561",
     "name": "TOALLA CALIPSO C/ALAS Y FRAGANCIA X 8 UNI PLANA (50) 1103",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 797.94,
     "image": "imagenes/1514-toalla-calipso-c-alas-y-fragancia-x-8-uni-plana-50.jpg"
   },
   {
     "code": "902562",
     "name": "TOALLA CALIPSO S/ALAS CON DESO. X 8 UNI PLANA (50) 1127",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 797.94,
     "image": "imagenes/1522-toalla-calipso-s-alas-con-desodorante-x-8-uni-plana-50.jpg"
   },
   {
     "code": "202",
     "name": "TOALLA CALIPSO PLANA X 8 UNI. SIN ALAS (50) 2162",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Higiene",
     "price": 797.94,
     "image": ""
   },
   {
     "code": "885",
     "name": "CP BODY MIST CARO CUORE X 120 CC 9516",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 13870.59,
     "image": "imagenes/1094-cp-body-mist-caro-cuore-amore-x-120-cc.jpg"
   },
   {
     "code": "889",
     "name": "CP BODY MIST PAULA X 130 CC",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 13870.59,
     "image": "imagenes/1094-cp-body-mist-caro-cuore-amore-x-120-cc.jpg"
   },
   {
     "code": "883",
     "name": "CP BODY MIST CARO CUORE AMORE X 120 CC 6397",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 13870.59,
     "image": "imagenes/1094-cp-body-mist-caro-cuore-amore-x-120-cc.jpg"
   },
   {
     "code": "3614",
     "name": "CP BODY MIST CARO CUORE \"CUORE\" X 120 CC 5598",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 13870.59,
     "image": "imagenes/1094-cp-body-mist-caro-cuore-amore-x-120-cc.jpg"
   },
@@ -10313,21 +10313,21 @@
   {
     "code": "478",
     "name": "ALP JABON ESENCIA ESPUMA GLICERINA VEGETAL D/PACK X 250 CC (12)",
-    "category": "jabones y cuidado corporal",
-    "price": 0.0,
+    "category": "Higiene",
+    "price": 0,
     "image": "imagenes/0939-alp-jabon-esencia-espuma-glicerina-vegetal-d-pack-x-250-cc-12.jpg"
   },
   {
     "code": "2711",
     "name": "SIGNO JABON DE TOCADOR LE NID 3 X 75 GRS (20)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 1395.25,
     "image": "imagenes/2171-signo-jabon-de-tocador-le-nid-3-x-75-grs-20.jpg"
   },
   {
     "code": "2710",
     "name": "SIGNO JABON DE TOCADOR TRICOLOR 3 X 90 GRS (35)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 1720.86,
     "image": "imagenes/2172-signo-jabon-de-tocador-tricolor-3-x-90-grs-35.jpg"
   },
@@ -10341,14 +10341,14 @@
   {
     "code": "3688",
     "name": "SINA ESCOBILLA DE BAÑO REDONDA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2347.88,
     "image": "imagenes/0404-sina-escobilla-de-bano-redonda.jpg"
   },
   {
     "code": "3554",
     "name": "SINA ESCOBILLA BAÑO CON VASO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3660.73,
     "image": "imagenes/0403-sina-escobilla-bano-con-vaso.jpg"
   },
@@ -10369,14 +10369,14 @@
   {
     "code": "5215",
     "name": "CAPSA ALK CEPILLO SANITARIO SIN SOPORTE (12) 437",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 2263.34,
     "image": "imagenes/CAPSA ALK CEPILLO SANITARIO SIN SOPORTE (12) 437.jpeg"
   },
   {
     "code": "5214",
     "name": "CAPSA ALK CEPILLO SANITARIO CON SOPORTE (12) 420",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 3817.34,
     "image": "imagenes/CAPSA ALK CEPILLO SANITARIO CON SOPORTE (12) 420.jpeg"
   },
@@ -10481,7 +10481,7 @@
   {
     "code": "1589",
     "name": "SIGNO JABON LIQUIDO X 3 LTS VERDE  (DOY PACK FAMILIAR)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 5987.23,
     "image": "imagenes/2174-signo-jabon-liquido-x-3-lts-verde-doy-pack-familiar.jpg"
   },
@@ -10509,7 +10509,7 @@
   {
     "code": "1588",
     "name": "SIGNO JABON LIQUIDO X 3 LTS AZUL  (DOY PACK FAMILIAR)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 5987.23,
     "image": "imagenes/2173-signo-jabon-liquido-x-3-lts-azul-doy-pack-familiar.jpg"
   },
@@ -10649,49 +10649,49 @@
   {
     "code": "6342",
     "name": "CP PAULA CAHEN DANVERS AGUA DE COL. SUEÑOS X 170 ML C/V 3524",
-    "category": "Jugos",
+    "category": "Perfumería",
     "price": 17569.41,
     "image": "imagenes/1325-cp-paula-cahen-danvers-agua-de-colonia-suenos-x-170-ml-c-v.jpg"
   },
   {
     "code": "6344",
     "name": "CP PAULA CAHEN DANVERS AGUA DE COL. BOSQUE X 170 ML C/V 3746",
-    "category": "Jugos",
+    "category": "Perfumería",
     "price": 17569.41,
     "image": "imagenes/1323-cp-paula-cahen-danvers-agua-de-colonia-bosque-x-170-ml-c-v.jpg"
   },
   {
     "code": "5053",
     "name": "CP AGUA DE BIENVENIDA LA PASIONARIA BEBE 9361",
-    "category": "Jugos",
+    "category": "Perfumería",
     "price": 14655.63,
     "image": "imagenes/1081-cp-agua-de-bienvenida-la-pasionaria-bebe.jpg"
   },
   {
     "code": "5052",
     "name": "CP AGUA DE COLONIA LA PASIONARIA BEBE 9033",
-    "category": "Jugos",
+    "category": "Perfumería",
     "price": 9415.63,
     "image": "imagenes/1082-cp-agua-de-colonia-la-pasionaria-bebe.jpg"
   },
   {
     "code": "871",
     "name": "CP KEVIN ROJO DESODORANTE X 250 CC 7345",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1254-cp-kevin-rojo-desodorante-x-250-cc.jpg"
   },
   {
     "code": "860",
     "name": "CP KEVIN BLACK DESODORANTE X 150 CC 8344",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1226-cp-kevin-black-desodorante-x-150-cc.jpg"
   },
   {
     "code": "2667",
     "name": "CP KEVIN BLACK DESODORANTE X 250 CC 8450",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1227-cp-kevin-black-desodorante-x-250-cc.jpg"
   },
@@ -10719,21 +10719,21 @@
   {
     "code": "3206",
     "name": "CP KEVIN SPIRIT DESODORANTE X 250 CC 3465",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1258-cp-kevin-spirit-desodorante-x-250-cc.jpg"
   },
   {
     "code": "1410",
     "name": "CP KEVIN SPIRIT DESODORANTE X 150 CC 3359",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1257-cp-kevin-spirit-desodorante-x-150-cc.jpg"
   },
   {
     "code": "3345",
     "name": "CP KEVIN FREEDOM DESODORANTE X 150CC 7243",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4748.75,
     "image": "imagenes/1229-cp-kevin-freedom-desodorante-x-150cc.jpg"
   },
@@ -10761,21 +10761,21 @@
   {
     "code": "3346",
     "name": "CP KEVIN FREEDOM DESODORANTE X 250CC 7359",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5485.62,
     "image": "imagenes/1230-cp-kevin-freedom-desodorante-x-250cc.jpg"
   },
   {
     "code": "5685",
     "name": "CP KEVIN METAL DESODORANTE X 250 CC 2361",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5485.62,
     "image": "imagenes/1237-cp-kevin-metal-desodorante-x-250-cc.jpg"
   },
   {
     "code": "2060",
     "name": "CP KEVIN ABSOLUTE PERFUME X 60 CC C/VAP 6248",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 22732.35,
     "image": "imagenes/1225-cp-kevin-absolute-perfume-x-60-cc-c-vap.jpg"
   },
@@ -10796,294 +10796,294 @@
   {
     "code": "857",
     "name": "CP KEVIN PARK DESODORANTE X 150 CC 4454",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1239-cp-kevin-park-desodorante-x-150-cc.jpg"
   },
   {
     "code": "3605",
     "name": "CP KEVIN PARK DESODORANTE X 250 CC 4522",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1240-cp-kevin-park-desodorante-x-250-cc.jpg"
   },
   {
     "code": "6408",
     "name": "CP KEVIN ICE DESODORANTE X 150 CC 4242",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1233-cp-kevin-ice-desodorante-x-150-cc.jpg"
   },
   {
     "code": "3575",
     "name": "CP GINO BOGANI TOUT NOIR DESODORANTE X 123 CC 1959",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1216-cp-gino-bogani-tout-noir-desodorante-x-123-cc.jpg"
   },
   {
     "code": "6207",
     "name": "CP CARO CUORE AMORE DESODORANTE X 123 CC 2641",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1122-cp-caro-cuore-amore-desodorante-x-123-cc.jpg"
   },
   {
     "code": "2097",
     "name": "CP CARO CUORE DESODORANTE X 123 CC 5478",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1122-cp-caro-cuore-amore-desodorante-x-123-cc.jpg"
   },
   {
     "code": "5116",
     "name": "CP PRUNE DESODORANTE X 123 CC ICON 9127",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1343-cp-prune-desodorante-x-123-cc-icon.jpg"
   },
   {
     "code": "3772",
     "name": "CP PRUNE DESODORANTE X 123 ML (MOI) 3139",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1348-cp-prune-desodorante-x-123-ml-moi.jpg"
   },
   {
     "code": "2066",
     "name": "CP PRUNE DESODORANTE X 123 CC IV 9782",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1347-cp-prune-desodorante-x-123-cc-iv.jpg"
   },
   {
     "code": "1117",
     "name": "CP CHESTER ICE COLONIA X 100 CC 0039",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 12281.25,
     "image": "imagenes/1130-cp-chester-ice-colonia-x-100-cc.jpg"
   },
   {
     "code": "611",
     "name": "CP KEVIN ROJO AFTER SHAVE X 60 CC 7451",
-    "category": "Yerbas",
-    "price": 9170.0,
+    "category": "Perfumería",
+    "price": 9170,
     "image": "imagenes/1250-cp-kevin-rojo-after-shave-x-60-cc.jpg"
   },
   {
     "code": "2070",
     "name": "CP PACO SURF DESODORANTE X 150 CC 7237",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 3975.17,
     "image": "imagenes/1311-cp-paco-surf-desodorante-x-150-cc.jpg"
   },
   {
     "code": "1623",
     "name": "CP COQUETERIA PERFUME X 95 CC (NUEVO) 0147",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 7778.12,
     "image": "imagenes/1178-cp-coqueteria-perfume-x-95-cc-nuevo.jpg"
   },
   {
     "code": "6359",
     "name": "CP COQUETERIA FLOWER PERFUME X 80 CC GRANDE 7115",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 8105.63,
     "image": "imagenes/1176-cp-coqueteria-flower-perfume-x-80-cc-grande.jpg"
   },
   {
     "code": "874",
     "name": "CP COQUETERIA FLOWERS X 40 ML. 7030",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 7041.25,
     "image": "imagenes/1177-cp-coqueteria-flowers-x-40-ml.jpg"
   },
   {
     "code": "1462",
     "name": "CP COQUETERIA FLOWER DESODORANTE X 123 CC 7474",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 3884.83,
     "image": "imagenes/1175-cp-coqueteria-flower-desodorante-x-123-cc.jpg"
   },
   {
     "code": "6348",
     "name": "CP PAULA AURA DESODORANTE X 123 CC",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/6348-cp-paula-aura-desodorante-x-123-cc.jpeg"
   },
   {
     "code": "1931",
     "name": "CP KEVIN RED DESODORANTE X 150 CC 9244",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4748.75,
     "image": "imagenes/1245-cp-kevin-red-desodorante-x-150-cc.jpg"
   },
   {
     "code": "897",
     "name": "CP CHESTER ICE DESODORANTE X 150 CC 0473",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1134-cp-chester-ice-desodorante-x-150-cc.jpg"
   },
   {
     "code": "7158",
     "name": "CP CHESTER ICE DESODORANTE X 250 CC 0589",
-    "category": "Yerbas",
-    "price": 5240.0,
+    "category": "Perfumería",
+    "price": 5240,
     "image": "imagenes/1135-cp-chester-ice-desodorante-x-250-cc.jpg"
   },
   {
     "code": "863",
     "name": "CP ACQUA DI COLBERT DESODORANTE X 150 CC 8589",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1077-cp-acqua-di-colbert-desodorante-x-150-cc.jpg"
   },
   {
     "code": "921",
     "name": "CP COLBERT NOIR DESODORANTE X 150 CC 4651",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1164-cp-colbert-noir-desodorante-x-150-cc.jpg"
   },
   {
     "code": "3563",
     "name": "CP COLBERT NOIR DESODORANTE X 250 CC 4767",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1165-cp-colbert-noir-desodorante-x-250-cc.jpg"
   },
   {
     "code": "912",
     "name": "CP COLBERT US DESODORANTE X 150 CC 7128",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1169-cp-colbert-us-desodorante-x-150-cc.jpg"
   },
   {
     "code": "3564",
     "name": "CP COLBERT US DESODORANTE X 250 CC 7234",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1170-cp-colbert-us-desodorante-x-250-cc.jpg"
   },
   {
     "code": "3562",
     "name": "CP COLBERT VERDE DESODORANTE X 250 CC 2488",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1173-cp-colbert-verde-desodorante-x-250-cc.jpg"
   },
   {
     "code": "882",
     "name": "CP PACO DESODORANTE X 150 CC TAPA ROJA 3357",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 3975.17,
     "image": "imagenes/1308-cp-paco-desodorante-x-150-cc-tapa-roja.jpg"
   },
   {
     "code": "5012",
     "name": "CP PINO COLBERT DESODORANTE X 250 CC 1641",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1341-cp-pino-colbert-desodorante-x-250-cc.jpg"
   },
   {
     "code": "5017",
     "name": "CP COLBERT SPACE DESODORANTE X 250CC 2584",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1167-cp-colbert-space-desodorante-x-250cc.jpg"
   },
   {
     "code": "2079",
     "name": "CP PRUNE DESODORANTE X 123 CC ( I COLOR GRIS) 9355",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1344-cp-prune-desodorante-x-123-cc-i-color-gris.jpg"
   },
   {
     "code": "5049",
     "name": "CP AKIABARA WATER LILY PERFUME X 85 CC 8424",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 26937.35,
     "image": "imagenes/1084-cp-akiabara-water-lily-perfume-x-85-cc.jpg"
   },
   {
     "code": "4183",
     "name": "CP ANALIA MAIORANA PINK DESODORANTE X 123 ML 0742",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1092-cp-analia-maiorana-pink-desodorante-x-123-ml.jpg"
   },
   {
     "code": "898",
     "name": "CP CHESTER ICE COLONIA X 60 ML. C/VAP 0251",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 11380.62,
     "image": "imagenes/1133-cp-chester-ice-colonia-x-60-ml-c-vap.jpg"
   },
   {
     "code": "899",
     "name": "CP CHESTER ICE COLONIA X 60 CC 0145",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 9006.25,
     "image": "imagenes/1132-cp-chester-ice-colonia-x-60-cc.jpg"
   },
   {
     "code": "896",
     "name": "CP CHESTER ICE AFTER SHAVE X 100 ML. 0367",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 9006.25,
     "image": "imagenes/1128-cp-chester-ice-after-shave-x-100-ml.jpg"
   },
   {
     "code": "1711",
     "name": "CP LA MARTINA RUBI DESODORANTE X 123 CC 5028",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1271-cp-la-martina-rubi-desodorante-x-123-cc.png"
   },
   {
     "code": "6334",
     "name": "CP LA MARTINA RIO NEGRO DESODORANTE X 150 ML 8576",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4666.87,
     "image": "imagenes/1269-cp-la-martina-rio-negro-desodorante-x-150-ml.jpg"
   },
   {
     "code": "2624",
     "name": "CP CHESTER ICE COLONIA X 170 CC 0718",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 9937.93,
     "image": "imagenes/1131-cp-chester-ice-colonia-x-170-cc.jpg"
   },
   {
     "code": "919",
     "name": "CP L EXTREME DESODORANTE X 123 ML. 3678",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4336.55,
     "image": "imagenes/1260-cp-l-extreme-desodorante-x-123-ml.jpg"
   },
   {
     "code": "3284",
     "name": "CP BROSS LONDON CLASSIC DESODORANTE X 150 CC 2365",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1106-cp-bross-london-classic-desodorante-x-150-cc.jpg"
   },
   {
     "code": "870",
     "name": "CP KEVIN ROJO DESODORANTE X 150 CC 7239",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1253-cp-kevin-rojo-desodorante-x-150-cc.jpg"
   },
   {
     "code": "895",
     "name": "CP CRANDALL LEGEND DESODORANTE X 150 CC 0915",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1219-cp-grandall-legend-desodorante-x-150-cc.jpg"
   },
@@ -11097,8 +11097,8 @@
   {
     "code": "894",
     "name": "CP CRANDALL LEGEND DESODORANTE X 250  ML. 2070",
-    "category": "Yerbas",
-    "price": 5240.0,
+    "category": "Perfumería",
+    "price": 5240,
     "image": "imagenes/1220-cp-grandall-legend-desodorante-x-250-ml.jpg"
   },
   {
@@ -11118,7 +11118,7 @@
   {
     "code": "395",
     "name": "CP BROSS LONDON GOLD DESODORANTE X 150 CC 4253",
-    "category": "Desodorantes y Fragancias",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1108-cp-bross-london-gold-desodorante-x-150-cc.jpg"
   },
@@ -11174,7 +11174,7 @@
   {
     "code": "1718",
     "name": "CHAC DESODORANTE DOVE X 150 ML  PERA Y ALOE (12)",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4784.33,
     "image": "imagenes/2202-chac-desodorante-dove-x-150-ml-pera-y-aloe.jpg"
   },
@@ -11188,7 +11188,7 @@
   {
     "code": "2591",
     "name": "CHAC DESODORANTE DOVE X 150 ML INVISIBLE (12)",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4784.33,
     "image": "imagenes/2204-chac-desodorante-dove-x-150-ml-invisible.jpg"
   },
@@ -11202,21 +11202,21 @@
   {
     "code": "5062",
     "name": "CP VALERIA MAZZA DESODORANTE X 123 ML 8256",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1368-cp-valeria-mazza-desodorante-x-123-ml.jpg"
   },
   {
     "code": "5725",
     "name": "CP PALOMA HERRERA PASSION DESODORANTE X 123 CC 6272",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1315-cp-paloma-herrera-passion-desodorante-x-123-cc.jpg"
   },
   {
     "code": "5758",
     "name": "CP KEVIN DUBAI DESODORANTE X 250 ML",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5485.62,
     "image": "imagenes/5758-cp-kevin-dubai-desodorante-x-250-ml.jpg"
   },
@@ -11230,238 +11230,238 @@
   {
     "code": "3572",
     "name": "CP PALOMA HERRERA DESODORANTE X 123 CC 7268",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1312-cp-paloma-herrera-desodorante-x-123-cc.jpg"
   },
   {
     "code": "5748",
     "name": "CP CIEL LOVE DESODORANTE X 123 ML 9251",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4246.21,
     "image": "imagenes/1142-cp-ciel-love-desodorante-x-123-ml.jpg"
   },
   {
     "code": "3561",
     "name": "CP CIEL SHINE DESODORANTE X 123 ML. 2253",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4336.55,
     "image": "imagenes/1158-cp-ciel-shine-desodorante-x-123-ml.jpg"
   },
   {
     "code": "5752",
     "name": "CP CIEL MAGIC DESODORANTE X 123 CC 5240",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4336.55,
     "image": "imagenes/1146-cp-ciel-magic-desodorante-x-123-cc.jpg"
   },
   {
     "code": "1507",
     "name": "CP ACQUA DI COLBERT DESODORANTE X 250 CC 8657",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1078-cp-acqua-di-colbert-desodorante-x-250-cc.jpg"
   },
   {
     "code": "886",
     "name": "CP FLOWER ROSE DESODORANTE X 123 ML. 6444",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4246.21,
     "image": "imagenes/1207-cp-flower-rose-desodorante-x-123-ml.jpg"
   },
   {
     "code": "902593",
     "name": "CP CIEL NOIR DESODORANTE X 123 CC 4257",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4336.55,
     "image": "imagenes/1149-cp-ciel-noir-desodorante-x-123-cc.jpg"
   },
   {
     "code": "1116",
     "name": "CP CIEL NUIT DESODORANTE X 123 CC 4457",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4336.55,
     "image": "imagenes/1152-cp-ciel-nuit-desodorante-x-123-cc.jpg"
   },
   {
     "code": "3578",
     "name": "CP KEVIN PLATINUM DESODORANTE X 250 CC 3653",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5485.62,
     "image": "imagenes/1243-cp-kevin-platinum-desodorante-x-250-cc.jpg"
   },
   {
     "code": "6251",
     "name": "CP KEVIN ICE DESODORANTE X 250 CC 4358",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1234-cp-kevin-ice-desodorante-x-250-cc.jpg"
   },
   {
     "code": "1832",
     "name": "CP CIEL CRYSTAL DESODORANTE X 123 CC 4239",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4336.55,
     "image": "imagenes/1140-cp-ciel-crystal-desodorante-x-123-cc.jpg"
   },
   {
     "code": "914",
     "name": "CP PINO COLBERT DESODORANTE X 150 CC 1535",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1340-cp-pino-colbert-desodorante-x-150-cc.jpg"
   },
   {
     "code": "924",
     "name": "CP COLBERT VERDE DESODORANTE X 150 CC 2372",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/0924-cp-colbert-verde-desodorante-x-150-cc.jpeg"
   },
   {
     "code": "1544",
     "name": "CP KEVIN RED DESODORANTE X 250 CC 9350",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5485.62,
     "image": "imagenes/1246-cp-kevin-red-desodorante-x-250-cc.jpg"
   },
   {
     "code": "3285",
     "name": "CP BROSS LONDON BLUE DESODORANTE X 150 CC 2471",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1104-cp-bross-london-blue-desodorante-x-150-cc.jpg"
   },
   {
     "code": "2061",
     "name": "CP KEVIN ABSOLUTE DESODORANTE X 150 CC 6460",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4748.75,
     "image": "imagenes/1223-cp-kevin-absolute-desodorante-x-150-cc.jpg"
   },
   {
     "code": "906",
     "name": "CP CIEL AZUL DESODORANTE X 123 ML. 0346",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4336.55,
     "image": "imagenes/1137-cp-ciel-azul-desodorante-x-123-ml.jpg"
   },
   {
     "code": "1988",
     "name": "CP MUJERCITAS FUNNY DESODORANTE X 102 CC 2859",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 3252.41,
     "image": "imagenes/1294-cp-mujercitas-funny-desodorante-x-102-cc.jpg"
   },
   {
     "code": "1987",
     "name": "CP MUJERCITAS SUNNY DESODORANTE X 102 CC 2637",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 3252.41,
     "image": "imagenes/1298-cp-mujercitas-sunny-desodorante-x-102-cc.jpg"
   },
   {
     "code": "5108",
     "name": "CP SOPHIE BY MUJERCITAS DESODORANTE X 123 CC 0135",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 3884.83,
     "image": "imagenes/1366-cp-sophie-by-mujercitas-desodorante-x-123-cc.jpg"
   },
   {
     "code": "5110",
     "name": "CP JULIE BY MUJERCITAS  DESODORANTE X 123 CC 1156",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 3884.83,
     "image": "imagenes/1221-cp-julie-by-mujercitas-desodorante-x-123-cc.jpg"
   },
   {
     "code": "867",
     "name": "CP MUJERCITAS DESODORANTE X 123 ML 5340",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 3884.83,
     "image": "imagenes/1293-cp-mujercitas-desodorante-x-123-ml.jpg"
   },
   {
     "code": "6248",
     "name": "CP PALOMA HERRERA FANTASY DESODORANTE X 123 CC 6249",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1313-cp-paloma-herrera-fantasy-desodorante-x-123-cc.jpg"
   },
   {
     "code": "3420",
     "name": "CP KEVIN ABSOLUTE DESODORANTE X 250 CC 6576",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 5485.62,
     "image": "imagenes/1224-cp-kevin-absolute-desodorante-x-250-cc.jpg"
   },
   {
     "code": "854",
     "name": "CP DANIELLE LATA (COLONIA + JABONERA) 4275",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 16593.33,
     "image": "imagenes/1190-cp-danielle-lata-colonia-jabonera.jpg"
   },
   {
     "code": "2610",
     "name": "CP DANIELLE LATA (SHAMPOO + COLONIA) 4169",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 16593.33,
     "image": "imagenes/1191-cp-danielle-lata-shampoo-colonia.jpg"
   },
   {
     "code": "2552",
     "name": "CP LATA MUJERCITAS FUNNY (DEO+PERF) 3135",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 14584.67,
     "image": "imagenes/1291-cp-lata-mujercitas-funny-deo-perf.jpg"
   },
   {
     "code": "6110",
     "name": "CP LAS PEPAS NINFA DESODORANTE 123 ML. 0781",
-    "category": "Galletitas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1286-cp-las-pepas-ninfa-desodorante-123-ml.jpg"
   },
   {
     "code": "5998",
     "name": "CP LAS PEPAS NINFA PERFUME X 100 ML. C/VAP 0675",
-    "category": "Galletitas",
+    "category": "Perfumería",
     "price": 33443.53,
     "image": "imagenes/1287-cp-las-pepas-ninfa-perfume-x-100-ml-c-vap.jpg"
   },
   {
     "code": "1714",
     "name": "CP LAS PEPAS HERA DESODORANTE 123 ML. 1252",
-    "category": "Galletitas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1282-cp-las-pepas-hera-desodorante-123-ml.jpg"
   },
   {
     "code": "2071",
     "name": "CP LAS PEPAS HERA PERFUME X 100 CC C/VAP 1146",
-    "category": "Galletitas",
+    "category": "Perfumería",
     "price": 33443.53,
     "image": "imagenes/1283-cp-las-pepas-hera-perfume-x-100-cc-c-vap.jpg"
   },
   {
     "code": "5997",
     "name": "CP LAS PEPAS MITO PERFUME X 100 CC C/VAP 0125",
-    "category": "Galletitas",
+    "category": "Perfumería",
     "price": 33443.53,
     "image": "imagenes/1285-cp-las-pepas-mito-perfume-x-100-cc-c-vap.jpg"
   },
   {
     "code": "5999",
     "name": "CP LAS PEPAS MITO DESODORANTE 123 ML. 0231",
-    "category": "Galletitas",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1284-cp-las-pepas-mito-desodorante-123-ml.jpg"
   },
   {
     "code": "2551",
     "name": "CP LATA MUJERCITAS SUNNY (DEO+PERF) 3029",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 14584.67,
     "image": "imagenes/1292-cp-lata-mujercitas-sunny-deo-perf.jpg"
   },
@@ -11496,7 +11496,7 @@
   {
     "code": "3691",
     "name": "SINA ESPONJA VEGETAL GIGANTE",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 4183.5,
     "image": "imagenes/0421-sina-esponja-vegetal-gigante.jpg"
   },
@@ -11531,14 +11531,14 @@
   {
     "code": "3801",
     "name": "VERITAS JABON DE GLICERINA BEBE SIN PERFUME X 120 G (36)",
-    "category": "Higiene",
+    "category": "Perfumería",
     "price": 1464.64,
     "image": "imagenes/2346-veritas-jabon-de-glicerina-bebe-sin-perfume-x-120-g-36.jpg"
   },
   {
     "code": "3805",
     "name": "VERITAS JABON DE GLICERINA SIN PERFUME X 120 G (36)",
-    "category": "Higiene",
+    "category": "Perfumería",
     "price": 1464.64,
     "image": "imagenes/2346-veritas-jabon-de-glicerina-bebe-sin-perfume-x-120-g-36.jpg"
   },
@@ -11608,7 +11608,7 @@
   {
     "code": "2015",
     "name": "PRIF. TOALLA BEBE IDEAL X 50 UNI. ALOE (14)",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1863.66,
     "image": "imagenes/0651-prif-toalla-bebe-ideal-x-50-uni-aloe.jpg"
   },
@@ -11622,35 +11622,35 @@
   {
     "code": "3872",
     "name": "CP CREMA PARA MANOS Y CUERPO CIEL NUIT X 85 CC 7243",
-    "category": "Varios",
-    "price": 5240.0,
+    "category": "Perfumería",
+    "price": 5240,
     "image": "imagenes/1180-cp-crema-para-manos-y-cuerpo-ciel-nuit-x-85-cc.jpg"
   },
   {
     "code": "3871",
     "name": "CP CREMA P/ MANOS Y CUERPO CIEL CRYSTRAL X 85CC 7137",
-    "category": "Varios",
-    "price": 5240.0,
+    "category": "Perfumería",
+    "price": 5240,
     "image": "imagenes/1179-cp-crema-para-manos-y-cuerpo-ciel-crystral-x-85-cc.jpg"
   },
   {
     "code": "3870",
     "name": "CP CREMA PARA MANOS Y CUERPO CIEL X 85 CC 7021",
-    "category": "Varios",
-    "price": 5240.0,
+    "category": "Perfumería",
+    "price": 5240,
     "image": "imagenes/1179-cp-crema-para-manos-y-cuerpo-ciel-crystral-x-85-cc.jpg"
   },
   {
     "code": "3873",
     "name": "CP CREMA P/MANOS Y CUERPO SENS GROSELLAS ROSAS X 85 CC 7359",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 5152.68,
     "image": "imagenes/1182-cp-crema-para-manos-y-cuerpo-sens-grosellas-rosas-x-85-cc.jpg"
   },
   {
     "code": "3874",
     "name": "CP CREMA P/MANOS Y CUERPO SENS MAGNOLIA PERA X 85 CC 7465",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 5152.68,
     "image": "imagenes/1183-cp-crema-para-manos-y-cuerpo-sens-magnolia-pera-x-85-cc.jpg"
   },
@@ -11685,7 +11685,7 @@
   {
     "code": "4339",
     "name": "CVL COLGATE PLAX X 250 CC FRESH MINT",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 4250.12,
     "image": "imagenes/1652-cvl-colgate-plax-x-250-cc-fresh.jpg"
   },
@@ -11706,7 +11706,7 @@
   {
     "code": "4341",
     "name": "CVL COLGATE HILO DENTAL X 2 UNIDADES",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 4047.14,
     "image": "imagenes/L COLGATE HILO DENTAL X 2 UNIDADES.jpeg"
   },
@@ -11783,7 +11783,7 @@
   {
     "code": "653",
     "name": "ALP JABON ZORRO X 3 KG B/E (6)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 8901.92,
     "image": "imagenes/0961-alp-jabon-polvo-zorro-escudo-x-3-kg-b-e-6.jpg"
   },
@@ -11798,7 +11798,7 @@
     "code": "5057",
     "name": "ALP DET. LIQUIDO ROPA EVOLUTION QUITAMANCHAS X 800 CC BOTELLA (15)",
     "category": "cuidado de la ropa",
-    "price": 0.0,
+    "price": 0,
     "image": "imagenes/0906-alp-det-liquido-ropa-evolution-quitamanchas-x-800-cc-botella-15.jpg"
   },
   {
@@ -11811,7 +11811,7 @@
   {
     "code": "1150",
     "name": "PSG PAPEL HIG. ELEGANTE 4 X 30 MTS (12)",
-    "category": "Papelería",
+    "category": "Higiene",
     "price": 1540.45,
     "image": "imagenes/0869-psg-papel-hig-elegante-4-x-120-mts-6.jpg"
   },
@@ -11819,7 +11819,7 @@
     "code": "7000",
     "name": "ALP DET. LIQUIDO ROPA EVOLUTION X 3 L FRAGANCIA DURADERA DOY PACK (4)",
     "category": "limpiadores y desinfectantes",
-    "price": 0.0,
+    "price": 0,
     "image": "imagenes/0907-alp-det-liquido-ropa-evolution-x-3-l-fragancia-duradera-doy-pack-4.jpg"
   },
   {
@@ -11867,28 +11867,28 @@
   {
     "code": "231",
     "name": "PILA ENERGIZER EL 123 LITHIUM",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 7843.23,
     "image": "imagenes/0528-pila-el-123-lithium.jpg"
   },
   {
     "code": "20",
     "name": "ENERGIZER MUÑECO CABEZON",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Lámparas",
     "price": 1.57,
     "image": ""
   },
   {
     "code": "251",
     "name": "PILA ENERGIZER N° E 91 AA (4)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 1687.73,
     "image": "imagenes/0536-pila-energizer-n-e-91-aa-4-chicas.jpg"
   },
   {
     "code": "1285",
     "name": "PILA ENERGIZER NH 15 AA RECARGABLE (2)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 11069.04,
     "image": "imagenes/0542-pila-energizer-nh-15-aa-recargable.jpg"
   },
@@ -11896,7 +11896,7 @@
     "code": "3297",
     "name": "MCA PILA MACAO AG10 (389-1130)",
     "category": "Pilas",
-    "price": 4235.0,
+    "price": 4235,
     "image": "imagenes/1431-mca-pila-macao-ag10-389-1130.jpg"
   },
   {
@@ -12028,14 +12028,14 @@
   {
     "code": "4174",
     "name": "CARGADOR ENERGIZER MAXI (CHVCM4)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 45425.46,
     "image": "imagenes/0474-cargador-energizer-maxi-chvcm4.jpg"
   },
   {
     "code": "4173",
     "name": "CARGADOR ENERGIZER MINI (CH2PC4)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 36009.76,
     "image": "imagenes/0475-cargador-energizer-mini-ch2pc4.jpg"
   },
@@ -12126,77 +12126,77 @@
   {
     "code": "1445",
     "name": "PILA ENERGIZER LITHIUM L 91 AA",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 5808.77,
     "image": "imagenes/0530-pila-energizer-lithium-l-91-aa.jpg"
   },
   {
     "code": "1525",
     "name": "PILA ENERGIZER LITHIUM L 92 AAA",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 5808.77,
     "image": "imagenes/0531-pila-energizer-lithium-l-92-aaa.jpg"
   },
   {
     "code": "4059",
     "name": "PILA ENERGIZER N 2450",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 5428.88,
     "image": "imagenes/0532-pila-energizer-n-2450.jpg"
   },
   {
     "code": "1197",
     "name": "PILA ENERGIZER N E 92 AAA (1) C/REMOTO",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 1160.17,
     "image": "imagenes/0533-pila-energizer-n-e-92-aaa-1-c-remoto.jpg"
   },
   {
     "code": "254",
     "name": "PILA ENERGIZER N E 92 AAA (4) C/REMOTO",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 1687.73,
     "image": "imagenes/0534-pila-energizer-n-e-92-aaa-4-c-remoto.jpg"
   },
   {
     "code": "1402",
     "name": "PILA ENERGIZER N° E 91 BP 1  AA",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 1160.17,
     "image": "imagenes/0537-pila-energizer-n-e-91-bp-1-aa.jpg"
   },
   {
     "code": "255",
     "name": "PILA ENERGIZER N° E 93 (2) MEDIANAS",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 4613.23,
     "image": "imagenes/0538-pila-energizer-n-e-93-2-medianas.jpg"
   },
   {
     "code": "256",
     "name": "PILA ENERGIZER N° E 95 (2) GRANDE",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 6106.24,
     "image": "imagenes/0539-pila-energizer-n-e-95-2-grande.jpg"
   },
   {
     "code": "1419",
     "name": "PILA ENERGIZER N° E 96  AAAA  (CUADRUPLE)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 2411.82,
     "image": "imagenes/0540-pila-energizer-n-e-96-aaaa-cuadruple.jpg"
   },
   {
     "code": "1284",
     "name": "PILA ENERGIZER NH 12 AAA  RECARGABLE",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 11069.04,
     "image": "imagenes/0541-pila-energizer-nh-12-aaa-recargable.jpg"
   },
   {
     "code": "249",
     "name": "PILA ENERGIZER Nº E 522 (BATERIA 9 VOL)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 6737.41,
     "image": "imagenes/0543-pila-energizer-n-e-522-bateria-9-vol.jpg"
   },
@@ -12218,7 +12218,7 @@
     "code": "5710",
     "name": "LINTERNA DELANTERA PARA NIÑOS",
     "category": "Lámparas",
-    "price": 9354.0,
+    "price": 9354,
     "image": "imagenes/0486-linterna-delantera-para-ninos.jpg"
   },
   {
@@ -12239,7 +12239,7 @@
     "code": "6013",
     "name": "VINCHA MANOS LIBRES ENERGIZER 300 LUMENS (HEADLAMP)",
     "category": "Lámparas",
-    "price": 29887.0,
+    "price": 29887,
     "image": "imagenes/0576-vincha-manos-libres-energizer-300-lumens-headlamp.jpg"
   },
   {
@@ -12406,63 +12406,63 @@
   {
     "code": "259",
     "name": "PILA EVEREADY N° 1212 AAA (2) C/REMOTO",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 831.87,
     "image": "imagenes/0550-pila-eveready-n-1212-aaa-2-c-remoto.jpg"
   },
   {
     "code": "258",
     "name": "PILA EVEREADY N° 1215 AA  (4) CHICAS",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 831.87,
     "image": "imagenes/0551-pila-eveready-n-1215-aa-4-chicas.jpg"
   },
   {
     "code": "257",
     "name": "PILA EVEREADY N° 1222 (BATERIA 9 VOL)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 3443.12,
     "image": "imagenes/0552-pila-eveready-n-1222-bateria-9-vol.jpg"
   },
   {
     "code": "260",
     "name": "PILA EVEREADY N° 1235 (2) MEDIANAS",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 1730.72,
     "image": "imagenes/0553-pila-eveready-n-1235-2-medianas.jpg"
   },
   {
     "code": "261",
     "name": "PILA EVEREADY N° 1250 (2) GRANDE",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 2316.78,
     "image": "imagenes/0554-pila-eveready-n-1250-2-grande.jpg"
   },
   {
     "code": "3127",
     "name": "PILA EVEREADY GOLD AAA",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 597.74,
     "image": "imagenes/0549-pila-eveready-gold-aaa.jpg"
   },
   {
     "code": "5518",
     "name": "PILA EVEREADY BLUE AAA (40)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 385.79,
     "image": "imagenes/0546-pila-eveready-blue-aaa-40.jpg"
   },
   {
     "code": "5519",
     "name": "PILA EVEREADY BLUE AA (48)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 385.79,
     "image": "imagenes/0545-pila-eveready-blue-aa-48.jpg"
   },
   {
     "code": "3655",
     "name": "PILA EVEREADY BLUE D2 (GRANDE)",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 1515.89,
     "image": "imagenes/0547-pila-eveready-blue-d2-grande.jpg"
   },
@@ -12581,7 +12581,7 @@
   {
     "code": "852",
     "name": "CP DANIELLE SHAMPOO X 200 ML. 2687",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 6113.33,
     "image": "imagenes/1192-cp-danielle-shampoo-x-200-ml.jpg"
   },
@@ -12700,7 +12700,7 @@
   {
     "code": "2095",
     "name": "CP PAULA C. D. BOSQUE BEIGE COLONIA X 100CC C/VAP. 3247",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 12945.88,
     "image": "imagenes/1321-cp-paula-c-d-bosque-beige-colonia-x-100-cc-c-vap.jpg"
   },
@@ -12728,21 +12728,21 @@
   {
     "code": "2082",
     "name": "CP PAULA CAHEN DANVERS PERF X 100 CC C/VAP. 5418",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 33443.53,
     "image": "imagenes/1332-cp-paula-cahen-danvers-amor-perfume-x-100-cc-c-vap.jpg"
   },
   {
     "code": "2067",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 1 5020",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 20420.59,
     "image": "imagenes/1277-cp-la-pasionaria-x-50-cc-historias-1.jpg"
   },
   {
     "code": "2093",
     "name": "CP PAULA C. D. BOSQUE ROJO COLONIA X 100CC C/VAP. 2257",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 12945.88,
     "image": "imagenes/1322-cp-paula-c-d-bosque-rojo-colonia-x-100-cc-c-vap.jpg"
   },
@@ -12763,28 +12763,28 @@
   {
     "code": "1309",
     "name": "CP LA PASIONARIA DES X 123 CC HISTORIAS 3 5570",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1273-cp-la-pasionaria-des-x-123-cc-historias-3.jpg"
   },
   {
     "code": "392",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 4 5686",
-    "category": "Desodorantes y Fragancias",
+    "category": "Perfumería",
     "price": 20420.59,
     "image": "imagenes/1274-cp-la-pasionaria-des-x-123-cc-historias-4.jpg"
   },
   {
     "code": "6217",
     "name": "CP LA PASIONARIA DES X 123 CC HISTORIAS (4) 5815",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1274-cp-la-pasionaria-des-x-123-cc-historias-4.jpg"
   },
   {
     "code": "2668",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 3 5358",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 20420.59,
     "image": "imagenes/1273-cp-la-pasionaria-des-x-123-cc-historias-3.jpg"
   },
@@ -12812,21 +12812,21 @@
   {
     "code": "6215",
     "name": "CP LA PASIONARIA DES X 123 CC HISTORIAS (5) 6140",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1275-cp-la-pasionaria-des-x-123-cc-historias-5.jpg"
   },
   {
     "code": "393",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 5 5921",
-    "category": "Desodorantes y Fragancias",
+    "category": "Perfumería",
     "price": 20420.59,
     "image": "imagenes/1275-cp-la-pasionaria-des-x-123-cc-historias-5.jpg"
   },
   {
     "code": "6214",
     "name": "CP LA PASIONARIA DES X 123 CC HISTORIAS (6) 6478",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1276-cp-la-pasionaria-des-x-123-cc-historias-6.jpg"
   },
@@ -12854,28 +12854,28 @@
   {
     "code": "3524",
     "name": "CP LA PASIONARIA X 50 CC HISTORIAS 6 6256",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 20420.59,
     "image": "imagenes/1276-cp-la-pasionaria-des-x-123-cc-historias-6.jpg"
   },
   {
     "code": "2080",
     "name": "CP PRUNE DESO X 123 CC ( II COLOR BRONCE) 9461",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1345-cp-prune-desodorante-x-123-cc-ii-color-bronce.jpg"
   },
   {
     "code": "2081",
     "name": "CP PRUNE DESO X 123 CC ( III COLOR COBRE) 9577",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1346-cp-prune-desodorante-x-123-cc-iii-color-cobre.jpg"
   },
   {
     "code": "3286",
     "name": "CP BROSS LONDON WARRIOR DESO X 150 CC 2587",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4697.93,
     "image": "imagenes/1110-cp-bross-london-warrior-desodorante-x-150-cc.jpg"
   },
@@ -12903,15 +12903,15 @@
   {
     "code": "6085",
     "name": "CP CANNON MUSK DEO X 250 CC 0439",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 5330.34,
     "image": "imagenes/1113-cp-cannon-musk-deo-x-250-cc.jpg"
   },
   {
     "code": "6090",
     "name": "CP CANNON MUSK COLONIA X 250 CC 1252",
-    "category": "Varios",
-    "price": 7860.0,
+    "category": "Perfumería",
+    "price": 7860,
     "image": "imagenes/1112-cp-cannon-musk-colonia-x-250-cc.jpg"
   },
   {
@@ -12938,21 +12938,21 @@
   {
     "code": "2662",
     "name": "CP CRANDALL COLONIA X 95 CC 0069",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 17766.88,
     "image": "imagenes/1218-cp-grandall-colonia-x-95-cc.jpg"
   },
   {
     "code": "902595",
     "name": "CP GINO BOGANI CHIC TO CHEEK DESO. X 123 CC 2388",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1209-cp-gino-bogani-chic-to-cheek-desodorante-x-123-cc.jpg"
   },
   {
     "code": "902596",
     "name": "CP GINO BOGANI POUR HOMME DESO. X 150 CC 7738",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4748.75,
     "image": "imagenes/1213-cp-gino-bogani-pour-homme-desodorante-x-150-cc.jpg"
   },
@@ -12980,14 +12980,14 @@
   {
     "code": "1990",
     "name": "CP LA MARTINA ESMERALDA DESO X 123 CC 9573",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1267-cp-la-martina-esmeralda-desodorante-x-123-cc.jpg"
   },
   {
     "code": "6335",
     "name": "CP SENS NATURAL DEO X 123 CC GROSELLAS ROSADAS 2034",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4104.67,
     "image": "imagenes/1355-cp-sens-natural-deo-x-123-cc-grosellas-rosadas.jpg"
   },
@@ -13015,14 +13015,14 @@
   {
     "code": "6338",
     "name": "CP SENS NATURAL DEO X 123 CC NEROLI LIMA 2362",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4104.67,
     "image": "imagenes/1358-cp-sens-natural-deo-x-123-cc-neroli-lima.jpg"
   },
   {
     "code": "6337",
     "name": "CP SENS NATURAL DEO X 123 CC MAGNOLIA PERA 2256",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4104.67,
     "image": "imagenes/1357-cp-sens-natural-deo-x-123-cc-magnolia-pera.jpg"
   },
@@ -13050,7 +13050,7 @@
   {
     "code": "6336",
     "name": "CP SENS NATURAL DEO X 123 CC VAINILLA CASSIS 2140",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4104.67,
     "image": "imagenes/1359-cp-sens-natural-deo-x-123-cc-vainilla-cassis.jpg"
   },
@@ -13064,7 +13064,7 @@
   {
     "code": "6339",
     "name": "CP SENS NATURAL DEO X 123 CC VERBENA NARANJA 2478",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4104.67,
     "image": "imagenes/1360-cp-sens-natural-deo-x-123-cc-verbena-naranja.jpg"
   },
@@ -13085,15 +13085,15 @@
   {
     "code": "6343",
     "name": "CP PAULA CAHEN DANVERS AGUA DE COL. FLORES X 170 ML C/V 3630",
-    "category": "Jugos",
+    "category": "Perfumería",
     "price": 17569.41,
     "image": "imagenes/1324-cp-paula-cahen-danvers-agua-de-colonia-flores-x-170-ml-c-v.jpg"
   },
   {
     "code": "1958",
     "name": "CP BOLSITO NESSESAIRE CIEL AZUL (PERF+CREMA) 2035",
-    "category": "Varios",
-    "price": 29606.0,
+    "category": "Perfumería",
+    "price": 29606,
     "image": "imagenes/1098-cp-bolsito-nessesaire-ciel-azul-perf-crema.jpg"
   },
   {
@@ -13113,14 +13113,14 @@
   {
     "code": "1619",
     "name": "CP CIEL AZUL COLONIA X 250 ML 0735",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 9937.93,
     "image": "imagenes/1136-cp-ciel-azul-colonia-x-250-ml.jpg"
   },
   {
     "code": "6356",
     "name": "CP PAULA CAHEN DANVERS ALEGRIA DESOD.X 123 CC 1247",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1326-cp-paula-cahen-danvers-alegria-desod-x-123-cc.jpg"
   },
@@ -13134,105 +13134,105 @@
   {
     "code": "3879",
     "name": "CP ESTUCHE LIBRO CIEL (PERF. X 50 CC + DEO X 123) 0136",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 27422.67,
     "image": "imagenes/1195-cp-estuche-libro-ciel-perf-x-50-cc-deo-x-123.jpg"
   },
   {
     "code": "887",
     "name": "CP FLOWER ROSE COLONIA X 250 CC 6727",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 8944.14,
     "image": "imagenes/1206-cp-flower-rose-colonia-x-250-cc.jpg"
   },
   {
     "code": "2094",
     "name": "CP PAULA C. D. BOSQUE AZUL COLONIA X 100CC C/VAP. 2844",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 12945.88,
     "image": "imagenes/1320-cp-paula-c-d-bosque-azul-colonia-x-100-cc-c-vap.jpg"
   },
   {
     "code": "2087",
     "name": "CP PAULA CAHEN DANVERS ALMA PERF X 60 CC C/VAP 3038",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 26893.53,
     "image": "imagenes/1330-cp-paula-cahen-danvers-alma-perfume-x-60-cc-c-vap.jpg"
   },
   {
     "code": "3349",
     "name": "CP PAULA CAHEN DANVERS ALMA DESOD. X 123CC 3250",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1329-cp-paula-cahen-danvers-alma-desod-x-123cc.jpg"
   },
   {
     "code": "2092",
     "name": "CP PAULA CAHEN DANVERS LUZ X 60 C/VAP 9033",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 26893.53,
     "image": "imagenes/1336-cp-paula-cahen-danvers-luz-x-60-c-vap.jpg"
   },
   {
     "code": "2089",
     "name": "CP PAULA CAHEN DANVERS LUZ DESOD. X 123 CC 9248",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1335-cp-paula-cahen-danvers-luz-desod-x-123-cc.jpg"
   },
   {
     "code": "2084",
     "name": "CP PAULA CAHEN DANVERS AMOR PERF X 100CC C/VAP 1922",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 31517.07,
     "image": "imagenes/1332-cp-paula-cahen-danvers-amor-perfume-x-100-cc-c-vap.jpg"
   },
   {
     "code": "2085",
     "name": "CP PAULA CAHEN DANVERS AMOR DESOD. X 123 CC 2042",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1331-cp-paula-cahen-danvers-amor-desod-x-123-cc.jpg"
   },
   {
     "code": "2083",
     "name": "CP PAULA CAHEN DANVERS DES. X 123 CC CLASICO 5593",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 4503.13,
     "image": "imagenes/1334-cp-paula-cahen-danvers-des-x-123-cc-clasico.jpg"
   },
   {
     "code": "810",
     "name": "CP KEVIN ROJO ANTITRANSP. X 177 CC 7635",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 5420.69,
     "image": "imagenes/1251-cp-kevin-rojo-antitransp-x-177-cc.jpg"
   },
   {
     "code": "2069",
     "name": "CP LATA CORAZON CARO CUORE (PERF + DES) 9479",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 36761.88,
     "image": "imagenes/1288-cp-lata-corazon-caro-cuore-perf-des.jpg"
   },
   {
     "code": "2075",
     "name": "CP KEVIN ROJO EAU DE COLOGNE X 170 CC 7567",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 9937.93,
     "image": "imagenes/1249-cp-kevin-rojo-eau-de-cologne-x-170-cc.jpg"
   },
   {
     "code": "3875",
     "name": "CP BOLSITO NESSESAIRE CIEL LOVE (PERF + DES) 9589",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 28383.34,
     "image": "imagenes/1100-cp-bolsito-nessesaire-ciel-love-perf-des.jpg"
   },
   {
     "code": "3577",
     "name": "CP CIEL SHINE COLONIA X 250 CC 2475",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 9937.93,
     "image": "imagenes/1157-cp-ciel-shine-colonia-x-250-cc.jpg"
   },
@@ -13246,77 +13246,77 @@
   {
     "code": "3883",
     "name": "CP ESTUCHE LIBRO FLOWER ROSE (PERF. X 50 CC + DEO X 123) 0792",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 24016.67,
     "image": "imagenes/1201-cp-estuche-libro-flower-rose-perf-x-50-cc-deo-x-123.jpg"
   },
   {
     "code": "3569",
     "name": "CP CIEL MAGIC COLONIA X 250 CC 5462",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 9937.93,
     "image": "imagenes/1145-cp-ciel-magic-colonia-x-250-cc.jpg"
   },
   {
     "code": "2114",
     "name": "CP BOLSITO NESSESAIRE FLOWER ROSE (PERF + DES) 7593",
-    "category": "Varios",
-    "price": 24890.0,
+    "category": "Perfumería",
+    "price": 24890,
     "image": "imagenes/1102-cp-bolsito-nessesaire-flower-rose-perf-des.jpg"
   },
   {
     "code": "3884",
     "name": "CP ESTUCHE LIBRO CIEL NOIR (PERF. X 50 CC + DEO X 123 CC) 0358",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 28732.67,
     "image": "imagenes/1198-cp-estuche-libro-ciel-noir-perf-x-50-cc-deo-x-123-cc.jpg"
   },
   {
     "code": "1957",
     "name": "CP BOLSITO NESSESAIRE NOIR (PERF+PERF) 2257",
-    "category": "Varios",
-    "price": 29606.0,
+    "category": "Perfumería",
+    "price": 29606,
     "image": "imagenes/1103-cp-bolsito-nessesaire-noir-perf-perf.jpg"
   },
   {
     "code": "4272",
     "name": "CP CIEL NOIR COLONIA X 250CC 4479",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 9937.93,
     "image": "imagenes/1148-cp-ciel-noir-colonia-x-250cc.jpg"
   },
   {
     "code": "1959",
     "name": "CP BOLSITO NESSESAIRE CIEL NUIT (PERF+CREMA) 2141",
-    "category": "Varios",
-    "price": 29606.0,
+    "category": "Perfumería",
+    "price": 29606,
     "image": "imagenes/1101-cp-bolsito-nessesaire-ciel-nuit-perf-crema.jpg"
   },
   {
     "code": "3880",
     "name": "CP ESTUCHE LIBRO CIEL NUIT ( PERF. X 50 CC + DEO X 123 CC 0242",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 27422.67,
     "image": "imagenes/1199-cp-estuche-libro-ciel-nuit-perf-x-50-cc-deo-x-123-cc.jpg"
   },
   {
     "code": "1539",
     "name": "CP CIEL NUIT COLONIA X 250 CC 4822",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 9937.93,
     "image": "imagenes/1151-cp-ciel-nuit-colonia-x-250-cc.jpg"
   },
   {
     "code": "6206",
     "name": "CP BOLSITO NESSESAIRE CIEL CRYSTAL (PERF +1 CREMA) 2363",
-    "category": "Varios",
-    "price": 29606.0,
+    "category": "Perfumería",
+    "price": 29606,
     "image": "imagenes/1099-cp-bolsito-nessesaire-ciel-crystal-perf-1-crema.jpg"
   },
   {
     "code": "1934",
     "name": "CP CIEL CRYSTAL COLONIA X 250 CC 4680",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 9937.93,
     "image": "imagenes/1139-cp-ciel-crystal-colonia-x-250-cc.jpg"
   },
@@ -13337,42 +13337,42 @@
   {
     "code": "991",
     "name": "CP PACO FUTBOL DESO.  X 150 CC TAPA VERDE 0240",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 3975.17,
     "image": "imagenes/1309-cp-paco-futbol-desodorante-x-150-cc-tapa-verde.jpg"
   },
   {
     "code": "1830",
     "name": "CP PACO SURF COLONIA X 60 CC LATA 7350",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 10971.25,
     "image": "imagenes/1310-cp-paco-surf-colonia-x-60-cc-lata.jpg"
   },
   {
     "code": "6209",
     "name": "CP PACO COLONIA X 60 ML C/VAP 3029",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 7123.13,
     "image": "imagenes/1307-cp-paco-colonia-x-60-ml-c-vap.jpg"
   },
   {
     "code": "2622",
     "name": "CP DANIELLE JOLIE (COLONIA+JABONERA) 5142",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 16593.33,
     "image": "imagenes/1188-cp-danielle-jolie-colonia-jabonera.jpg"
   },
   {
     "code": "1930",
     "name": "CP DANIELLE JOLIE COLONIA X 90 CC 5036",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 7778.12,
     "image": "imagenes/1189-cp-danielle-jolie-colonia-x-90-cc.jpg"
   },
   {
     "code": "850",
     "name": "CP DANIELLE COLONIA X 90 CC 4053",
-    "category": "Varios",
+    "category": "Perfumería",
     "price": 7778.12,
     "image": "imagenes/1186-cp-danielle-colonia-x-90-cc.jpg"
   },
@@ -13457,14 +13457,14 @@
     "code": "2076",
     "name": "CP PRUNE PERFUME X 50 CC (1 GRIS) 9027",
     "category": "Perfumería",
-    "price": 22270.0,
+    "price": 22270,
     "image": "imagenes/1349-cp-prune-perfume-x-50-cc-1-gris.jpg"
   },
   {
     "code": "2077",
     "name": "CP PRUNE PERFUME X 50 CC (2 BRONCE) 9133",
     "category": "Perfumería",
-    "price": 22270.0,
+    "price": 22270,
     "image": "imagenes/1350-cp-prune-perfume-x-50-cc-2-bronce.jpg"
   },
   {
@@ -13478,7 +13478,7 @@
     "code": "2065",
     "name": "CP PRUNE PERFUME X 50 CC (IV) 9690",
     "category": "Perfumería",
-    "price": 22270.0,
+    "price": 22270,
     "image": "imagenes/1347-cp-prune-desodorante-x-123-cc-iv.jpg"
   },
   {
@@ -13771,35 +13771,35 @@
   {
     "code": "3085",
     "name": "SINA ESPONJA DE BRONCE GIGANTE X 30 GRS (12)",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 2251.83,
     "image": "imagenes/0413-sina-esponja-de-bronce-gigante-x-30-grs.jpg"
   },
   {
     "code": "6021",
     "name": "SINA LAMPAZO ALGODON MEDIANO CON ROSCA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 4768.69,
     "image": "imagenes/0426-sina-lampazo-algodon-mediano-con-rosca.jpg"
   },
   {
     "code": "902567",
     "name": "SINA PALANGANA X 7 LTS",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3464.91,
     "image": "imagenes/0436-sina-palangana-x-7-lts.jpg"
   },
   {
     "code": "1085",
     "name": "SINA PALA PLASTICA DE MANO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1714.67,
     "image": "imagenes/0434-sina-pala-plastica-de-mano.jpg"
   },
   {
     "code": "3556",
     "name": "SINA PALA PLASTICA C/CABO A PRESION",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 4044.76,
     "image": "imagenes/0433-sina-pala-plastica-c-cabo-a-presion.jpg"
   },
@@ -13820,7 +13820,7 @@
   {
     "code": "6259",
     "name": "SINA FRANELA DOBLE GIGANTE",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2379.9,
     "image": "imagenes/0423-sina-franela-doble-gigante.jpg"
   },
@@ -13834,49 +13834,49 @@
   {
     "code": "2008",
     "name": "PSG PAPEL HIG. ELEGANTE 6 X 30 MTS CLASICO (12)",
-    "category": "Papelería",
+    "category": "Higiene",
     "price": 2298.31,
     "image": "imagenes/0874-psg-papel-hig-elegante-6-x-30-mts-clasico-12.jpg"
   },
   {
     "code": "3523",
     "name": "PSG PAPEL HIG. ELEGANTE 4 X 80 MTS C/ALOE VERA (10)",
-    "category": "Papelería",
+    "category": "Higiene",
     "price": 4007.14,
     "image": "imagenes/0872-psg-papel-hig-elegante-4-x-80-mts-c-aloe-vera-10.jpg"
   },
   {
     "code": "6087",
     "name": "PSG PAPEL HIG.ELEGANTE 12 X 30 MTS ALOE VERA (4)   NUEVO",
-    "category": "Papelería",
+    "category": "Higiene",
     "price": 4593.63,
     "image": "imagenes/0877-psg-papel-hig-elegante-12-x-30-mts-aloe-vera-4-nuevo.jpg"
   },
   {
     "code": "5543",
     "name": "PSG PAPEL HIG. ELEGANTE 24 X 30 MTS PREM ALOE VERA (PACK FAMILIAR)",
-    "category": "yerba, café y té",
-    "price": 0.0,
+    "category": "Higiene",
+    "price": 0,
     "image": "imagenes/0868-psg-papel-hig-elegante-24-x-30-mts-prem-aloe-vera-pack-familiar.jpg"
   },
   {
     "code": "5807",
     "name": "PSG PAPEL HIG. ELEGANTE 4 X 30 MTS TRIPLE HOJA (6)",
-    "category": "Papelería",
+    "category": "Higiene",
     "price": 3873.51,
     "image": "imagenes/0870-psg-papel-hig-elegante-4-x-30-mts-triple-hoja-6.jpg"
   },
   {
     "code": "1686",
     "name": "PSG PAPEL HIG. ELEGANTE DOBLE HOJA 4 X 30 MTS (10)",
-    "category": "Papelería",
+    "category": "Higiene",
     "price": 2690.71,
     "image": "imagenes/0876-psg-papel-hig-elegante-doble-hoja-4-x-30-mts-10.jpg"
   },
   {
     "code": "3110",
     "name": "PSG PAPEL HIG. ELEGANTE DOBLE HOJA 4 X 30 MTS RINDE MAS (10)",
-    "category": "Yerbas",
+    "category": "Higiene",
     "price": 2922.26,
     "image": "imagenes/0875-psg-papel-hig-elegante-d-hoja-4-x-30-mts-rinde-mas.jpg"
   },
@@ -13897,7 +13897,7 @@
   {
     "code": "1421",
     "name": "PSG PAPEL HIG. ELEGANTE 4 X 80 MTS. (10)",
-    "category": "Papelería",
+    "category": "Higiene",
     "price": 3877.45,
     "image": "imagenes/0872-psg-papel-hig-elegante-4-x-80-mts-c-aloe-vera-10.jpg"
   },
@@ -13967,28 +13967,28 @@
   {
     "code": "3330",
     "name": "SINA BARREHOJA PLASTICO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1824.95,
     "image": "imagenes/0389-sina-barrehoja-plastico.jpg"
   },
   {
     "code": "4077",
     "name": "SINA PULVERIZADOR X 1 L",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3294.15,
     "image": "imagenes/0447-sina-pulverizador-x-1-l.jpg"
   },
   {
     "code": "1809",
     "name": "SINA PULVERIZADOR CHICO 250 CC",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2532.87,
     "image": "imagenes/0446-sina-pulverizador-chico-250-cc.jpg"
   },
   {
     "code": "3643",
     "name": "SINA CEPILLO DE MANO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2038.39,
     "image": "imagenes/0395-sina-cepillo-de-mano.jpg"
   },
@@ -14002,99 +14002,99 @@
   {
     "code": "3329",
     "name": "SINA CEPILLO LAVAZAPATILLA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2646.71,
     "image": "imagenes/0397-sina-cepillo-lavazapatilla.jpg"
   },
   {
     "code": "5504",
     "name": "SINA CEPILLO LAVAVAQUERO CON MANGO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2424.37,
     "image": "imagenes/0396-sina-cepillo-lavavaquero-con-mango.jpg"
   },
   {
     "code": "3689",
     "name": "SINA PALO DE MADERA 1.50 MTS LARGO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3341.29,
     "image": "imagenes/0438-sina-palo-de-madera-1-50-mts-largo.jpg"
   },
   {
     "code": "3645",
     "name": "SINA CEPILLO PARA AUTOS VIOLIN BASE PLASTICO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3338.62,
     "image": "imagenes/0400-sina-cepillo-para-autos-violin-base-plastico.jpg"
   },
   {
     "code": "3690",
     "name": "SINA SECADOR DE PLASTICO SUPER REFORZADO X 40 CM",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3913.14,
     "image": "imagenes/0452-sina-secador-de-plastico-super-reforzado-x-40-cm.jpg"
   },
   {
     "code": "6102",
     "name": "SINA CEPILLO MULTIUSO X 35 CM",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2693.46,
     "image": "imagenes/0398-sina-cepillo-multiuso-x-35-cm.jpg"
   },
   {
     "code": "3644",
     "name": "SINA CEPILLO UÑAS SIMPLE",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1141.93,
     "image": "imagenes/0401-sina-cepillo-unas-simple.jpg"
   },
   {
     "code": "6261",
     "name": "SINA SECAVIDRIO 23 CM",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2017.05,
     "image": "imagenes/0456-sina-secavidrio-23-cm.jpg"
   },
   {
     "code": "6155",
     "name": "SINA PLUMERO BOCHA REPUESTO A ROSCA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3623.21,
     "image": "imagenes/0445-sina-plumero-bocha-repuesto-a-rosca.jpg"
   },
   {
     "code": "6069",
     "name": "SINA PLANCHITA CEPILLO LAVADO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2331.88,
     "image": "imagenes/0444-sina-planchita-cepillo-lavado.jpg"
   },
   {
     "code": "6246",
     "name": "SINA ESCOBILLON CERDA NATURAL LISO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 7828.06,
     "image": "imagenes/0405-sina-escobillon-cerda-natural-liso.jpg"
   },
   {
     "code": "6153",
     "name": "SINA ESCOBILLON PLASTICO ONIX",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 5730.97,
     "image": "imagenes/0407-sina-escobillon-plastico-onix.jpg"
   },
   {
     "code": "1408",
     "name": "SINA PALO DE MADERA X 1.2 MTS",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1907.66,
     "image": "imagenes/0439-sina-palo-de-madera-x-1-2-mts.jpg"
   },
   {
     "code": "3457",
     "name": "SINA PASACERA PLASTICA Nº 1",
-    "category": "Varios",
-    "price": 3424.0,
+    "category": "Limpieza",
+    "price": 3424,
     "image": "imagenes/0443-sina-pasacera-plastica-n-1.jpg"
   },
   {
@@ -14135,14 +14135,14 @@
   {
     "code": "3641",
     "name": "SINA BALDE PLASTICO X 10 LTS",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3971.84,
     "image": "imagenes/0387-sina-balde-plastico-x-10-lts.jpg"
   },
   {
     "code": "4310",
     "name": "SINA TRAPO DE PISO BLANCO  48 X 60",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1728.9,
     "image": "imagenes/0461-sina-trapo-de-piso-blanco-48-x-60.jpg"
   },
@@ -14156,21 +14156,21 @@
   {
     "code": "3459",
     "name": "SINA TRAPO REJILLA AUTO TRIPLE TEXA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 5844.81,
     "image": "imagenes/0466-sina-trapo-rejilla-auto-triple-texa.jpg"
   },
   {
     "code": "5773",
     "name": "SINA TRAPO REPASADOR NIDO DE ABEJA ESTAMPADO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2401.25,
     "image": "imagenes/0468-sina-trapo-repasador-nido-de-abeja-estampado.jpg"
   },
   {
     "code": "3697",
     "name": "SINA PAÑO AMARILLO TRAPO DE PISO MULTIUSO 50 X 56",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1243.4,
     "image": "imagenes/0441-sina-pano-amarillo-trapo-de-piso-multiuso-50-x-56.jpg"
   },
@@ -14191,56 +14191,56 @@
   {
     "code": "1083",
     "name": "SINA ESPONJA PLATEADA X 30 GRS (12)",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 1053.67,
     "image": "imagenes/0418-sina-esponja-plateada-x-15-grs.jpg"
   },
   {
     "code": "270",
     "name": "SINA TRAPO FRANELA NARANJA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1325.13,
     "image": "imagenes/0464-sina-trapo-franela-naranja.jpg"
   },
   {
     "code": "5138",
     "name": "SINA TRAPO REPASADOR CUADRILLE RAYADO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1776.92,
     "image": "imagenes/0470-sina-trapo-repasador-cuadrille-rayado.jpg"
   },
   {
     "code": "5136",
     "name": "SINA TRAPO REPASADOR 42X60 SUPER CUADRO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3125.18,
     "image": "imagenes/0469-sina-trapo-repasador-42x60-super-cuadro.jpg"
   },
   {
     "code": "902585",
     "name": "SINA TRAPO REPASADOR TOALLA CUADRILLE",
-    "category": "Varios",
+    "category": "Higiene",
     "price": 1776.92,
     "image": "imagenes/0471-sina-trapo-repasador-toalla-cuadrille.jpg"
   },
   {
     "code": "2723",
     "name": "SINA ESPONJA DE FIBRA SALVAUÑA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 718.59,
     "image": "imagenes/0416-sina-esponja-de-fibra-salvauna.jpg"
   },
   {
     "code": "5838",
     "name": "SINA ESPONJA PLATEADA X 50 GRS",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1742.58,
     "image": "imagenes/0418-sina-esponja-plateada-x-15-grs.jpg"
   },
   {
     "code": "3460",
     "name": "SINA ESPONJA DE BRONCE X 9 GRS CHICA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 711.48,
     "image": "imagenes/0415-sina-esponja-de-bronce-x-9-grs-chica.jpg"
   },
@@ -14254,56 +14254,56 @@
   {
     "code": "3001",
     "name": "SINA ESPONJA DOBLE CARA (BRONCE Y FIBRA)",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2372.79,
     "image": "imagenes/0417-sina-esponja-doble-cara-bronce-y-fibra.jpg"
   },
   {
     "code": "4160",
     "name": "SINA ESTROPAJO PLATEADO X 30 GRS",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 1237.98,
     "image": "imagenes/0422-sina-estropajo-plateado-x-30-grs.jpg"
   },
   {
     "code": "841",
     "name": "SINA OVILLITOS ECO X 50 GRS",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 786.19,
     "image": "imagenes/0432-sina-ovillitos-eco-x-50-grs.jpg"
   },
   {
     "code": "3546",
     "name": "SINA XL ESPONJA SALVAUÑA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 720.37,
     "image": "imagenes/0473-sina-xl-esponja-salvauna.jpg"
   },
   {
     "code": "5669",
     "name": "SINA ESPONJA COCINA ESPUMITA (12)",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 891.13,
     "image": "imagenes/0410-sina-esponja-cocina-espumita-12.jpg"
   },
   {
     "code": "3692",
     "name": "SINA ESPONJA COCINA PERLADA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 727.61,
     "image": "imagenes/0411-sina-esponja-cocina-perlada.jpg"
   },
   {
     "code": "10183",
     "name": "PSG PAPEL HIGIENICO 1 X 120 MTS INDIVIDUAL",
-    "category": "Papelería",
+    "category": "Higiene",
     "price": 1533.91,
     "image": "imagenes/0878-psg-papel-higienico-1-x-120-mts-individual.jpg"
   },
   {
     "code": "241",
     "name": "PAPEL HIG. CALIPSO 1 X 60 MTS (48)",
-    "category": "Papelería",
+    "category": "Higiene",
     "price": 465.63,
     "image": "imagenes/2343-papel-hig-calipso-1-x-60-mts-48.jpg"
   },
@@ -14331,7 +14331,7 @@
   {
     "code": "3129",
     "name": "PILA EVEREADY GOLD AAA X 4",
-    "category": "Pilas",
+    "category": "Lámparas",
     "price": 597.74,
     "image": "imagenes/0549-pila-eveready-gold-aaa.jpg"
   },
@@ -14366,7 +14366,7 @@
   {
     "code": "3259",
     "name": "ALP JABON ZORRO X 800 GRS B/E BLUE POWER (20)",
-    "category": "Detergentes",
+    "category": "Higiene",
     "price": 2559.94,
     "image": "imagenes/0979-alp-jabon-zorro-x-800-grs-b-e-blue-power-20.jpg"
   },
@@ -14443,7 +14443,7 @@
   {
     "code": "2500",
     "name": "LINTERNA LED ENERGIZER FUSION COMPACTA 240 LUMENS + PILAS",
-    "category": "Yerbas",
+    "category": "Lámparas",
     "price": 27999.4,
     "image": "imagenes/2500-linterna-led-energizer-fusion-compacta-240-lumens-pilas.jpg"
   },
@@ -14457,7 +14457,7 @@
   {
     "code": "2501",
     "name": "LINTERNA EVEREADY ALL METAL SEARCHLIGHT",
-    "category": "Yerbas",
+    "category": "Lámparas",
     "price": 30000.26,
     "image": "imagenes/0489-linterna-eveready-2-linterna-2-pilas-2d.jpg"
   },
@@ -14486,28 +14486,28 @@
     "code": "1330",
     "name": "GIN LA PAMPA X 28 CC  MINIATURA CITRUS",
     "category": "Varios",
-    "price": 3267.0,
+    "price": 3267,
     "image": "imagenes/1263-cp-la-dolfina-stud-perfume-x-100-cc.jpg"
   },
   {
     "code": "1329",
     "name": "GIN LA PAMPA X 28 CC  MINIATURA FLOWERS AZUL",
     "category": "Varios",
-    "price": 3267.0,
+    "price": 3267,
     "image": "imagenes/1263-cp-la-dolfina-stud-perfume-x-100-cc.jpg"
   },
   {
     "code": "1325",
     "name": "GIN LA PAMPA X 375 CC CITRUS",
     "category": "Varios",
-    "price": 19602.0,
+    "price": 19602,
     "image": "imagenes/1263-cp-la-dolfina-stud-perfume-x-100-cc.jpg"
   },
   {
     "code": "1326",
     "name": "GIN LA PAMPA X 375 CC FLOWERS AZUL",
     "category": "Varios",
-    "price": 19602.0,
+    "price": 19602,
     "image": "imagenes/1263-cp-la-dolfina-stud-perfume-x-100-cc.jpg"
   },
   {
@@ -14528,7 +14528,7 @@
     "code": "1894",
     "name": "ANTOJITOS NACHOS FAKIN HOT VERDE",
     "category": "galletitas dulces",
-    "price": 0.0,
+    "price": 0,
     "image": "imagenes/2450-antojitos-nachos-fakin-hot-verde-spicy-guacamole-x-70-g-16.jpg"
   },
   {
@@ -14549,7 +14549,7 @@
     "code": "6285",
     "name": "ANTOJITOS CRACKERS MANDIOCA SAB. GUACAMOLE X 70 G (16) SIN TACC",
     "category": "galletitas saladas y tostadas",
-    "price": 0.0,
+    "price": 0,
     "image": "imagenes/2443-antojitos-crackers-mandioca-sab-guacamole-x-70-g-16-sin-tacc.jpg"
   },
   {
@@ -14702,14 +14702,14 @@
   {
     "code": "2656",
     "name": "ALP SUAVIZANTE FEDERAL X 3 LITROS VIOLETAS DEL CAMPO (4)",
-    "category": "Detergentes",
+    "category": "Limpieza",
     "price": 7878.06,
     "image": "imagenes/0992-alp-suavizante-federal-x-3-litros-violetas-del-campo-4.jpg"
   },
   {
     "code": "3935",
     "name": "ALP SUAVIZANTE ZORO X 900 ML ELEGANTE (14)",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 3019.55,
     "image": "imagenes/0993-alp-suavizante-federal-x-900-cc-aires-de-bambo-14.jpg"
   },
@@ -14730,7 +14730,7 @@
   {
     "code": "5751",
     "name": "CP KEVIN DUBAI DESODORANTE X 150 ML",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 4748.75,
     "image": "imagenes/5758-cp-kevin-dubai-desodorante-x-250-ml.jpg"
   },
@@ -14772,21 +14772,21 @@
   {
     "code": "5077",
     "name": "CP BOLSITO CHESTER ICE (PERFUME X 60 CC + DEO)",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 26112.67,
     "image": "imagenes/1194-cp-estuche-libro-chester-ice-perfume-x-60-cc-deo-x-150-cc.jpg"
   },
   {
     "code": "5078",
     "name": "CP BOLSITO KEVIN ABSOLUTE (PERFUME X 60 CC + DEO)",
-    "category": "Yerbas",
-    "price": 32750.0,
+    "category": "Perfumería",
+    "price": 32750,
     "image": "imagenes/1303-cp-neceser-kevin-absolute-perfume-x-60-cc-deo.jpg"
   },
   {
     "code": "2062",
     "name": "CP KEVIN ABSOLUTE PERFUME X 100 CC C/VAP",
-    "category": "Yerbas",
+    "category": "Perfumería",
     "price": 26970.48,
     "image": "imagenes/1225-cp-kevin-absolute-perfume-x-60-cc-c-vap.jpg"
   },
@@ -14842,7 +14842,7 @@
   {
     "code": "5208",
     "name": "CAPSA ALK ESCOBA INTERIOR CON PALO (12) 132",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 5025.79,
     "image": "imagenes/CAPSA ALK ESCOBA INTERIOR CON PALO (12) 132.jpeg"
   },
@@ -14940,7 +14940,7 @@
   {
     "code": "5219",
     "name": "CAPSA ALK CUERDA PARA TENDER NRO 5 (12) 619",
-    "category": "Yerbas",
+    "category": "Limpieza",
     "price": 1009.66,
     "image": "imagenes/CAPSA ALK CUERDA PARA TENDER NRO 5 (12) 619.jpeg"
   },
@@ -15004,91 +15004,91 @@
     "code": "1134",
     "name": "PRODUCTO 1134",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "931",
     "name": "PRODUCTO 931",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "3201",
     "name": "PRODUCTO 3201",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "119",
     "name": "PRODUCTO 119",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "120",
     "name": "PRODUCTO 120",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "3106",
     "name": "PRODUCTO 3106",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "3132",
     "name": "PRODUCTO 3132",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "4945",
     "name": "PRODUCTO 4945",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "4993",
     "name": "PRODUCTO 4993",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "4958",
     "name": "PRODUCTO 4958",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "4957",
     "name": "PRODUCTO 4957",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "5086",
     "name": "PRODUCTO 5086",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   },
   {
     "code": "5020",
     "name": "PRODUCTO 5020",
     "category": "Nuevos y Sin Imagen",
-    "price": 0.0,
+    "price": 0,
     "image": ""
   }
 ]

@@ -7284,6 +7284,32 @@ function normalizeCategory(cat, name = "", img = "") {
     "Pilas", "Lámparas", "Pegamentos", "Higiene", "Chupetines", "Turrones",
     "Nuevos y Sin Imagen", "Papelería", "Perfumería", "Detergentes", "Limpieza", "Pipas", "Bebidas", "Snacks"
   ];
+
+  const n = (name || '').toUpperCase();
+
+  // Smart title rules to prevent miscategorization
+  if (n.includes('YERBA') || n.includes('PLAYADITO') || n.includes('TARAGUI') || n.includes('TARAGÜI') || 
+      n.includes('ROSAMONTE') || n.includes('CBSE') || n.includes('CANARIAS') || n.includes('MAÑANITA') || 
+      n.includes('NOBLEZA GAUCHA') || n.includes('LA TRANQUERA') || n.includes('MATE ') || n.includes('AMANDA') ||
+      n.includes('PIPORE') || n.includes('PIPORÉ') || n.includes('ROMANCE') || n.includes('VERDIA') || n.includes('HOJITAS')) {
+    return 'Yerbas';
+  }
+  if (n.startsWith('CP ') || n.includes('DESODORANTE') || n.includes('PERFUME') || n.includes('COLONIA') || 
+      n.includes('AFTER SHAVE') || n.includes('KEVIN') || n.includes('COLBERT') || n.includes('CIEL') || 
+      n.includes('COQUETERIA') || n.includes('CHESTIER') || n.includes('BROSS LONDON') || n.includes('CRANDALL')) {
+    return 'Perfumería';
+  }
+  if (n.includes('NOSOTRAS') || n.includes('CALIPSO') || n.includes('PROTECTOR') || n.includes('TOALLA') || 
+      n.includes('HIGIENICO') || n.includes('PAPEL HIG') || n.includes('COLGATE') || n.includes('QUITAESMALTE')) {
+    return 'Higiene';
+  }
+  if (n.includes('SINA ') || n.includes('CAPSA ') || n.includes('ESCOBA') || n.includes('SUAVIZANTE') || 
+      n.includes('ESPONJA') || n.includes('ROLLO DE FILM') || n.includes('PAPEL MANTECA')) {
+    return 'Limpieza';
+  }
+  if (n.includes('LINTERNA') || n.includes('EVEREADY') || n.includes('ENERGIZER')) {
+    return 'Lámparas';
+  }
   
   if (cat && validCats.includes(cat.trim())) {
     return cat.trim();
@@ -7715,6 +7741,9 @@ function selC(el, c) {
   if (el) el.classList.add('active');
   curC = c;
   curG = '';
+  q = '';
+  const sinp = document.getElementById('sinp');
+  if (sinp) sinp.value = '';
   applyF();
   const titleEl = document.getElementById('ctitle');
   if (titleEl) titleEl.textContent = c || 'Catálogo BIANI';
@@ -7808,22 +7837,23 @@ function isWordFuzzyMatch(qWord, targetWords) {
 }
 
 const SEARCH_SYNONYMS = {
-  'panal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
-  'panales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
-  'pañal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
-  'pañales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'bebe', 'higiene', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
+  'panal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
+  'panales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
+  'pañal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
+  'pañales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
   'gaseosa': ['gaseosa', 'gaseosas', 'coca', 'pepsi', 'manaos', 'secco', 'sprite', '7up', 'bebida', 'bebidas'],
   'gaseosas': ['gaseosa', 'gaseosas', 'coca', 'pepsi', 'manaos', 'secco', 'sprite', '7up', 'bebida', 'bebidas'],
-  'galletita': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas', 'snack'],
-  'galletitas': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas', 'snack'],
-  'masita': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas'],
-  'masitas': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas'],
-  'escoba': ['escoba', 'escobillon', 'limpieza', 'capsa', 'palo', 'secador'],
-  'escobillon': ['escoba', 'escobillon', 'limpieza', 'capsa', 'palo', 'secador'],
+  'galletita': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas'],
+  'galletitas': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas'],
+  'masita': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley'],
+  'masitas': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley'],
+  'escoba': ['escoba', 'escobillon', 'capsa', 'palo', 'secador'],
+  'escobillon': ['escoba', 'escobillon', 'capsa', 'palo', 'secador'],
   'vino': ['vino', 'vinos', 'tinto', 'blanco', 'malbec', 'cabernet', 'cordero', 'fecovita', 'estancia', 'bodega'],
   'vinos': ['vino', 'vinos', 'tinto', 'blanco', 'malbec', 'cabernet', 'cordero', 'fecovita', 'estancia', 'bodega'],
-  'leche': ['leche', 'lacteo', 'despensa'],
-  'yerba': ['yerba', 'mate', 'playadito', 'taragui', 'rosamonte', 'amanda', 'marolio', 'despensa'],
+  'leche': ['leche', 'lacteo', 'serenisima'],
+  'yerba': ['yerba', 'yerbas', 'mate', 'playadito', 'taragui', 'rosamonte', 'amanda', 'romance', 'nobleza', 'canarias', 'mañanita', 'cbse', 'pipore'],
+  'yerbas': ['yerba', 'yerbas', 'mate', 'playadito', 'taragui', 'rosamonte', 'amanda', 'romance', 'nobleza', 'canarias', 'mañanita', 'cbse', 'pipore'],
   'chocolates': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot'],
   'chocolate': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot']
 };
@@ -7906,6 +7936,7 @@ function applyF() {
   if (trimmedQ) {
     const scoredList = [];
     r.forEach(p => {
+      if (curC && p.category !== curC) return;
       const s = getProductSearchScore(p, trimmedQ);
       if (s > 0) {
         scoredList.push({ score: s, prod: p });
@@ -7914,7 +7945,7 @@ function applyF() {
     scoredList.sort((a, b) => b.score - a.score);
     r = scoredList.map(item => item.prod);
     const titleEl = document.getElementById('ctitle');
-    if (titleEl) titleEl.textContent = `Búsqueda: "${trimmedQ}"`;
+    if (titleEl) titleEl.textContent = `Búsqueda: "${trimmedQ}"` + (curC ? ` en ${curC}` : '');
   } else {
     if (curC) r = r.filter(p => p.category === curC);
     else if (curG) r = r.filter(p => GR[curG] && GR[curG].includes(p.category));
