@@ -1452,8 +1452,8 @@ body.adm .drag-chosen{box-shadow:0 8px 24px rgba(15,39,81,.4)!important;border-c
 body.adm .adm-card-bar{display:flex}
 .dh{cursor:grab;color:rgba(255,255,255,.85);font-size:16px;padding:2px 4px;user-select:none;touch-action:none}
 .dh:active{cursor:grabbing}
-.adm-card-btns{display:flex;gap:3px}
-.adm-cb{width:24px;height:24px;border:none;border-radius:5px;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
+.adm-card-btns{display:flex;gap:6px}
+.adm-cb{width:28px;height:28px;border:none;border-radius:6px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
 .adm-cb.edit{background:rgba(240,165,0,.9);color:#fff}
 .adm-cb.del{background:rgba(230,57,70,.9);color:#fff}
 /* EDIT MODAL */
@@ -8117,8 +8117,8 @@ function mkCard(p) {
   <div class="adm-card-bar">
     <span class="dh">☰</span>
     <div class="adm-card-btns">
-      <button class="adm-cb edit" data-act="adm-edit" onclick="event.stopPropagation()">✏️</button>
-      <button class="adm-cb del" data-act="adm-del" onclick="event.stopPropagation()">🗑️</button>
+      <button class="adm-cb edit" title="Editar producto" onclick="event.stopPropagation(); openEditModal('${p.code}')">✏️</button>
+      <button class="adm-cb del" title="Eliminar producto" onclick="event.stopPropagation(); admDelete('${p.code}')">🗑️</button>
     </div>
   </div>` : ''}
   ${isST ? '<span class="stbdg">SIN TACC</span>' : ''}
