@@ -11,3 +11,5 @@ Thumbs.db
 # Ignorar archivos Excel y JSON temporales (son solo para edición local)
 *.xlsx
 pdf_order_temp.json
+imagenes_organizadas/
+

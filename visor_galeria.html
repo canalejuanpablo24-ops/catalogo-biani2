@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor de Galería y Catálogo · BIANI (6.588 Imágenes)</title>
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #334155;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER & NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto 16px auto;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: #0f172a;
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .brand-text h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .counter-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* SEARCH & CONTROLS */
+    .controls-bar {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 18px 12px 44px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .view-options {
+      display: flex;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .view-btn.active {
+      background: var(--accent);
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    /* CATEGORIES BAR */
+    .categories-bar {
+      max-width: 1400px;
+      margin: 16px auto 0 auto;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+    }
+
+    .cat-tab {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .cat-tab:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-main);
+    }
+
+    .cat-tab.active {
+      background: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* MAIN CONTAINER */
+    main {
+      flex: 1;
+      max-width: 1400px;
+      width: 100%;
+      margin: 24px auto;
+      padding: 0 24px;
+    }
+
+    /* GRID & LIST VIEWS */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid.large {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+
+    .gallery-grid.list {
+      grid-template-columns: 1fr;
+    }
+
+    /* CARD STYLING */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .card-img-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #0f172a;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .card-code {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-category {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    /* LIST CARD SPECIFIC */
+    .gallery-grid.list .card {
+      flex-direction: row;
+      align-items: center;
+      height: 100px;
+    }
+
+    .gallery-grid.list .card-img-wrapper {
+      width: 100px;
+      height: 100px;
+      aspect-ratio: auto;
+      flex-shrink: 0;
+    }
+
+    .gallery-grid.list .card-body {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    /* PAGINATION / LOAD MORE */
+    .pagination-bar {
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .load-more-btn {
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      color: #0f172a;
+      border: none;
+      padding: 14px 36px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .load-more-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+    }
+
+    .page-info {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* LIGHTBOX MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 800px) {
+      .modal-container {
+        flex-direction: column;
+        max-height: 95vh;
+        overflow-y: auto;
+      }
+    }
+
+    .modal-img-container {
+      flex: 1.3;
+      background: #090d16;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      min-height: 350px;
+    }
+
+    .modal-img-container img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .modal-details {
+      flex: 1;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--text-main);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: var(--accent);
+      color: #0f172a;
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .meta-value {
+      font-size: 14px;
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .action-btn-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .btn-action {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+    }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      z-index: 5;
+      transition: all 0.2s;
+    }
+
+    .nav-arrow:hover {
+      background: var(--accent);
+      color: #0f172a;
+    }
+
+    .nav-arrow.prev { left: 16px; }
+    .nav-arrow.next { right: 16px; }
+
+    /* NO RESULTS */
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      grid-column: 1 / -1;
+    }
+
+    .no-results h3 {
+      font-size: 18px;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-icon">B</div>
+        <div class="brand-text">
+          <h1>Catálogo de Imágenes BIANI</h1>
+          <p>Explorador y Visor Visual de Productos</p>
+        </div>
+      </div>
+      <div class="counter-badge" id="totalCounter">Cargando 6.588 imágenes...</div>
+    </div>
+
+    <div class="controls-bar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Buscar por código (ej: 0001), marca o descripción...">
+      </div>
+
+      <div class="view-options">
+        <button class="view-btn active" id="btnGrid">Grid Standard</button>
+        <button class="view-btn" id="btnGridLarge">Grid Grande</button>
+        <button class="view-btn" id="btnList">Lista</button>
+      </div>
+    </div>
+
+    <div class="categories-bar" id="categoriesBar">
+      <button class="cat-tab active" data-cat="TODOS">Todos (6.588)</button>
+    </div>
+  </header>
+
+  <!-- MAIN GALLERY CONTAINER -->
+  <main>
+    <div class="gallery-grid" id="galleryGrid"></div>
+
+    <div class="pagination-bar">
+      <button class="load-more-btn" id="loadMoreBtn">Cargar Más Imágenes</button>
+      <div class="page-info" id="pageInfo"></div>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-container">
+      <button class="modal-close" id="modalClose">✕</button>
+
+      <button class="nav-arrow prev" id="btnPrev">‹</button>
+      <button class="nav-arrow next" id="btnNext">›</button>
+
+      <div class="modal-img-container">
+        <img id="modalImg" src="" alt="">
+      </div>
+
+      <div class="modal-details">
+        <h2 class="modal-title" id="modalTitle">Título del Producto</h2>
+        
+        <div class="meta-row">
+          <span class="meta-label">Código de Producto</span>
+          <span class="meta-value" id="modalCode">-</span>
+        </div>
+
+        <div class="meta-row">
+          <span class="meta-label">Categoría</span>
+          <span class="meta-value" id="modalCat">-</span>
+        </div>
+
+        <div class="meta-row">
+          <span class="meta-label">Nombre del Archivo</span>
+          <span class="meta-value" id="modalFile">-</span>
+        </div>
+
+        <div class="meta-row">
+          <span class="meta-label">Ruta Relativa</span>
+          <span class="meta-value" id="modalPath">-</span>
+        </div>
+
+        <div class="action-btn-group">
+          <button class="btn-action" id="btnCopyFile">📋 Copiar Nombre</button>
+          <button class="btn-action" id="btnCopyPath">📁 Copiar Ruta</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let allImages = [];
+    let filteredImages = [];
+    let currentCategory = 'TODOS';
+    let searchQuery = '';
+    let currentPage = 1;
+    const pageSize = 60;
+    let currentModalIndex = 0;
+
+    // DOM Elements
+    const galleryGrid = document.getElementById('galleryGrid');
+    const searchInput = document.getElementById('searchInput');
+    const categoriesBar = document.getElementById('categoriesBar');
+    const totalCounter = document.getElementById('totalCounter');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const pageInfo = document.getElementById('pageInfo');
+
+    // View mode buttons
+    const btnGrid = document.getElementById('btnGrid');
+    const btnGridLarge = document.getElementById('btnGridLarge');
+    const btnList = document.getElementById('btnList');
+
+    // Modal elements
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCode = document.getElementById('modalCode');
+    const modalCat = document.getElementById('modalCat');
+    const modalFile = document.getElementById('modalFile');
+    const modalPath = document.getElementById('modalPath');
+    const modalClose = document.getElementById('modalClose');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const btnCopyFile = document.getElementById('btnCopyFile');
+    const btnCopyPath = document.getElementById('btnCopyPath');
+
+    // Fetch catalog metadata
+    async function loadCatalog() {
+      try {
+        const response = await fetch('galeria_metadata.json');
+        allImages = await response.json();
+        setupCategories();
+        applyFilters();
+      } catch (err) {
+        totalCounter.textContent = 'Error al cargar metadata. Carga manual activada.';
+        console.error(err);
+      }
+    }
+
+    // Build category tabs with counts
+    function setupCategories() {
+      const counts = {};
+      allImages.forEach(img => {
+        const c = img.category || 'Otros';
+        counts[c] = (counts[c] || 0) + 1;
+      });
+
+      categoriesBar.innerHTML = `<button class="cat-tab active" data-cat="TODOS">Todos (${allImages.length.toLocaleString()})</button>`;
+      
+      Object.keys(counts).sort().forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'cat-tab';
+        btn.dataset.cat = cat;
+        btn.textContent = `${cat} (${counts[cat].toLocaleString()})`;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = cat;
+          currentPage = 1;
+          applyFilters();
+        });
+        categoriesBar.appendChild(btn);
+      });
+
+      // Default click handler for TODOS
+      categoriesBar.querySelector('[data-cat="TODOS"]').addEventListener('click', (e) => {
+        document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentCategory = 'TODOS';
+        currentPage = 1;
+        applyFilters();
+      });
+    }
+
+    // Filter images by search query & category
+    function applyFilters() {
+      const q = searchQuery.toLowerCase().trim();
+      
+      filteredImages = allImages.filter(img => {
+        const matchesCat = (currentCategory === 'TODOS' || img.category === currentCategory);
+        const matchesQuery = !q || 
+          (img.title && img.title.toLowerCase().includes(q)) ||
+          (img.code && img.code.toLowerCase().includes(q)) ||
+          (img.filename && img.filename.toLowerCase().includes(q));
+        
+        return matchesCat && matchesQuery;
+      });
+
+      totalCounter.textContent = `Mostrando ${filteredImages.length.toLocaleString()} de ${allImages.length.toLocaleString()} imágenes`;
+      renderGallery();
+    }
+
+    // Render gallery page by page
+    function renderGallery() {
+      if (currentPage === 1) {
+        galleryGrid.innerHTML = '';
+      }
+
+      if (filteredImages.length === 0) {
+        galleryGrid.innerHTML = `
+          <div class="no-results">
+            <h3>No se encontraron imágenes</h3>
+            <p>Intenta modificar el término de búsqueda o selecciona otra categoría.</p>
+          </div>
+        `;
+        loadMoreBtn.style.display = 'none';
+        pageInfo.textContent = '';
+        return;
+      }
+
+      const startIndex = (currentPage - 1) * pageSize;
+      const endIndex = Math.min(startIndex + pageSize, filteredImages.length);
+      const pageItems = filteredImages.slice(startIndex, endIndex);
+
+      pageItems.forEach((img, idx) => {
+        const globalIdx = startIndex + idx;
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="card-img-wrapper">
+            <img src="${img.path}" alt="${img.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/200x200?text=No+Disponible'">
+          </div>
+          <div class="card-body">
+            <span class="card-code">${img.code ? '#' + img.code : ''}</span>
+            <div class="card-title" title="${img.title}">${img.title}</div>
+            <div class="card-category">${img.category || 'General'}</div>
+          </div>
+        `;
+        card.addEventListener('click', () => openModal(globalIdx));
+        galleryGrid.appendChild(card);
+      });
+
+      pageInfo.textContent = `Mostrando ${Math.min(currentPage * pageSize, filteredImages.length)} de ${filteredImages.length} resultados`;
+
+      if (endIndex < filteredImages.length) {
+        loadMoreBtn.style.display = 'block';
+      } else {
+        loadMoreBtn.style.display = 'none';
+      }
+    }
+
+    // Load More click
+    loadMoreBtn.addEventListener('click', () => {
+      currentPage++;
+      renderGallery();
+    });
+
+    // Search Input event
+    let searchTimeout;
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        searchQuery = e.target.value;
+        currentPage = 1;
+        applyFilters();
+      }, 200);
+    });
+
+    // View Options Switcher
+    btnGrid.addEventListener('click', () => {
+      galleryGrid.className = 'gallery-grid';
+      setActiveViewBtn(btnGrid);
+    });
+    btnGridLarge.addEventListener('click', () => {
+      galleryGrid.className = 'gallery-grid large';
+      setActiveViewBtn(btnGridLarge);
+    });
+    btnList.addEventListener('click', () => {
+      galleryGrid.className = 'gallery-grid list';
+      setActiveViewBtn(btnList);
+    });
+
+    function setActiveViewBtn(activeBtn) {
+      [btnGrid, btnGridLarge, btnList].forEach(b => b.classList.remove('active'));
+      activeBtn.classList.add('active');
+    }
+
+    // Modal Lightbox Functions
+    function openModal(index) {
+      currentModalIndex = index;
+      const img = filteredImages[currentModalIndex];
+      if (!img) return;
+
+      modalImg.src = img.path;
+      modalTitle.textContent = img.title || img.filename;
+      modalCode.textContent = img.code ? `#${img.code}` : 'N/A';
+      modalCat.textContent = img.category || 'General';
+      modalFile.textContent = img.filename;
+      modalPath.textContent = img.path;
+
+      modalOverlay.classList.add('active');
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+
+    btnPrev.addEventListener('click', () => {
+      if (currentModalIndex > 0) {
+        openModal(currentModalIndex - 1);
+      }
+    });
+
+    btnNext.addEventListener('click', () => {
+      if (currentModalIndex < filteredImages.length - 1) {
+        openModal(currentModalIndex + 1);
+      }
+    });
+
+    // Copy to clipboard helpers
+    btnCopyFile.addEventListener('click', () => {
+      const img = filteredImages[currentModalIndex];
+      if (img) {
+        navigator.clipboard.writeText(img.filename);
+        btnCopyFile.textContent = '✓ Copiado';
+        setTimeout(() => btnCopyFile.textContent = '📋 Copiar Nombre', 1500);
+      }
+    });
+
+    btnCopyPath.addEventListener('click', () => {
+      const img = filteredImages[currentModalIndex];
+      if (img) {
+        navigator.clipboard.writeText(img.path);
+        btnCopyPath.textContent = '✓ Copiado';
+        setTimeout(() => btnCopyPath.textContent = '📁 Copiar Ruta', 1500);
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!modalOverlay.classList.contains('active')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft' && currentModalIndex > 0) openModal(currentModalIndex - 1);
+      if (e.key === 'ArrowRight' && currentModalIndex < filteredImages.length - 1) openModal(currentModalIndex + 1);
+    });
+
+    // Initialize Catalog
+    loadCatalog();
+  </script>
+</body>
+</html>
