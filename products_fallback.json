@@ -8185,21 +8185,21 @@
   {
     "code": "176",
     "name": "HUEVOS SORPRESA X 12 UNI PEPPA PIG",
-    "category": "Turrones",
+    "category": "Caramelos",
     "price": 24493.18,
     "image": "imagenes/1851-huevos-sorpresa-x-12-uni-peppa-pig.jpg"
   },
   {
     "code": "178",
     "name": "HUEVOS SORPRESA X 12 UNI TRANSFORMER",
-    "category": "Turrones",
+    "category": "Caramelos",
     "price": 24493.18,
     "image": "imagenes/1852-huevos-sorpresa-x-12-uni-transformer.jpg"
   },
   {
     "code": "177",
     "name": "HUEVOS SORPRESA X 12 UNI DRAGON BALL",
-    "category": "Turrones",
+    "category": "Caramelos",
     "price": 24493.18,
     "image": "imagenes/1850-huevos-sorpresa-x-12-uni-dragon-ball.jpg"
   },
@@ -9566,7 +9566,7 @@
     "name": "LDC CHOCO MILKYBAR X 100 G LECHE Y MANI SIN TACC (24)",
     "category": "Chocolates",
     "price": 1739,
-    "image": "imagenes/0088-mdz-tableta-milka-choco-swing-x-300-g.jpg"
+    "image": ""
   },
   {
     "code": "594",
@@ -9615,7 +9615,7 @@
     "name": "LDC CHOCO PUNCH X 35 G LECHE Y MANI SIN TACC (20)",
     "category": "Chocolates",
     "price": 733.41,
-    "image": "imagenes/0088-mdz-tableta-milka-choco-swing-x-300-g.jpg"
+    "image": ""
   },
   {
     "code": "425",
@@ -9636,7 +9636,7 @@
     "name": "LDC CHOCO PUNCH X 70 G MANI SIN TACC (12)",
     "category": "Chocolates",
     "price": 1121.86,
-    "image": "imagenes/0088-mdz-tableta-milka-choco-swing-x-300-g.jpg"
+    "image": ""
   },
   {
     "code": "3341",
@@ -9720,7 +9720,7 @@
     "name": "LDC CHOCO MILKYBAR X 100 G LECHE SIN TACC (24)",
     "category": "Chocolates",
     "price": 1739,
-    "image": "imagenes/0088-mdz-tableta-milka-choco-swing-x-300-g.jpg"
+    "image": ""
   },
   {
     "code": "768",
@@ -10210,7 +10210,7 @@
     "name": "TOALLA CALIPSO PLANA X 8 UNI. SIN ALAS (50) 2162",
     "category": "Cuidado Personal",
     "price": 797.94,
-    "image": "imagenes/202.jpg"
+    "image": ""
   },
   {
     "code": "885",
@@ -10420,14 +10420,14 @@
     "name": "ALP MAGISTRAL ULTRA LIMON X 500 CC (20)",
     "category": "Detergentes",
     "price": 4361.93,
-    "image": "imagenes/0921-alp-det-zorro-ultra-x-500-cc-limon-20.jpg"
+    "image": ""
   },
   {
     "code": "93",
     "name": "ALP MAGISTRAL ULTRA LIMON X 300 CC (21)",
     "category": "Detergentes",
     "price": 2697.7,
-    "image": "imagenes/0917-alp-det-zorro-ultra-x-300-ml-limon-original-16.jpg"
+    "image": ""
   },
   {
     "code": "1589",
@@ -11890,7 +11890,7 @@
     "name": "ENERGIZER MUÑECO CABEZON",
     "category": "Pilas",
     "price": 1.57,
-    "image": "imagenes/0488-linterna-energizer-pack-c-8-e91.jpg"
+    "image": ""
   },
   {
     "code": "251",
@@ -13855,7 +13855,7 @@
   {
     "code": "279",
     "name": "ARGENTUM TRAPO DE REJILLA REFORZADA",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 976.21,
     "image": "imagenes/0739-argentum-trapo-de-rejilla-reforzada.jpg"
   },
@@ -13911,7 +13911,7 @@
   {
     "code": "225",
     "name": "CHAC PAÑUELOS DESC. X 6 UNI. ELITE",
-    "category": "Papeles y Descartables",
+    "category": "Papelería",
     "price": 1515.15,
     "image": "imagenes/225.jpg"
   },
@@ -13939,21 +13939,21 @@
   {
     "code": "273",
     "name": "ARGENTUM BOLSAS RESIDUOS 45 X 60 X10UNI.",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 811.52,
     "image": "imagenes/0731-argentum-bolsas-residuos-45-x-60-x10uni.jpg"
   },
   {
     "code": "271",
     "name": "ARGENTUM BOLSAS CONSORCIO 80 X 1,10 X 10UNI.",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 3682.09,
     "image": "imagenes/0730-argentum-bolsas-consorcio-80-x-1-10-x-10uni.jpg"
   },
   {
     "code": "272",
     "name": "ARGENTUM BOLSAS CONSORCIO 60 X 90 X10UNI.",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2067.85,
     "image": "imagenes/0729-argentum-bolsas-consorcio-60-x-90-x10uni.jpg"
   },
@@ -13967,21 +13967,21 @@
   {
     "code": "274",
     "name": "ARGENTUM ESCOBILLON BARI S/PALO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2740.8,
     "image": "imagenes/0733-argentum-escobillon-bari-s-palo.jpg"
   },
   {
     "code": "276",
     "name": "ARGENTUM ESCOBILLON PLUS S/PALO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 4476.43,
     "image": "imagenes/0734-argentum-escobillon-plus-s-palo.jpg"
   },
   {
     "code": "275",
     "name": "ARGENTUM ESCOBILLON VENETTO S/PALO",
-    "category": "Varios",
+    "category": "Limpieza",
     "price": 2940.22,
     "image": "imagenes/0735-argentum-escobillon-venetto-s-palo.jpg"
   },
@@ -14331,7 +14331,7 @@
   {
     "code": "241",
     "name": "PAPEL HIG. CALIPSO 1 X 60 MTS (48)",
-    "category": "Higiene",
+    "category": "Papelería",
     "price": 465.63,
     "image": "imagenes/2343-papel-hig-calipso-1-x-60-mts-48.jpg"
   },
