@@ -97,7 +97,8 @@ export function processCSVRows(rows, baseProducts = [], codeToCat = {}, codeToIm
     if (!code || !name) continue;
 
     const price = parsePrice(r[priceIdx]);
-    const matchedProds = prods.filter(p => p.code === code || p.code.startsWith(code + "_"));
+    const codeStr = String(code);
+    const matchedProds = prods.filter(p => String(p.code) === codeStr || String(p.code).startsWith(codeStr + "_"));
 
     if (matchedProds.length > 0) {
       matchedProds.forEach(p => {
@@ -105,11 +106,12 @@ export function processCSVRows(rows, baseProducts = [], codeToCat = {}, codeToIm
         p.price = price;
         p.outOfStock = false;
         
-        let img = codeToImg[p.code] || p.image || "";
+        const pCodeStr = String(p.code);
+        let img = codeToImg[pCodeStr] || p.image || "";
         if (!img || img.trim() === "") {
           p.category = "Nuevos y Sin Imagen";
         } else if (!p.category || p.category === "Varios" || p.category.includes(',')) {
-          p.category = codeToCat[p.code] || normalizeCategory("", name, img);
+          p.category = codeToCat[pCodeStr] || normalizeCategory("", name, img);
         }
         
         if (minIdx !== -1 && r[minIdx]) {

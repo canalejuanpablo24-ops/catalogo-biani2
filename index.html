@@ -7658,17 +7658,19 @@ function processCSVRows(rows) {
     const price = parseFloat(s) || 0.0;
     
     // Try to find matched products in baseline
-    let matchedProds = prods.filter(p => p.code === code || p.code.startsWith(code + "_"));
+    const codeStr = String(code);
+    let matchedProds = prods.filter(p => String(p.code) === codeStr || String(p.code).startsWith(codeStr + "_"));
     
     if (matchedProds.length > 0) {
       matchedProds.forEach(p => {
         p.name = name;
         p.price = price;
         p.outOfStock = false;
+        const pCodeStr = String(p.code);
         if (!p.image || p.image.trim() === "") {
           p.category = "Nuevos y Sin Imagen";
         } else if (!p.category || p.category === "Varios" || p.category.includes(',')) {
-          p.category = window.codeToCat[p.code] || normalizeCategory("", name, p.image);
+          p.category = (window.codeToCat && window.codeToCat[pCodeStr]) || normalizeCategory("", name, p.image);
         }
         if (minIdx !== -1 && r[minIdx]) p.unidad_min = parseInt(r[minIdx]) || 1;
       });
