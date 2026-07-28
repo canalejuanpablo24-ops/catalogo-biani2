@@ -8525,6 +8525,15 @@ function loadAdminState() {
     });
     
     // 4. Apply custom order
+    const currentOrderHash = (window.pdfOrder && window.pdfOrder.length > 0) 
+      ? (window.pdfOrder.length + '_' + window.pdfOrder[0] + '_' + window.pdfOrder[window.pdfOrder.length - 1]) 
+      : '';
+    const lastSyncedOrderHash = localStorage.getItem('biani_synced_order_hash');
+    if (currentOrderHash && lastSyncedOrderHash !== currentOrderHash) {
+      localStorage.removeItem(LS_K.order);
+      localStorage.setItem('biani_synced_order_hash', currentOrderHash);
+    }
+
     let order = JSON.parse(localStorage.getItem(LS_K.order) || '[]');
     if (order.length === 0 && window.pdfOrder && window.pdfOrder.length > 0) {
       order = window.pdfOrder;
@@ -9103,7 +9112,17 @@ function scrollToTop() {
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(err => console.error('SW Error:', err));
+    navigator.serviceWorker.register('./sw.js?v=' + Date.now()).then(reg => {
+      reg.update();
+    }).catch(err => console.error('SW Error:', err));
+  });
+
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
+    }
   });
 }
 </script>
