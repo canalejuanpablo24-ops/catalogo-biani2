@@ -6378,7 +6378,7 @@ document.getElementById('adm-save-btn').addEventListener('click', function() {
   updateAdmStat();
   toast('💾 Orden guardado', 'ok');
 });
-function exportAdminConfig() {
+async function exportAdminConfig() {
   const config = {
     order: JSON.parse(localStorage.getItem(LS_K.order) || '[]'),
     edits: JSON.parse(localStorage.getItem(LS_K.edits) || '{}'),
@@ -6386,13 +6386,38 @@ function exportAdminConfig() {
     add: JSON.parse(localStorage.getItem(LS_K.add) || '[]')
   };
   const json = JSON.stringify(config, null, 2);
-  const el = document.createElement('textarea');
-  el.value = json;
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand('copy');
-  document.body.removeChild(el);
-  alert("¡Configuración copiada al portapapeles! Pegala en el chat para que el asistente la guarde permanentemente.");
+  
+  let success = false;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    try {
+      await navigator.clipboard.writeText(json);
+      success = true;
+    } catch (err) {
+      console.warn("navigator.clipboard failed, fallback to execCommand", err);
+    }
+  }
+
+  if (!success) {
+    const el = document.createElement('textarea');
+    el.value = json;
+    el.style.position = 'fixed';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    try {
+      success = document.execCommand('copy');
+    } catch (e) {
+      success = false;
+    }
+    document.body.removeChild(el);
+  }
+
+  if (success) {
+    if (typeof toast === 'function') toast("📋 ¡Configuración copiada al portapapeles!", "ok");
+    alert("¡Configuración copiada al portapapeles! Pegala en el chat para que el asistente la guarde permanentemente.");
+  } else {
+    prompt("Copiá la siguiente configuración y pegala en el chat para guardar permanentemente:", json);
+  }
 }
 
 const exportBtn = document.getElementById('adm-export-btn');
