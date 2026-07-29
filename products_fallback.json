@@ -14499,7 +14499,7 @@
   {
     "code": "1725",
     "name": "JUGUITO FAN DEL 10 BULTO X 240 UNI",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 28701.9,
     "image": "imagenes/1725-my-caram-cremino-surtido-x-940-grs.jpg"
   },
@@ -15034,61 +15034,5 @@
     "category": "Nuevos y Sin Imagen",
     "price": 0,
     "image": "imagenes/5020.jpg"
-  },
-  {
-    "code": "5670",
-    "name": "ALP ACOND PLUSBELLE KIDS X 700 CC PH BALANCE (12)",
-    "category": "Varios",
-    "price": 5527.81,
-    "image": "imagenes/0893-alp-d-pack-plusbelle-esencia-acond-x-300-cc-largo-saludable.jpg"
-  },
-  {
-    "code": "1327",
-    "name": "GIN LA PAMPA X 200 CC CITRUS",
-    "category": "Varios",
-    "price": 10617.75,
-    "image": "imagenes/0727-la-colina-extracto-de-tomates-x-200-grs.jpg"
-  },
-  {
-    "code": "1328",
-    "name": "GIN LA PAMPA X 200 CC FLOWERS AZUL",
-    "category": "Varios",
-    "price": 10617.75,
-    "image": "imagenes/0727-la-colina-extracto-de-tomates-x-200-grs.jpg"
-  },
-  {
-    "code": "1330",
-    "name": "GIN LA PAMPA X 28 CC  MINIATURA CITRUS",
-    "category": "Varios",
-    "price": 3267,
-    "image": "imagenes/1263-cp-la-dolfina-stud-perfume-x-100-cc.jpg"
-  },
-  {
-    "code": "1329",
-    "name": "GIN LA PAMPA X 28 CC  MINIATURA FLOWERS AZUL",
-    "category": "Varios",
-    "price": 3267,
-    "image": "imagenes/1263-cp-la-dolfina-stud-perfume-x-100-cc.jpg"
-  },
-  {
-    "code": "1325",
-    "name": "GIN LA PAMPA X 375 CC CITRUS",
-    "category": "Varios",
-    "price": 19602,
-    "image": "imagenes/1263-cp-la-dolfina-stud-perfume-x-100-cc.jpg"
-  },
-  {
-    "code": "1326",
-    "name": "GIN LA PAMPA X 375 CC FLOWERS AZUL",
-    "category": "Varios",
-    "price": 19602,
-    "image": "imagenes/1263-cp-la-dolfina-stud-perfume-x-100-cc.jpg"
-  },
-  {
-    "code": "1323",
-    "name": "GIN LA PAMPA X 750 CC CITRUS",
-    "category": "Varios",
-    "price": 28042.29,
-    "image": "imagenes/0899-alp-det-limzul-x-750-cc-colageno-20.jpg"
   }
 ]
