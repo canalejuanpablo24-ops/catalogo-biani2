@@ -6538,7 +6538,7 @@ async function loadDatabase() {
 }
 
 function processCSVRows(rows) {
-  if (rows.length === 0) return;
+  if (!rows || rows.length === 0) return;
   
   // Normalize header strings of the first row to check if it's a header
   const firstRow = rows[0].map(h => (h || '').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g,''));
@@ -6552,7 +6552,6 @@ function processCSVRows(rows) {
   let hasHeader = (codeIdx !== -1 || nameIdx !== -1 || priceIdx !== -1 || catIdx !== -1);
   let startRowIdx = hasHeader ? 1 : 0;
   
-  // If headers are missing, default based on the column count of the first data row
   if (!hasHeader) {
     const colCount = rows[0].length;
     codeIdx = 0;
@@ -6565,12 +6564,16 @@ function processCSVRows(rows) {
       priceIdx = 3;
     }
   } else {
-    // Fallbacks for found headers
     if (codeIdx === -1) codeIdx = 0;
     if (nameIdx === -1) nameIdx = 1;
     if (priceIdx === -1) priceIdx = 2;
-    // Don't default catIdx to column 2 if it's already used by price
   }
+  
+  // Fast lookup map for baseline products
+  const fallbackMap = {};
+  prods.forEach(p => { fallbackMap[String(p.code)] = p; });
+
+  const sheetProds = [];
   
   for (let i = startRowIdx; i < rows.length; i++) {
     const r = rows[i];
@@ -6580,7 +6583,6 @@ function processCSVRows(rows) {
     const name = r[nameIdx] ? r[nameIdx].trim() : "";
     if (!code || !name) continue;
     
-    // Parse formatting: handles both US (11,424.78) and ES/AR (11.424,78)
     let rawPrice = r[priceIdx] || "0";
     let s = rawPrice.replace(/[^\d.,]/g, '');
     if (s.includes('.') && s.includes(',')) {
@@ -6594,17 +6596,32 @@ function processCSVRows(rows) {
     }
     const price = parseFloat(s) || 0.0;
     
-    // Try to find matched products in baseline (update name and price only, preserve catalog order and metadata)
     const codeStr = String(code);
-    let matchedProds = prods.filter(p => String(p.code) === codeStr || String(p.code).startsWith(codeStr + "_"));
+    const existing = fallbackMap[codeStr];
     
-    if (matchedProds.length > 0) {
-      matchedProds.forEach(p => {
-        p.name = name;
-        p.price = price;
-        if (minIdx !== -1 && r[minIdx]) p.unidad_min = parseInt(r[minIdx]) || 1;
-      });
+    const image = (existing && existing.image) || (window.codeToImg && window.codeToImg[codeStr]) || "";
+    let cat = (existing && existing.category) || (window.codeToCat && window.codeToCat[codeStr]) || "";
+    if (!cat && catIdx !== -1 && catIdx !== priceIdx && r[catIdx]) {
+      cat = r[catIdx].trim();
     }
+    cat = normalizeCategory(cat || "Varios", name, image);
+    
+    const uMin = (minIdx !== -1 && r[minIdx]) ? (parseInt(r[minIdx]) || 1) : ((existing && existing.unidad_min) || 1);
+
+    sheetProds.push({
+      code: codeStr,
+      name: name,
+      category: cat,
+      price: price,
+      image: image,
+      qty: 0,
+      outOfStock: false,
+      unidad_min: uMin
+    });
+  }
+
+  if (sheetProds.length > 0) {
+    prods = sheetProds;
   }
 }
 
@@ -6799,6 +6816,50 @@ const SEARCH_SYNONYMS = {
   'chocolate': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot']
 };
 
+function normalizePhonetic(s) {
+  if (!s) return '';
+  let str = String(s).toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+  const replacements = [
+    ['v', 'b'], ['z', 's'], ['c', 's'], ['k', 'c'], ['q', 'c'],
+    ['ge', 'je'], ['gi', 'ji'], ['ll', 'y'], ['h', '']
+  ];
+  for (const pair of replacements) {
+    str = str.split(pair[0]).join(pair[1]);
+  }
+  return str.replace(/[^a-z0-9]/g, '');
+}
+
+function fuzzyWordMatch(qw, tw) {
+  if (qw === tw) return 1.0;
+  if (tw.includes(qw)) return qw.length / tw.length;
+  if (qw.includes(tw)) return tw.length / qw.length;
+  
+  const pq = normalizePhonetic(qw);
+  const pt = normalizePhonetic(tw);
+  if (pq === pt) return 0.95;
+  if (pt.includes(pq) && pq.length >= 3) return 0.85;
+
+  const maxLen = Math.max(qw.length, tw.length);
+  if (maxLen >= 3) {
+    const dist = levenshteinDist(qw, tw);
+    const sim = 1.0 - (dist / maxLen);
+    if (maxLen <= 4 && sim >= 0.75) return sim * 0.8;
+    else if (maxLen > 4 && sim >= 0.65) return sim * 0.8;
+  }
+
+  const maxLenP = Math.max(pq.length, pt.length);
+  if (maxLenP >= 3) {
+    const distP = levenshteinDist(pq, pt);
+    const simP = 1.0 - (distP / maxLenP);
+    if (maxLenP <= 4 && simP >= 0.75) return simP * 0.75;
+    else if (maxLenP > 4 && simP >= 0.65) return simP * 0.75;
+  }
+
+  return 0.0;
+}
+
 function getProductSearchScore(product, query) {
   const normQ = normSearchText(query);
   if (!normQ) return 1;
@@ -6826,32 +6887,28 @@ function getProductSearchScore(product, query) {
 
   const queryWords = normQ.split(' ').filter(w => w.length > 0);
   const targetWords = fullTarget.split(' ').filter(w => w.length > 0);
-  const targetStems = targetWords.map(stripSpanishPlural);
 
   let matchedWordsCount = 0;
 
   for (const qWord of queryWords) {
     const qStem = stripSpanishPlural(qWord);
-    let wordMatched = false;
+    let bestMatch = 0;
 
-    // Direct word or stem match in title/code
-    if (nameNorm.includes(qWord) || nameNorm.includes(qStem) || codeNorm.includes(qWord)) {
-      score += 200;
-      wordMatched = true;
-    } else if (targetWords.some(tw => tw.includes(qWord) || tw.includes(qStem) || qWord.includes(tw))) {
-      score += 100;
-      wordMatched = true;
-    } else if (targetStems.some(ts => ts.includes(qStem) || qStem.includes(ts))) {
-      score += 80;
-      wordMatched = true;
+    for (const tw of targetWords) {
+      const twStem = stripSpanishPlural(tw);
+      const m1 = fuzzyWordMatch(qWord, tw);
+      const m2 = fuzzyWordMatch(qStem, twStem);
+      const best = Math.max(m1, m2);
+      if (best > bestMatch) bestMatch = best;
     }
 
-    if (wordMatched) {
+    if (bestMatch >= 0.5) {
+      score += Math.round(bestMatch * 200);
       matchedWordsCount++;
     }
   }
 
-  // Multi-word query require ALL query words or stems to match unless score is high
+  // Multi-word query requires all or most query words to match unless score is high
   if (queryWords.length > 1 && matchedWordsCount < queryWords.length && score < 500) {
     return 0;
   }
