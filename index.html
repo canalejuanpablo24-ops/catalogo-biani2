@@ -6030,13 +6030,15 @@ function loadAdminState() {
       }
     });
     
-    // 4. Apply custom order
+    // 4. Apply custom order & server sync
+    const defaultEditsCount = Object.keys(DEFAULT_EDITS || {}).length;
     const currentOrderHash = (window.pdfOrder && window.pdfOrder.length > 0) 
-      ? (window.pdfOrder.length + '_' + window.pdfOrder[0] + '_' + window.pdfOrder[window.pdfOrder.length - 1]) 
-      : '';
+      ? (window.pdfOrder.length + '_' + defaultEditsCount + '_' + window.pdfOrder[0] + '_' + window.pdfOrder[window.pdfOrder.length - 1]) 
+      : ('edits_' + defaultEditsCount);
     const lastSyncedOrderHash = localStorage.getItem('biani_synced_order_hash');
     if (currentOrderHash && lastSyncedOrderHash !== currentOrderHash) {
       localStorage.removeItem(LS_K.order);
+      localStorage.removeItem(LS_K.edits);
       localStorage.setItem('biani_synced_order_hash', currentOrderHash);
     }
 
