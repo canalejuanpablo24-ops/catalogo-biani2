@@ -6521,6 +6521,7 @@ async function loadDatabase() {
   }
 
   loadAdminState();
+  prepareAllSearchCache();
   showLoading(false);
   buildNav();
   applyF();
@@ -6850,46 +6851,82 @@ function fuzzyWordMatch(qw, tw) {
   return 0.0;
 }
 
+function prepareProductSearchCache(p) {
+  if (!p || p._fullTarget) return;
+  const extraDesc = (window.codeToDesc && window.codeToDesc[p.code]) ? window.codeToDesc[p.code] : '';
+  const imgFilename = String(p.image || '').toLowerCase();
+
+  p._nameNorm = normSearchText(p.name || '');
+  const catNorm = normSearchText(p.category || '');
+  const codeNorm = String(p.code || '').toLowerCase().trim();
+  const descNorm = normSearchText(extraDesc);
+  const imgNorm = normSearchText(imgFilename);
+
+  p._fullTarget = `${codeNorm} ${p._nameNorm} ${catNorm} ${descNorm} ${imgNorm}`;
+  p._noSpaceTarget = p._fullTarget.replace(/\s+/g, '');
+  p._targetWords = p._fullTarget.split(' ').filter(w => w.length > 0);
+  p._phoneticWords = p._targetWords.map(w => normalizePhonetic(w));
+}
+
+function prepareAllSearchCache() {
+  if (Array.isArray(prods)) {
+    prods.forEach(prepareProductSearchCache);
+  }
+}
+
 function getProductSearchScore(product, query) {
   const normQ = normSearchText(query);
   if (!normQ) return 1;
 
-  const extraDesc = (window.codeToDesc && window.codeToDesc[product.code]) ? window.codeToDesc[product.code] : '';
-  const imgFilename = String(product.image || '').toLowerCase();
+  if (!product._fullTarget) {
+    prepareProductSearchCache(product);
+  }
 
-  const nameNorm = normSearchText(product.name);
-  const catNorm = normSearchText(product.category || '');
-  const codeNorm = String(product.code || '').toLowerCase().trim();
-  const descNorm = normSearchText(extraDesc);
-  const imgNorm = normSearchText(imgFilename);
+  const nameNorm = product._nameNorm;
+  const fullTarget = product._fullTarget;
+  const noSpaceTarget = product._noSpaceTarget;
+  const targetWords = product._targetWords;
+  const phoneticWords = product._phoneticWords;
 
-  const fullTarget = `${codeNorm} ${nameNorm} ${catNorm} ${descNorm} ${imgNorm}`;
+  // 1. Fast direct exact match short-circuit
+  if (nameNorm.includes(normQ)) return 1000;
+  if (fullTarget.includes(normQ)) return 800;
 
-  let score = 0;
-
-  // 1. Exact full query match in title or target
-  if (nameNorm.includes(normQ)) score += 1000;
-  else if (fullTarget.includes(normQ)) score += 800;
-
-  const noSpaceTarget = fullTarget.replace(/\s+/g, '');
   const noSpaceQ = normQ.replace(/\s+/g, '');
-  if (noSpaceTarget.includes(noSpaceQ)) score += 500;
+  if (noSpaceTarget.includes(noSpaceQ)) return 500;
 
   const queryWords = normQ.split(' ').filter(w => w.length > 0);
-  const targetWords = fullTarget.split(' ').filter(w => w.length > 0);
+  const pQWords = queryWords.map(w => normalizePhonetic(w));
 
+  let score = 0;
   let matchedWordsCount = 0;
 
-  for (const qWord of queryWords) {
+  for (let qIdx = 0; qIdx < queryWords.length; qIdx++) {
+    const qWord = queryWords[qIdx];
+    const pQ = pQWords[qIdx];
     const qStem = stripSpanishPlural(qWord);
     let bestMatch = 0;
 
-    for (const tw of targetWords) {
-      const twStem = stripSpanishPlural(tw);
-      const m1 = fuzzyWordMatch(qWord, tw);
-      const m2 = fuzzyWordMatch(qStem, twStem);
-      const best = Math.max(m1, m2);
-      if (best > bestMatch) bestMatch = best;
+    for (let i = 0; i < targetWords.length; i++) {
+      const tw = targetWords[i];
+      const pt = phoneticWords[i];
+
+      let m = 0;
+      if (qWord === tw) m = 1.0;
+      else if (tw.includes(qWord)) m = qWord.length / tw.length;
+      else if (pQ && pt && pQ === pt) m = 0.95;
+      else if (pQ && pt && pt.includes(pQ) && pQ.length >= 3) m = 0.85;
+      else {
+        const maxLen = Math.max(qWord.length, tw.length);
+        if (maxLen >= 3) {
+          const dist = levenshteinDist(qWord, tw);
+          const sim = 1.0 - (dist / maxLen);
+          if (maxLen <= 4 && sim >= 0.75) m = sim * 0.8;
+          else if (maxLen > 4 && sim >= 0.65) m = sim * 0.8;
+        }
+      }
+
+      if (m > bestMatch) bestMatch = m;
     }
 
     if (bestMatch >= 0.5) {
@@ -6898,7 +6935,6 @@ function getProductSearchScore(product, query) {
     }
   }
 
-  // Multi-word query requires all or most query words to match unless score is high
   if (queryWords.length > 1 && matchedWordsCount < queryWords.length && score < 500) {
     return 0;
   }
@@ -8057,14 +8093,19 @@ document.getElementById('grid').addEventListener('click', function(e) {
   }
 });
 
-// Search input event listener for immediate response and clear button toggle
+// Search input event listener with debouncing for lag-free 60fps typing response
+let searchDebounceTimer = null;
 const sinpInput = document.getElementById('sinp');
 if (sinpInput) {
   sinpInput.addEventListener('input', (e) => {
     q = e.target.value;
     const clearBtn = document.getElementById('clearSearchBtn');
     if (clearBtn) clearBtn.style.display = q.trim() ? 'block' : 'none';
-    applyF();
+    
+    if (searchDebounceTimer) clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+      applyF();
+    }, 100);
   });
 }
 
