@@ -326,8 +326,8 @@
   "184": {
     "name": "MY FRUTIGELATIN TRUITOS 12 X 25 GRS",
     "price": 3344.83,
-    "image": "imagenes/1765-my-frutigelatin-truitos-12-x-25-grs.jpg",
-    "category": "Pastillas"
+    "category": "Gomitas",
+    "image": "imagenes/1765-my-frutigelatin-truitos-12-x-25-grs.jpg"
   },
   "186": {
     "name": "CNY PAST. MENTOS X 12 UNI FRUTAS",
@@ -440,14 +440,14 @@
   "231": {
     "name": "PILA ENERGIZER EL 123 LITHIUM",
     "price": 7843.23,
-    "image": "imagenes/0528-pila-el-123-lithium.jpg",
-    "category": "Pilas"
+    "category": "Pilas",
+    "image": "imagenes/0528-pila-el-123-lithium.jpg"
   },
   "251": {
     "name": "PILA ENERGIZER N° E 91 AA (4)",
     "price": 1687.73,
-    "image": "imagenes/0536-pila-energizer-n-e-91-aa-4-chicas.jpg",
-    "category": "Pilas"
+    "category": "Pilas",
+    "image": "imagenes/0536-pila-energizer-n-e-91-aa-4-chicas.jpg"
   },
   "290": {
     "name": "CNY KINDER T.4 (CHICO)",
@@ -464,14 +464,14 @@
   "297": {
     "name": "CIA VELAS RANCHERA X 120 GRS GRANDE (25)",
     "price": 2433.43,
-    "image": "imagenes/0007-cia-velas-ranchera-x-120-grs-grande-25.jpg",
-    "category": "Iluminación y Linternas"
+    "category": "Varios",
+    "image": "imagenes/0007-cia-velas-ranchera-x-120-grs-grande-25.jpg"
   },
   "298": {
     "name": "CIA VELAS RANCHERA X 68 GRS CHICA (50)",
     "price": 1526.91,
-    "image": "imagenes/0008-cia-velas-ranchera-x-68-grs-chica-50.jpg",
-    "category": "Iluminación y Linternas"
+    "category": "Varios",
+    "image": "imagenes/0008-cia-velas-ranchera-x-68-grs-chica-50.jpg"
   },
   "301": {
     "name": "CHAC. POMADA WASSINGTON N°4 NEGRA (6)",
@@ -488,8 +488,8 @@
   "303": {
     "name": "CHAC. MATE PLASTICO CON BOMBILLA",
     "price": 1626.24,
-    "image": "imagenes/2248-chac-mate-plastico-con-bombilla.jpg",
-    "category": "Varios"
+    "category": "Varios",
+    "image": "imagenes/2248-chac-mate-plastico-con-bombilla.jpg"
   },
   "304": {
     "name": "CHAC. POMADA WASSINGTON Nº4 BLANCA (6)",
@@ -766,5 +766,1433 @@
     "price": 28701.9,
     "category": "Alfajores",
     "image": "imagenes/1725-my-caram-cremino-surtido-x-940-grs.jpg"
+  },
+  "64": {
+    "name": "ZUPAY OBLEA X 100 GRS BANANA SPLIT (30)",
+    "price": 768.91,
+    "category": "Galletitas",
+    "image": ""
+  },
+  "66": {
+    "name": "ZUPAY OBLEA CLASICA PACK X 450 G (14)",
+    "price": 1592.22,
+    "category": "Galletitas",
+    "image": ""
+  },
+  "95": {
+    "name": "ALP DET. POLVO ACE BE X 800 G (20)",
+    "price": 2821.96,
+    "category": "Detergentes",
+    "image": ""
+  },
+  "96": {
+    "name": "ALP DET. POLVO ACE X 400 G (36)",
+    "price": 1503.79,
+    "category": "Detergentes",
+    "image": ""
+  },
+  "119": {
+    "name": "FECOVITA VINO TINTO DILEMA MALBEC X 750 ML (6) (79673)",
+    "price": 3420.17,
+    "category": "Bebidas",
+    "image": "imagenes/0119-mdz-bubba-gomita-c-blueberry-14-x-82-5-g.jpg"
+  },
+  "120": {
+    "name": "FECOVITA VINO E. MENDOZA CABERNET SAUVIGNON X 750 ML (6) (80167)",
+    "price": 2487.02,
+    "category": "Bebidas",
+    "image": "imagenes/0120-mdz-bubba-gomita-frutilla-12-x-15-g.jpg"
+  },
+  "249": {
+    "name": "PILA ENERGIZER Nº E 522 (BATERIA 9 VOL)",
+    "price": 6737.41,
+    "category": "Pilas",
+    "image": "imagenes/0543-pila-energizer-n-e-522-bateria-9-vol.jpg"
+  },
+  "254": {
+    "name": "PILA ENERGIZER N E 92 AAA (4) C/REMOTO",
+    "price": 1687.73,
+    "category": "Pilas",
+    "image": "imagenes/0534-pila-energizer-n-e-92-aaa-4-c-remoto.jpg"
+  },
+  "255": {
+    "name": "PILA ENERGIZER N° E 93 (2) MEDIANAS",
+    "price": 4613.23,
+    "category": "Pilas",
+    "image": "imagenes/0538-pila-energizer-n-e-93-2-medianas.jpg"
+  },
+  "256": {
+    "name": "PILA ENERGIZER N° E 95 (2) GRANDE",
+    "price": 6106.24,
+    "category": "Pilas",
+    "image": "imagenes/0539-pila-energizer-n-e-95-2-grande.jpg"
+  },
+  "257": {
+    "name": "PILA EVEREADY N° 1222 (BATERIA 9 VOL)",
+    "price": 3443.12,
+    "category": "Pilas",
+    "image": "imagenes/0552-pila-eveready-n-1222-bateria-9-vol.jpg"
+  },
+  "258": {
+    "name": "PILA EVEREADY N° 1215 AA (4) CHICAS",
+    "price": 831.87,
+    "category": "Pilas",
+    "image": "imagenes/0551-pila-eveready-n-1215-aa-4-chicas.jpg"
+  },
+  "259": {
+    "name": "PILA EVEREADY N° 1212 AAA (2) C/REMOTO",
+    "price": 831.87,
+    "category": "Pilas",
+    "image": "imagenes/0550-pila-eveready-n-1212-aaa-2-c-remoto.jpg"
+  },
+  "260": {
+    "name": "PILA EVEREADY N° 1235 (2) MEDIANAS",
+    "price": 1730.72,
+    "category": "Pilas",
+    "image": "imagenes/0553-pila-eveready-n-1235-2-medianas.jpg"
+  },
+  "261": {
+    "name": "PILA EVEREADY N° 1250 (2) GRANDE",
+    "price": 2316.78,
+    "category": "Pilas",
+    "image": "imagenes/0554-pila-eveready-n-1250-2-grande.jpg"
+  },
+  "310": {
+    "name": "MY GALL. CHOCOLINAS X 170 GS (40)",
+    "price": 1608.86,
+    "category": "Galletitas",
+    "image": ""
+  },
+  "340": {
+    "name": "LA VIRGINIA POLVO SABORIZADOR X 12 UNI VERDURA BAJO EN SODIO (10) SIN TACC",
+    "price": 2862.86,
+    "category": "Despensa",
+    "image": ""
+  },
+  "417": {
+    "name": "LDC YUMMY X 10 UNI CROACK",
+    "price": 7322.9,
+    "category": "Gomitas",
+    "image": "imagenes/0847-ldc-yummy-x-10-uni-dientes-display.jpg"
+  },
+  "425": {
+    "name": "BARRITA CHOCOBAR",
+    "price": 830.06,
+    "category": "Chocolates",
+    "image": "imagenes/0425-barrita-chocobar.jpg"
+  },
+  "433": {
+    "name": "CVL ACOND. SEDAL SACHET X 24 UNI. CERAM.",
+    "price": 6650.64,
+    "category": "Higiene",
+    "image": "imagenes/1648-cvl-acond-sedal-sachet-x-24-uni-balance.jpg"
+  },
+  "457": {
+    "name": "LDC ALFA. CHOCOARROZ X 1 UNI. BLANCO SIN TACC (30)",
+    "price": 997.09,
+    "category": "Alfajores",
+    "image": "imagenes/0746-ldc-alfa-chocoarroz-x-1-uni-blanco-sin-tacc.jpg"
+  },
+  "458": {
+    "name": "LDC ALFA CHOCOARROZ X 1 UNI PISTACHO SIN TACC (30)",
+    "price": 1295.55,
+    "category": "Alfajores",
+    "image": "imagenes/0742-ldc-alfa-chocoarroz-x-1-uni-pistacho-sin-tacc.jpg"
+  },
+  "459": {
+    "name": "CHOCOARROZ X 30 UNIDADES SIN TACC",
+    "price": 36000,
+    "category": "Alfajores",
+    "image": ""
+  },
+  "460": {
+    "name": "ALFAJOR NEVARES X 40 UNIDADES",
+    "price": 12800,
+    "category": "Alfajores",
+    "image": ""
+  },
+  "462": {
+    "name": "LDC ALFA. CHOCOARROZ X 1 UNI. DULCE DE LECHE SIN TACC",
+    "price": 997.09,
+    "category": "Alfajores",
+    "image": "imagenes/0726-ldc-alfa-chocoarroz-x-1-uni-super-dulce-de-leche-sin-tacc.jpg"
+  },
+  "480": {
+    "name": "ALP JABON BLANCO ZORRO X 150 GRS CLASICO (84)",
+    "price": 1081.32,
+    "category": "Detergentes",
+    "image": "imagenes/0931-alp-jabon-blanco-zorro-x-150-grs-clasico-84.jpg"
+  },
+  "482": {
+    "name": "MENOYO MOSTAZA LIVIAN X 250 GS ORIGINAL 3585",
+    "price": 915.33,
+    "category": "Despensa",
+    "image": "imagenes/2118-menoyo-mostaza-livian-x-250-gs-original.jpg"
+  },
+  "487": {
+    "name": "ALP JABON ZORRO X 800 GRS B/E (20)",
+    "price": 2559.94,
+    "category": "Detergentes",
+    "image": "imagenes/0963-alp-jabon-polvo-zorro-escudo-x-800-gs-b-e-20.jpg"
+  },
+  "505": {
+    "name": "FEF BOMBONERA LOVERS X 264 GRS",
+    "price": 15403.61,
+    "category": "Chocolates",
+    "image": "imagenes/0505-fef-bombonera-lovers-x-264-grs.jpg"
+  },
+  "510": {
+    "name": "FEF BOTELLITAS DE WISKY X 20 UNID.",
+    "price": 25899.47,
+    "category": "Chocolates",
+    "image": "imagenes/0510-fef-botellitas-de-wisky-x-20-unid.jpg"
+  },
+  "513": {
+    "name": "FEF BOCADITO DELICIA 48 UNI X 10 G",
+    "price": 15292.23,
+    "category": "Chocolates",
+    "image": "imagenes/513-fef-bocadito-delicia-48-uni-x-10-g.jpeg"
+  },
+  "522": {
+    "name": "YERBA MATE ROJO X 500 GRS EL 10",
+    "price": 1782.21,
+    "category": "Yerbas",
+    "image": ""
+  },
+  "526": {
+    "name": "FEF CHOCOLATIN JACK \"LECHE\" 20 U X 14 G",
+    "price": 30584.46,
+    "category": "Chocolates",
+    "image": ""
+  },
+  "539": {
+    "name": "FEF CEREALFORT X 21 GRS LIGHT FRUTILLA Y MANZANA (24)",
+    "price": 504.92,
+    "category": "Cereales",
+    "image": "imagenes/0014-fef-cerealfort-x-21-grs-light-frutilla-y-manzana.jpg"
+  },
+  "560": {
+    "name": "YERBA MATE ROJO X 500 GRS SUAVE",
+    "price": 2007.15,
+    "category": "Yerbas",
+    "image": ""
+  },
+  "561": {
+    "name": "YERBA MATE ROJO X 500 GRS ESPECIAL",
+    "price": 2007.15,
+    "category": "Yerbas",
+    "image": ""
+  },
+  "614": {
+    "name": "LDC GONGYS MALVAVISCO MINI X 28 G FRUTILLA SIN TACC (48)",
+    "price": 421.72,
+    "category": "Caramelos",
+    "image": "imagenes/0787-ldc-gongys-malvavisco-mini-x-28-grs-trenza-48-sin-tacc.jpg"
+  },
+  "674": {
+    "name": "CABRALES CAFE INSTAN. X 170 GRS FRASCO CLASICO",
+    "price": 9987.12,
+    "category": "Despensa",
+    "image": ""
+  },
+  "708": {
+    "name": "LDC CARAM. BILLIKEN YOGHURT X 600 GRS SIN TACC (12)",
+    "price": 4792.93,
+    "category": "Caramelos",
+    "image": "imagenes/0768-ldc-caram-billiken-yoghurt-x-600-grs-sin-tacc.jpg"
+  },
+  "762": {
+    "name": "MY CELOFAN X 25 GRS BLANCO SIN TACC (30)",
+    "price": 849.42,
+    "category": "Chocolates",
+    "image": "imagenes/1746-my-celofan-grande-x-50-grs-blanco-sin-tacc.jpg"
+  },
+  "773": {
+    "name": "MY CARAM. ARCOR MENTA CRISTAL X 935 GRS SIN TACC",
+    "price": 13056.95,
+    "category": "Caramelos",
+    "image": "imagenes/1730-my-caram-menta-cristal-x-935-grs-sin-tacc.jpg"
+  },
+  "794": {
+    "name": "FEF CEREALFORT X 19 GRS LIGHT FRUTOS ROJOS (24)",
+    "price": 504.92,
+    "category": "Cereales",
+    "image": "imagenes/0012-fef-cerealfort-x-19-grs-light-frutos-rojos.jpg"
+  },
+  "797": {
+    "name": "MY MOGUL GRANEL X 500 G LADRILLITOS EXTREME",
+    "price": 7491.73,
+    "category": "Gomitas",
+    "image": ""
+  },
+  "838": {
+    "name": "LIPO CARAM. X 454 G \"CANDY 10\"",
+    "price": 3677.43,
+    "category": "Caramelos",
+    "image": "imagenes/0838-lipo-caram-x-454-g-candy-10.jpg"
+  },
+  "926": {
+    "name": "LA VIRGINIA CAFE MOLIDO TORRADO X 250 GR EQUILIBRADO (12)",
+    "price": 5692.23,
+    "category": "Despensa",
+    "image": "imagenes/2302-la-virginia-cafe-molido-torrado-x-250-gr-equilibrado.jpg"
+  },
+  "927": {
+    "name": "LA VIRGINIA CAFE MOLIDO TORRADO X 500 GR EQUILIBRADO (12)",
+    "price": 11383.99,
+    "category": "Despensa",
+    "image": "imagenes/2302-la-virginia-cafe-molido-torrado-x-250-gr-equilibrado.jpg"
+  },
+  "931": {
+    "name": "CABRALES CAFE EN SAQUITOS X 18 SAQ. (MARRON)",
+    "price": 5096.52,
+    "category": "Despensa",
+    "image": "imagenes/931.jpg"
+  },
+  "1008": {
+    "name": "PRAAT GALL RELLENAS AVELLANA X 85 G (20) SIN TACC",
+    "price": 1202.79,
+    "category": "Galletitas",
+    "image": "imagenes/1008-praat-gall-rellenas-avellana-x-85-g-sin-tacc.jpeg"
+  },
+  "1009": {
+    "name": "PRAAT GALL RELLENAS FRAMBUESA X 85 G SIN TACC (20)",
+    "price": 1137.57,
+    "category": "Galletitas",
+    "image": "imagenes/1009-praat-gall-rellenas-frambuesa-x-85-g-sin-tacc.jpeg"
+  },
+  "1011": {
+    "name": "PRAAT GALL RELLENAS CHOCO SABOR VAINILLA X 85 G (20) SIN TACC",
+    "price": 1038.9,
+    "category": "Galletitas",
+    "image": "imagenes/1011-praat-gall-rellenas-choco-sabor-vainilla-x-85-g-sin-tacc.jpeg"
+  },
+  "1012": {
+    "name": "PRAAT GALL RELLENAS VAINILLA SABOR VAINILLA X 85 G (20) SIN TACC",
+    "price": 914.07,
+    "category": "Galletitas",
+    "image": "imagenes/1011-praat-gall-rellenas-choco-sabor-vainilla-x-85-g-sin-tacc.jpeg"
+  },
+  "1013": {
+    "name": "PRAAT GALL RELLENAS BAÑADAS LIMA (18) SIN TACC",
+    "price": 1783.4,
+    "category": "Galletitas",
+    "image": "imagenes/1013-praat-gall-rellenas-banadas-lima-sin-tacc.jpeg"
+  },
+  "1014": {
+    "name": "PRAAT GALL AVENTURA VAINILLA CHOCOLATE X 85 G (20) SIN TACC",
+    "price": 1735.69,
+    "category": "Galletitas",
+    "image": "imagenes/1014-praat-gall-aventura-vainilla-chocolate-x-85-g-sin-tacc.jpeg"
+  },
+  "1015": {
+    "name": "PRAAT GALL AVENTURA CHOCO CHOCO X 85 G (20) SIN TACC",
+    "price": 1735.69,
+    "category": "Galletitas",
+    "image": "imagenes/1015-praat-gall-aventura-choco-choco-x-85-g-sin-tacc.jpeg"
+  },
+  "1016": {
+    "name": "PRAAT GALL AVENTURA CHOCOLATE BLANCO X 85 G (20) SIN TACC",
+    "price": 1735.69,
+    "category": "Galletitas",
+    "image": "imagenes/1016-praat-gall-aventura-chocolate-blanco-x-85-g-sin-tacc.jpeg"
+  },
+  "1018": {
+    "name": "PRAAT TAPITAS SABOR COCO X 90 G (18) SIN TACC",
+    "price": 1198.69,
+    "category": "Galletitas",
+    "image": "imagenes/1018-praat-tapitas-sabor-coco-x-90-g-sin-tacc.jpeg"
+  },
+  "1090": {
+    "name": "DISMAR BOLSA DE RESIDUOS 45 X 60 X 10 BOLSAS",
+    "price": 693.75,
+    "category": "Limpieza",
+    "image": "imagenes/0642-dismar-bolsa-de-residuos-45-x-60-x-10-bolsas.jpg"
+  },
+  "1134": {
+    "name": "TURIMAR PASAS DE UVA X 400 GRS (8)",
+    "price": 1639.54,
+    "category": "Galletitas",
+    "image": "imagenes/1134-cp-chester-ice-desodorante-x-150-cc.jpg"
+  },
+  "1165": {
+    "name": "ALP JABON ZORRO X 3 KG REG (6)",
+    "price": 8901.92,
+    "category": "Detergentes",
+    "image": "imagenes/0973-alp-jabon-zorro-x-3-kg-bicarbonato-reg-6.jpg"
+  },
+  "1174": {
+    "name": "GALL. PALMERITAS SARAVA X 200 GRS (16)",
+    "price": 1429.15,
+    "category": "Galletitas",
+    "image": "imagenes/0885-turimar-palmeritas-x-400-grs-10.jpg"
+  },
+  "1197": {
+    "name": "PILA ENERGIZER N E 92 AAA (1) C/REMOTO",
+    "price": 1160.17,
+    "category": "Pilas",
+    "image": "imagenes/0533-pila-energizer-n-e-92-aaa-1-c-remoto.jpg"
+  },
+  "1202": {
+    "name": "CHAC. AUTOBRILLO WASSINGTON X 60 CC BLANCO (12)",
+    "price": 4526.34,
+    "category": "Varios",
+    "image": "imagenes/2209-chac-autobrillo-wassington-x-60-cc-blanco-12.jpg"
+  },
+  "1210": {
+    "name": "INALPA TOMATE TRITURADO X 970 CC (8)",
+    "price": 2232.75,
+    "category": "Despensa",
+    "image": "imagenes/2415-inalpa-tomate-triturado-x-970-cc-8.jpg"
+  },
+  "1284": {
+    "name": "PILA ENERGIZER NH 12 AAA RECARGABLE",
+    "price": 11069.04,
+    "category": "Pilas",
+    "image": "imagenes/0541-pila-energizer-nh-12-aaa-recargable.jpg"
+  },
+  "1285": {
+    "name": "PILA ENERGIZER NH 15 AA RECARGABLE (2)",
+    "price": 11069.04,
+    "category": "Pilas",
+    "image": "imagenes/0542-pila-energizer-nh-15-aa-recargable.jpg"
+  },
+  "1321": {
+    "name": "DISMAR ALCOHOL FINO X 500 CC (10)",
+    "price": 2357.93,
+    "category": "Higiene",
+    "image": "imagenes/0634-dismar-alcohol-fino-x-250-cc-10.jpg"
+  },
+  "1324": {
+    "name": "GIN LA PAMPA X 750 CC FLOWERS AZUL",
+    "price": 28042.29,
+    "category": "Detergentes",
+    "image": "imagenes/0899-alp-det-limzul-x-750-cc-colageno-20.jpg"
+  },
+  "1402": {
+    "name": "PILA ENERGIZER N° E 91 BP 1 AA",
+    "price": 1160.17,
+    "category": "Pilas",
+    "image": "imagenes/0537-pila-energizer-n-e-91-bp-1-aa.jpg"
+  },
+  "1419": {
+    "name": "PILA ENERGIZER N° E 96 AAAA (CUADRUPLE)",
+    "price": 2411.82,
+    "category": "Pilas",
+    "image": "imagenes/0540-pila-energizer-n-e-96-aaaa-cuadruple.jpg"
+  },
+  "1445": {
+    "name": "PILA ENERGIZER LITHIUM L 91 AA",
+    "price": 5808.77,
+    "category": "Pilas",
+    "image": "imagenes/0530-pila-energizer-lithium-l-91-aa.jpg"
+  },
+  "1453": {
+    "name": "PG ACEITE WD-40 X 155 GRS",
+    "price": 7225.67,
+    "category": "Pegamentos",
+    "image": "imagenes/0581-pg-aceite-wd-40-x-155-grs.jpg"
+  },
+  "1469": {
+    "name": "MCA DOREE QUITAESMALTE X 65CC PROTECTOR CON LANOLINA",
+    "price": 1682.51,
+    "category": "Varios",
+    "image": "imagenes/1396-mca-doree-quitaesmalte-x-65cc-protector-con-lanolina.jpg"
+  },
+  "1477": {
+    "name": "MY CHUP. COSMOS FRUTAL X 40 U SIN TACC",
+    "price": 4302.85,
+    "category": "Chupetines",
+    "image": "imagenes/1756-my-chup-cosmo-frutal-x-40-u-sin-tacc.jpg"
+  },
+  "1490": {
+    "name": "MY CARAM. ARCOR MENTA C/ CHOCO. X 715 GRS",
+    "price": 9817.97,
+    "category": "Caramelos",
+    "image": "imagenes/1490-my-caram-arcor-menta-c-choco-x-715-grs.jpg"
+  },
+  "1513": {
+    "name": "MY HAMLET X 43 GRS CHOCOLATOSO SIN TACC",
+    "price": 822.74,
+    "category": "Chocolates",
+    "image": "imagenes/1513.jpg"
+  },
+  "1525": {
+    "name": "PILA ENERGIZER LITHIUM L 92 AAA",
+    "price": 5808.77,
+    "category": "Pilas",
+    "image": "imagenes/0531-pila-energizer-lithium-l-92-aaa.jpg"
+  },
+  "1528": {
+    "name": "CHAC. NAIPES PADRINO X 40 C (6)",
+    "price": 1940.39,
+    "category": "Varios",
+    "image": "imagenes/2249-chac-naipes-padrino-x-40-c-6.jpg"
+  },
+  "1529": {
+    "name": "CHAC. NAIPES PADRINO X 50 C (6)",
+    "price": 2322.64,
+    "category": "Varios",
+    "image": "imagenes/2249-chac-naipes-padrino-x-40-c-6.jpg"
+  },
+  "1568": {
+    "name": "MENOYO CONDIMENTO PARA MILANESAS X 23 G (10) 2991",
+    "price": 891.29,
+    "category": "Despensa",
+    "image": "imagenes/2090-menoyo-condimento-para-milanesas-x-23-g-10.jpg"
+  },
+  "1591": {
+    "name": "LA BANDA ACELGA CORTADA X 350 GRS (6) SIN TACC",
+    "price": 1443.7,
+    "category": "Despensa",
+    "image": "imagenes/1605-la-banda-acelga-cortada-x-350-grs-6.jpg"
+  },
+  "1592": {
+    "name": "LA BANDA ESPINACA CORTADA X 350 GRS (6) SIN TACC",
+    "price": 1569.22,
+    "category": "Despensa",
+    "image": "imagenes/1606-la-banda-espinaca-cortada-x-350-grs-6.jpg"
+  },
+  "1593": {
+    "name": "LA BANDA REMOLACHA REBANADAS X 350 GRS (6) SIN TACC",
+    "price": 1495.77,
+    "category": "Despensa",
+    "image": "imagenes/1608-la-banda-remolacha-rebanadas-x-350-grs-6.jpg"
+  },
+  "1594": {
+    "name": "LA BANDA REMOLACHA EN CUBO X 350 GRS (6) SIN TACC",
+    "price": 975.26,
+    "category": "Despensa",
+    "image": "imagenes/1607-la-banda-remolacha-en-cubo-x-350-grs-6.jpg"
+  },
+  "1633": {
+    "name": "PRES. PRIME X 3 UNI. EXTRA LUBRI.",
+    "price": 3670.6,
+    "category": "Higiene",
+    "image": ""
+  },
+  "1636": {
+    "name": "PRES. PRIME X 3 UNI. TACHAS",
+    "price": 3670.6,
+    "category": "Higiene",
+    "image": ""
+  },
+  "1638": {
+    "name": "PRES. PRIME X 3 UNI. ULTRA FINO (24)",
+    "price": 3670.6,
+    "category": "Higiene",
+    "image": "imagenes/2294-pres-prime-x-3-uni-ultra-fino.jpg"
+  },
+  "1639": {
+    "name": "PRES. PRIME X 3 UNI. WARMING (24)",
+    "price": 3670.6,
+    "category": "Higiene",
+    "image": "imagenes/2295-pres-prime-x-3-uni-warming.jpg"
+  },
+  "1659": {
+    "name": "ALP DEO. PLUSBELLE ROLL ON X 50 ML \"ORIGINAL\"",
+    "price": 2309.53,
+    "category": "Higiene",
+    "image": "imagenes/0890-alp-antit-plusbelle-x-150-ml-original-12.jpg"
+  },
+  "1660": {
+    "name": "ALP DEO. PLUSBELLE ROLL ON X 50 ML \"JAZMIN\" (12)",
+    "price": 2309.53,
+    "category": "Higiene",
+    "image": "imagenes/0889-alp-antit-plusbelle-x-150-ml-jazmin-12.jpg"
+  },
+  "1732": {
+    "name": "CARAMELO LIQUIDO ABEJITAS (8)",
+    "price": 2849.71,
+    "category": "Caramelos",
+    "image": "imagenes/1732-caramelo-liquido-abejitas-8.jpg"
+  },
+  "1740": {
+    "name": "LA VIRGINIA TE X 25 SAQ BOLDO (6)",
+    "price": 1828.82,
+    "category": "Despensa",
+    "image": "imagenes/2323-la-virginia-te-x-25-saq-boldo.jpg"
+  },
+  "1820": {
+    "name": "MY CARAM. ARCOR CREMINO SURTIDO X 940 GRS",
+    "price": 13687.98,
+    "category": "Caramelos",
+    "image": "imagenes/1820-my-caram-arcor-cremino-surtido-x-940-grs.jpg"
+  },
+  "1889": {
+    "name": "LA VIRGINIA CAFE EN SAQUITOS X 20 UNI (10)",
+    "price": 4625.91,
+    "category": "Despensa",
+    "image": "imagenes/2298-la-virginia-cafe-en-saquitos-x-20-uni.jpg"
+  },
+  "1909": {
+    "name": "MY CARAM. MIX CRISTAL X 810 GRS SIN TACC",
+    "price": 12677.75,
+    "category": "Caramelos",
+    "image": "imagenes/1734-my-caram-mix-cristal-x-935-grs-sin-tacc.jpg"
+  },
+  "1918": {
+    "name": "MENOYO CONDIMENTO CEBOLLA EN ESCAMAS X 23 G (10)",
+    "price": 926.59,
+    "category": "Despensa",
+    "image": "imagenes/2081-menoyo-condimento-cebolla-en-escamas-10.jpg"
+  },
+  "1972": {
+    "name": "LDC DISPLAY GALLO OBLEA DE ARROZ X 24 UNI.",
+    "price": 22244.42,
+    "category": "Chocolates",
+    "image": "imagenes/0773-ldc-display-gallo-oblea-de-arroz-x-24-uni.jpg"
+  },
+  "2052": {
+    "name": "MY CARAM. ARCOR MIEL X 675 GRS",
+    "price": 9817.97,
+    "category": "Caramelos",
+    "image": "imagenes/2052-my-caram-arcor-miel-x-675-grs.jpg"
+  },
+  "2101": {
+    "name": "DON ENRIQUE TOMATE TRITURADO 8 X 980 G",
+    "price": 15063.05,
+    "category": "Despensa",
+    "image": "imagenes/2415-inalpa-tomate-triturado-x-970-cc-8.jpg"
+  },
+  "2105": {
+    "name": "PLIN TURRON DE ARROZ X 20 UNI.",
+    "price": 4836.79,
+    "category": "Turrones",
+    "image": "imagenes/1556-plin-turron-de-arroz-x-1-u.jpg"
+  },
+  "2150": {
+    "name": "GEO PAST FULLMINT CHERRY MENTA X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "image": "imagenes/2150-geo-past-fullmint-cherry-menta-x-12.jpg"
+  },
+  "2151": {
+    "name": "GEO PAST FULLMINT CHOCO MENTA X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "image": "imagenes/2151-geo-past-fullmint-choco-menta-x-12.jpg"
+  },
+  "2152": {
+    "name": "GEO PAST FULLMINT MENTA X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "image": "imagenes/2150-geo-past-fullmint-cherry-menta-x-12.jpg"
+  },
+  "2153": {
+    "name": "GEO PAST FULLMINT STRONG X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "image": "imagenes/2153-geo-past-fullmint-strong-x-12.jpg"
+  },
+  "2154": {
+    "name": "GEO PAST FULLMINT MIX DE FRUTAS X 12",
+    "price": 6103.24,
+    "category": "Pastillas",
+    "image": "imagenes/2154-geo-past-fullmint-mix-de-frutas-x-12.jpg"
+  },
+  "2155": {
+    "name": "GEO GALLETITA TODDY X 126 G (24)",
+    "price": 2033.65,
+    "category": "Galletitas",
+    "image": "imagenes/2155-geo-galletita-toddy-x-126-g-24.jpg"
+  },
+  "2513": {
+    "name": "JUGO BAGGIO X 200 CC",
+    "price": 575.78,
+    "category": "Jugos",
+    "image": "imagenes/1635-jugo-baggio-18-x-200-cc-multifrutal.jpg"
+  },
+  "2554": {
+    "name": "LDC CARAM. BILLIKEN FRUTAL X 600 GRS SIN TACC (12)",
+    "price": 4792.93,
+    "category": "Caramelos",
+    "image": "imagenes/0767-ldc-caram-billiken-frutal-x-600-grs-sin-tacc.jpg"
+  },
+  "2582": {
+    "name": "MENOYO CONDIMENTO CHIMICHURRI X 23 GS (10) 3035",
+    "price": 711.36,
+    "category": "Despensa",
+    "image": "imagenes/2082-menoyo-condimento-chimichurri-x-23-gs-10.jpg"
+  },
+  "2611": {
+    "name": "LDC YUMMY X 36 U X 10 G FRUTITAS RELLENAS",
+    "price": 8622.48,
+    "category": "Chupetines",
+    "image": "imagenes/0752-ldc-bull-dog-crazy-chup-polvo-x-10-u-sin-tacc.jpg"
+  },
+  "2683": {
+    "name": "DISMAR ALCOHOL FINO X 250 CC (10)",
+    "price": 1435.28,
+    "category": "Higiene",
+    "image": "imagenes/0634-dismar-alcohol-fino-x-250-cc-10.jpg"
+  },
+  "2705": {
+    "name": "DISMAR BOLSA CONSORCIO 60X90 (25)",
+    "price": 1136.34,
+    "category": "Limpieza",
+    "image": "imagenes/0640-dismar-bolsa-consorcio-60x90-25.jpg"
+  },
+  "2706": {
+    "name": "DISMAR BOLSA CONSORCIO 80X110 (10)",
+    "price": 2617.77,
+    "category": "Limpieza",
+    "image": "imagenes/0641-dismar-bolsa-consorcio-80x110-10.jpg"
+  },
+  "2715": {
+    "name": "SIGNO JABON DE TOCADOR LE NID VERDE 3 X 75 GRS (20)",
+    "price": 1395.25,
+    "category": "Higiene",
+    "image": ""
+  },
+  "2719": {
+    "name": "SIGNO JABON DE TOCADOR LE NID ROSA 3 X 75 GRS (20)",
+    "price": 1395.25,
+    "category": "Higiene",
+    "image": ""
+  },
+  "3010": {
+    "name": "PG ACEITE WD-40 220G (FLEX)",
+    "price": 10748.78,
+    "category": "Pegamentos",
+    "image": "imagenes/0580-pg-aceite-wd-40-220g-flex.jpg"
+  },
+  "3011": {
+    "name": "ANTOJITOS NACHOS ORIGINAL X 85 G (16)",
+    "price": 600.01,
+    "category": "Snacks",
+    "image": "imagenes/2451-antojitos-nachos-original-x-85-g-16-sin-tacc.jpg"
+  },
+  "3013": {
+    "name": "LRT CHUP. PICO DULCE \"MINI PALETAS\" X 50 UNI",
+    "price": 2362.65,
+    "category": "Chupetines",
+    "image": "imagenes/3013-lrt-chup-pico-dulce-mini-paletas-x-50-uni.jpg"
+  },
+  "3025": {
+    "name": "DON SATUR MAGDALENA X 250 GRS VAINILLA (10)",
+    "price": 2582.14,
+    "category": "Galletitas",
+    "image": "imagenes/1877-don-satur-magdalena-x-250-grs-vainilla.jpg"
+  },
+  "3027": {
+    "name": "DON SATUR MAGDALENA X 250 GRS MARMOLADA (10)",
+    "price": 2582.14,
+    "category": "Galletitas",
+    "image": "imagenes/1875-don-satur-magdalena-x-250-grs-marmolada.jpg"
+  },
+  "3044": {
+    "name": "DISMAR ALCOHOL FINO X 1 LITRO (8)",
+    "price": 4255.44,
+    "category": "Higiene",
+    "image": "imagenes/0633-dismar-alcohol-fino-x-1-litro-8.jpg"
+  },
+  "3059": {
+    "name": "JUMALA AZUCAR IMPALPABLE X 500 GRS (10)",
+    "price": 1678.99,
+    "category": "Despensa",
+    "image": "imagenes/1879-jumala-azucar-impalpable-x-500-grs.jpg"
+  },
+  "3061": {
+    "name": "LA VIRGINIA CAFE INSTANTANEO FRASCO X 100 GS SUAVE (6)",
+    "price": 5112.38,
+    "category": "Despensa",
+    "image": "imagenes/2300-la-virginia-cafe-instantaneo-frasco-x-100-gs-suave.jpg"
+  },
+  "3074": {
+    "name": "LRT MALTA EL POCILLO X 100 GRS CON LECHE",
+    "price": 2022.88,
+    "category": "Despensa",
+    "image": "imagenes/1034-lrt-malta-el-pocillo-x-100-grs-con-leche.jpg"
+  },
+  "3077": {
+    "name": "DON SATUR MAGDALENA X 200 GRS VAINILLA CON CHIPS CHOCO (10)",
+    "price": 2582.14,
+    "category": "Galletitas",
+    "image": "imagenes/1873-don-satur-magdalena-x-200-grs-vainilla-con-chips-choco.jpg"
+  },
+  "3082": {
+    "name": "CHAC. GUANTE LATEX STEFF CHICO",
+    "price": 1716.95,
+    "category": "Limpieza",
+    "image": "imagenes/2231-chac-guante-latex-steff-chico.jpg"
+  },
+  "3083": {
+    "name": "CHAC. GUANTE LATEX STEFF MEDIANO",
+    "price": 1716.95,
+    "category": "Limpieza",
+    "image": "imagenes/2233-chac-guante-latex-steff-mediano.jpg"
+  },
+  "3084": {
+    "name": "CHAC. GUANTE LATEX STEFF GRANDE",
+    "price": 1716.95,
+    "category": "Limpieza",
+    "image": "imagenes/2232-chac-guante-latex-steff-grande.jpg"
+  },
+  "3102": {
+    "name": "LIBERA TOSTADA DE ARROZ CLASICA X 140 G (12) SIN TACC",
+    "price": 1121.23,
+    "category": "Galletitas",
+    "image": "imagenes/1939-leiva-tostadas-de-arroz-x-150-grs-clasica-12-sin-tacc.jpg"
+  },
+  "3103": {
+    "name": "LIBERA TOSTADA DE ARROZ SIN SAL X 140 G (12) SIN TACC",
+    "price": 1121.23,
+    "category": "Galletitas",
+    "image": "imagenes/1936-leiva-tostadas-de-arroz-x-150-grs-sin-sal-12-sin-tacc.jpg"
+  },
+  "3106": {
+    "name": "MDZ ALFA. OREO TORTA TRIPLE X 61 GRS",
+    "price": 1405.12,
+    "category": "Alfajores",
+    "image": "imagenes/3105.jpg"
+  },
+  "3127": {
+    "name": "PILA EVEREADY GOLD AAA",
+    "price": 597.74,
+    "category": "Pilas",
+    "image": "imagenes/0549-pila-eveready-gold-aaa.jpg"
+  },
+  "3129": {
+    "name": "PILA EVEREADY GOLD AAA X 4",
+    "price": 597.74,
+    "category": "Pilas",
+    "image": "imagenes/0549-pila-eveready-gold-aaa.jpg"
+  },
+  "3132": {
+    "name": "PRODUCTO 3132",
+    "price": 0,
+    "category": "Lámparas",
+    "image": "imagenes/3131.jpg"
+  },
+  "3161": {
+    "name": "LEIVA TOSTADAS DE ARROZ X 150 GRS CLASICA (12) SIN TACC",
+    "price": 1338.45,
+    "category": "Galletitas",
+    "image": "imagenes/1939-leiva-tostadas-de-arroz-x-150-grs-clasica-12-sin-tacc.jpg"
+  },
+  "3162": {
+    "name": "LEIVA TOSTADAS DE ARROZ X 150 GRS SIN SAL (12) SIN TACC",
+    "price": 1338.45,
+    "category": "Galletitas",
+    "image": "imagenes/1936-leiva-tostadas-de-arroz-x-150-grs-sin-sal-12-sin-tacc.jpg"
+  },
+  "3163": {
+    "name": "LEIVA TOSTADAS DE ARROZ X 150 GRS DULCE (12) SIN TACC",
+    "price": 1338.45,
+    "category": "Galletitas",
+    "image": "imagenes/1935-leiva-tostadas-de-arroz-x-150-grs-dulce-12-sin-tacc.jpg"
+  },
+  "3173": {
+    "name": "DISMAR AZUFRE X 50 UNI.",
+    "price": 18719.52,
+    "category": "Varios",
+    "image": ""
+  },
+  "3174": {
+    "name": "ALP JABON ZORRO X 800 GRS LAVADO A MANO CLASICO!",
+    "price": 2559.94,
+    "category": "Detergentes",
+    "image": "imagenes/0931-alp-jabon-blanco-zorro-x-150-grs-clasico-84.jpg"
+  },
+  "3177": {
+    "name": "ALP DOBLE JABON BLANCO ZORRO 2 X 150 GRS TRADICIONAL (42)",
+    "price": 1963.67,
+    "category": "Detergentes",
+    "image": "imagenes/0925-alp-doble-jabon-blanco-federal-2-x-150-grs-tradicional-42.jpg"
+  },
+  "3179": {
+    "name": "MENOYO CONDIMENTO ROMERO X 10 G (10) 3462",
+    "price": 617.15,
+    "category": "Despensa",
+    "image": "imagenes/2096-menoyo-condimento-romero-x-10-g-10.jpg"
+  },
+  "3191": {
+    "name": "ALP DET DILUIBLE ZORRO EVO QUITAMANCHAS X 500 ML (12)",
+    "price": 7866.67,
+    "category": "Limpieza",
+    "image": "imagenes/0991-alp-quitamanchas-liquido-zorro-gatillo-x-500-ml-20.jpg"
+  },
+  "3192": {
+    "name": "PG ACEITE WD-40 X 311 GRS",
+    "price": 11245.41,
+    "category": "Pegamentos",
+    "image": "imagenes/0582-pg-aceite-wd-40-x-311-grs.png"
+  },
+  "3201": {
+    "name": "ALFA. GULA X 72 GRS BLANCO (18)",
+    "price": 1082.52,
+    "category": "Alfajores",
+    "image": "imagenes/3201.jpg"
+  },
+  "3205": {
+    "name": "GULA X 72 G BOMBA EXTREMA (18)",
+    "price": 1082.52,
+    "category": "Alfajores",
+    "image": "imagenes/3205-gula-x-72-g-bomba-extrema-18.jpeg"
+  },
+  "3209": {
+    "name": "SEDAL SHAMPOO X 190 CC RIZOS",
+    "price": 2858.71,
+    "category": "Higiene",
+    "image": "imagenes/2279-chac-sedal-shampoo-x-190-cc-rizos.jpg"
+  },
+  "3242": {
+    "name": "LEIVA ALMOHADITAS DE ARROZ X 125 GRS LIMON (14) SIN TACC",
+    "price": 1238.64,
+    "category": "Galletitas",
+    "image": "imagenes/1934-leiva-almohaditas-de-arroz-x-125-grs-limon-14-sin-tacc.jpg"
+  },
+  "3314": {
+    "name": "DISMAR AZUFRE C/SEPARADOR X 10 UNI.",
+    "price": 3747.25,
+    "category": "Varios",
+    "image": ""
+  },
+  "3339": {
+    "name": "PLENARIO LENTEJAS DE CHOCOLATE X 800 GRS",
+    "price": 20331.03,
+    "category": "Chocolates",
+    "image": "imagenes/1692-plenario-lentejas-de-chocolate-x-800-grs.jpg"
+  },
+  "3352": {
+    "name": "LEIVA TOSTADAS DE ARROZ X 160 GRS CHIA-LINO-SESAMO (12) VIOLETA SIN TACC",
+    "price": 1353.31,
+    "category": "Galletitas",
+    "image": "imagenes/1937-leiva-tostadas-de-arroz-x-160-grs-chia-lino-sesamo-12-violeta-sin-tacc.jpg"
+  },
+  "3354": {
+    "name": "LEIVA TOSTADAS DE ARROZ X 150 GR INTEGRAL (12)",
+    "price": 1341.98,
+    "category": "Galletitas",
+    "image": "imagenes/1938-leiva-tostadas-de-arroz-x-150-gr-integral-12.jpg"
+  },
+  "3362": {
+    "name": "GEO CEREAL FLYN PAFF CARAMELO X 200 G (16)",
+    "price": 2838.23,
+    "category": "Cereales",
+    "image": "imagenes/0667-geo-cereal-flyn-paff-caramelo-x-200-g.jpg"
+  },
+  "3371": {
+    "name": "MCA MACAO PINZA DE DEPILAR PLATEADA X 12",
+    "price": 9755.27,
+    "category": "Varios",
+    "image": "imagenes/1424-mca-macao-pinza-de-depilar-12.jpg"
+  },
+  "3378": {
+    "name": "MCA MACAO PINZA DE DEPILAR NEGRA X 12",
+    "price": 11828.96,
+    "category": "Varios",
+    "image": "imagenes/1424-mca-macao-pinza-de-depilar-12.jpg"
+  },
+  "3398": {
+    "name": "SEDAL SHAMPOO X 190 CC CREMA (12)",
+    "price": 2858.71,
+    "category": "Higiene",
+    "image": "imagenes/2273-chac-sedal-shampoo-x-190-cc-crema-12.jpg"
+  },
+  "3399": {
+    "name": "SEDAL SHAMPOO X 190 CC CERAMIDAS (12)",
+    "price": 2858.71,
+    "category": "Higiene",
+    "image": "imagenes/2271-chac-sedal-shampoo-x-190-cc-ceramidas-12.jpg"
+  },
+  "3400": {
+    "name": "SEDAL SHAMPOO X 190 CC LISO PERFECTO",
+    "price": 2858.71,
+    "category": "Higiene",
+    "image": "imagenes/2275-chac-sedal-shampoo-x-190-cc-liso-perfecto.jpg"
+  },
+  "3402": {
+    "name": "SEDAL ACONDICIONADOR X 190 CC BALANCE (12)",
+    "price": 2858.71,
+    "category": "Higiene",
+    "image": "imagenes/2258-chac-sedal-acondicionador-x-190-cc-balance-12.jpg"
+  },
+  "3403": {
+    "name": "SEDAL ACONDICIONADOR X 190 CC CERAMIDAS (12)",
+    "price": 2858.71,
+    "category": "Higiene",
+    "image": "imagenes/2260-chac-sedal-acondicionador-x-190-cc-ceramidas-12.jpg"
+  },
+  "3500": {
+    "name": "MC PURE DE PAPA TRADICIONAL \"ESTILO CASERO\" X 125 G (12)",
+    "price": 1829.4,
+    "category": "Despensa",
+    "image": "imagenes/0356-mc-pure-de-papa-x-125-grs-tradicional-12.jpg"
+  },
+  "3501": {
+    "name": "MC MAMA COCINA BIZCOCHUELO X 540 GRS CHOCO (12)",
+    "price": 2793.73,
+    "category": "Despensa",
+    "image": "imagenes/0327-mc-mama-cocina-bizcochuelo-x-540-grs-choco-12.jpg"
+  },
+  "3503": {
+    "name": "MC MAMA COCINA BIZCOCHUELO X 540 GRS LIMON MC (12)",
+    "price": 2282.91,
+    "category": "Despensa",
+    "image": "imagenes/0326-mc-mama-cocina-bizcochuelo-x-540-grs-limon-mc-12.jpg"
+  },
+  "3505": {
+    "name": "MC MAMA COCINA BIZCOCHUELO X 540 GRS VAINILLA (12)",
+    "price": 2282.91,
+    "category": "Despensa",
+    "image": "imagenes/0328-mc-mama-cocina-bizcochuelo-x-540-grs-vainilla-12.jpg"
+  },
+  "3507": {
+    "name": "MCA MACAO PILA AAA X 1 UNI.",
+    "price": 317.12,
+    "category": "Pilas",
+    "image": "imagenes/1423-mca-macao-pila-aaa-x-1-uni.jpg"
+  },
+  "3515": {
+    "name": "CAYFAR LATA DE MEMBRILLO X 5 KG",
+    "price": 16736.72,
+    "category": "Despensa",
+    "image": "imagenes/3515-cayfar-lata-de-membrillo-x-5-kg.jpg"
+  },
+  "3516": {
+    "name": "CAYFAR CAJON DE MEMBRILLO X 5 KG",
+    "price": 13122.6,
+    "category": "Despensa",
+    "image": "imagenes/3516-cayfar-cajon-de-membrillo-x-5-kg.jpg"
+  },
+  "3517": {
+    "name": "CAYFAR CAJON DE BATATA X 5 KG",
+    "price": 11622.5,
+    "category": "Despensa",
+    "image": "imagenes/3516-cayfar-cajon-de-membrillo-x-5-kg.jpg"
+  },
+  "3518": {
+    "name": "CAYFAR CAJON DE BATATA C/CACAO X 5 KG",
+    "price": 11622.5,
+    "category": "Despensa",
+    "image": "imagenes/3518-cayfar-caja-de-batata-c-cacao-x-5-kg.jpg"
+  },
+  "3519": {
+    "name": "CAYFAR LATA DE BATATA X 5 KG",
+    "price": 14435.11,
+    "category": "Despensa",
+    "image": "imagenes/3519-cayfar-lata-de-batata-x-5-kg.jpg"
+  },
+  "3520": {
+    "name": "CAYFAR LATA DE BATATA C/CACAO X 5 KG",
+    "price": 14435.11,
+    "category": "Despensa",
+    "image": "imagenes/3520-cayfar-lata-de-batata-c-cacao-x-5-kg.jpg"
+  },
+  "3583": {
+    "name": "CILO LENGUITAS DE COCO BAÑADAS X 150 G (24)",
+    "price": 817.96,
+    "category": "Galletitas",
+    "image": "imagenes/CILO LENGUITAS DE COCO BAÑADAS X 150 G.jpeg"
+  },
+  "3620": {
+    "name": "GRABICH LENTEJA FRUTAL X 80 GRS (36)",
+    "price": 620.73,
+    "category": "Chocolates",
+    "image": "imagenes/GRABICH LENTEJA FRUTAL X 80 GRS (36).jpeg"
+  },
+  "3655": {
+    "name": "PILA EVEREADY BLUE D2 (GRANDE)",
+    "price": 1515.89,
+    "category": "Pilas",
+    "image": "imagenes/0547-pila-eveready-blue-d2-grande.jpg"
+  },
+  "3668": {
+    "name": "ARGENTUM BOLSAS RESIDUOS 70 X 50",
+    "price": 1148.89,
+    "category": "Limpieza",
+    "image": "imagenes/0732-argentum-bolsas-residuos-70-x-50.jpg"
+  },
+  "3686": {
+    "name": "ANTOJITOS COMUNACHO QUESO X 70 G (15)",
+    "price": 600.01,
+    "category": "Snacks",
+    "image": "imagenes/2441-antojitos-comunacho-queso-x-70-g-15-sin-tacc.jpg"
+  },
+  "3711": {
+    "name": "CUMANA CHAMPIGNONES ENTEROS X 400 GS SIN TACC",
+    "price": 3076.33,
+    "category": "Despensa",
+    "image": ""
+  },
+  "3763": {
+    "name": "FANTOCHE TAPITAS MARMOLADAS BANDEJA X 350 G (12)",
+    "price": 1764.12,
+    "category": "Galletitas",
+    "image": "imagenes/0068-fantoche-tapitas-bandeja-x-350-grs-12.jpg"
+  },
+  "3812": {
+    "name": "VO5 GEL FIJACION FLEXIBLE X 200 G (12)",
+    "price": 2569.04,
+    "category": "Higiene",
+    "image": "imagenes/2355-vo5-gel-fijacion-efecto-humedo-x-200-g-12.jpg"
+  },
+  "3865": {
+    "name": "CHAC. TULIPAN VIBRADOR FLEX",
+    "price": 37752,
+    "category": "Higiene",
+    "image": "imagenes/2282-chac-vibrador-flex.jpg"
+  },
+  "3866": {
+    "name": "CHAC. TULIPAN MASAJEADOR EROTICO",
+    "price": 37752,
+    "category": "Higiene",
+    "image": "imagenes/2247-chac-masajeador-erotico.jpg"
+  },
+  "3867": {
+    "name": "CHAC. TULIPAN ARO VIBRADOR",
+    "price": 10664.94,
+    "category": "Higiene",
+    "image": ""
+  },
+  "3878": {
+    "name": "ALP DOBLE JABON BLANCO FEDERAL 2 X 150 GRS TRADICIONAL (42)",
+    "price": 2048.42,
+    "category": "Detergentes",
+    "image": "imagenes/0925-alp-doble-jabon-blanco-federal-2-x-150-grs-tradicional-42.jpg"
+  },
+  "3901": {
+    "name": "CILO LENGUITAS BAÑADAS X 300 GS (12)",
+    "price": 1629.63,
+    "category": "Galletitas",
+    "image": "imagenes/1465-cilo-lenguitas-banadas-x-300-gs-18.jpg"
+  },
+  "3902": {
+    "name": "CILO LENGUITAS COCO BAÑADAS X 300 GS (12)",
+    "price": 1629.63,
+    "category": "Galletitas",
+    "image": "imagenes/1466-cilo-lenguitas-coco-banadas-x-300-gs-18.jpg"
+  },
+  "4012": {
+    "name": "MCA DOREE AGUA OXIGENADA 20 VOL CREMA",
+    "price": 1343.06,
+    "category": "Varios",
+    "image": ""
+  },
+  "4059": {
+    "name": "PILA ENERGIZER N 2450",
+    "price": 5428.88,
+    "category": "Pilas",
+    "image": "imagenes/0532-pila-energizer-n-2450.jpg"
+  },
+  "4082": {
+    "name": "MCA MATE DE MADERA FORRADO EN ALUMINIO",
+    "price": 6210.57,
+    "category": "Varios",
+    "image": "imagenes/1430-mca-mate-de-madera-forrado-en-aluminio.jpg"
+  },
+  "4094": {
+    "name": "PLIN TURRON DE ARROZ X 1 U",
+    "price": 232.8,
+    "category": "Turrones",
+    "image": "imagenes/1556-plin-turron-de-arroz-x-1-u.jpg"
+  },
+  "4099": {
+    "name": "LA VIRGINIA TE X 25 SAQ TILO (NARANJA) 0266",
+    "price": 2932.42,
+    "category": "Despensa",
+    "image": "imagenes/2328-la-virginia-te-x-25-saq-tilo-manzanilla-cedron.jpg"
+  },
+  "4105": {
+    "name": "COMBO VUELTA AL COLE (1 JUGO PEPITO + 1 ALFA. GENIO TRIPLE)",
+    "price": 733.25,
+    "category": "Alfajores",
+    "image": "imagenes/1944-nvr-alfa-genio-triple-x-60-grs-blanco.jpg"
+  },
+  "4110": {
+    "name": "LA VIRGINIA MATE COCIDO EL LITORAL X 25 SAQ (10)",
+    "price": 1118.75,
+    "category": "Despensa",
+    "image": "imagenes/5737-la-virginia-mate-cocido-el-litoral-x-50-saq-10.jpeg"
+  },
+  "4113": {
+    "name": "LRT MALTA EL POCILLO X 170 GRS POTE INTENSA",
+    "price": 3234.09,
+    "category": "Despensa",
+    "image": "imagenes/1038-lrt-malta-el-pocillo-x-170-grs-pote-intensa.jpg"
+  },
+  "4117": {
+    "name": "GEO FLOW CEREAL X 1 UNI \"GRANOLA FRUTAS Y ALMENDRAS\" (20)",
+    "price": 699.75,
+    "category": "Cereales",
+    "image": "imagenes/0687-geo-display-flow-cereal-x-20-uni-granola-frutas-y-almendras.jpg"
+  },
+  "4118": {
+    "name": "GEO FLOW CEREAL X 1 UNI \"CHIPS Y ALMENDRAS\" (20)",
+    "price": 699.75,
+    "category": "Cereales",
+    "image": "imagenes/0686-geo-display-flow-cereal-x-20-uni-chips-y-almendras.jpg"
+  },
+  "4119": {
+    "name": "GEO FLOW CEREAL X 1 UNI \"GRANOLA FRUTOS DEL BOSQUE\" (20)",
+    "price": 699.75,
+    "category": "Cereales",
+    "image": "imagenes/0688-geo-display-flow-cereal-x-20-uni-granola-frutos-del-bosque.jpg"
+  },
+  "4120": {
+    "name": "GEO FLOW CEREAL X 1 UNI. \"YOGHURT FRUTOS ROJOS\" (20)",
+    "price": 699.75,
+    "category": "Cereales",
+    "image": "imagenes/0694-geo-display-flow-cereal-x-20-uni-yoghurt-frutos-del-bosque.jpg"
+  },
+  "4121": {
+    "name": "GEO FLOW CEREAL X 1 UNI. \"MANZANA LIGHT\" (20)",
+    "price": 699.75,
+    "category": "Cereales",
+    "image": "imagenes/0693-geo-display-flow-cereal-x-20-uni-manzana-light.jpg"
+  },
+  "4122": {
+    "name": "GEO FLOW CEREAL X 1 UNI \"MIX FRUTAS\" (20)",
+    "price": 699.75,
+    "category": "Cereales",
+    "image": "imagenes/0689-geo-display-flow-cereal-x-20-uni-mix-frutas.jpg"
+  },
+  "4145": {
+    "name": "DISMAR AZUFRE X 50 UN. CON SEPARADOR",
+    "price": 19713.57,
+    "category": "Varios",
+    "image": ""
+  },
+  "4173": {
+    "name": "CARGADOR ENERGIZER MINI (CH2PC4)",
+    "price": 36009.76,
+    "category": "Pilas",
+    "image": "imagenes/0475-cargador-energizer-mini-ch2pc4.jpg"
+  },
+  "4174": {
+    "name": "CARGADOR ENERGIZER MAXI (CHVCM4)",
+    "price": 45425.46,
+    "category": "Pilas",
+    "image": "imagenes/0474-cargador-energizer-maxi-chvcm4.jpg"
+  },
+  "4188": {
+    "name": "FEF PARAGUITA (40)",
+    "price": 650.04,
+    "category": "Chocolates",
+    "image": "imagenes/0040-fef-paraguita-x-40-uni-caja-grande.jpg"
+  },
+  "4280": {
+    "name": "JUGO BAGGIO 18 X 200 CC MULTIFRUTAL",
+    "price": 10364.5,
+    "category": "Jugos",
+    "image": "imagenes/1635-jugo-baggio-18-x-200-cc-multifrutal.jpg"
+  },
+  "4296": {
+    "name": "CABRALES FILTROS DE CAFE Nº2 X 30 UNI",
+    "price": 3720.93,
+    "category": "Despensa",
+    "image": "imagenes/4296-cabrales-filtros-de-cafe-n-2-x-30-uni.jpeg"
+  },
+  "4297": {
+    "name": "CABRALES FILTROS DE CAFE Nº4 X 30 UNI",
+    "price": 4018.07,
+    "category": "Despensa",
+    "image": "imagenes/4296-cabrales-filtros-de-cafe-n-2-x-30-uni.jpeg"
+  },
+  "4320": {
+    "name": "MENOYO VINAGRE MANZANA X 250 CC ORGANICO 2502",
+    "price": 6975.63,
+    "category": "Despensa",
+    "image": "imagenes/2139-menoyo-vinagre-manzana-x-250-cc-organico.jpg"
+  },
+  "4945": {
+    "name": "MENOYO COCO RALLADO X 45 GRS (10) 3202",
+    "price": 1431.59,
+    "category": "Despensa",
+    "image": "imagenes/4945.jpg"
+  },
+  "4946": {
+    "name": "MENOYO JUGO DE LIMON X 250 CC (6) 0713",
+    "price": 1376.69,
+    "category": "Despensa",
+    "image": "imagenes/2099-menoyo-jugo-de-limon-x-250-cc-6.jpg"
+  },
+  "4947": {
+    "name": "MENOYO JUGO DE LIMON X 500 CC (6) 0225",
+    "price": 2126.82,
+    "category": "Despensa",
+    "image": "imagenes/2100-menoyo-jugo-de-limon-x-500-cc-6.jpg"
+  },
+  "4948": {
+    "name": "MENOYO ACETO REDUC LIMON X 250 CC (6) 2359",
+    "price": 3416.32,
+    "category": "Despensa",
+    "image": "imagenes/2070-menoyo-aceto-reduc-limon-x-250-cc-6.jpg"
+  },
+  "4952": {
+    "name": "MENOYO ACETO REDUC MANZANA X 250 CC (6) 2373",
+    "price": 3416.32,
+    "category": "Despensa",
+    "image": "imagenes/2071-menoyo-aceto-reduc-manzana-x-250-cc-6.jpg"
+  },
+  "4953": {
+    "name": "MENOYO MOSTAZA X 60 GS (CHICA) 2823",
+    "price": 227.46,
+    "category": "Despensa",
+    "image": "imagenes/2073-menoyo-caja-mostaza-30-x-60-gs-chica.jpg"
+  },
+  "4954": {
+    "name": "MENOYO CONDIMENTO NUEZ MOSCADA X 23 GRS (10) 1260",
+    "price": 2097.06,
+    "category": "Despensa",
+    "image": "imagenes/2085-menoyo-condimento-nuez-moscada-x-25-grs-10.jpg"
+  },
+  "4955": {
+    "name": "MENOYO CONDIMENTO OREGANO X 23 GRS (10) 3127",
+    "price": 812.61,
+    "category": "Despensa",
+    "image": "imagenes/2082-menoyo-condimento-chimichurri-x-23-gs-10.jpg"
+  },
+  "4956": {
+    "name": "MENOYO ACETO REDUC ORIGINAL X 250 CC (6) 2335",
+    "price": 3416.32,
+    "category": "Despensa",
+    "image": "imagenes/2072-menoyo-aceto-reduc-original-x-250-cc-6.jpg"
+  },
+  "4957": {
+    "name": "MENOYO CONDIMENTO PIMIENTA BLANCA MOLIDA X 23 GRS (10) 2984",
+    "price": 1951.32,
+    "category": "Despensa",
+    "image": "imagenes/4957.jpg"
+  },
+  "4958": {
+    "name": "MENOYO CONDIMENTO PIMENTON EXTRA X 23 GRS (10) 2915",
+    "price": 829.46,
+    "category": "Despensa",
+    "image": "imagenes/4958.jpg"
+  },
+  "4959": {
+    "name": "MENOYO CONDIMENTO PEREJIL X 23 GRS (10) 1185",
+    "price": 959.53,
+    "category": "Despensa",
+    "image": "imagenes/2082-menoyo-condimento-chimichurri-x-23-gs-10.jpg"
+  },
+  "4961": {
+    "name": "MENOYO CONDIMENTO PROVENZAL X 23 GRS (10) 3097",
+    "price": 852.97,
+    "category": "Despensa",
+    "image": "imagenes/2095-menoyo-condimento-provenzal-x-25-grs-10.jpg"
+  },
+  "4964": {
+    "name": "MENOYO VINAGRE DE ALCOHOL X 1000 CC (12) 0058",
+    "price": 1507.23,
+    "category": "Despensa",
+    "image": "imagenes/2131-menoyo-vinagre-de-alcohol-x-1000-cc-12.jpg"
+  },
+  "4965": {
+    "name": "MENO. ALCAZAR VINAGRE DE ALCOHOL X 1000 CC (12) 0294",
+    "price": 1082.49,
+    "category": "Despensa",
+    "image": "imagenes/2057-meno-alcazar-vinagre-de-alcohol-x-1000-cc-12.jpg"
+  },
+  "4966": {
+    "name": "MENOYO VINAGRE DE ALCOHOL X 250 CC (12) 0645",
+    "price": 782.14,
+    "category": "Despensa",
+    "image": "imagenes/2132-menoyo-vinagre-de-alcohol-x-250-cc-12.jpg"
+  },
+  "4967": {
+    "name": "MENOYO VINAGRE DE ALCOHOL X 500 CC (12) 0034",
+    "price": 921.81,
+    "category": "Despensa",
+    "image": "imagenes/2133-menoyo-vinagre-de-alcohol-x-500-cc-12.jpg"
+  },
+  "4968": {
+    "name": "MENO. ALCAZAR VINAGRE DE ALCOHOL X 500 CC (12) 0263",
+    "price": 737.49,
+    "category": "Despensa",
+    "image": "imagenes/2058-meno-alcazar-vinagre-de-alcohol-x-500-cc-12.jpg"
+  },
+  "4971": {
+    "name": "MENOYO SEMILLAS LINO X 125 G (10) 3332",
+    "price": 740.63,
+    "category": "Despensa",
+    "image": "imagenes/2126-menoyo-semillas-lino-x-125-g-10.jpg"
+  },
+  "4972": {
+    "name": "MENOYO VINAGRE DE MANZANA X 1000 CC (12) 0089",
+    "price": 2825.89,
+    "category": "Despensa",
+    "image": "imagenes/2134-menoyo-vinagre-de-manzana-x-1000-cc-12.jpg"
+  },
+  "4973": {
+    "name": "MENO. ALCAZAR VINAGRE DE MANZANA X 1000 CC (12) 0317",
+    "price": 2260.76,
+    "category": "Despensa",
+    "image": "imagenes/2059-meno-alcazar-vinagre-de-manzana-x-1000-cc-12.jpg"
+  },
+  "4974": {
+    "name": "MENOYO VINAGRE DE MANZANA X 250 CC (12) 0669",
+    "price": 1177.55,
+    "category": "Despensa",
+    "image": "imagenes/2132-menoyo-vinagre-de-alcohol-x-250-cc-12.jpg"
+  },
+  "4975": {
+    "name": "MENOYO VINAGRE DE MANZANA X 500 CC (12) 0027",
+    "price": 1685.94,
+    "category": "Despensa",
+    "image": "imagenes/2135-menoyo-vinagre-de-manzana-x-500-cc-12.jpg"
+  },
+  "4976": {
+    "name": "MENO. ALCAZAR VINAGRE DE MANZANA X 500 CC (12) 0287",
+    "price": 1348.75,
+    "category": "Despensa",
+    "image": "imagenes/2060-meno-alcazar-vinagre-de-manzana-x-500-cc-12.jpg"
+  },
+  "4977": {
+    "name": "MENOYO VINAGRE DE VINO X 1000 CC 0010",
+    "price": 2179.31,
+    "category": "Despensa",
+    "image": "imagenes/2136-menoyo-vinagre-de-vino-x-1000-cc.jpg"
+  },
+  "4978": {
+    "name": "MENO. ALCAZAR VINAGRE DE VINO X 1000 CC (12) 0300",
+    "price": 1826.99,
+    "category": "Despensa",
+    "image": "imagenes/2061-meno-alcazar-vinagre-de-vino-x-1000-cc-12.jpg"
+  },
+  "4979": {
+    "name": "MENOYO VINAGRE DE VINO X 250 CC 0652",
+    "price": 951.67,
+    "category": "Despensa",
+    "image": "imagenes/2137-menoyo-vinagre-de-vino-x-250-cc.jpg"
+  },
+  "4980": {
+    "name": "MENOYO VINAGRE DE VINO X 500 CC (12) 0065",
+    "price": 1427.34,
+    "category": "Despensa",
+    "image": "imagenes/2138-menoyo-vinagre-de-vino-x-500-cc-12.jpg"
+  },
+  "4981": {
+    "name": "MENO. ALCAZAR VINAGRE DE VINO X 500 CC (12) 0270",
+    "price": 1141.87,
+    "category": "Despensa",
+    "image": "imagenes/2062-meno-alcazar-vinagre-de-vino-x-500-cc-12.jpg"
+  },
+  "4982": {
+    "name": "MENOYO ACEITE DE GIRASOL EN AEROSOL X 120 GRS 3219",
+    "price": 4138.8,
+    "category": "Despensa",
+    "image": "imagenes/4982.jpg"
+  },
+  "4983": {
+    "name": "MENOYO ACETO REDUC AHUMADO X 250 CC (6) 2342",
+    "price": 3416.32,
+    "category": "Despensa",
+    "image": "imagenes/2069-menoyo-aceto-reduc-ahumado-x-250-cc-6.jpg"
+  },
+  "4984": {
+    "name": "MENOYO CONDIMENTO AJO GRANULADO X 45 GRS (10) 3066",
+    "price": 1612.83,
+    "category": "Despensa",
+    "image": "imagenes/2078-menoyo-condimento-ajo-granulado-x-50-grs-10.jpg"
+  },
+  "4985": {
+    "name": "MENOYO CONDIMENTO AJI MOLIDO X 23 GRS (10) 2892",
+    "price": 675.7,
+    "category": "Despensa",
+    "image": "imagenes/4985-menoyo-condimento-aji-molido-x-25-grs-10-2892.jpeg"
   }
 }
