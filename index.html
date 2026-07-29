@@ -6391,7 +6391,7 @@ const GR = {
 };
 
 // CONFIGURATION VARIABLES
-const DEFAULT_SHEET_ID = "179n3Fa7WUbA1ZlgtAVVlIaxbQdaP5CV49NhPY0Ulrn0"; // ← Podés ingresar tu ID por defecto de Google Sheets acá (ej: "1A2B3C4D...")
+const DEFAULT_SHEET_ID = ""; // ← Podés ingresar tu ID por defecto de Google Sheets acá (ej: "1A2B3C4D...")
 const WA = '5492954324063'; // ← Reemplazar por WhatsApp de BIANI
 
 let prods = [];
@@ -7435,18 +7435,7 @@ function loadAdminState() {
       }
     });
     
-    // 4. Apply custom order & server sync
-    const defaultEditsCount = Object.keys(DEFAULT_EDITS || {}).length;
-    const currentOrderHash = (window.pdfOrder && window.pdfOrder.length > 0) 
-      ? (window.pdfOrder.length + '_' + defaultEditsCount + '_' + window.pdfOrder[0] + '_' + window.pdfOrder[window.pdfOrder.length - 1]) 
-      : ('edits_' + defaultEditsCount);
-    const lastSyncedOrderHash = localStorage.getItem('biani_synced_order_hash');
-    if (currentOrderHash && lastSyncedOrderHash !== currentOrderHash) {
-      localStorage.removeItem(LS_K.order);
-      localStorage.removeItem(LS_K.edits);
-      localStorage.setItem('biani_synced_order_hash', currentOrderHash);
-    }
-
+    // 4. Apply custom order
     let order = JSON.parse(localStorage.getItem(LS_K.order) || '[]');
     if (order.length === 0 && window.pdfOrder && window.pdfOrder.length > 0) {
       order = window.pdfOrder;
