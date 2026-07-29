@@ -49,28 +49,27 @@ export function parseCSV(text) {
 /**
  * Process parsed CSV rows and merge with baseline products array.
  * @param {Array<Array<string>>} rows 
- * @param {Array<object>} baseProducts 
+ * @param {Array<object>} prods 
  * @param {object} codeToCat 
  * @param {object} codeToImg 
+ * @param {object} options
  * @returns {Array<object>}
  */
-export function processCSVRows(rows, baseProducts = [], codeToCat = {}, codeToImg = {}) {
-  if (!rows || rows.length === 0) return baseProducts;
+export function processCSVRows(rows, prods = [], codeToCat = {}, codeToImg = {}, options = {}) {
+  if (!rows || rows.length === 0) return prods;
 
-  const prods = baseProducts.map(p => ({ ...p, outOfStock: true }));
-
-  // Find column indexes in header (first row)
-  const firstRow = rows[0].map(h => (h || '').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, ''));
+  // Normalize header strings of the first row to check if it's a header
+  const firstRow = rows[0].map(h => (h || '').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g,''));
   
   let codeIdx = firstRow.findIndex(h => h.includes('cod') || h.includes('id'));
   let nameIdx = firstRow.findIndex(h => h.includes('art') || h.includes('nom') || h.includes('prod') || h.includes('det'));
   let catIdx = firstRow.findIndex(h => h.includes('cat'));
   let priceIdx = firstRow.findIndex(h => h.includes('prec') || h.includes('cost') || h.includes('val') || h.includes('monto'));
   let minIdx = firstRow.findIndex(h => h.includes('cantidad minima') || h.includes('minima') || h.includes('minimo') || h.includes('cant_min') || h.includes('min'));
-
-  const hasHeader = (codeIdx !== -1 || nameIdx !== -1 || priceIdx !== -1 || catIdx !== -1);
-  const startRowIdx = hasHeader ? 1 : 0;
-
+  
+  let hasHeader = (codeIdx !== -1 || nameIdx !== -1 || priceIdx !== -1 || catIdx !== -1);
+  let startRowIdx = hasHeader ? 1 : 0;
+  
   if (!hasHeader) {
     const colCount = rows[0].length;
     codeIdx = 0;
@@ -87,11 +86,11 @@ export function processCSVRows(rows, baseProducts = [], codeToCat = {}, codeToIm
     if (nameIdx === -1) nameIdx = 1;
     if (priceIdx === -1) priceIdx = 2;
   }
-
+  
   for (let i = startRowIdx; i < rows.length; i++) {
     const r = rows[i];
     if (r.length <= Math.max(codeIdx, nameIdx, priceIdx)) continue;
-
+    
     const code = r[codeIdx] ? r[codeIdx].trim() : "";
     const name = r[nameIdx] ? r[nameIdx].trim() : "";
     if (!code || !name) continue;
@@ -105,20 +104,11 @@ export function processCSVRows(rows, baseProducts = [], codeToCat = {}, codeToIm
         p.name = name;
         p.price = price;
         p.outOfStock = false;
-        
-        const pCodeStr = String(p.code);
-        let img = codeToImg[pCodeStr] || p.image || "";
-        if (!img || img.trim() === "") {
-          p.category = "Nuevos y Sin Imagen";
-        } else if (!p.category || p.category === "Varios" || p.category.includes(',')) {
-          p.category = codeToCat[pCodeStr] || normalizeCategory("", name, img);
-        }
-        
         if (minIdx !== -1 && r[minIdx]) {
           p.unidad_min = parseInt(r[minIdx]) || 1;
         }
       });
-    } else {
+    } else if (options.allowAppend ?? true) {
       const image = codeToImg[code] || "";
       let cat = "Nuevos y Sin Imagen";
       if (image && image.trim() !== "") {

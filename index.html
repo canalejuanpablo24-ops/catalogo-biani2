@@ -6517,9 +6517,8 @@ async function loadDatabase() {
       const csvRows = parseCSV(csvText);
       
       if (csvRows.length > 1) {
-        prods.forEach(p => p.outOfStock = true);
         processCSVRows(csvRows);
-        toast("✅ Sincronizado desde Google Sheets", "ok");
+        toast("✅ Precios y nombres sincronizados desde Google Sheets", "ok");
       }
     } catch (e) {
       console.error("Failed to load from Google Sheets:", e);
@@ -6595,7 +6594,7 @@ function processCSVRows(rows) {
     }
     const price = parseFloat(s) || 0.0;
     
-    // Try to find matched products in baseline
+    // Try to find matched products in baseline (update name and price only, preserve catalog order and metadata)
     const codeStr = String(code);
     let matchedProds = prods.filter(p => String(p.code) === codeStr || String(p.code).startsWith(codeStr + "_"));
     
@@ -6603,35 +6602,7 @@ function processCSVRows(rows) {
       matchedProds.forEach(p => {
         p.name = name;
         p.price = price;
-        p.outOfStock = false;
-        const pCodeStr = String(p.code);
-        if (!p.image || p.image.trim() === "") {
-          p.category = "Nuevos y Sin Imagen";
-        } else if (!p.category || p.category === "Varios" || p.category.includes(',')) {
-          p.category = (window.codeToCat && window.codeToCat[pCodeStr]) || normalizeCategory("", name, p.image);
-        }
         if (minIdx !== -1 && r[minIdx]) p.unidad_min = parseInt(r[minIdx]) || 1;
-      });
-    } else {
-      const image = window.codeToImg[code] || "";
-      let cat = "Nuevos y Sin Imagen";
-      if (image && image.trim() !== "") {
-        cat = window.codeToCat[code] || "";
-        if (!cat && catIdx !== -1 && catIdx !== priceIdx && r[catIdx]) {
-          cat = r[catIdx].trim();
-        }
-        cat = normalizeCategory(cat || "Varios", name, image);
-      }
-      
-      prods.push({
-        code: code,
-        name: name,
-        category: cat,
-        price: price,
-        image: image,
-        qty: 0,
-        outOfStock: false,
-        unidad_min: (minIdx !== -1 && r[minIdx]) ? (parseInt(r[minIdx]) || 1) : 1
       });
     }
   }
