@@ -1583,11 +1583,8 @@ body.cart-has-items #cart-form {
   <div style="margin-top: 15px; font-weight: 600; color: var(--az2); font-size: 15px;">Sincronizando catálogo...</div>
 </div>
 
-<div class="cat-cov" id="catCov" onclick="toggleMobileCatMenu()"></div>
-
 <header class="hd">
   <div class="logo-container" style="display: flex; align-items: center; gap: 8px;">
-    <button class="mobile-cat-btn" id="mobileCatBtn" onclick="toggleMobileCatMenu()" title="Categorías">☰ Categorías</button>
     <div class="logo-box">B</div>
     <div class="logo-text">BIANI</div>
   </div>
@@ -1596,25 +1593,18 @@ body.cart-has-items #cart-form {
     <button class="cb btn-cart" onclick="togCart()">🛒 <span class="cc" id="ccnt">0</span></button>
   </div>
 </header>
-<div class="search-banner">
-  <div class="sw">
-    <span class="si">🔍</span>
-    <input type="text" id="sinp" placeholder="BUSCAR PRODUCTOS O CÓDIGO...">
+<div class="search-banner-large" style="position: sticky; top: 58px; z-index: 99; background: var(--bg2, #f5f7fa); padding: 14px 16px; border-bottom: 2px solid var(--brd, #e2e8f0); box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+  <div class="sw-large" style="max-width: 900px; margin: 0 auto; display: flex; align-items: center; background: #ffffff; border: 2.5px solid #2563eb; border-radius: 14px; padding: 10px 18px; box-shadow: 0 3px 10px rgba(37,99,235,0.12);">
+    <span style="font-size: 22px; margin-right: 12px; color: #2563eb;">🔍</span>
+    <input type="text" id="sinp" placeholder="Escribí lo que querés buscar (ej: alfajores, gomitas, yerba...)" autocomplete="off" style="width: 100%; border: none; outline: none; font-size: 18px; font-weight: 600; color: #1e293b; background: transparent;">
+    <button id="clearSearchBtn" onclick="clearSearch()" style="display:none; border:none; background:transparent; font-size:22px; color:#64748b; cursor:pointer; padding: 0 8px; font-weight:bold;">✕</button>
   </div>
 </div>
-<div class="catalog-container">
-  <aside class="catalog-sidebar" id="catalogSidebar">
-    <div class="sidebar-header-mobile">
-      <h3>Categorías</h3>
-      <button class="sidebar-close-btn" onclick="toggleMobileCatMenu()">✕</button>
-    </div>
-    <div class="sidebar-sec-title">Categorías</div>
-    <div class="nav2" id="nav2"></div>
-  </aside>
-  <div class="lay">
-  <div class="tb">
-    <div><div class="ctitle" id="ctitle">Catálogo BIANI</div><div class="csub"><span id="pcnt">0</span> productos cargados</div></div>
-    <label class="stog" id="stog"><input type="checkbox" id="stChk" onchange="applyF()"> 🌾 Solo SIN TACC</label>
+<div class="catalog-container" style="max-width: 1280px; margin: 0 auto; padding: 16px;">
+  <div class="lay" style="width: 100%;">
+  <div class="tb" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+    <div><div class="ctitle" id="ctitle" style="font-size: 22px; font-weight: 700; color: #0f172a;">Catálogo BIANI</div><div class="csub" style="font-size: 14px; color: #64748b;"><span id="pcnt">0</span> productos disponibles</div></div>
+    <label class="stog" id="stog" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; cursor: pointer; padding: 6px 12px; background: #e0f2fe; color: #0369a1; border-radius: 8px;"><input type="checkbox" id="stChk" onchange="applyF()"> 🌾 Solo SIN TACC</label>
   </div>
   <div class="grid" id="grid"></div>
 </div>
@@ -6924,6 +6914,17 @@ function matchesProductSearch(product, query) {
   return getProductSearchScore(product, query) > 0;
 }
 
+function clearSearch() {
+  const sinp = document.getElementById('sinp');
+  if (sinp) {
+    sinp.value = '';
+    q = '';
+    const clearBtn = document.getElementById('clearSearchBtn');
+    if (clearBtn) clearBtn.style.display = 'none';
+    applyF();
+  }
+}
+
 function applyF() {
   st = document.getElementById('stChk').checked;
   document.getElementById('stog').classList.toggle('active', st);
@@ -6934,7 +6935,6 @@ function applyF() {
   if (trimmedQ) {
     const scoredList = [];
     r.forEach(p => {
-      if (curC && p.category !== curC) return;
       const s = getProductSearchScore(p, trimmedQ);
       if (s > 0) {
         scoredList.push({ score: s, prod: p });
@@ -6943,15 +6943,13 @@ function applyF() {
     scoredList.sort((a, b) => b.score - a.score);
     r = scoredList.map(item => item.prod);
     const titleEl = document.getElementById('ctitle');
-    if (titleEl) titleEl.textContent = `Búsqueda: "${trimmedQ}"` + (curC ? ` en ${curC}` : '');
+    if (titleEl) titleEl.textContent = `Búsqueda: "${trimmedQ}"`;
   } else {
-    if (curC) r = r.filter(p => p.category === curC);
-    else if (curG) r = r.filter(p => GR[curG] && GR[curG].includes(p.category));
     const titleEl = document.getElementById('ctitle');
-    if (titleEl) titleEl.textContent = curC || 'Catálogo BIANI';
+    if (titleEl) titleEl.textContent = 'Catálogo BIANI';
   }
 
-  if (st) r = r.filter(p => p.name.includes('SIN TACC') || p.name.includes('SIN TAC'));
+  if (st) r = r.filter(p => (p.name || '').includes('SIN TACC') || (p.name || '').includes('SIN TAC'));
 
   filt = r;
   renderProds();
@@ -8058,6 +8056,17 @@ document.getElementById('grid').addEventListener('click', function(e) {
     e.stopPropagation();
   }
 });
+
+// Search input event listener for immediate response and clear button toggle
+const sinpInput = document.getElementById('sinp');
+if (sinpInput) {
+  sinpInput.addEventListener('input', (e) => {
+    q = e.target.value;
+    const clearBtn = document.getElementById('clearSearchBtn');
+    if (clearBtn) clearBtn.style.display = q.trim() ? 'block' : 'none';
+    applyF();
+  });
+}
 
 // Populate dropdown and initialize state on startup
 populateCategoriesDropdown();
