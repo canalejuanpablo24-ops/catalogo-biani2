@@ -6607,9 +6607,28 @@ function processCSVRows(rows) {
       image: image,
       qty: 0,
       outOfStock: false,
-      unidad_min: uMin
+      unidad_min: uMin,
+      brand: extractBrand(name)
     });
   }
+
+  const CATEGORY_PRIORITY = {
+    "Caramelos": 1, "Pastillas": 2, "Chupetines": 3, "Gomitas": 4, "Turrones": 5, "Chicles": 6, "Chocolates": 7, "Pipas": 8, "Alfajores": 9,
+    "Galletitas": 10, "Cereales": 11, "Snacks": 12,
+    "Despensa": 20, "Jugos": 21, "Bebidas": 22,
+    "Yerbas": 30,
+    "Pegamentos": 40, "Bic": 41, "Pilas": 42, "Lámparas": 43, "Papelería": 44, "Varios": 45, "Nuevos y Sin Imagen": 46,
+    "Higiene": 50, "Perfumería": 51, "Limpieza": 52, "Detergentes": 53
+  };
+
+  sheetProds.sort((a, b) => {
+    const prioA = CATEGORY_PRIORITY[a.category] || 99;
+    const prioB = CATEGORY_PRIORITY[b.category] || 99;
+    if (prioA !== prioB) return prioA - prioB;
+    const brandA = a.brand || extractBrand(a.name);
+    const brandB = b.brand || extractBrand(b.name);
+    return brandA.localeCompare(brandB);
+  });
 
   if (sheetProds.length > 0) {
     prods = sheetProds;
