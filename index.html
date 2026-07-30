@@ -6899,7 +6899,12 @@ const SEARCH_SYNONYMS = {
   'yerba': ['yerba', 'yerbas', 'mate', 'playadito', 'taragui', 'rosamonte', 'amanda', 'romance', 'nobleza', 'canarias', 'mañanita', 'cbse', 'pipore'],
   'yerbas': ['yerba', 'yerbas', 'mate', 'playadito', 'taragui', 'rosamonte', 'amanda', 'romance', 'nobleza', 'canarias', 'mañanita', 'cbse', 'pipore'],
   'chocolates': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot'],
-  'chocolate': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot']
+  'chocolate': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot'],
+  'terron': ['terron', 'terrones', 'terroncito', 'terroncitos', 'cubos'],
+  'terroncito': ['terron', 'terrones', 'terroncito', 'terroncitos', 'cubos'],
+  'terroncitos': ['terron', 'terrones', 'terroncito', 'terroncitos', 'cubos'],
+  'edulcorante': ['edulcorante', 'edulco', 'hileret', 'zucra', 'stevia', 'sweet', '1a10'],
+  'edulco': ['edulcorante', 'edulco', 'hileret', 'zucra', 'stevia', 'sweet', '1a10']
 };
 
 function normalizePhonetic(s) {
@@ -6946,8 +6951,9 @@ function fuzzyWordMatch(qw, tw) {
   return 0.0;
 }
 
-function prepareProductSearchCache(p) {
-  if (!p || p._fullTarget) return;
+function prepareProductSearchCache(p, force = false) {
+  if (!p) return;
+  if (!force && p._fullTarget) return;
   const extraDesc = (window.codeToDesc && window.codeToDesc[p.code]) ? window.codeToDesc[p.code] : '';
   const imgFilename = String(p.image || '').toLowerCase();
 
@@ -6963,9 +6969,9 @@ function prepareProductSearchCache(p) {
   p._phoneticWords = p._targetWords.map(w => normalizePhonetic(w));
 }
 
-function prepareAllSearchCache() {
+function prepareAllSearchCache(force = true) {
   if (Array.isArray(prods)) {
-    prods.forEach(prepareProductSearchCache);
+    prods.forEach(p => prepareProductSearchCache(p, force));
   }
 }
 
