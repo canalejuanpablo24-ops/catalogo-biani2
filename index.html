@@ -7530,11 +7530,9 @@ function loadAdminState() {
       }
     }
     
-    // 2. Remove deleted
-    const del = JSON.parse(localStorage.getItem(LS_K.del) || '[]');
-    if (del.length > 0) {
-      const delSet = new Set(del);
-      prods = prods.filter(p => !delSet.has(p.code));
+    // 2. Clear stale deleted items to ensure all Google Sheets products are shown
+    if (localStorage.getItem(LS_K.del)) {
+      localStorage.removeItem(LS_K.del);
     }
     
     // 3. Add new
