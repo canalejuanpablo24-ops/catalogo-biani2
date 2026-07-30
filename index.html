@@ -6445,13 +6445,20 @@ function cleanSheetId(id) {
   return s.replace(/[^a-zA-Z0-9-_]/g, '');
 }
 
+let liveSyncTimer = null;
+let lastDataFingerprint = '';
+
+function getCatalogFingerprint() {
+  return prods.map(p => `${p.code}:${p.price}:${p.name}:${p.outOfStock}`).join('|');
+}
+
 // DATA LOADER PIPELINE
-async function loadDatabase() {
-  showLoading(true);
+async function loadDatabase(isBackground = false) {
+  if (!isBackground) showLoading(true);
   let rawSheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID;
   let sheetId = cleanSheetId(rawSheetId) || DEFAULT_SHEET_ID;
   const sheetInput = document.getElementById('sheetIdInp');
-  if (sheetInput) sheetInput.value = sheetId;
+  if (sheetInput && !isBackground) sheetInput.value = sheetId;
   
   // Load category and image mappings first
   try {
@@ -6471,41 +6478,43 @@ async function loadDatabase() {
     window.codeToDesc = descRes;
     window.pdfOrder = PDF_ORDER; // directly assign embedded array
   } catch (e) {
-    console.error("Error loading JSON mappings:", e);
+    if (!isBackground) console.error("Error loading JSON mappings:", e);
     window.codeToCat = {};
     window.codeToImg = {};
     window.codeToDesc = {};
     window.pdfOrder = [];
   }
 
-  // Load baseline fallback data first
-  let dataLoaded = false;
-  try {
-    const fallbackRes = await fetch('products_fallback.json?v=' + Date.now());
-    if (fallbackRes.ok) {
-      const fallbackProds = await fallbackRes.json();
-      prods = fallbackProds.map(p => {
-        let cat = p.category || "Varios";
-        let image = window.codeToImg[p.code] || p.image || "";
-        if (!image || image.trim() === "") {
-          cat = "Nuevos y Sin Imagen";
-        } else {
-          cat = normalizeCategory(cat, p.name, image);
-        }
-        return { 
-          unidad_min: 1,
-          ...p, 
-          unidad_min: p.unidad_min || 1,
-          category: cat, 
-          image: image, 
-          qty: 0 
-        };
-      });
-      dataLoaded = true;
+  // Load baseline fallback data first if empty
+  let dataLoaded = prods.length > 0;
+  if (!dataLoaded) {
+    try {
+      const fallbackRes = await fetch('products_fallback.json?v=' + Date.now());
+      if (fallbackRes.ok) {
+        const fallbackProds = await fallbackRes.json();
+        prods = fallbackProds.map(p => {
+          let cat = p.category || "Varios";
+          let image = window.codeToImg[p.code] || p.image || "";
+          if (!image || image.trim() === "") {
+            cat = "Nuevos y Sin Imagen";
+          } else {
+            cat = normalizeCategory(cat, p.name, image);
+          }
+          return { 
+            unidad_min: 1,
+            ...p, 
+            unidad_min: p.unidad_min || 1,
+            category: cat, 
+            image: image, 
+            qty: 0 
+          };
+        });
+        dataLoaded = true;
+      }
+    } catch (e) {
+      if (!isBackground) console.error("Failed to load local fallback:", e);
+      prods = [];
     }
-  } catch (e) {
-    console.error("Failed to load local fallback:", e);
-    prods = [];
   }
 
   // Fetch live CSV from Google Sheets with fallbacks
@@ -6530,16 +6539,18 @@ async function loadDatabase() {
             processCSVRows(csvRows);
             sheetsSynced = true;
             dataLoaded = true;
-            toast("✅ Catálogo sincronizado en vivo desde Google Sheets", "ok");
+            if (!isBackground) {
+              toast("✅ Catálogo sincronizado en vivo desde Google Sheets", "ok");
+            }
             break;
           }
         }
       } catch (err) {
-        console.warn("Attempt failed for URL:", csvUrl, err);
+        if (!isBackground) console.warn("Attempt failed for URL:", csvUrl, err);
       }
     }
 
-    if (!sheetsSynced) {
+    if (!sheetsSynced && !isBackground) {
       if (dataLoaded) {
         toast("⚠️ No se pudo conectar a Google Sheets. Usando base local.", "warn");
       } else {
@@ -6548,16 +6559,37 @@ async function loadDatabase() {
     }
   }
 
-  if (!dataLoaded && prods.length === 0) {
+  if (!dataLoaded && prods.length === 0 && !isBackground) {
     toast("❌ No se pudo cargar ningún producto.", "warn");
   }
 
-  loadAdminState();
-  prepareAllSearchCache();
-  showLoading(false);
-  buildNav();
-  applyF();
-  updCart();
+  const currentFingerprint = getCatalogFingerprint();
+  const dataHasChanged = currentFingerprint !== lastDataFingerprint;
+
+  if (dataHasChanged || !isBackground) {
+    lastDataFingerprint = currentFingerprint;
+    loadAdminState();
+    prepareAllSearchCache();
+    buildNav();
+    applyF();
+    updCart();
+
+    if (isBackground && dataHasChanged) {
+      toast("🔄 Catálogo actualizado automáticamente desde Google Sheets", "ok");
+    }
+  }
+
+  if (!isBackground) {
+    showLoading(false);
+    startLiveSync();
+  }
+}
+
+function startLiveSync(intervalMs = 30000) {
+  if (liveSyncTimer) clearInterval(liveSyncTimer);
+  liveSyncTimer = setInterval(() => {
+    loadDatabase(true);
+  }, intervalMs);
 }
 
 function processCSVRows(rows) {

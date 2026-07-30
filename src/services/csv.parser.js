@@ -87,6 +87,8 @@ export function processCSVRows(rows, prods = [], codeToCat = {}, codeToImg = {},
     if (priceIdx === -1) priceIdx = 2;
   }
   
+  const activeSheetCodes = new Set();
+
   for (let i = startRowIdx; i < rows.length; i++) {
     const r = rows[i];
     if (r.length <= Math.max(codeIdx, nameIdx, priceIdx)) continue;
@@ -97,6 +99,8 @@ export function processCSVRows(rows, prods = [], codeToCat = {}, codeToImg = {},
 
     const price = parsePrice(r[priceIdx]);
     const codeStr = String(code);
+    activeSheetCodes.add(codeStr);
+
     const matchedProds = prods.filter(p => String(p.code) === codeStr || String(p.code).startsWith(codeStr + "_"));
 
     if (matchedProds.length > 0) {
@@ -130,6 +134,16 @@ export function processCSVRows(rows, prods = [], codeToCat = {}, codeToImg = {},
         unidad_min: (minIdx !== -1 && r[minIdx]) ? (parseInt(r[minIdx]) || 1) : 1
       });
     }
+  }
+
+  // Soft Delete Rule: Products missing from Google Sheets stay in catalog with outOfStock = true
+  if (activeSheetCodes.size > 0) {
+    prods.forEach(p => {
+      const baseCode = String(p.code).split('_')[0];
+      if (!activeSheetCodes.has(String(p.code)) && !activeSheetCodes.has(baseCode)) {
+        p.outOfStock = true;
+      }
+    });
   }
 
   return prods;
