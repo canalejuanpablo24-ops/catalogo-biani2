@@ -6452,117 +6452,120 @@ function cleanSheetId(id) {
 // DATA LOADER PIPELINE
 async function loadDatabase() {
   showLoading(true);
-  let rawSheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID;
-  let sheetId = cleanSheetId(rawSheetId) || DEFAULT_SHEET_ID;
-  const sheetInput = document.getElementById('sheetIdInp');
-  if (sheetInput) sheetInput.value = sheetId;
-  
-  // Load category and image mappings first
   try {
-    const [catRes, imgRes, descRes] = await Promise.all([
-      fetch('code_to_category.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
-      fetch('code_to_image.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
-      fetch('code_to_description.json?v=' + Date.now()).then(r => r.json()).catch(() => ({}))
-    ]);
+    let rawSheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID;
+    let sheetId = cleanSheetId(rawSheetId) || DEFAULT_SHEET_ID;
+    const sheetInput = document.getElementById('sheetIdInp');
+    if (sheetInput) sheetInput.value = sheetId;
     
-    // Normalize subcategories dynamically
-    for (const c in catRes) {
-      catRes[c] = normalizeCategory(catRes[c]);
-    }
-    
-    window.codeToCat = catRes;
-    window.codeToImg = imgRes;
-    window.codeToDesc = descRes;
-    window.pdfOrder = PDF_ORDER; // directly assign embedded array
-  } catch (e) {
-    if (!isBackground) console.error("Error loading JSON mappings:", e);
-    window.codeToCat = {};
-    window.codeToImg = {};
-    window.codeToDesc = {};
-    window.pdfOrder = [];
-  }
-
-  // Load baseline fallback data first if empty
-  let dataLoaded = prods.length > 0;
-  if (!dataLoaded) {
+    // Load category and image mappings first
     try {
-      const fallbackRes = await fetch('products_fallback.json?v=' + Date.now());
-      if (fallbackRes.ok) {
-        const fallbackProds = await fallbackRes.json();
-        prods = fallbackProds.map(p => {
-          let cat = p.category || "Varios";
-          let image = window.codeToImg[p.code] || p.image || "";
-          if (!image || image.trim() === "") {
-            cat = "Nuevos y Sin Imagen";
-          } else {
-            cat = normalizeCategory(cat, p.name, image);
-          }
-          return { 
-            unidad_min: 1,
-            ...p, 
-            unidad_min: p.unidad_min || 1,
-            category: cat, 
-            image: image, 
-            qty: 0 
-          };
-        });
-        dataLoaded = true;
+      const [catRes, imgRes, descRes] = await Promise.all([
+        fetch('code_to_category.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
+        fetch('code_to_image.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
+        fetch('code_to_description.json?v=' + Date.now()).then(r => r.json()).catch(() => ({}))
+      ]);
+      
+      // Normalize subcategories dynamically
+      for (const c in catRes) {
+        catRes[c] = normalizeCategory(catRes[c]);
       }
+      
+      window.codeToCat = catRes;
+      window.codeToImg = imgRes;
+      window.codeToDesc = descRes;
+      window.pdfOrder = PDF_ORDER; // directly assign embedded array
     } catch (e) {
-      if (!isBackground) console.error("Failed to load local fallback:", e);
-      prods = [];
+      console.error("Error loading JSON mappings:", e);
+      window.codeToCat = {};
+      window.codeToImg = {};
+      window.codeToDesc = {};
+      window.pdfOrder = [];
     }
-  }
 
-  // Fetch live CSV from Google Sheets with fallbacks
-  if (sheetId) {
-    let sheetsSynced = false;
-    const urlsToTry = [
-      `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`,
-      `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=Sheet1`,
-      `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&gid=0`
-    ];
-
-    for (const csvUrl of urlsToTry) {
+    // Load baseline fallback data first if empty
+    let dataLoaded = prods.length > 0;
+    if (!dataLoaded) {
       try {
-        const response = await fetch(csvUrl, { cache: 'no-store' });
-        if (!response.ok) continue;
-        const csvText = await response.text();
-        
-        // Verify response is actual CSV data and not an HTML login/error page
-        const trimmed = (csvText || '').trim();
-        if (trimmed && !trimmed.startsWith('<!DOCTYPE') && !trimmed.startsWith('<html') && (trimmed.includes(',') || trimmed.includes(';') || trimmed.includes('\t') || trimmed.includes('\n'))) {
-          const csvRows = parseCSV(trimmed);
-          if (csvRows.length > 1) {
-            processCSVRows(csvRows);
-            sheetsSynced = true;
-            dataLoaded = true;
-            if (!isBackground) {
-              toast("✅ Catálogo sincronizado en vivo desde Google Sheets", "ok");
+        const fallbackRes = await fetch('products_fallback.json?v=' + Date.now());
+        if (fallbackRes.ok) {
+          const fallbackProds = await fallbackRes.json();
+          prods = fallbackProds.map(p => {
+            let cat = p.category || "Varios";
+            let image = window.codeToImg[p.code] || p.image || "";
+            if (!image || image.trim() === "") {
+              cat = "Nuevos y Sin Imagen";
+            } else {
+              cat = normalizeCategory(cat, p.name, image);
             }
-            break;
-          }
+            return { 
+              unidad_min: 1,
+              ...p, 
+              unidad_min: p.unidad_min || 1,
+              category: cat, 
+              image: image, 
+              qty: 0 
+            };
+          });
+          dataLoaded = true;
         }
-      } catch (err) {
-        if (!isBackground) console.warn("Attempt failed for URL:", csvUrl, err);
+      } catch (e) {
+        console.error("Failed to load local fallback:", e);
+        prods = [];
       }
     }
 
-    if (!sheetsSynced && !isBackground && !dataLoaded) {
-      toast("❌ Error al conectar con Google Sheets.", "warn");
+    // Fetch live CSV from Google Sheets with fallbacks
+    if (sheetId) {
+      let sheetsSynced = false;
+      const urlsToTry = [
+        `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`,
+        `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=Sheet1`,
+        `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&gid=0`
+      ];
+
+      for (const csvUrl of urlsToTry) {
+        try {
+          const response = await fetch(csvUrl, { cache: 'no-store' });
+          if (!response.ok) continue;
+          const csvText = await response.text();
+          
+          // Verify response is actual CSV data and not an HTML login/error page
+          const trimmed = (csvText || '').trim();
+          if (trimmed && !trimmed.startsWith('<!DOCTYPE') && !trimmed.startsWith('<html') && (trimmed.includes(',') || trimmed.includes(';') || trimmed.includes('\t') || trimmed.includes('\n'))) {
+            const csvRows = parseCSV(trimmed);
+            if (csvRows.length > 1) {
+              processCSVRows(csvRows);
+              sheetsSynced = true;
+              dataLoaded = true;
+              toast("✅ Catálogo sincronizado en vivo desde Google Sheets", "ok");
+              break;
+            }
+          }
+        } catch (err) {
+          console.warn("Attempt failed for URL:", csvUrl, err);
+        }
+      }
+
+      if (!sheetsSynced && !dataLoaded) {
+        toast("❌ Error al conectar con Google Sheets.", "warn");
+      }
     }
-  }
 
-  if (!dataLoaded && prods.length === 0) {
-    toast("❌ No se pudo cargar ningún producto.", "warn");
-  }
+    if (!dataLoaded && prods.length === 0) {
+      toast("❌ No se pudo cargar ningún producto.", "warn");
+    }
 
-  loadAdminState();
-  prepareAllSearchCache();
-  buildNav();
-  applyF();
-  updCart();
-  showLoading(false);
+    loadAdminState();
+    prepareAllSearchCache();
+    buildNav();
+    applyF();
+    updCart();
+  } catch (err) {
+    console.error("Error in loadDatabase:", err);
+  } finally {
+    showLoading(false);
+  }
 }
 
 function processCSVRows(rows) {
