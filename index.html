@@ -7545,29 +7545,35 @@ function loadAdminState() {
       }
     });
     
-    // 4. Apply Category Priority Sequence & Brand Grouping
-    const CATEGORY_PRIORITY = {
-      "Caramelos": 1, "Pastillas": 2, "Chupetines": 3, "Gomitas": 4, "Turrones": 5, "Chicles": 6, "Chocolates": 7, "Pipas": 8, "Alfajores": 9,
-      "Galletitas": 10, "Cereales": 11, "Snacks": 12,
-      "Despensa": 20, "Jugos": 21, "Bebidas": 22,
-      "Yerbas": 30,
-      "Pegamentos": 40, "Bic": 41, "Pilas": 42, "Lámparas": 43, "Papelería": 44, "Varios": 45, "Nuevos y Sin Imagen": 46,
-      "Higiene": 50, "Perfumería": 51, "Limpieza": 52, "Detergentes": 53
-    };
-
-    // Purge old stale order from localStorage if present
-    if (localStorage.getItem(LS_K.order)) {
-      localStorage.removeItem(LS_K.order);
+    // 4. Apply User Defined Custom Order from Separate Storage
+    let order = JSON.parse(localStorage.getItem('biani_user_custom_order') || localStorage.getItem(LS_K.order) || '[]');
+    if (order.length === 0 && window.pdfOrder && window.pdfOrder.length > 0) {
+      order = window.pdfOrder;
     }
 
-    prods.sort((a, b) => {
-      const prioA = CATEGORY_PRIORITY[a.category] || 99;
-      const prioB = CATEGORY_PRIORITY[b.category] || 99;
-      if (prioA !== prioB) return prioA - prioB;
-      const brandA = a.brand || extractBrand(a.name);
-      const brandB = b.brand || extractBrand(b.name);
-      return brandA.localeCompare(brandB);
-    });
+    if (order.length > 0) {
+      const map = {};
+      prods.forEach(p => { map[String(p.code)] = p; });
+      const inOrder = new Set(order.map(String));
+      const ordered = [];
+
+      // Place products in user's custom visual order sequence
+      order.forEach(c => {
+        const cStr = String(c);
+        if (map[cStr]) ordered.push(map[cStr]);
+      });
+
+      // Append ANY NEW PRODUCT from Google Sheets (not yet in custom order) to the VERY END
+      prods.forEach(p => {
+        const cStr = String(p.code);
+        if (!inOrder.has(cStr)) {
+          ordered.push(p);
+          inOrder.add(cStr);
+        }
+      });
+
+      prods = ordered;
+    }
   } catch (e) {
     console.warn("Error applying admin local state:", e);
   }
@@ -7679,8 +7685,9 @@ function initSortable() {
 }
 
 function saveOrder() {
-  const order = prods.map(p => p.code);
+  const order = prods.map(p => String(p.code));
   localStorage.setItem(LS_K.order, JSON.stringify(order));
+  localStorage.setItem('biani_user_custom_order', JSON.stringify(order));
 }
 
 function admDelete(code) {
