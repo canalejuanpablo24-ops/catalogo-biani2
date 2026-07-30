@@ -39,6 +39,10 @@
   margin: 0;
   padding: 0;
 }
+html, body {
+  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+}
 body {
   font-family: 'Outfit', system-ui, sans-serif;
   background: var(--g1);
@@ -6445,20 +6449,13 @@ function cleanSheetId(id) {
   return s.replace(/[^a-zA-Z0-9-_]/g, '');
 }
 
-let liveSyncTimer = null;
-let lastDataFingerprint = '';
-
-function getCatalogFingerprint() {
-  return prods.map(p => `${p.code}:${p.price}:${p.name}:${p.outOfStock}`).join('|');
-}
-
 // DATA LOADER PIPELINE
-async function loadDatabase(isBackground = false) {
-  if (!isBackground) showLoading(true);
+async function loadDatabase() {
+  showLoading(true);
   let rawSheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID;
   let sheetId = cleanSheetId(rawSheetId) || DEFAULT_SHEET_ID;
   const sheetInput = document.getElementById('sheetIdInp');
-  if (sheetInput && !isBackground) sheetInput.value = sheetId;
+  if (sheetInput) sheetInput.value = sheetId;
   
   // Load category and image mappings first
   try {
@@ -6556,37 +6553,16 @@ async function loadDatabase(isBackground = false) {
     }
   }
 
-  if (!dataLoaded && prods.length === 0 && !isBackground) {
+  if (!dataLoaded && prods.length === 0) {
     toast("❌ No se pudo cargar ningún producto.", "warn");
   }
 
-  const currentFingerprint = getCatalogFingerprint();
-  const dataHasChanged = currentFingerprint !== lastDataFingerprint;
-
-  if (dataHasChanged || !isBackground) {
-    lastDataFingerprint = currentFingerprint;
-    loadAdminState();
-    prepareAllSearchCache();
-    buildNav();
-    applyF();
-    updCart();
-
-    if (isBackground && dataHasChanged) {
-      toast("🔄 Catálogo actualizado automáticamente desde Google Sheets", "ok");
-    }
-  }
-
-  if (!isBackground) {
-    showLoading(false);
-    startLiveSync();
-  }
-}
-
-function startLiveSync(intervalMs = 30000) {
-  if (liveSyncTimer) clearInterval(liveSyncTimer);
-  liveSyncTimer = setInterval(() => {
-    loadDatabase(true);
-  }, intervalMs);
+  loadAdminState();
+  prepareAllSearchCache();
+  buildNav();
+  applyF();
+  updCart();
+  showLoading(false);
 }
 
 function processCSVRows(rows) {
