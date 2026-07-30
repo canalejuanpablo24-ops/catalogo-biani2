@@ -6626,14 +6626,16 @@ function processCSVRows(rows) {
   prods.forEach(p => { fallbackMap[String(p.code)] = p; });
 
   const sheetProds = [];
+  const activeSheetCodes = new Set();
+  const codeOccurrences = {};
   
   for (let i = startRowIdx; i < rows.length; i++) {
     const r = rows[i];
     if (r.length <= Math.max(codeIdx, nameIdx, priceIdx)) continue;
     
-    const code = r[codeIdx] ? r[codeIdx].trim() : "";
+    const rawCode = r[codeIdx] ? r[codeIdx].trim() : "";
     const name = r[nameIdx] ? r[nameIdx].trim() : "";
-    if (!code || !name) continue;
+    if (!rawCode || !name) continue;
     
     let rawPrice = r[priceIdx] || "0";
     let s = rawPrice.replace(/[^\d.,]/g, '');
@@ -6648,11 +6650,17 @@ function processCSVRows(rows) {
     }
     const price = parseFloat(s) || 0.0;
     
-    const codeStr = String(code);
-    const existing = fallbackMap[codeStr];
+    codeOccurrences[rawCode] = (codeOccurrences[rawCode] || 0) + 1;
+    const count = codeOccurrences[rawCode];
+    const codeStr = count === 1 ? String(rawCode) : `${rawCode}_${count - 1}`;
     
-    const image = (existing && existing.image) || (window.codeToImg && window.codeToImg[codeStr]) || "";
-    let cat = (existing && existing.category) || (window.codeToCat && window.codeToCat[codeStr]) || "";
+    activeSheetCodes.add(codeStr);
+    activeSheetCodes.add(String(rawCode));
+
+    const existing = fallbackMap[codeStr] || fallbackMap[rawCode];
+    
+    const image = (existing && existing.image) || (window.codeToImg && (window.codeToImg[codeStr] || window.codeToImg[rawCode])) || "";
+    let cat = (existing && existing.category) || (window.codeToCat && (window.codeToCat[codeStr] || window.codeToCat[rawCode])) || "";
     if (!cat && catIdx !== -1 && catIdx !== priceIdx && r[catIdx]) {
       cat = r[catIdx].trim();
     }
@@ -6670,6 +6678,20 @@ function processCSVRows(rows) {
       outOfStock: false,
       unidad_min: uMin,
       brand: extractBrand(name)
+    });
+  }
+
+  // Soft Delete Rule: Products missing from Google Sheets stay in catalog with outOfStock = true
+  if (activeSheetCodes.size > 0 && prods.length > 0) {
+    const sheetCodeSet = new Set(sheetProds.map(p => p.code));
+    prods.forEach(p => {
+      const baseCode = String(p.code).split('_')[0];
+      if (!sheetCodeSet.has(p.code) && !activeSheetCodes.has(String(p.code)) && !activeSheetCodes.has(baseCode)) {
+        sheetProds.push({
+          ...p,
+          outOfStock: true
+        });
+      }
     });
   }
 

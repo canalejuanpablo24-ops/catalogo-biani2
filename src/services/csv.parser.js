@@ -98,20 +98,26 @@ export function processCSVRows(rows, prods = [], codeToCat = {}, codeToImg = {},
   }
   
   const activeSheetCodes = new Set();
+  const codeOccurrences = {};
 
   for (let i = startRowIdx; i < rows.length; i++) {
     const r = rows[i];
     if (r.length <= Math.max(codeIdx, nameIdx, priceIdx)) continue;
     
-    const code = r[codeIdx] ? r[codeIdx].trim() : "";
+    const rawCode = r[codeIdx] ? r[codeIdx].trim() : "";
     const name = r[nameIdx] ? r[nameIdx].trim() : "";
-    if (!code || !name) continue;
+    if (!rawCode || !name) continue;
 
     const price = parsePrice(r[priceIdx]);
-    const codeStr = String(code);
-    activeSheetCodes.add(codeStr);
+    
+    codeOccurrences[rawCode] = (codeOccurrences[rawCode] || 0) + 1;
+    const count = codeOccurrences[rawCode];
+    const codeStr = count === 1 ? String(rawCode) : `${rawCode}_${count - 1}`;
 
-    const matchedProds = prods.filter(p => String(p.code) === codeStr || String(p.code).startsWith(codeStr + "_"));
+    activeSheetCodes.add(codeStr);
+    activeSheetCodes.add(String(rawCode));
+
+    const matchedProds = prods.filter(p => String(p.code) === codeStr);
 
     if (matchedProds.length > 0) {
       matchedProds.forEach(p => {
@@ -123,10 +129,10 @@ export function processCSVRows(rows, prods = [], codeToCat = {}, codeToImg = {},
         }
       });
     } else if (options.allowAppend ?? true) {
-      const image = codeToImg[code] || "";
+      const image = codeToImg[rawCode] || codeToImg[codeStr] || "";
       let cat = "Nuevos y Sin Imagen";
       if (image && image.trim() !== "") {
-        cat = codeToCat[code] || "";
+        cat = codeToCat[rawCode] || codeToCat[codeStr] || "";
         if (!cat && catIdx !== -1 && catIdx !== priceIdx && r[catIdx]) {
           cat = r[catIdx].trim();
         }
@@ -134,7 +140,7 @@ export function processCSVRows(rows, prods = [], codeToCat = {}, codeToImg = {},
       }
 
       prods.push({
-        code: code,
+        code: codeStr,
         name: name,
         category: cat,
         price: price,
