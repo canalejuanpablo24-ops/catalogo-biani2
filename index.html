@@ -6437,11 +6437,21 @@ function parseCSV(text) {
 }
 
 // DATA LOADER PIPELINE
+function cleanSheetId(id) {
+  if (!id) return '';
+  let s = id.trim();
+  const match = s.match(/\/d\/([a-zA-Z0-9-_]+)/);
+  if (match) return match[1];
+  return s.replace(/[^a-zA-Z0-9-_]/g, '');
+}
+
 // DATA LOADER PIPELINE
 async function loadDatabase() {
   showLoading(true);
-  let sheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID;
-  document.getElementById('sheetIdInp').value = sheetId;
+  let rawSheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID;
+  let sheetId = cleanSheetId(rawSheetId) || DEFAULT_SHEET_ID;
+  const sheetInput = document.getElementById('sheetIdInp');
+  if (sheetInput) sheetInput.value = sheetId;
   
   // Load category and image mappings first
   try {
@@ -6498,21 +6508,43 @@ async function loadDatabase() {
     prods = [];
   }
 
-  if (sheetId && prods.length > 0) {
-    try {
-      const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
-      const response = await fetch(csvUrl);
-      if (!response.ok) throw new Error("Fetch failed with status " + response.status);
-      const csvText = await response.text();
-      const csvRows = parseCSV(csvText);
-      
-      if (csvRows.length > 1) {
-        processCSVRows(csvRows);
-        toast("✅ Precios y nombres sincronizados desde Google Sheets", "ok");
+  // Fetch live CSV from Google Sheets with fallbacks
+  if (sheetId) {
+    let sheetsSynced = false;
+    const urlsToTry = [
+      `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`,
+      `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=Sheet1`,
+      `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&gid=0`
+    ];
+
+    for (const csvUrl of urlsToTry) {
+      try {
+        const response = await fetch(csvUrl, { cache: 'no-store' });
+        if (!response.ok) continue;
+        const csvText = await response.text();
+        
+        // Verify response is actual CSV data and not an HTML login/error page
+        if (csvText && !csvText.trim().startsWith('<!DOCTYPE') && !csvText.trim().startsWith('<html') && csvText.includes(',')) {
+          const csvRows = parseCSV(csvText);
+          if (csvRows.length > 1) {
+            processCSVRows(csvRows);
+            sheetsSynced = true;
+            dataLoaded = true;
+            toast("✅ Catálogo sincronizado en vivo desde Google Sheets", "ok");
+            break;
+          }
+        }
+      } catch (err) {
+        console.warn("Attempt failed for URL:", csvUrl, err);
       }
-    } catch (e) {
-      console.error("Failed to load from Google Sheets:", e);
-      toast("⚠️ Error cargando Google Sheets. Usando catálogo local.", "warn");
+    }
+
+    if (!sheetsSynced) {
+      if (dataLoaded) {
+        toast("⚠️ No se pudo conectar a Google Sheets. Usando base local.", "warn");
+      } else {
+        toast("❌ Error al conectar con Google Sheets.", "warn");
+      }
     }
   }
 
@@ -6638,15 +6670,8 @@ function processCSVRows(rows) {
 // GOOGLE SHEETS ID CONFIGURATION SAVING
 function saveSheetId() {
   const input = document.getElementById('sheetIdInp');
-  const val = input.value.trim();
-  
-  // Extract spreadsheet ID if they paste the full URL
-  let sheetId = val;
-  const match = val.match(/\/d\/([a-zA-Z0-9-_]+)/);
-  if (match) {
-    sheetId = match[1];
-  }
-  
+  const val = input ? input.value.trim() : '';
+  let sheetId = cleanSheetId(val) || DEFAULT_SHEET_ID;
   localStorage.setItem('biani_sheet_id', sheetId);
   closeMod();
   loadDatabase();
