@@ -1,5 +1,6 @@
 /**
  * RFC 4180 Compliant CSV Parser & Product Data Extractor
+ * Supports commas (,), semicolons (;), and tabs (\t) as delimiters
  */
 import { parsePrice, normalizeCategory } from '../utils/formatters.js';
 
@@ -11,6 +12,15 @@ import { parsePrice, normalizeCategory } from '../utils/formatters.js';
 export function parseCSV(text) {
   if (!text || typeof text !== 'string') return [];
   
+  // Auto-detect delimiter
+  let delimiter = ',';
+  const firstLine = text.split('\n')[0] || '';
+  if (firstLine.includes(';') && !firstLine.includes(',')) {
+    delimiter = ';';
+  } else if (firstLine.includes('\t') && !firstLine.includes(',')) {
+    delimiter = '\t';
+  }
+
   const lines = [];
   let row = [""];
   let inQuotes = false;
@@ -26,7 +36,7 @@ export function parseCSV(text) {
       } else {
         inQuotes = !inQuotes;
       }
-    } else if (c === ',' && !inQuotes) {
+    } else if (c === delimiter && !inQuotes) {
       row.push("");
     } else if ((c === '\r' || c === '\n') && !inQuotes) {
       if (c === '\r' && next === '\n') {

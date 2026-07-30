@@ -6533,8 +6533,9 @@ async function loadDatabase(isBackground = false) {
         const csvText = await response.text();
         
         // Verify response is actual CSV data and not an HTML login/error page
-        if (csvText && !csvText.trim().startsWith('<!DOCTYPE') && !csvText.trim().startsWith('<html') && csvText.includes(',')) {
-          const csvRows = parseCSV(csvText);
+        const trimmed = (csvText || '').trim();
+        if (trimmed && !trimmed.startsWith('<!DOCTYPE') && !trimmed.startsWith('<html') && (trimmed.includes(',') || trimmed.includes(';') || trimmed.includes('\t') || trimmed.includes('\n'))) {
+          const csvRows = parseCSV(trimmed);
           if (csvRows.length > 1) {
             processCSVRows(csvRows);
             sheetsSynced = true;
@@ -6550,12 +6551,8 @@ async function loadDatabase(isBackground = false) {
       }
     }
 
-    if (!sheetsSynced && !isBackground) {
-      if (dataLoaded) {
-        toast("⚠️ No se pudo conectar a Google Sheets. Usando base local.", "warn");
-      } else {
-        toast("❌ Error al conectar con Google Sheets.", "warn");
-      }
+    if (!sheetsSynced && !isBackground && !dataLoaded) {
+      toast("❌ Error al conectar con Google Sheets.", "warn");
     }
   }
 
