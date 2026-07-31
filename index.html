@@ -6645,7 +6645,7 @@ function processCSVRows(rows) {
     "Higiene": 50, "Perfumería": 51, "Limpieza": 52, "Detergentes": 53
   };
 
-  const customOrder = JSON.parse(localStorage.getItem(LS_K.order) || 'null') || window.pdfOrder || PDF_ORDER;
+  const customOrder = window.pdfOrder || PDF_ORDER || JSON.parse(localStorage.getItem(LS_K.order) || 'null');
   if (customOrder && customOrder.length > 0) {
     const orderIndexMap = {};
     customOrder.forEach((code, idx) => { orderIndexMap[String(code)] = idx; });
@@ -7579,8 +7579,8 @@ function loadAdminState() {
       "Higiene": 50, "Perfumería": 51, "Limpieza": 52, "Detergentes": 53
     };
 
-    // Apply Custom Order Sequence (from localStorage or PDF_ORDER)
-    const customOrder = JSON.parse(localStorage.getItem(LS_K.order) || 'null') || window.pdfOrder || PDF_ORDER;
+    // Apply Custom Order Sequence (Master PDF_ORDER prioritized)
+    const customOrder = window.pdfOrder || PDF_ORDER || JSON.parse(localStorage.getItem(LS_K.order) || 'null');
     if (customOrder && customOrder.length > 0) {
       const orderIndexMap = {};
       customOrder.forEach((code, idx) => { orderIndexMap[String(code)] = idx; });
@@ -8190,22 +8190,26 @@ function scrollToTop() {
 
 
 <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
+// AGGRESSIVE PURGE OF STALE CLIENT STORAGE & SERVICE WORKERS
+try {
+  // Purge old user custom order from localStorage if it's blocking the new master sequence
+  localStorage.removeItem('biani_order');
+  
+  if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then(registrations => {
       for (let reg of registrations) {
         reg.unregister();
       }
     });
-    if (window.caches) {
-      caches.keys().then(names => {
-        for (let name of names) {
-          caches.delete(name);
-        }
-      });
-    }
-  });
-}
+  }
+  if (window.caches) {
+    caches.keys().then(names => {
+      for (let name of names) {
+        caches.delete(name);
+      }
+    });
+  }
+} catch(e) {}
 </script>
 
 </body>
