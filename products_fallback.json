@@ -15030,16 +15030,6 @@
     "unidad_min": 1
   },
   {
-    "code": "1725",
-    "name": "JUGUITO FAN DEL 10 BULTO X 240 UNI",
-    "category": "Nuevos y Sin Imagen",
-    "price": 28701.9,
-    "image": "",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
     "code": "5985",
     "name": "LAMPARA MULTILED X 10W (75WX10UNI)",
     "category": "Lámparas",
@@ -21434,6 +21424,16 @@
     "name": "LIBERA TOSTADA DE ARROZ SIN SAL X 140 G (12) SIN TACC",
     "category": "Nuevos y Sin Imagen",
     "price": 1121.23,
+    "image": "",
+    "qty": 0,
+    "outOfStock": false,
+    "unidad_min": 1
+  },
+  {
+    "code": "1725",
+    "name": "JUGUITO FAN DEL 10 BULTO X 240 UNI",
+    "category": "Nuevos y Sin Imagen",
+    "price": 28701.9,
     "image": "",
     "qty": 0,
     "outOfStock": false,
