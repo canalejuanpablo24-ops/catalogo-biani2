@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<script>
+// FORCE CACHE PURGE & SW NUKING ON FIRST LOAD
+if (!sessionStorage.getItem('biani_purged')) {
+  sessionStorage.setItem('biani_purged', '1');
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function(r) {
+      if(r.length) {
+        Promise.all(r.map(function(sw){return sw.unregister();})).then(function(){
+          if('caches' in window){
+            caches.keys().then(function(k){
+              Promise.all(k.map(function(n){return caches.delete(n);})).then(function(){
+                window.location.reload(true);
+              });
+            });
+          } else { window.location.reload(true); }
+        });
+      }
+    });
+  }
+}
+</script>
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-snippet:0">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-snippet:0">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-snippet:0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f172a">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -43,8 +63,8 @@
   padding: 0;
 }
 html, body {
-  overscroll-behavior: contain;
-  overscroll-behavior-y: contain;
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
 }
 body {
   font-family: 'Outfit', system-ui, sans-serif;
@@ -6421,11 +6441,14 @@ async function loadDatabase() {
     
     // Load category and image mappings first
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
       const [catRes, imgRes, descRes] = await Promise.all([
-        fetch('code_to_category.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
-        fetch('code_to_image.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
-        fetch('code_to_description.json?v=' + Date.now()).then(r => r.json()).catch(() => ({}))
+        fetch('code_to_category.json?v=' + Date.now(), { signal: controller.signal }).then(r => r.json()).catch(() => ({})),
+        fetch('code_to_image.json?v=' + Date.now(), { signal: controller.signal }).then(r => r.json()).catch(() => ({})),
+        fetch('code_to_description.json?v=' + Date.now(), { signal: controller.signal }).then(r => r.json()).catch(() => ({}))
       ]);
+      clearTimeout(timeoutId);
       
       // Normalize subcategories dynamically
       for (const c in catRes) {
@@ -6448,7 +6471,10 @@ async function loadDatabase() {
     let dataLoaded = prods.length > 0;
     if (!dataLoaded) {
       try {
-        const fallbackRes = await fetch('products_fallback.json?v=' + Date.now());
+        const fController = new AbortController();
+        const fTimeout = setTimeout(() => fController.abort(), 5000);
+        const fallbackRes = await fetch('products_fallback.json?v=' + Date.now(), { signal: fController.signal });
+        clearTimeout(fTimeout);
         if (fallbackRes.ok) {
           const fallbackProds = await fallbackRes.json();
           prods = fallbackProds.map(p => {
@@ -6488,7 +6514,10 @@ async function loadDatabase() {
 
       for (const csvUrl of urlsToTry) {
         try {
-          const response = await fetch(csvUrl, { cache: 'no-store' });
+          const csvController = new AbortController();
+          const csvTimeout = setTimeout(() => csvController.abort(), 5000);
+          const response = await fetch(csvUrl, { cache: 'no-store', signal: csvController.signal });
+          clearTimeout(csvTimeout);
           if (!response.ok) continue;
           const csvText = await response.text();
           
