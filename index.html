@@ -8188,26 +8188,17 @@ function scrollToTop() {
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').then(reg => {
-      reg.addEventListener('updatefound', () => {
-        const newWorker = reg.installing;
-        if (newWorker) {
-          newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // Automatically reload page when a new version is installed to ensure instant sync across devices
-              window.location.reload();
-            }
-          });
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      for (let reg of registrations) {
+        reg.unregister();
+      }
+    });
+    if (window.caches) {
+      caches.keys().then(names => {
+        for (let name of names) {
+          caches.delete(name);
         }
       });
-    }).catch(err => console.error('SW Error:', err));
-  });
-
-  let refreshing = false;
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (!refreshing) {
-      refreshing = true;
-      window.location.reload();
     }
   });
 }
