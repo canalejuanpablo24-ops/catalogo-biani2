@@ -7562,7 +7562,7 @@ uz.addEventListener('dragleave', () => uz.classList.remove('drag'));
 uz.addEventListener('drop', e => {
   e.preventDefault(); uz.classList.remove('drag');
   const f = e.dataTransfer.files[0];
-  if (f?.type === 'application/pdf') handlePDF(f);
+  if (f && f.type === 'application/pdf') handlePDF(f);
 });
 
 /* ════════════════════════════════════════════
