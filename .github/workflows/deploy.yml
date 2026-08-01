@@ -25,10 +25,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/appleboy/ssh-action@master # Standard setup-node
-        with:
-          node-version: '20'
+
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
