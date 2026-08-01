@@ -24,7 +24,7 @@
     "name": "ALFA. GUAYMALLEN SIMPLE X 38 GRS. CHOCO",
     "category": "Alfajores",
     "price": 273.88,
-    "image": "imagenes/0035-fef-licoritas-25-x-20-grs.jpg",
+    "image": "imagenes/35.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2042,9 +2042,9 @@
   {
     "code": "5857",
     "name": "MC 9 DE ORO ALFAJOR SIMPLE X 45 BLANCO",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 609.54,
-    "image": "",
+    "image": "imagenes/5857.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2054,7 +2054,7 @@
     "name": "MC 9 DE ORO ALFAJOR SIMPLE X 45 G CHOCO",
     "category": "Galletitas",
     "price": 609.54,
-    "image": "imagenes/5856.jpg",
+    "image": "imagenes/5856.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -15262,9 +15262,9 @@
   {
     "code": "5577",
     "name": "HILERET EDULCO. 1A10 X 400 SOBRES",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Despensa",
     "price": 8717.15,
-    "image": "",
+    "image": "imagenes/1898-hileret-edulco-stevia-x-400-sobres.jpg",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -15732,9 +15732,9 @@
   {
     "code": "460",
     "name": "ALFAJOR NEVARES X 40 UNIDADES",
-    "category": "Nuevos y Sin Imagen",
-    "price": 12800.0,
-    "image": "",
+    "category": "Alfajores",
+    "price": 12800,
+    "image": "imagenes/460.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -15742,9 +15742,9 @@
   {
     "code": "4105",
     "name": "COMBO VUELTA AL COLE (1 JUGO PEPITO + 1 ALFA. GENIO TRIPLE)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 733.25,
-    "image": "",
+    "image": "imagenes/4105.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -15814,7 +15814,7 @@
     "name": "NVR. ALFA. FULBITO X 40 UNI BLACK",
     "category": "Alfajores",
     "price": 8000.59,
-    "image": "imagenes/3303.jpg",
+    "image": "imagenes/3303.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -16872,7 +16872,7 @@
   {
     "code": "4994",
     "name": "MENOYO CONDIMENTO COMINO MOLIDO X 25 GS (10) 1109",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 2424.72,
     "image": "imagenes/4994.jpg",
     "qty": 0,
@@ -17282,7 +17282,7 @@
   {
     "code": "6131",
     "name": "MENOYO SEMILLAS CHIA X 125 GS (10) 3325",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 2339.05,
     "image": "imagenes/6131.jpg",
     "qty": 0,
@@ -17292,7 +17292,7 @@
   {
     "code": "5026",
     "name": "MENOYO SEMILLAS GIRASOL X 125 GS (10) 3288",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 1366.75,
     "image": "imagenes/5026.jpg",
     "qty": 0,
@@ -17312,7 +17312,7 @@
   {
     "code": "5024",
     "name": "MENOYO SEMILLAS MIX DESAYUNO X 125 GS (10) 3295",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 1676.7,
     "image": "imagenes/5024.jpg",
     "qty": 0,
@@ -17332,7 +17332,7 @@
   {
     "code": "6132",
     "name": "MENOYO SEMILLAS MIX ORIGINAL X 125 GS (10) 3318",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 1625.85,
     "image": "imagenes/6132.jpg",
     "qty": 0,
@@ -20082,9 +20082,9 @@
   {
     "code": "6297",
     "name": "ANTOJITOS ALFAJOR RED VELVET X 70 G (22) SIN TACC",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 1730.3,
-    "image": "",
+    "image": "imagenes/6297.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -20722,7 +20722,7 @@
   {
     "code": "5037",
     "name": "TANTO DULCE DE LECHE REPOSTERO X 400 GRS SIN TACC (12)",
-    "category": "Varios",
+    "category": "Despensa",
     "price": 2101.53,
     "image": "imagenes/5037-tanto-dulce-de-leche-repostero-x-400-grs-12.jpeg",
     "qty": 0,

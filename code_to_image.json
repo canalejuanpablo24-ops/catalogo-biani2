@@ -11,7 +11,7 @@
   "32": "imagenes/32.jpg",
   "33": "imagenes/33.jpg",
   "34": "imagenes/34.jpg",
-  "35": "imagenes/0035-fef-licoritas-25-x-20-grs.jpg",
+  "35": "imagenes/35.webp",
   "36": "imagenes/36.jpg",
   "38": "imagenes/0038-fef-moneda-jack-x-60-uni.jpg",
   "46": "imagenes/46.jpg",
@@ -954,7 +954,7 @@
   "3297": "imagenes/3297.jpg",
   "3298": "imagenes/3298.jpg",
   "3301": "imagenes/3301.jpg",
-  "3303": "imagenes/3303.jpg",
+  "3303": "imagenes/3303.webp",
   "3314": "imagenes/3314.jpg",
   "3315": "imagenes/3315.jpg",
   "3319": "imagenes/3319.jpg",
@@ -1567,7 +1567,7 @@
   "5852": "imagenes/5852.jpg",
   "5853": "imagenes/5853.jpg",
   "5855": "imagenes/5855.jpg",
-  "5856": "imagenes/5856.jpg",
+  "5856": "imagenes/5856.webp",
   "5861": "imagenes/5861.jpg",
   "5862": "imagenes/5862.jpg",
   "5875": "imagenes/5875.jpg",
@@ -1933,5 +1933,10 @@
   "995078": "imagenes/995078.jpg",
   "995079": "imagenes/995079.jpg",
   "995083": "imagenes/995083.jpg",
-  "995085": "imagenes/995085.jpg"
+  "995085": "imagenes/995085.jpg",
+  "460": "imagenes/460.webp",
+  "4105": "imagenes/4105.webp",
+  "5577": "imagenes/1898-hileret-edulco-stevia-x-400-sobres.jpg",
+  "5857": "imagenes/5857.webp",
+  "6297": "imagenes/6297.webp"
 }
