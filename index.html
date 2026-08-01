@@ -3,24 +3,26 @@
 <head>
 <script>
 // FORCE CACHE PURGE & SW NUKING ON FIRST LOAD
-if (!sessionStorage.getItem('biani_purged')) {
-  sessionStorage.setItem('biani_purged', '1');
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(function(r) {
-      if(r.length) {
-        Promise.all(r.map(function(sw){return sw.unregister();})).then(function(){
-          if('caches' in window){
-            caches.keys().then(function(k){
-              Promise.all(k.map(function(n){return caches.delete(n);})).then(function(){
-                window.location.reload(true);
+try {
+  if (!sessionStorage.getItem('biani_purged')) {
+    sessionStorage.setItem('biani_purged', '1');
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(r) {
+        if(r && r.length) {
+          Promise.all(r.map(function(sw){return sw.unregister();})).then(function(){
+            if('caches' in window){
+              caches.keys().then(function(k){
+                Promise.all(k.map(function(n){return caches.delete(n);})).then(function(){
+                  window.location.reload(true);
+                });
               });
-            });
-          } else { window.location.reload(true); }
-        });
-      }
-    });
+            } else { window.location.reload(true); }
+          });
+        }
+      });
+    }
   }
-}
+} catch(e) { console.warn("Cache purge skipped", e); }
 </script>
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-snippet:0">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-snippet:0">
@@ -6433,22 +6435,38 @@ function cleanSheetId(id) {
 // DATA LOADER PIPELINE
 async function loadDatabase() {
   showLoading(true);
+  prods = [];
+
+  const fetchWithTimeout = async (url, options = {}, timeoutMs = 15000) => {
+    const controller = window.AbortController ? new AbortController() : null;
+    if (controller) options.signal = controller.signal;
+    const timeoutId = setTimeout(() => {
+      if (controller) controller.abort();
+    }, timeoutMs);
+    try {
+      const res = await fetch(url, options);
+      clearTimeout(timeoutId);
+      return res;
+    } catch (err) {
+      clearTimeout(timeoutId);
+      throw err;
+    }
+  };
+
   try {
-    let rawSheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID;
+    let rawSheetId = '';
+    try { rawSheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID; } catch(e) { rawSheetId = DEFAULT_SHEET_ID; }
     let sheetId = cleanSheetId(rawSheetId) || DEFAULT_SHEET_ID;
     const sheetInput = document.getElementById('sheetIdInp');
     if (sheetInput) sheetInput.value = sheetId;
     
     // Load category and image mappings first
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
       const [catRes, imgRes, descRes] = await Promise.all([
-        fetch('code_to_category.json?v=' + Date.now(), { signal: controller.signal }).then(r => r.json()).catch(() => ({})),
-        fetch('code_to_image.json?v=' + Date.now(), { signal: controller.signal }).then(r => r.json()).catch(() => ({})),
-        fetch('code_to_description.json?v=' + Date.now(), { signal: controller.signal }).then(r => r.json()).catch(() => ({}))
+        fetchWithTimeout('code_to_category.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
+        fetchWithTimeout('code_to_image.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
+        fetchWithTimeout('code_to_description.json?v=' + Date.now()).then(r => r.json()).catch(() => ({}))
       ]);
-      clearTimeout(timeoutId);
       
       // Normalize subcategories dynamically
       for (const c in catRes) {
@@ -6471,10 +6489,7 @@ async function loadDatabase() {
     let dataLoaded = prods.length > 0;
     if (!dataLoaded) {
       try {
-        const fController = new AbortController();
-        const fTimeout = setTimeout(() => fController.abort(), 5000);
-        const fallbackRes = await fetch('products_fallback.json?v=' + Date.now(), { signal: fController.signal });
-        clearTimeout(fTimeout);
+        const fallbackRes = await fetchWithTimeout('products_fallback.json?v=' + Date.now());
         if (fallbackRes.ok) {
           const fallbackProds = await fallbackRes.json();
           prods = fallbackProds.map(p => {
@@ -6514,10 +6529,7 @@ async function loadDatabase() {
 
       for (const csvUrl of urlsToTry) {
         try {
-          const csvController = new AbortController();
-          const csvTimeout = setTimeout(() => csvController.abort(), 5000);
-          const response = await fetch(csvUrl, { cache: 'no-store', signal: csvController.signal });
-          clearTimeout(csvTimeout);
+          const response = await fetchWithTimeout(csvUrl, { cache: 'no-store' });
           if (!response.ok) continue;
           const csvText = await response.text();
           
