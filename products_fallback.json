@@ -84,7 +84,7 @@
     "name": "FEF BOMBONERA FELICIDADES X 264 GRS",
     "category": "Chocolates",
     "price": 15403.61,
-    "image": "imagenes/3611-fef-bombonera-felicidades-x-264-grs.jpg",
+    "image": "imagenes/3611.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -202,9 +202,9 @@
   {
     "code": "515",
     "name": "FEF CHOCOLATE CLASICO FEL FORT X 50 GRS 70 % CACAO (16)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Chocolates",
     "price": 3518.95,
-    "image": "",
+    "image": "imagenes/515.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -222,9 +222,9 @@
   {
     "code": "526",
     "name": "FEF CHOCOLATIN JACK \"LECHE\" 20 U X 14 G",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Chocolates",
     "price": 30584.46,
-    "image": "",
+    "image": "imagenes/526.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -324,7 +324,7 @@
     "name": "FEF JACKELINE X 30 UNI",
     "category": "Chocolates",
     "price": 24774.6,
-    "image": "imagenes/0524-pila-ecr-1620-x-1-uni.jpg",
+    "image": "imagenes/524.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -534,7 +534,7 @@
     "name": "ALFA. FANTOCHE BANDEJA X 150 GRS CHOCO (24)",
     "category": "Alfajores",
     "price": 1877.06,
-    "image": "imagenes/1457.jpg",
+    "image": "imagenes/1457.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -642,9 +642,9 @@
   {
     "code": "3763",
     "name": "FANTOCHE TAPITAS MARMOLADAS BANDEJA X 350 G (12)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Galletitas",
     "price": 1764.12,
-    "image": "",
+    "image": "imagenes/3763.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -712,9 +712,9 @@
   {
     "code": "5002",
     "name": "MDZ ALFA TERRABUSI INTENSO SIN TACC X 55 G",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 1494.36,
-    "image": "",
+    "image": "imagenes/5002.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -784,7 +784,7 @@
     "name": "MDZ ALFA. TERRABUSI GLASEADO X 38 GRS",
     "category": "Alfajores",
     "price": 961.31,
-    "image": "imagenes/2646.jpg",
+    "image": "imagenes/2646.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -884,7 +884,7 @@
     "name": "MDZ BELDENT X 20 UNI. FRUTILLA SIN TACC",
     "category": "Chicles",
     "price": 14338.17,
-    "image": "imagenes/613.jpg",
+    "image": "imagenes/613.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1134,7 +1134,7 @@
     "name": "MDZ GALL. OREO CLASICA X 118 GRS",
     "category": "Galletitas",
     "price": 1789.99,
-    "image": "imagenes/2505.jpg",
+    "image": "imagenes/2505.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1152,9 +1152,9 @@
   {
     "code": "6956",
     "name": "MDZ GALL. OREO MILKSHAKE DE FRUTILLA X 118 GRS",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Galletitas",
     "price": 1789.99,
-    "image": "",
+    "image": "imagenes/6956.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1172,9 +1172,9 @@
   {
     "code": "1888",
     "name": "MDZ GALL. OREO X 95 GRS SIN TACC (24)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Galletitas",
     "price": 2450.31,
-    "image": "",
+    "image": "imagenes/1888.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1244,7 +1244,7 @@
     "name": "MDZ HALLS X 12 UNI. CHERRY",
     "category": "Pastillas",
     "price": 7173.3,
-    "image": "imagenes/667.jpg",
+    "image": "imagenes/667.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1384,7 +1384,7 @@
     "name": "MDZ JUGO CLIGHT X 20 UNI. POMELADA HIBISCUS",
     "category": "Jugos",
     "price": 8939.43,
-    "image": "imagenes/2148-jugo-fruta-3-x-18-uni-naranja-sin-tacc.jpg",
+    "image": "imagenes/2148.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1394,7 +1394,7 @@
     "name": "MDZ JUGO TANG X 20 UNI. UVA SIN TACC",
     "category": "Jugos",
     "price": 8513.75,
-    "image": "imagenes/6354.jpg",
+    "image": "imagenes/6354.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1414,7 +1414,7 @@
     "name": "MDZ JUGO TANG X 20 UNI. FRUTILLA SIN TACC",
     "category": "Jugos",
     "price": 8513.75,
-    "image": "imagenes/3057.jpg",
+    "image": "imagenes/3057.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1484,7 +1484,7 @@
     "name": "MDZ JUGO TANG X 20 UNI. NARANJA DULCE SIN TACC",
     "category": "Jugos",
     "price": 8513.75,
-    "image": "imagenes/2146-jugo-fruta-3-x-18-uni-manzana-sin-tacc.jpg",
+    "image": "imagenes/2146.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1574,7 +1574,7 @@
     "name": "MDZ MILKA TABLETA X 55 GRS ALMENDRAS",
     "category": "Chocolates",
     "price": 3823.26,
-    "image": "imagenes/3435.jpg",
+    "image": "imagenes/3435.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1592,9 +1592,9 @@
   {
     "code": "687",
     "name": "MDZ MILKA TABLETA X 55 GRS CASTAÑA",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Chocolates",
     "price": 3823.26,
-    "image": "",
+    "image": "imagenes/687.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1772,9 +1772,9 @@
   {
     "code": "2574",
     "name": "MDZ ROYAL GELATINA TANG MULTIFRUTA X 8",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Despensa",
     "price": 9458.52,
-    "image": "",
+    "image": "imagenes/2574.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1874,7 +1874,7 @@
     "name": "MDZ SHOT TABLETA X 35 GRS",
     "category": "Chocolates",
     "price": 1261.04,
-    "image": "imagenes/0607-pg-poximix-exterior-x-500-grs.jpg",
+    "image": "imagenes/607.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -1994,7 +1994,7 @@
     "name": "YERBA AMANDA X 500 GRS AZUL SIN TACC",
     "category": "Yerbas",
     "price": 2128.91,
-    "image": "imagenes/1207.jpg",
+    "image": "imagenes/1207.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2112,9 +2112,9 @@
   {
     "code": "5847",
     "name": "MC 9 DE ORO CRUJITAS X 80 G CEBOLLA Y CREMA (10)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Galletitas",
     "price": 715.72,
-    "image": "",
+    "image": "imagenes/5847.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2122,9 +2122,9 @@
   {
     "code": "5846",
     "name": "MC 9 DE ORO CRUJITAS X 80 G JAMON (10)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Galletitas",
     "price": 715.72,
-    "image": "",
+    "image": "imagenes/5846.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2312,9 +2312,9 @@
   {
     "code": "5840",
     "name": "MC 9 DEORO CRUJITAS X 80 G QUESO (10)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Galletitas",
     "price": 715.72,
-    "image": "",
+    "image": "imagenes/5840.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2424,7 +2424,7 @@
     "name": "MC HARINA PUREZA X 1KG 0000 (10)",
     "category": "Despensa",
     "price": 1208.61,
-    "image": "imagenes/2030.jpg",
+    "image": "imagenes/2030.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2602,9 +2602,9 @@
   {
     "code": "3735",
     "name": "MC PASEO X 250 GRS PIZZA (14)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Galletitas",
     "price": 1589.83,
-    "image": "",
+    "image": "imagenes/3735.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2612,9 +2612,9 @@
   {
     "code": "3734",
     "name": "MC PASEO X 250 GRS QUESO (14)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Galletitas",
     "price": 1589.83,
-    "image": "",
+    "image": "imagenes/3734.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2622,9 +2622,9 @@
   {
     "code": "2735",
     "name": "MC PREMEZCLA PIZZA MASA MADRE X 550 G",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Despensa",
     "price": 1842.01,
-    "image": "",
+    "image": "imagenes/2735.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2662,9 +2662,9 @@
   {
     "code": "10037",
     "name": "MC PREMEZCLA ÑOQUIS X 400 GRS",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Despensa",
     "price": 2689.83,
-    "image": "",
+    "image": "imagenes/10037.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2702,9 +2702,9 @@
   {
     "code": "323",
     "name": "BIC BOLIGRAFO 0,8 MM AZUL (50)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Bic",
     "price": 635.63,
-    "image": "",
+    "image": "imagenes/323.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2782,9 +2782,9 @@
   {
     "code": "4078",
     "name": "SINA BARREDOR X 60 CM ALGODON",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Limpieza",
     "price": 21623.66,
-    "image": "",
+    "image": "imagenes/4078.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -2844,7 +2844,7 @@
     "name": "SINA CABO DE ACERO PINTADO X 1.5 M",
     "category": "Nuevos y Sin Imagen",
     "price": 7874.3,
-    "image": "",
+    "image": "imagenes/5046.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -3114,7 +3114,7 @@
     "name": "SINA HILO DE ALGODON X 35 MTS (10)",
     "category": "Nuevos y Sin Imagen",
     "price": 409.1,
-    "image": "",
+    "image": "imagenes/1196.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -3304,7 +3304,7 @@
     "name": "SINA REJILLA PABILO SUPER DOBLE 445",
     "category": "Nuevos y Sin Imagen",
     "price": 809.31,
-    "image": "",
+    "image": "imagenes/6298.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -3404,7 +3404,7 @@
     "name": "SINA SECAVIDRIO ALUMINIO KING EXTRA (7664)",
     "category": "Nuevos y Sin Imagen",
     "price": 7630.62,
-    "image": "",
+    "image": "imagenes/6270.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -3704,7 +3704,7 @@
     "name": "LINTERNA EVEREADY ALL METAL SEARCHLIGHT",
     "category": "Nuevos y Sin Imagen",
     "price": 30000.26,
-    "image": "",
+    "image": "imagenes/2501.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -4434,7 +4434,7 @@
     "name": "REFRESH SPRAY ELIMINADOR DE OLORES AUTO NUEVO",
     "category": "Nuevos y Sin Imagen",
     "price": 2355.3,
-    "image": "",
+    "image": "imagenes/5134.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -4444,7 +4444,7 @@
     "name": "REFRESH SPRAY ELIMINADOR DE OLORES CEREZA",
     "category": "Nuevos y Sin Imagen",
     "price": 2355.3,
-    "image": "",
+    "image": "imagenes/5133.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -4964,7 +4964,7 @@
     "name": "DISMAR AZUFRE X 50 UNI.",
     "category": "Varios",
     "price": 18719.52,
-    "image": "imagenes/3173.jpg",
+    "image": "imagenes/3173.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -4974,7 +4974,7 @@
     "name": "DISMAR AZUFRE C/SEPARADOR X 10 UNI.",
     "category": "Varios",
     "price": 3747.25,
-    "image": "imagenes/3314.jpg",
+    "image": "imagenes/3314.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -4984,7 +4984,7 @@
     "name": "DISMAR AZUFRE X 50 UN. CON SEPARADOR",
     "category": "Varios",
     "price": 19713.57,
-    "image": "imagenes/4145.jpg",
+    "image": "imagenes/4145.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5224,7 +5224,7 @@
     "name": "GEO CHOC. DAQUI CLASICO X 70 GRS (32) SIN TACC",
     "category": "Chocolates",
     "price": 1050.8,
-    "image": "imagenes/0697-geo-flynn-paff-x-70-uni-limonada-sin-tacc.jpg",
+    "image": "imagenes/697.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5244,7 +5244,7 @@
     "name": "GEO CHOCO FULL MANI LECHE X 90 GRS (10) SIN TACC",
     "category": "Turrones",
     "price": 1990.44,
-    "image": "imagenes/0709-geo-flynn-paff-xxl-x-24-uni-limonada-berry-sin-tacc.jpg",
+    "image": "imagenes/709.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5254,7 +5254,7 @@
     "name": "GEO CHOCO FULL MANI X 35 G RELLENO (15)",
     "category": "Nuevos y Sin Imagen",
     "price": 932.95,
-    "image": "",
+    "image": "imagenes/4130.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5264,7 +5264,7 @@
     "name": "GEO CHOCOLATE SIN AZUCAR 12 UNI X 30 GRS \"CHOCOLATE\"",
     "category": "Chocolates",
     "price": 24090.89,
-    "image": "imagenes/0695-geo-flynn-paff-confitado-acido-extremo-x-50-grs-30.jpg",
+    "image": "imagenes/695.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5334,7 +5334,7 @@
     "name": "GEO CHUP. FLYM PAFF X 24 MANZANA SIN TAC",
     "category": "Chupetines",
     "price": 5650.59,
-    "image": "imagenes/6112.jpg",
+    "image": "imagenes/6112.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5344,7 +5344,7 @@
     "name": "GEO CHUP. FLYNN PAFF X 24 UNI \"CEREZA\" SIN TACC",
     "category": "Chupetines",
     "price": 5873.58,
-    "image": "imagenes/2716.jpg",
+    "image": "imagenes/2716.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5374,7 +5374,7 @@
     "name": "GEO DISPLAY FLOW CEREAL X 1 UNI \"TODDY\"",
     "category": "Snacks",
     "price": 699.75,
-    "image": "imagenes/0702-geo-flynn-paff-x-70-uni-frutilla-sin-tacc.jpg",
+    "image": "imagenes/702.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5394,7 +5394,7 @@
     "name": "GEO FLOW CEREAL X 1 UNI \"CHOCOLATE Y LIMON\" (20)",
     "category": "Nuevos y Sin Imagen",
     "price": 699.75,
-    "image": "",
+    "image": "imagenes/4123.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5504,7 +5504,7 @@
     "name": "GEO FLYNN PAFF X 70 UNI. \"BANANA\" SIN TACC",
     "category": "Caramelos",
     "price": 6743.45,
-    "image": "imagenes/0710-geo-flynn-paff-xxl-x-24-uni-tutti-sin-tacc.jpg",
+    "image": "imagenes/710.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5514,7 +5514,7 @@
     "name": "GEO FLYNN PAFF X 70 UNI. \"FRUTILLA\" SIN TACC",
     "category": "Caramelos",
     "price": 6743.45,
-    "image": "imagenes/0714-geo-mantecol-barra-x-64-grs-sin-tacc.jpg",
+    "image": "imagenes/714.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5524,7 +5524,7 @@
     "name": "GEO FLYNN PAFF X 70 UNI. \"MANZANA\" SIN TACC",
     "category": "Caramelos",
     "price": 6743.45,
-    "image": "imagenes/0713-geo-mantecol-barra-x-41-grs-sin-tacc.jpg",
+    "image": "imagenes/713.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5544,7 +5544,7 @@
     "name": "GEO FLYNN PAFF X 70 UNI. \"TUTTI\" SIN TACC",
     "category": "Caramelos",
     "price": 6743.45,
-    "image": "imagenes/0712-geo-lenguetazo-x-32-uni-t-frutti-sin-tacc.jpg",
+    "image": "imagenes/712.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5554,7 +5554,7 @@
     "name": "GEO FLYNN PAFF X 70 UNI. \"UVA\" SIN TACC",
     "category": "Caramelos",
     "price": 6743.45,
-    "image": "imagenes/0711-geo-lenguetazo-x-32-uni-manzana-acida-sin-tacc.jpg",
+    "image": "imagenes/711.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5564,7 +5564,7 @@
     "name": "GEO FLYNN PAFF X 70 UNI. \"VAIN./FRUT\" SIN TACC",
     "category": "Caramelos",
     "price": 6743.45,
-    "image": "imagenes/0716-geo-mantecol-lingote-x-500-grs-sin-tacc.jpg",
+    "image": "imagenes/716.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5594,7 +5594,7 @@
     "name": "GEO LENGUETAZO X 32 UNI. \"T.FRUTTI\" SIN TACC",
     "category": "Caramelos",
     "price": 7394.67,
-    "image": "imagenes/616.jpg",
+    "image": "imagenes/616.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5774,7 +5774,7 @@
     "name": "GAM GELATINES X 250 G \"SNACK FOOD\"",
     "category": "Gomitas",
     "price": 3098.81,
-    "image": "imagenes/6038-gam-gelatines-x-250-g-snack-food.jpg",
+    "image": "imagenes/6038.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5812,7 +5812,7 @@
   {
     "code": "5513",
     "name": "GAM KROOMY X 12 UNI \"NAPOLITANO\"",
-    "category": "Alfajores",
+    "category": "Chocolates",
     "price": 5680.73,
     "image": "imagenes/5513-gam-kroomy-x-12-uni-napolitano.jpg",
     "qty": 0,
@@ -5904,7 +5904,7 @@
     "name": "ARGENTUM TRAPO DE PISO BLANCO COSTURADO 48 X 60",
     "category": "Nuevos y Sin Imagen",
     "price": 1426.34,
-    "image": "",
+    "image": "imagenes/277.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5924,7 +5924,7 @@
     "name": "ARGENTUM TRAPO DE PISO GRIS REFORZADO 50 X 60",
     "category": "Nuevos y Sin Imagen",
     "price": 2371.06,
-    "image": "",
+    "image": "imagenes/3600.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -5944,7 +5944,7 @@
     "name": "ARGENTUM TRAPO REFORZADO 50 X 60 BLANCO",
     "category": "Nuevos y Sin Imagen",
     "price": 2371.07,
-    "image": "",
+    "image": "imagenes/278.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -6064,7 +6064,7 @@
     "name": "LDC BULL DOG EXPLOSIVO X 10 U X 6 G BLUEBERRY",
     "category": "Nuevos y Sin Imagen",
     "price": 2191.38,
-    "image": "",
+    "image": "imagenes/6416.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -6144,7 +6144,7 @@
     "name": "LDC BULL DOG X 12 UNI. MANZANA SIN TACC",
     "category": "Pastillas",
     "price": 4936.07,
-    "image": "imagenes/1825-my-sapito-x-24u-blanco-sin-tacc.jpg",
+    "image": "imagenes/1825.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -6242,9 +6242,9 @@
   {
     "code": "79",
     "name": "LDC CHOCO MILKYBAR X 100 G LECHE SIN TACC (24)",
-    "category": "Nuevos y Sin Imagen",
-    "price": 1811.47,
-    "image": "",
+    "category": "Chocolates",
+    "price": 1739,
+    "image": "imagenes/79.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -6424,7 +6424,7 @@
     "name": "LDC GONGYS MALVAVISCO X 200 G CORAZON (12) SIN TACC",
     "category": "Nuevos y Sin Imagen",
     "price": 2485.34,
-    "image": "",
+    "image": "imagenes/6119.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -15822,9 +15822,9 @@
   {
     "code": "3302",
     "name": "NVR. ALFA. FULBITO X 44 UNI MANI",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 8799.99,
-    "image": "",
+    "image": "imagenes/3302.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -20032,9 +20032,9 @@
   {
     "code": "6291",
     "name": "ANTOJITOS ALFAJOR DUBAI BLANCO (20)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 1730.3,
-    "image": "",
+    "image": "imagenes/6291.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -20052,9 +20052,9 @@
   {
     "code": "6295",
     "name": "ANTOJITOS ALFAJOR MATILDA X 80 G SIN TACC (20)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 2044.9,
-    "image": "",
+    "image": "imagenes/6295.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -20062,9 +20062,9 @@
   {
     "code": "6299",
     "name": "ANTOJITOS ALFAJOR OLIVER BLANCO X 86 G (20)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 2064.56,
-    "image": "",
+    "image": "imagenes/6299.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -20072,9 +20072,9 @@
   {
     "code": "6300",
     "name": "ANTOJITOS ALFAJOR OLIVER NEGRO X 86 G (20)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 2064.56,
-    "image": "",
+    "image": "imagenes/6300.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
