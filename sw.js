@@ -1,3 +1,4 @@
+// VERSION: 2026-08-02-23-01
 self.addEventListener('install', (event) => {
   // Force the waiting service worker to become the active service worker.
   self.skipWaiting();
