@@ -1,32 +1,25 @@
-// VERSION: 2026-08-02-23-01
-self.addEventListener('install', (event) => {
-  // Force the waiting service worker to become the active service worker.
+// GitHub Pages catalog: remove legacy PWA caches and then unregister.
+const CLEANUP_VERSION = '2026-08-03-01';
+
+self.addEventListener('install', () => {
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => {
-      // Delete ALL old caches created by previous PWA versions
-      return Promise.all(keys.map((key) => caches.delete(key)));
-    }).then(() => {
-      // Unregister this service worker permanently
-      return self.registration.unregister();
-    }).then(() => {
-      // Claim all clients immediately so we can force them to reload
-      return self.clients.claim();
-    }).then(() => {
-      // The holy grail: tell all open windows controlled by this SW to hard reload!
-      return self.clients.matchAll({ type: 'window' }).then(windowClients => {
-        windowClients.forEach(client => {
-          client.navigate(client.url);
-        });
-      });
-    })
-  );
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.map((key) => caches.delete(key)));
+    await self.clients.claim();
+
+    const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    for (const client of clients) {
+      client.postMessage({ type: 'CATALOG_CACHE_CLEARED', version: CLEANUP_VERSION });
+    }
+
+    await self.registration.unregister();
+  })());
 });
 
 self.addEventListener('fetch', (event) => {
-  // Pass through all requests to network, preventing any caching
-  event.respondWith(fetch(event.request, { cache: 'reload' }).catch(() => fetch(event.request)));
+  event.respondWith(fetch(event.request, { cache: 'no-store' }));
 });
