@@ -3041,7 +3041,13 @@ async function loadDatabase() {
           const fallbackProds = await fallbackRes.json();
           prods = fallbackProds.map(p => {
             let cat = p.category || "Varios";
-            let image = window.codeToImg[p.code] || p.image || "";
+            const hasImageMapping = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, p.code);
+            let image;
+            if (hasImageMapping) {
+              image = window.codeToImg[p.code];
+            } else {
+              image = p.image || "";
+            }
             if (!image || image.trim() === "") {
               cat = "Nuevos y Sin Imagen";
             } else {
@@ -3188,8 +3194,26 @@ function processCSVRows(rows) {
 
     const existing = fallbackMap[codeStr] || fallbackMap[rawCode];
     
-    const image = (existing && existing.image) || (window.codeToImg && (window.codeToImg[codeStr] || window.codeToImg[rawCode])) || "";
-    let cat = (existing && existing.category) || (window.codeToCat && (window.codeToCat[codeStr] || window.codeToCat[rawCode])) || "";
+    let image;
+    const hasImageMappingCodeStr = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, codeStr);
+    const hasImageMappingRawCode = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, String(rawCode));
+
+    if (hasImageMappingCodeStr) {
+      image = window.codeToImg[codeStr];
+    } else if (hasImageMappingRawCode) {
+      image = window.codeToImg[String(rawCode)];
+    } else {
+      image = (existing && existing.image) || "";
+    }
+    
+    let cat = "";
+    if (window.codeToCat && Object.prototype.hasOwnProperty.call(window.codeToCat, codeStr)) {
+      cat = window.codeToCat[codeStr];
+    } else if (window.codeToCat && Object.prototype.hasOwnProperty.call(window.codeToCat, String(rawCode))) {
+      cat = window.codeToCat[String(rawCode)];
+    } else if (existing && existing.category) {
+      cat = existing.category;
+    }
     if (!cat && catIdx !== -1 && catIdx !== priceIdx && r[catIdx]) {
       cat = r[catIdx].trim();
     }
@@ -3206,7 +3230,7 @@ function processCSVRows(rows) {
       qty: 0,
       outOfStock: false,
       unidad_min: uMin,
-      brand: extractBrand(name)
+      brand: ""
     });
   }
 
@@ -4052,23 +4076,39 @@ function parseTxt(text) {
 }
 function detectCh(np) {
   const cm = {}; prods.forEach(p => cm[p.code] = p);
-  return np.map(n => {
+  const npc = {}; np.forEach(n => npc[n.code] = true);
+  
+  const ch = np.map(n => {
     const c = cm[n.code];
     if (!c) return { type: 'new', code: n.code, name: n.name, op: null, np: n.price };
     if (Math.abs(c.price - n.price) > 0.01) return { type: c.price < n.price ? 'up' : 'dn', code: n.code, name: n.name, op: c.price, np: n.price };
     return null;
   }).filter(Boolean);
+
+  prods.forEach(p => {
+    const baseCode = String(p.code).split('_')[0];
+    if (!npc[p.code] && !npc[baseCode] && !p.outOfStock) {
+      ch.push({ type: 'oos', code: p.code, name: p.name, op: p.price, np: p.price });
+    }
+  });
+
+  return ch;
 }
 function showCh(ch, tot) {
   const ups = ch.filter(c => c.type === 'up').length, dns = ch.filter(c => c.type === 'dn').length, nws = ch.filter(c => c.type === 'new').length;
-  setPt(`✅ PDF analizado · <b>${ch.length} cambios</b> de ${tot} productos (↑${ups} subieron · ↓${dns} bajaron · +${nws} nuevos)`);
+  const oos = ch.filter(c => c.type === 'oos').length;
+  setPt(`✅ PDF analizado · <b>${ch.length} cambios</b> de ${tot} productos (↑${ups} subieron · ↓${dns} bajaron · +${nws} nuevos · ❌${oos} sin stock)`);
   const l = document.getElementById('cl');
   if (!ch.length) { l.innerHTML = '<div class="chi">✅ Sin cambios — precios actualizados.</div>'; return }
   l.innerHTML = ch.slice(0, 60).map(c => {
-    const b = c.type === 'up' ? '<span class="bdg up">↑ SUBIÓ</span>' : c.type === 'dn' ? '<span class="bdg dn">↓ BAJÓ</span>' : '<span class="bdg nw">+ NUEVO</span>';
+    let b = '';
+    if (c.type === 'up') b = '<span class="bdg up">↑ SUBIÓ</span>';
+    else if (c.type === 'dn') b = '<span class="bdg dn">↓ BAJÓ</span>';
+    else if (c.type === 'new') b = '<span class="bdg nw">+ NUEVO</span>';
+    else if (c.type === 'oos') b = '<span class="bdg" style="background:#dc2626">SIN STOCK</span>';
     const op = c.op ? '$' + c.op.toLocaleString('es-AR', { minimumFractionDigits: 2 }) : '-';
-    const np = '$' + c.np.toLocaleString('es-AR', { minimumFractionDigits: 2 });
-    return `<div class="chi">${b}<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.name.substring(0, 42)}</span><span style="font-size:11px;white-space:nowrap">${op}→${np}</span></div>`;
+    const np = c.type === 'oos' ? '-' : '$' + c.np.toLocaleString('es-AR', { minimumFractionDigits: 2 });
+    return `<div class="chi">${b}<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.name.substring(0, 42)}</span><span style="font-size:11px;white-space:nowrap">${c.type==='oos'?op:op+'→'+np}</span></div>`;
   }).join('') + (ch.length > 60 ? `<div class="chi" style="color:#aaa">...y ${ch.length - 60} más</div>` : '');
 }
 function appCh() {
@@ -4076,11 +4116,20 @@ function appCh() {
   pending.forEach(c => {
     if (c.type === 'new') {
       const cat = window.codeToCat[c.code] || 'Ferretería y Varios';
-      const img = window.codeToImg[c.code] || '';
-      prods.push({ code: c.code, name: c.name, price: c.np, category: cat, image: img, qty: 0 });
+      let img = "";
+      if (window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, c.code)) {
+        img = window.codeToImg[c.code];
+      }
+      prods.push({ code: c.code, name: c.name, price: c.np, category: cat, image: img, qty: 0, outOfStock: false });
+    } else if (c.type === 'oos') {
+      const i = cm[c.code];
+      if (i !== undefined) prods[i].outOfStock = true;
     } else {
       const i = cm[c.code];
-      if (i !== undefined) prods[i].price = c.np;
+      if (i !== undefined) {
+        prods[i].price = c.np;
+        prods[i].outOfStock = false;
+      }
     }
   });
   buildNav(); applyF(); closeMod(); toast('✅ ' + pending.length + ' precios actualizados', 'ok'); pending = []; pdfProds = [];
@@ -4140,7 +4189,12 @@ function loadAdminState() {
         if (edits[c].name) p.name = edits[c].name;
         if (edits[c].price !== undefined) p.price = edits[c].price;
         if (edits[c].category) p.category = normalizeCategory(edits[c].category, p.name, p.image);
-        if (edits[c].image !== undefined) p.image = edits[c].image;
+        if (edits[c].image !== undefined) {
+          const hasMapping = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, String(c));
+          if (!hasMapping) {
+            p.image = edits[c].image;
+          }
+        }
       }
     }
     
