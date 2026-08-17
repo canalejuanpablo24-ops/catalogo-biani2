@@ -1784,6 +1784,7 @@ body.cart-has-items #cart-form {
         <button class="adm-btn2 primary" id="adm-add-btn">➕ Agregar Producto</button>
         <button class="adm-btn2 neutral" id="adm-save-btn">💾 Guardar Orden</button>
         <button class="adm-btn2 neutral" id="adm-export-btn" style="background:#4f46e5;color:#fff;">📤 Exportar Cambios</button>
+        <button class="adm-btn2 neutral" id="adm-deploy-btn" style="background:#10b981;color:#fff;">🚀 Deployar a Producción</button>
         <button class="adm-btn2 danger" id="adm-reset-btn">🗑️ Restablecer Todo</button>
       </div>
     </div>
@@ -4548,11 +4549,13 @@ document.getElementById('adm-panel-close').addEventListener('click', function() 
 
 document.getElementById('adm-exit').addEventListener('click', exitAdmin);
 document.getElementById('adm-add-btn').addEventListener('click', openAddModal);
+document.getElementById('adm-deploy-btn').addEventListener('click', deployToGitHub);
 document.getElementById('adm-save-btn').addEventListener('click', function() {
   saveOrder();
   updateAdmStat();
   toast('💾 Orden guardado', 'ok');
 });
+
 async function exportAdminConfig() {
   const config = {
     order: JSON.parse(localStorage.getItem(LS_K.order) || '[]'),
@@ -4592,6 +4595,147 @@ async function exportAdminConfig() {
     alert("¡Configuración copiada al portapapeles! Pegala en el chat para que el asistente la guarde permanentemente.");
   } else {
     prompt("Copiá la siguiente configuración y pegala en el chat para guardar permanentemente:", json);
+  }
+}
+
+async function deployToGitHub() {
+  const repo = 'canalejuanpablo24-ops/catalogo-biani2';
+  const branch = 'main';
+  
+  let token = localStorage.getItem('biani_gh_token');
+  if (!token) {
+    token = prompt('Ingresa tu GitHub Personal Access Token (PAT):\n\n(Este token se guardará de forma segura en tu navegador local)');
+    if (!token) return;
+    localStorage.setItem('biani_gh_token', token);
+  }
+  
+  const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
+  const add = JSON.parse(localStorage.getItem(LS_K.add) || '[]');
+  const del = JSON.parse(localStorage.getItem(LS_K.del) || '[]');
+  
+  if (Object.keys(edits).length === 0 && add.length === 0 && del.length === 0) {
+    toast('No hay cambios locales para deployar', 'warn');
+    return;
+  }
+  
+  const btn = document.getElementById('adm-deploy-btn');
+  const prevText = btn.innerHTML;
+  btn.innerHTML = '⏳ Conectando...';
+  btn.disabled = true;
+  
+  try {
+    async function getGHFile(path) {
+      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error(`Error al leer ${path}: ${res.statusText}`);
+      const data = await res.json();
+      const content = decodeURIComponent(escape(atob(data.content)));
+      return { sha: data.sha, content: JSON.parse(content) };
+    }
+    
+    async function putGHFile(path, contentObj, sha, message) {
+      const contentStr = JSON.stringify(contentObj, null, 2);
+      const base64Content = btoa(unescape(encodeURIComponent(contentStr)));
+      const body = {
+        message: message,
+        content: base64Content,
+        branch: branch
+      };
+      if (sha) body.sha = sha;
+      
+      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(`Error al subir ${path}: ${errData.message}`);
+      }
+    }
+    
+    btn.innerHTML = '⏳ Imágenes...';
+    let ctiFile = await getGHFile('code_to_image.json');
+    let codeToImage = ctiFile ? ctiFile.content : {};
+    let ctiChanged = false;
+    
+    for (const code of Object.keys(edits)) {
+      if (edits[code].image) {
+        codeToImage[code] = edits[code].image;
+        ctiChanged = true;
+      }
+    }
+    for (const p of add) {
+      if (p.image) {
+        codeToImage[p.code] = p.image;
+        ctiChanged = true;
+      }
+    }
+    
+    if (ctiChanged) {
+      btn.innerHTML = '⏳ Subiendo Imágenes...';
+      await putGHFile('code_to_image.json', codeToImage, ctiFile ? ctiFile.sha : null, 'Upload edited images from browser admin');
+    }
+    
+    btn.innerHTML = '⏳ Catálogo...';
+    let fallbackFile = await getGHFile('products_fallback.json');
+    let fallback = fallbackFile ? fallbackFile.content : [];
+    let fbChanged = false;
+    
+    const delSet = new Set(del);
+    const newFallback = [];
+    for (let p of fallback) {
+      if (delSet.has(p.code)) {
+        fbChanged = true;
+        continue;
+      }
+      if (edits[p.code]) {
+        if (edits[p.code].name) { p.name = edits[p.code].name; fbChanged = true; }
+        if (edits[p.code].price !== undefined) { p.price = edits[p.code].price; fbChanged = true; }
+        if (edits[p.code].category) { p.category = edits[p.code].category; fbChanged = true; }
+      }
+      newFallback.push(p);
+    }
+    
+    const fallbackCodes = new Set(newFallback.map(x => x.code));
+    for (const p of add) {
+      if (!fallbackCodes.has(p.code)) {
+        newFallback.push(p);
+        fbChanged = true;
+      }
+    }
+    
+    if (fbChanged) {
+      btn.innerHTML = '⏳ Subiendo Catálogo...';
+      await putGHFile('products_fallback.json', newFallback, fallbackFile ? fallbackFile.sha : null, 'Update catalog products from browser admin');
+    }
+    
+    localStorage.removeItem(LS_K.edits);
+    localStorage.removeItem(LS_K.add);
+    localStorage.removeItem(LS_K.del);
+    updateAdmStat();
+    
+    toast('✅ Deploy exitoso. Los cambios estarán online pronto.', 'ok');
+  } catch (e) {
+    console.error(e);
+    if (e.message.includes('Bad credentials')) {
+      toast('❌ Token inválido. Se ha borrado el token.', 'warn');
+      localStorage.removeItem('biani_gh_token');
+    } else {
+      toast('❌ Error en el Deploy: ' + e.message, 'warn');
+    }
+  } finally {
+    btn.innerHTML = prevText;
+    btn.disabled = false;
   }
 }
 
