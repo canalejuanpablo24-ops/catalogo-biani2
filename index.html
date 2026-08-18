@@ -4663,7 +4663,71 @@ async function deployToGitHub() {
       }
     }
     
-    btn.innerHTML = '⏳ Imágenes...';
+    async function putGHFileBase64(path, pureBase64, sha, message) {
+      const body = {
+        message: message,
+        content: pureBase64,
+        branch: branch
+      };
+      if (sha) body.sha = sha;
+      
+      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(`Error al subir ${path}: ${errData.message}`);
+      }
+    }
+    
+    // 1. Identificar imágenes base64 para subida física
+    const imgUploads = [];
+    const processImage = (code, imgDataUrl) => {
+      if (imgDataUrl && imgDataUrl.startsWith('data:image/')) {
+        imgUploads.push({ code, dataUrl: imgDataUrl });
+      }
+    };
+    
+    for (const code of Object.keys(edits)) {
+      if (edits[code].image) processImage(code, edits[code].image);
+    }
+    for (const p of add) {
+      if (p.image) processImage(p.code, p.image);
+    }
+    
+    if (imgUploads.length > 0) {
+      for (let i = 0; i < imgUploads.length; i++) {
+        btn.innerHTML = `⏳ Subiendo imagen ${i+1}/${imgUploads.length}...`;
+        const upload = imgUploads[i];
+        const commaIdx = upload.dataUrl.indexOf(',');
+        if (commaIdx !== -1) {
+          const pureBase64 = upload.dataUrl.substring(commaIdx + 1);
+          const mimeMatch = upload.dataUrl.match(/^data:image\/(\w+);base64,/);
+          const ext = mimeMatch ? mimeMatch[1] : 'webp';
+          const timestamp = Date.now();
+          const fileName = `imagenes/up_${upload.code}_${timestamp}.${ext}`;
+          
+          await putGHFileBase64(fileName, pureBase64, null, `Upload new image for ${upload.code}`);
+          
+          // Actualizamos la referencia local en memoria para que se guarde correctamente en el JSON
+          if (edits[upload.code] && edits[upload.code].image === upload.dataUrl) {
+            edits[upload.code].image = fileName;
+          }
+          const addedProduct = add.find(x => x.code === upload.code);
+          if (addedProduct && addedProduct.image === upload.dataUrl) {
+            addedProduct.image = fileName;
+          }
+        }
+      }
+    }
+    
+    btn.innerHTML = '⏳ Actualizando referencias (code_to_image)...';
     let ctiFile = await getGHFile('code_to_image.json');
     let codeToImage = ctiFile ? ctiFile.content : {};
     let ctiChanged = false;
@@ -4682,11 +4746,10 @@ async function deployToGitHub() {
     }
     
     if (ctiChanged) {
-      btn.innerHTML = '⏳ Subiendo Imágenes...';
-      await putGHFile('code_to_image.json', codeToImage, ctiFile ? ctiFile.sha : null, 'Upload edited images from browser admin');
+      await putGHFile('code_to_image.json', codeToImage, ctiFile ? ctiFile.sha : null, 'Update image references from browser admin');
     }
     
-    btn.innerHTML = '⏳ Catálogo...';
+    btn.innerHTML = '⏳ Actualizando catálogo...';
     let fallbackFile = await getGHFile('products_fallback.json');
     let fallback = fallbackFile ? fallbackFile.content : [];
     let fbChanged = false;
@@ -4715,7 +4778,6 @@ async function deployToGitHub() {
     }
     
     if (fbChanged) {
-      btn.innerHTML = '⏳ Subiendo Catálogo...';
       await putGHFile('products_fallback.json', newFallback, fallbackFile ? fallbackFile.sha : null, 'Update catalog products from browser admin');
     }
     
@@ -4724,7 +4786,7 @@ async function deployToGitHub() {
     localStorage.removeItem(LS_K.del);
     updateAdmStat();
     
-    toast('✅ Deploy exitoso. Los cambios estarán online pronto.', 'ok');
+    toast('✅ Deploy exitoso. Los cambios estarán online en unos segundos.', 'ok');
   } catch (e) {
     console.error(e);
     if (e.message.includes('Bad credentials')) {
