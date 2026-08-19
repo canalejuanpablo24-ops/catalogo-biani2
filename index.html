@@ -4625,7 +4625,9 @@ async function deployToGitHub() {
   
   try {
     async function getGHFile(path) {
-      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`, {
+      const t = Date.now();
+      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}&t=${t}`, {
+        cache: 'no-store',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/vnd.github.v3+json'
