@@ -4371,7 +4371,16 @@ function admDelete(code) {
   localStorage.setItem(LS_K.edits, JSON.stringify(edits));
   
   updateAdmStat();
-  applyF();
+  
+  filt = filt.filter(x => x.code !== code);
+  const oldScrollY = window.scrollY;
+  const oldCard = document.getElementById('card-' + code);
+  if (oldCard) {
+    if (document.activeElement) document.activeElement.blur();
+    oldCard.remove();
+    window.scrollTo(0, oldScrollY);
+  }
+  
   toast('🗑️ Producto eliminado. Subiendo a producción...', 'ok');
   deployToGitHub();
 }
@@ -4453,6 +4462,14 @@ function saveEditModal() {
       const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
       edits[code] = { name: name, price: priceVal, category: category, image: p.image };
       localStorage.setItem(LS_K.edits, JSON.stringify(edits));
+      
+      const oldScrollY = window.scrollY;
+      const oldCard = document.getElementById('card-' + editTarget);
+      if (oldCard) {
+        if (document.activeElement) document.activeElement.blur();
+        oldCard.replaceWith(mkCard(p));
+        window.scrollTo(0, oldScrollY);
+      }
     }
     toast('✅ Producto actualizado', 'ok');
   } else { // ADD
@@ -4473,7 +4490,10 @@ function saveEditModal() {
   updateAdmStat();
   closeEditModal();
   buildNav();
-  applyF();
+  
+  if (!editTarget) {
+    applyF();
+  }
   
   if (ADMIN_ON) initSortable();
   deployToGitHub();
