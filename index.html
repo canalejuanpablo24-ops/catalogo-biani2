@@ -4133,7 +4133,8 @@ function appCh() {
       }
     }
   });
-  buildNav(); applyF(); closeMod(); toast('✅ ' + pending.length + ' precios actualizados', 'ok'); pending = []; pdfProds = [];
+  buildNav(); applyF(); closeMod(); toast('✅ ' + pending.length + ' precios actualizados. Subiendo a producción...', 'ok'); pending = []; pdfProds = [];
+  deployToGitHub();
 }
 function setP(v) { document.getElementById('pb').style.width = v + '%' }
 function setPt(t) { document.getElementById('pt').innerHTML = t }
@@ -4339,7 +4340,8 @@ function initSortable() {
       prods = reordered.concat(rest);
       
       saveOrder();
-      toast('✅ Orden guardado', 'ok');
+      toast('✅ Orden guardado. Subiendo a producción...', 'ok');
+      deployToGitHub();
     }
   });
 }
@@ -4370,7 +4372,8 @@ function admDelete(code) {
   
   updateAdmStat();
   applyF();
-  toast('🗑️ Producto eliminado', 'ok');
+  toast('🗑️ Producto eliminado. Subiendo a producción...', 'ok');
+  deployToGitHub();
 }
 
 function openEditModal(code) {
@@ -4467,13 +4470,13 @@ function saveEditModal() {
     
     toast('✅ Producto agregado', 'ok');
   }
-  
   updateAdmStat();
   closeEditModal();
   buildNav();
   applyF();
   
   if (ADMIN_ON) initSortable();
+  deployToGitHub();
 }
 
 function admReset() {
@@ -4613,10 +4616,7 @@ async function deployToGitHub() {
   const add = JSON.parse(localStorage.getItem(LS_K.add) || '[]');
   const del = JSON.parse(localStorage.getItem(LS_K.del) || '[]');
   
-  if (Object.keys(edits).length === 0 && add.length === 0 && del.length === 0) {
-    toast('No hay cambios locales para deployar', 'warn');
-    return;
-  }
+  // Se permiten deploys sin cambios en localStorage para capturar actualizaciones de PDF
   
   const btn = document.getElementById('adm-deploy-btn');
   const prevText = btn.innerHTML;
@@ -4753,35 +4753,26 @@ async function deployToGitHub() {
     
     btn.innerHTML = '⏳ Actualizando catálogo...';
     let fallbackFile = await getGHFile('products_fallback.json');
-    let fallback = fallbackFile ? fallbackFile.content : [];
-    let fbChanged = false;
     
-    const delSet = new Set(del);
-    const newFallback = [];
-    for (let p of fallback) {
-      if (delSet.has(p.code)) {
-        fbChanged = true;
-        continue;
-      }
-      if (edits[p.code]) {
-        if (edits[p.code].name) { p.name = edits[p.code].name; fbChanged = true; }
-        if (edits[p.code].price !== undefined) { p.price = edits[p.code].price; fbChanged = true; }
-        if (edits[p.code].category) { p.category = edits[p.code].category; fbChanged = true; }
-      }
-      newFallback.push(p);
-    }
+    const newFallback = prods.map(p => {
+      let imgPath = p.image || '';
+      if (edits[p.code] && edits[p.code].image) imgPath = edits[p.code].image;
+      else if (add.find(x => x.code === p.code)?.image) imgPath = add.find(x => x.code === p.code).image;
+      else if (codeToImage[p.code]) imgPath = codeToImage[p.code];
+      
+      return {
+        code: p.code,
+        name: p.name,
+        category: p.category,
+        price: p.price,
+        image: imgPath,
+        qty: 0,
+        outOfStock: !!p.outOfStock,
+        unidad_min: p.unidad_min || 1
+      };
+    });
     
-    const fallbackCodes = new Set(newFallback.map(x => x.code));
-    for (const p of add) {
-      if (!fallbackCodes.has(p.code)) {
-        newFallback.push(p);
-        fbChanged = true;
-      }
-    }
-    
-    if (fbChanged) {
-      await putGHFile('products_fallback.json', newFallback, fallbackFile ? fallbackFile.sha : null, 'Update catalog products from browser admin');
-    }
+    await putGHFile('products_fallback.json', newFallback, fallbackFile ? fallbackFile.sha : null, 'Update catalog products from browser admin');
     
     localStorage.removeItem(LS_K.edits);
     localStorage.removeItem(LS_K.add);
