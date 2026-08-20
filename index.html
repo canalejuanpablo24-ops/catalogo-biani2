@@ -4601,14 +4601,26 @@ async function exportAdminConfig() {
   }
 }
 
+let isDeploying = false;
+let queuedDeploy = false;
+
 async function deployToGitHub() {
+  if (isDeploying) {
+    queuedDeploy = true;
+    return;
+  }
+  isDeploying = true;
+  
   const repo = 'canalejuanpablo24-ops/catalogo-biani2';
   const branch = 'main';
   
   let token = localStorage.getItem('biani_gh_token');
   if (!token) {
     token = prompt('Ingresa tu GitHub Personal Access Token (PAT):\n\n(Este token se guardará de forma segura en tu navegador local)');
-    if (!token) return;
+    if (!token) {
+      isDeploying = false;
+      return;
+    }
     localStorage.setItem('biani_gh_token', token);
   }
   
@@ -4636,7 +4648,20 @@ async function deployToGitHub() {
       if (res.status === 404) return null;
       if (!res.ok) throw new Error(`Error al leer ${path}: ${res.statusText}`);
       const data = await res.json();
-      const content = decodeURIComponent(escape(atob(data.content)));
+      
+      let contentStr = data.content;
+      if (!contentStr && data.git_url) {
+        const blobRes = await fetch(data.git_url, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        const blobData = await blobRes.json();
+        contentStr = blobData.content;
+      }
+      
+      const content = decodeURIComponent(escape(atob(contentStr)));
       return { sha: data.sha, content: JSON.parse(content) };
     }
     
@@ -4791,6 +4816,11 @@ async function deployToGitHub() {
   } finally {
     btn.innerHTML = prevText;
     btn.disabled = false;
+    isDeploying = false;
+    if (queuedDeploy) {
+      queuedDeploy = false;
+      deployToGitHub();
+    }
   }
 }
 
