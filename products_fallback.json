@@ -21841,7 +21841,7 @@
   },
   {
     "code": "7008",
-    "name": "SUIZA CERA LIQUIDA INCOLORA X  850 CC (12)",
+    "name": "SUIZA CERA LIQUIDA INCOLORA X 850 CC (12)",
     "category": "Nuevos y Sin Imagen",
     "price": 7397.56,
     "image": "imagenes/up_7008_1787272081637.webp",
@@ -21854,7 +21854,7 @@
     "name": "SUIZA CERA LIQUIDA ROBLE CLARO X 850 CC (12)",
     "category": "Nuevos y Sin Imagen",
     "price": 7397.56,
-    "image": "",
+    "image": "imagenes/up_7009_1787273368349.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -22534,6 +22534,16 @@
     "name": "CLINSY DESTAPACAÑERIAS X 1000 CC (12)",
     "category": "Nuevos y Sin Imagen",
     "price": 5392.51,
+    "image": "",
+    "qty": 0,
+    "outOfStock": false,
+    "unidad_min": 1
+  },
+  {
+    "code": "7034",
+    "name": "SUIZA DETERGENTE LIMON X 300 CC (18)",
+    "category": "Varios",
+    "price": 1254.47,
     "image": "",
     "qty": 0,
     "outOfStock": false,
