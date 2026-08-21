@@ -3719,21 +3719,7 @@ function parseProductInfo(p) {
     }
   }
 
-  // 2. Extract size/packaging info (like "X 48 UNI", "X 24 UNI", "500G", "1KG", etc.)
-  const sizePatterns = [
-    /\b(X\s*\d+\s*(?:UNI|UNIDADES|UN|U|PAQ|POTES|DISCOS|U\.)\b\.?)/i,
-    /\b(X\s*\d+\b)/i,
-    /\b(\d+(?:\s*(?:G|KG|ML|CC|GR|GRS|L|M|CM|U))\b)/i
-  ];
-
-  for (const pattern of sizePatterns) {
-    const sizeMatch = cleanName.match(pattern);
-    if (sizeMatch) {
-      size = sizeMatch[1];
-      cleanName = cleanName.replace(size, "").replace(/\s+/g, ' ').trim();
-      break;
-    }
-  }
+  // 2. Size extraction removed to preserve exact Google Sheets name
 
   // Clean trailing punctuation / artifacts (dashes, commas, trailing X)
   cleanName = cleanName.replace(/[-\s,X]+$/, "").replace(/^\s*-\s*/, "").replace(/\s+/g, ' ').trim();
