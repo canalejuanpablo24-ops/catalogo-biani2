@@ -3068,8 +3068,9 @@ async function loadDatabase() {
       }
     }
 
-    // Fetch live CSV from Google Sheets with fallbacks
-    if (sheetId) {
+    // Fetch live CSV from Google Sheets with fallbacks ASYNCHRONOUSLY
+    const syncSheetsAsync = async () => {
+      if (!sheetId) return;
       let sheetsSynced = false;
       const cacheBust = '&_t=' + Date.now();
       const urlsToTry = [
@@ -3084,15 +3085,27 @@ async function loadDatabase() {
           if (!response.ok) continue;
           const csvText = await response.text();
           
-          // Verify response is actual CSV data and not an HTML login/error page
           const trimmed = (csvText || '').trim();
           if (trimmed && !trimmed.startsWith('<!DOCTYPE') && !trimmed.startsWith('<html') && (trimmed.includes(',') || trimmed.includes(';') || trimmed.includes('\t') || trimmed.includes('\n'))) {
             const csvRows = parseCSV(trimmed);
             if (csvRows.length > 1) {
               processCSVRows(csvRows);
               sheetsSynced = true;
-              dataLoaded = true;
-              toast("✅ Catálogo sincronizado en vivo desde Google Sheets", "ok");
+              
+              // Re-apply hardcoded minimum rules
+              prods.forEach(p => {
+                const nm = (p.name || '').toUpperCase();
+                if (nm.includes("GUAYMALLEN SIMPLE")) p.unidad_min = 20;
+                else if (nm.includes("GUAYMALLEN RUBI")) p.unidad_min = 12;
+              });
+
+              loadAdminState();
+              prepareAllSearchCache();
+              buildNav();
+              applyF();
+              updCart();
+              
+              toast("🛒 Catálogo sincronizado en vivo desde Google Sheets", "ok");
               break;
             }
           }
@@ -3102,15 +3115,18 @@ async function loadDatabase() {
       }
 
       if (!sheetsSynced && !dataLoaded) {
-        toast("❌ Error al conectar con Google Sheets.", "warn");
+        toast("⚠️ Error al conectar con Google Sheets.", "warn");
       }
-    }
+    };
+    
+    // Start background sync without awaiting
+    syncSheetsAsync();
 
     if (!dataLoaded && prods.length === 0) {
       toast("❌ No se pudo cargar ningún producto.", "warn");
     }
 
-    // Hardcoded minimum rules
+    // Hardcoded minimum rules for initial load
     prods.forEach(p => {
       const nm = (p.name || '').toUpperCase();
       if (nm.includes("GUAYMALLEN SIMPLE")) {
@@ -3235,7 +3251,7 @@ function processCSVRows(rows) {
       category: cat,
       price: price,
       image: image,
-      qty: 0,
+      qty: (existing && existing.qty) || 0,
       outOfStock: false,
       unidad_min: uMin,
       brand: ""
