@@ -4237,7 +4237,7 @@
     "image": "imagenes/0547-pila-eveready-blue-d2-grande.jpg",
     "qty": 0,
     "outOfStock": false,
-    "unidad_min": 1
+    "unidad_min": 2
   },
   {
     "code": "3127",
@@ -4247,7 +4247,7 @@
     "image": "imagenes/3127.jpg",
     "qty": 0,
     "outOfStock": true,
-    "unidad_min": 1
+    "unidad_min": 10
   },
   {
     "code": "3129",
