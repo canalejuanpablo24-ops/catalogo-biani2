@@ -3110,6 +3110,16 @@ async function loadDatabase() {
       toast("❌ No se pudo cargar ningún producto.", "warn");
     }
 
+    // Hardcoded minimum rules
+    prods.forEach(p => {
+      const nm = (p.name || '').toUpperCase();
+      if (nm.includes("GUAYMALLEN SIMPLE")) {
+        p.unidad_min = 20;
+      } else if (nm.includes("GUAYMALLEN RUBI")) {
+        p.unidad_min = 12;
+      }
+    });
+
     loadAdminState();
     prepareAllSearchCache();
     buildNav();
