@@ -13430,111 +13430,11 @@
     "unidad_min": 1
   },
   {
-    "code": "1327",
-    "name": "GIN LA PAMPA X 200 CC CITRUS",
-    "category": "Nuevos y Sin Imagen",
-    "price": 10617.75,
-    "image": "imagenes/1327-cp-paula-cahen-danvers-alegria-perfume-x-100-cc.jpg",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "1328",
-    "name": "GIN LA PAMPA X 200 CC FLOWERS AZUL",
-    "category": "Nuevos y Sin Imagen",
-    "price": 10617.75,
-    "image": "imagenes/0727-la-colina-extracto-de-tomates-x-200-grs.jpg",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "1330",
-    "name": "GIN LA PAMPA X 28 CC MINIATURA CITRUS",
-    "category": "Nuevos y Sin Imagen",
-    "price": 3267,
-    "image": "",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "1329",
-    "name": "GIN LA PAMPA X 28 CC MINIATURA FLOWERS AZUL",
-    "category": "Nuevos y Sin Imagen",
-    "price": 3267,
-    "image": "",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "1325",
-    "name": "GIN LA PAMPA X 375 CC CITRUS",
-    "category": "Nuevos y Sin Imagen",
-    "price": 19602,
-    "image": "",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "1326",
-    "name": "GIN LA PAMPA X 375 CC FLOWERS AZUL",
-    "category": "Nuevos y Sin Imagen",
-    "price": 19602,
-    "image": "",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "1323",
-    "name": "GIN LA PAMPA X 750 CC CITRUS",
-    "category": "Nuevos y Sin Imagen",
-    "price": 28042.29,
-    "image": "",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "1324",
-    "name": "GIN LA PAMPA X 750 CC FLOWERS AZUL",
-    "category": "Nuevos y Sin Imagen",
-    "price": 28042.29,
-    "image": "imagenes/0899-alp-det-limzul-x-750-cc-colageno-20.jpg",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
     "code": "1624",
     "name": "GIRASOL SEMIYITAS 20 X 60 GRS",
     "category": "Pipas",
     "price": 9793.5,
     "image": "imagenes/up_1624_1787454638567.webp",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "4114",
-    "name": "MAURI GALL. MARIA ELENA X 15 GRS",
-    "category": "Galletitas",
-    "price": 117.98,
-    "image": "imagenes/1639-mauri-gall-maria-elena-x-15-grs.jpg",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "5605",
-    "name": "MAURI GALL. MAURITA X 14 GRS",
-    "category": "Galletitas",
-    "price": 117.98,
-    "image": "imagenes/1640-mauri-gall-maurita-x-14-grs.jpg",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
@@ -21302,7 +21202,7 @@
   {
     "code": "2602",
     "name": "BUDIN FANTOCHE X 200 GRS SIN FRUTA (18)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Varios",
     "price": 2121.54,
     "image": "",
     "qty": 0,
@@ -21312,7 +21212,7 @@
   {
     "code": "2603",
     "name": "BUDIN FANTOCHE X 200 GRS CON FRUTA (18)",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Varios",
     "price": 2121.54,
     "image": "",
     "qty": 0,
@@ -22050,6 +21950,16 @@
     "unidad_min": 1
   },
   {
+    "code": "7022",
+    "name": "SUIZA LUSTRAMUEBLES NARANJA PIMIENTA X 360 CC (12)",
+    "category": "Nuevos y Sin Imagen",
+    "price": 3454.05,
+    "image": "imagenes/up_7022_1787433351641.webp",
+    "qty": 0,
+    "outOfStock": false,
+    "unidad_min": 1
+  },
+  {
     "code": "7023",
     "name": "SUIZA LUSTRAMUEBLES CREMA CLASICO X 200 CC (12)",
     "category": "Nuevos y Sin Imagen",
@@ -22435,16 +22345,6 @@
     "category": "Varios",
     "price": 3454.05,
     "image": "imagenes/up_7021_1787247367965.webp",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "7022_1",
-    "name": "SUIZA LUSTRAMUEBLES NARANJA PIMIENTA X 360 CC (12)",
-    "category": "Nuevos y Sin Imagen",
-    "price": 3454.05,
-    "image": "imagenes/up_7022_1787433351641.webp",
     "qty": 0,
     "outOfStock": false,
     "unidad_min": 1
