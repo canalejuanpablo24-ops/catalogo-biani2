@@ -1820,6 +1820,10 @@ body.cart-has-items #cart-form {
         </select>
       </div>
       <div class="adm-field">
+        <label>Mín. Venta (unidades)</label>
+        <input type="number" id="ae-umin" placeholder="Ej: 1" min="1" step="1">
+      </div>
+      <div class="adm-field">
         <label>Imagen del Producto</label>
         <div style="display: flex; gap: 12px; align-items: center;">
           <div id="adm-img-prev-wrap">
@@ -4200,6 +4204,7 @@ function loadAdminState() {
         if (edits[c].name) p.name = edits[c].name;
         if (edits[c].price !== undefined) p.price = edits[c].price;
         if (edits[c].category) p.category = normalizeCategory(edits[c].category, p.name, p.image);
+        if (edits[c].unidad_min !== undefined) p.unidad_min = edits[c].unidad_min;
         if (edits[c].image !== undefined) {
           const hasMapping = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, String(c));
           if (!hasMapping) {
@@ -4406,6 +4411,7 @@ function openEditModal(code) {
   document.getElementById('ae-code').disabled = true;
   document.getElementById('ae-price').value = p.price.toFixed(2).replace('.', ',');
   document.getElementById('ae-category').value = p.category;
+  document.getElementById('ae-umin').value = p.unidad_min || 1;
   
   showImgPreview(p.image);
   document.getElementById('adm-modal').classList.add('on');
@@ -4420,6 +4426,7 @@ function openAddModal() {
   document.getElementById('ae-code').value = '';
   document.getElementById('ae-code').disabled = false;
   document.getElementById('ae-price').value = '';
+  document.getElementById('ae-umin').value = 1;
   
   if (Object.keys(CI).length > 0) {
     document.getElementById('ae-category').value = Object.keys(CI).sort()[0];
@@ -4449,6 +4456,8 @@ function saveEditModal() {
   const code = document.getElementById('ae-code').value.trim();
   const priceStr = document.getElementById('ae-price').value.trim().replace(',', '.');
   const category = document.getElementById('ae-category').value;
+  const uMinVal = parseInt(document.getElementById('ae-umin').value, 10);
+  const uMin = (isNaN(uMinVal) || uMinVal < 1) ? 1 : uMinVal;
   
   if (!name || !code) {
     alert('Completá nombre y código.');
@@ -4466,10 +4475,11 @@ function saveEditModal() {
       p.name = name;
       p.price = priceVal;
       p.category = category;
+      p.unidad_min = uMin;
       if (pendingImg) p.image = pendingImg;
       
       const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
-      edits[code] = { name: name, price: priceVal, category: category, image: p.image };
+      edits[code] = { name: name, price: priceVal, category: category, image: p.image, unidad_min: uMin };
       localStorage.setItem(LS_K.edits, JSON.stringify(edits));
       
       const oldScrollY = window.scrollY;
@@ -4487,7 +4497,7 @@ function saveEditModal() {
       return;
     }
     
-    const newP = { code: code, name: name, price: priceVal, category: category, image: pendingImg || '', qty: 0 };
+    const newP = { code: code, name: name, price: priceVal, category: category, image: pendingImg || '', qty: 0, unidad_min: uMin };
     prods.unshift(newP);
     
     const added = JSON.parse(localStorage.getItem(LS_K.add) || '[]');
