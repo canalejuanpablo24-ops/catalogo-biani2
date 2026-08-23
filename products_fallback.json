@@ -13440,26 +13440,6 @@
     "unidad_min": 1
   },
   {
-    "code": "4114",
-    "name": "MAURI GALL. MARIA ELENA X 15 GRS",
-    "category": "Galletitas",
-    "price": 117.98,
-    "image": "imagenes/1639-mauri-gall-maria-elena-x-15-grs.jpg",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "5605",
-    "name": "MAURI GALL. MAURITA X 14 GRS",
-    "category": "Galletitas",
-    "price": 117.98,
-    "image": "imagenes/1640-mauri-gall-maurita-x-14-grs.jpg",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
     "code": "586",
     "name": "MAURI SIN SAL X 3 KG",
     "category": "Galletitas",
