@@ -737,7 +737,7 @@
     "image": "imagenes/0097-mdz-alfa-simple-tita-x-36-grs.jpg",
     "qty": 0,
     "outOfStock": false,
-    "unidad_min": 1
+    "unidad_min": 6
   },
   {
     "code": "2738",
@@ -747,7 +747,7 @@
     "image": "imagenes/2738-mdz-alfa-terrabusi-blanco-x-70-g-36.jpg",
     "qty": 0,
     "outOfStock": false,
-    "unidad_min": 1
+    "unidad_min": 6
   },
   {
     "code": "2579",
