@@ -15587,7 +15587,7 @@
     "image": "imagenes/1944-nvr-alfa-genio-triple-x-60-grs-blanco.jpg",
     "qty": 0,
     "outOfStock": false,
-    "unidad_min": 1
+    "unidad_min": 12
   },
   {
     "code": "6373",
@@ -15597,7 +15597,7 @@
     "image": "imagenes/1945-nvr-alfa-genio-triple-x-60-grs-choco.jpg",
     "qty": 0,
     "outOfStock": true,
-    "unidad_min": 1
+    "unidad_min": 12
   },
   {
     "code": "995078",
