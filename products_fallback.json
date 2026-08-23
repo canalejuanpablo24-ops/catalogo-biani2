@@ -567,7 +567,7 @@
     "image": "imagenes/0061-alfa-fantoche-triple-x-85-grs-blanco.jpg",
     "qty": 0,
     "outOfStock": false,
-    "unidad_min": 1
+    "unidad_min": 12
   },
   {
     "code": "564",
@@ -577,7 +577,7 @@
     "image": "imagenes/0062-alfa-fantoche-triple-x-85-grs-choco.jpg",
     "qty": 0,
     "outOfStock": false,
-    "unidad_min": 1
+    "unidad_min": 12
   },
   {
     "code": "32",
