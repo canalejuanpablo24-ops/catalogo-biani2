@@ -20970,36 +20970,6 @@
     "unidad_min": 1
   },
   {
-    "code": "5217_3",
-    "name": "CAPSA BRK SUPER PALA CON PALO 90 CM (12) 527",
-    "category": "Limpieza",
-    "price": 5314.12,
-    "image": "imagenes/5217-capsa-brk-super-pala-con-palo-90-cm.png",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "5202_3",
-    "name": "CAPSA BRK SUPER PAÑO PARA PISO AZUL 60 X 90 (24) 923",
-    "category": "Limpieza",
-    "price": 1564.61,
-    "image": "imagenes/5202-capsa-brk-super-pano-para-piso-azul.jpeg",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
-    "code": "3102_3",
-    "name": "LIBERA TOSTADA DE ARROZ CLASICA X 140 G (12) SIN TACC",
-    "category": "Nuevos y Sin Imagen",
-    "price": 1121.23,
-    "image": "",
-    "qty": 0,
-    "outOfStock": false,
-    "unidad_min": 1
-  },
-  {
     "code": "3103_3",
     "name": "LIBERA TOSTADA DE ARROZ SIN SAL X 140 G (12) SIN TACC",
     "category": "Nuevos y Sin Imagen",
