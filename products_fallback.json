@@ -21412,12 +21412,12 @@
   {
     "code": "6369",
     "name": "NVR ALFAJOR NEVARES SIMPLE X 40 GRS CHOCOLATE",
-    "category": "Nuevos y Sin Imagen",
+    "category": "Alfajores",
     "price": 279.99,
-    "image": "",
+    "image": "imagenes/up_6369_1787540680357.webp",
     "qty": 0,
     "outOfStock": false,
-    "unidad_min": 1
+    "unidad_min": 40
   },
   {
     "code": "6370",
