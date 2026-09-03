@@ -1,5 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: /
 
-# Prevent search engines from indexing any part of this catalog
-Noindex: /
+# GitHub Pages is public. This asks compliant search engines not to index the catalog.
