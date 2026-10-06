@@ -1820,7 +1820,7 @@ body.cart-has-items #cart-form {
         <button class="adm-btn2 primary" id="adm-add-btn">➕ Agregar Producto</button>
         <button class="adm-btn2 neutral" id="adm-save-btn">💾 Guardar Orden</button>
         <button class="adm-btn2 neutral" id="adm-export-btn" style="background:#4f46e5;color:#fff;">📤 Exportar Cambios</button>
-        <button class="adm-btn2 neutral" id="adm-deploy-btn" style="background:#10b981;color:#fff;">🚀 Deployar a Producción</button>
+        <button class="adm-btn2 neutral" id="adm-deploy-btn" style="background:#10b981;color:#fff;">🚀 Publicar en codex-desarrollo</button>
         <button class="adm-btn2 danger" id="adm-reset-btn">🗑️ Restablecer Todo</button>
       </div>
     </div>
@@ -4185,8 +4185,7 @@ function appCh() {
       }
     }
   });
-  buildNav(); applyF(); closeMod(); toast('✅ ' + pending.length + ' precios actualizados. Subiendo a producción...', 'ok'); pending = []; pdfProds = [];
-  deployToGitHub();
+  buildNav(); applyF(); closeMod(); toast('✅ ' + pending.length + ' precios actualizados localmente. Publicá manualmente cuando estén revisados.', 'ok'); pending = []; pdfProds = [];
 }
 function setP(v) { document.getElementById('pb').style.width = v + '%' }
 function setPt(t) { document.getElementById('pt').innerHTML = t }
@@ -4393,8 +4392,7 @@ function initSortable() {
       prods = reordered.concat(rest);
       
       saveOrder();
-      toast('✅ Orden guardado. Subiendo a producción...', 'ok');
-      deployToGitHub();
+      toast('✅ Orden guardado localmente', 'ok');
     }
   });
 }
@@ -4434,8 +4432,7 @@ function admDelete(code) {
     window.scrollTo(0, oldScrollY);
   }
   
-  toast('🗑️ Producto eliminado. Subiendo a producción...', 'ok');
-  deployToGitHub();
+  toast('🗑️ Producto eliminado localmente', 'ok');
 }
 
 function openEditModal(code) {
@@ -4554,7 +4551,6 @@ function saveEditModal() {
   }
   
   if (ADMIN_ON) initSortable();
-  deployToGitHub();
 }
 
 function admReset() {
@@ -4679,29 +4675,46 @@ async function exportAdminConfig() {
   }
 }
 
+const ADMIN_GITHUB_BRANCH = 'codex-desarrollo';
 let isDeploying = false;
-let queuedDeploy = false;
+
+// Elimina credenciales guardadas por versiones anteriores. Los tokens nunca se persisten.
+try {
+  localStorage.removeItem('biani_gh_token');
+} catch (e) {
+  console.warn('No se pudo limpiar el token legado de GitHub.', e);
+}
 
 async function deployToGitHub() {
   if (isDeploying) {
-    queuedDeploy = true;
+    toast('Ya hay una publicación en curso', 'warn');
     return;
   }
-  isDeploying = true;
   
   const repo = 'canalejuanpablo24-ops/catalogo-biani2';
-  const branch = 'main';
-  
-  let token = localStorage.getItem('biani_gh_token');
-  if (!token) {
-    token = prompt('Ingresa tu GitHub Personal Access Token (PAT):\n\n(Este token se guardará de forma segura en tu navegador local)');
-    if (!token) {
-      isDeploying = false;
-      return;
-    }
-    localStorage.setItem('biani_gh_token', token);
+  const branch = ADMIN_GITHUB_BRANCH;
+
+  if (branch !== 'codex-desarrollo') {
+    toast('Publicación bloqueada: rama no autorizada', 'warn');
+    return;
   }
+
+  const confirmed = confirm(
+    `Se escribirán cambios únicamente en la rama "${branch}" del repositorio ${repo}.\n\n` +
+    'Esta acción puede crear varios commits y no publica en producción. ¿Querés continuar?'
+  );
+  if (!confirmed) return;
   
+  let token = prompt(
+    `Ingresá tu GitHub Personal Access Token (PAT) para escribir en "${branch}":\n\n` +
+    'El token se usará solo durante esta operación y no se guardará en el navegador.'
+  );
+  if (!token) return;
+  token = token.trim();
+  if (!token) return;
+
+  isDeploying = true;
+
   const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
   const add = JSON.parse(localStorage.getItem(LS_K.add) || '[]');
   const del = JSON.parse(localStorage.getItem(LS_K.del) || '[]');
@@ -4744,6 +4757,7 @@ async function deployToGitHub() {
     }
     
     async function putGHFile(path, contentObj, sha, message) {
+      if (branch !== 'codex-desarrollo') throw new Error('Rama de escritura no autorizada');
       const contentStr = JSON.stringify(contentObj, null, 2);
       const base64Content = btoa(unescape(encodeURIComponent(contentStr)));
       const body = {
@@ -4769,6 +4783,7 @@ async function deployToGitHub() {
     }
     
     async function putGHFileBase64(path, pureBase64, sha, message) {
+      if (branch !== 'codex-desarrollo') throw new Error('Rama de escritura no autorizada');
       const body = {
         message: message,
         content: pureBase64,
@@ -4882,23 +4897,19 @@ async function deployToGitHub() {
     localStorage.removeItem(LS_K.del);
     updateAdmStat();
     
-    toast('✅ Deploy exitoso. Los cambios estarán online en unos segundos.', 'ok');
+    toast('✅ Cambios publicados en codex-desarrollo', 'ok');
   } catch (e) {
     console.error(e);
     if (e.message.includes('Bad credentials')) {
-      toast('❌ Token inválido. Se ha borrado el token.', 'warn');
-      localStorage.removeItem('biani_gh_token');
+      toast('❌ Token inválido. No fue guardado.', 'warn');
     } else {
-      toast('❌ Error en el Deploy: ' + e.message, 'warn');
+      toast('❌ Error al publicar en codex-desarrollo: ' + e.message, 'warn');
     }
   } finally {
+    token = '';
     btn.innerHTML = prevText;
     btn.disabled = false;
     isDeploying = false;
-    if (queuedDeploy) {
-      queuedDeploy = false;
-      deployToGitHub();
-    }
   }
 }
 
