@@ -6,6 +6,24 @@ import { SheetsService } from '../services/sheets.service.js';
 import { CartService } from '../services/cart.service.js';
 import { formatCurrency, parseProductInfo, formatDateTime } from '../utils/formatters.js';
 
+const PRODUCT_PLACEHOLDER = 'icon-192.png';
+
+function createTextElement(tagName, className, value) {
+  const element = document.createElement(tagName);
+  if (className) element.className = className;
+  element.textContent = value == null ? '' : String(value);
+  return element;
+}
+
+function safeImageSource(value) {
+  const src = value == null ? '' : String(value).trim();
+  if (!src || /[\u0000-\u001F\u007F]/.test(src) || src.includes('\\')) return '';
+  if (/^data:image\/(?:png|jpe?g|gif|webp|avif);base64,[a-z0-9+/=\s]+$/i.test(src)) return src;
+  if (/^https?:\/\//i.test(src) || /^\/\//.test(src)) return src;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(src)) return '';
+  return src;
+}
+
 class CatalogApp {
   constructor() {
     this.config = TENANT_CONFIG;
@@ -101,17 +119,17 @@ class CatalogApp {
 
     if (isFallback) {
       banner.className = 'sync-banner fallback';
-      banner.innerHTML = `⚠️ Catálogo local de respaldo (${formatDateTime(lastUpdated)}). ${error || ''}`;
+      banner.textContent = `⚠️ Catálogo local de respaldo (${formatDateTime(lastUpdated)}). ${error || ''}`;
     } else {
       banner.className = 'sync-banner';
-      banner.innerHTML = `✅ Sincronizado en tiempo real con Google Sheets (${formatDateTime(lastUpdated)})`;
+      banner.textContent = `✅ Sincronizado en tiempo real con Google Sheets (${formatDateTime(lastUpdated)})`;
     }
   }
 
   buildNavigation() {
     const nav1 = document.getElementById('nav1');
     if (!nav1) return;
-    nav1.innerHTML = '';
+    nav1.replaceChildren();
 
     const counts = this.getCategoryCounts();
     const totalCount = this.products.length;
@@ -119,7 +137,7 @@ class CatalogApp {
     // "Todos" Tab
     const allTab = document.createElement('div');
     allTab.className = `g1tab ${this.currentGroup === '' ? 'active' : ''}`;
-    allTab.innerHTML = `🏪 Todos <small>${totalCount}</small>`;
+    allTab.append(document.createTextNode('🏪 Todos '), createTextElement('small', '', totalCount));
     allTab.onclick = () => this.selectGroup('', allTab);
     nav1.appendChild(allTab);
 
@@ -128,7 +146,7 @@ class CatalogApp {
       const groupTotal = groupCats.reduce((sum, cat) => sum + (counts[cat] || 0), 0);
       const tab = document.createElement('div');
       tab.className = `g1tab ${this.currentGroup === groupName ? 'active' : ''}`;
-      tab.innerHTML = `${groupName} <small>${groupTotal}</small>`;
+      tab.append(document.createTextNode(groupName + ' '), createTextElement('small', '', groupTotal));
       tab.onclick = () => this.selectGroup(groupName, tab);
       nav1.appendChild(tab);
     }
@@ -139,7 +157,7 @@ class CatalogApp {
   renderSubcategories(counts) {
     const nav2 = document.getElementById('nav2');
     if (!nav2) return;
-    nav2.innerHTML = '';
+    nav2.replaceChildren();
 
     let cats = [];
     if (!this.currentGroup) {
@@ -152,7 +170,7 @@ class CatalogApp {
 
     const allSubTab = document.createElement('div');
     allSubTab.className = `g2tab ${this.currentCategory === '' ? 'active' : ''}`;
-    allSubTab.innerHTML = `Todo <span class="cnt">${totalSubCount}</span>`;
+    allSubTab.append(document.createTextNode('Todo '), createTextElement('span', 'cnt', totalSubCount));
     allSubTab.onclick = () => this.selectCategory('', allSubTab);
     nav2.appendChild(allSubTab);
 
@@ -161,7 +179,11 @@ class CatalogApp {
       const icon = this.config.categoryIcons[cat] || '';
       const tab = document.createElement('div');
       tab.className = `g2tab ${this.currentCategory === cat ? 'active' : ''}`;
-      tab.innerHTML = `<span class="ico">${icon}</span>${cat}<span class="cnt">${count}</span>`;
+      tab.append(
+        createTextElement('span', 'ico', icon),
+        document.createTextNode(cat),
+        createTextElement('span', 'cnt', count)
+      );
       tab.onclick = () => this.selectCategory(cat, tab);
       nav2.appendChild(tab);
     });
@@ -238,15 +260,17 @@ class CatalogApp {
     if (!grid) return;
 
     if (countEl) countEl.textContent = this.filteredProducts.length.toLocaleString('es-AR');
-    grid.innerHTML = '';
+    grid.replaceChildren();
 
     if (this.filteredProducts.length === 0) {
-      grid.innerHTML = `
-        <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--g3);">
-          <div style="font-size: 40px; margin-bottom: 12px;">🔍</div>
-          <p style="font-size: 16px; font-weight: 600;">No se encontraron productos en esta categoría o búsqueda.</p>
-        </div>
-      `;
+      const empty = document.createElement('div');
+      empty.style.cssText = 'grid-column:1/-1;text-align:center;padding:40px;color:var(--g3)';
+      const icon = createTextElement('div', '', '🔍');
+      icon.style.cssText = 'font-size:40px;margin-bottom:12px';
+      const message = createTextElement('p', '', 'No se encontraron productos en esta categoría o búsqueda.');
+      message.style.cssText = 'font-size:16px;font-weight:600';
+      empty.append(icon, message);
+      grid.appendChild(empty);
       return;
     }
 
@@ -263,42 +287,52 @@ class CatalogApp {
 
     const info = parseProductInfo(p);
     const inCartItem = this.cartService.getItems().find(i => i.code === p.code);
-    const isNoImg = !p.image || p.image.trim() === '';
+    const imageSource = safeImageSource(p.image);
+    const isNoImg = !imageSource;
 
-    let badgeHtml = '';
-    if (isNoImg) {
-      badgeHtml += `<span class="badge badge-no-img">🆕 Sin foto</span>`;
-    }
-    if (p.outOfStock) {
-      badgeHtml += `<span class="badge badge-out">Sin Stock</span>`;
-    }
+    const imageWrap = document.createElement('div');
+    imageWrap.className = 'card-img-wrap';
+    const badges = document.createElement('div');
+    badges.className = 'badge-container';
+    if (isNoImg) badges.appendChild(createTextElement('span', 'badge badge-no-img', '🆕 Sin foto'));
+    if (p.outOfStock) badges.appendChild(createTextElement('span', 'badge badge-out', 'Sin Stock'));
 
-    const placeholderSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>`;
-    const imgSrc = !isNoImg ? p.image : placeholderSvg;
+    const image = document.createElement('img');
+    image.src = imageSource || PRODUCT_PLACEHOLDER;
+    image.alt = String(p.name || '');
+    image.loading = 'lazy';
+    image.onerror = () => {
+      image.onerror = null;
+      image.src = PRODUCT_PLACEHOLDER;
+    };
+    imageWrap.append(badges, image);
 
-    card.innerHTML = `
-      <div class="card-img-wrap">
-        <div class="badge-container">${badgeHtml}</div>
-        <img src="${imgSrc}" alt="${p.name}" loading="lazy" onerror="this.src='${placeholderSvg}'" />
-      </div>
-      <div class="card-body">
-        <div>
-          <div class="card-code">COD: ${p.code} ${info.brand ? '· ' + info.brand : ''}</div>
-          <div class="card-title" title="${p.name}">${p.name}</div>
-        </div>
-        <div>
-          <div class="card-price-row">
-            <span class="card-price">${formatCurrency(p.price)}</span>
-            <span class="card-min">${p.unidad_min > 1 ? 'Mín. ' + p.unidad_min + ' u.' : ''}</span>
-          </div>
-          <button class="add-btn ${inCartItem ? 'in-cart' : ''}" data-code="${p.code}">
-            ${inCartItem ? `✓ En carrito (${inCartItem.qty})` : '🛒 Agregar al pedido'}
-          </button>
-        </div>
-      </div>
-    `;
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    const identity = document.createElement('div');
+    const code = `COD: ${p.code}${info.brand ? ' · ' + info.brand : ''}`;
+    const title = createTextElement('div', 'card-title', p.name);
+    title.title = String(p.name || '');
+    identity.append(createTextElement('div', 'card-code', code), title);
 
-    const btn = card.querySelector('.add-btn');
+    const purchase = document.createElement('div');
+    const priceRow = document.createElement('div');
+    priceRow.className = 'card-price-row';
+    priceRow.append(
+      createTextElement('span', 'card-price', formatCurrency(p.price)),
+      createTextElement('span', 'card-min', p.unidad_min > 1 ? 'Mín. ' + p.unidad_min + ' u.' : '')
+    );
+    const btn = createTextElement(
+      'button',
+      `add-btn ${inCartItem ? 'in-cart' : ''}`,
+      inCartItem ? `✓ En carrito (${inCartItem.qty})` : '🛒 Agregar al pedido'
+    );
+    btn.type = 'button';
+    btn.dataset.code = String(p.code || '');
+    purchase.append(priceRow, btn);
+    body.append(identity, purchase);
+    card.append(imageWrap, body);
+
     btn.onclick = () => {
       this.cartService.addItem(p, 1);
       this.updateCartBadge();
@@ -393,10 +427,12 @@ class CatalogApp {
     if (!listEl || !totalEl) return;
 
     const items = this.cartService.getItems();
-    listEl.innerHTML = '';
+    listEl.replaceChildren();
 
     if (items.length === 0) {
-      listEl.innerHTML = `<div style="text-align:center;padding:30px;color:var(--g3)">🛒 El carrito está vacío.</div>`;
+      const empty = createTextElement('div', '', '🛒 El carrito está vacío.');
+      empty.style.cssText = 'text-align:center;padding:30px;color:var(--g3)';
+      listEl.appendChild(empty);
       totalEl.textContent = formatCurrency(0);
       return;
     }
@@ -404,26 +440,29 @@ class CatalogApp {
     items.forEach(item => {
       const row = document.createElement('div');
       row.className = 'cart-item';
-      row.innerHTML = `
-        <div class="cart-item-info">
-          <div class="cart-item-name">${item.name}</div>
-          <div class="cart-item-price">${formatCurrency(item.price)} c/u</div>
-        </div>
-        <div class="qty-controls">
-          <button class="qty-btn dec-btn">-</button>
-          <span class="qty-val">${item.qty}</span>
-          <button class="qty-btn inc-btn">+</button>
-        </div>
-      `;
+      const info = document.createElement('div');
+      info.className = 'cart-item-info';
+      info.append(
+        createTextElement('div', 'cart-item-name', item.name),
+        createTextElement('div', 'cart-item-price', `${formatCurrency(item.price)} c/u`)
+      );
+      const controls = document.createElement('div');
+      controls.className = 'qty-controls';
+      const decrement = createTextElement('button', 'qty-btn dec-btn', '-');
+      decrement.type = 'button';
+      const increment = createTextElement('button', 'qty-btn inc-btn', '+');
+      increment.type = 'button';
+      controls.append(decrement, createTextElement('span', 'qty-val', item.qty), increment);
+      row.append(info, controls);
 
-      row.querySelector('.dec-btn').onclick = () => {
+      decrement.onclick = () => {
         this.cartService.updateQuantity(item.code, item.qty - 1);
         this.updateCartBadge();
         this.renderCartModal();
         this.renderProductsGrid();
       };
 
-      row.querySelector('.inc-btn').onclick = () => {
+      increment.onclick = () => {
         this.cartService.updateQuantity(item.code, item.qty + 1);
         this.updateCartBadge();
         this.renderCartModal();
