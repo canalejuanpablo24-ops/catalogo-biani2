@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-IPDo77roDBuKNUrZ9xArxUd0WGi1NfgFxtWgtT4gEE8=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-TJwdmxZZJGMzd1coFf1SJsVdoRGm03R1vyiGwxdxUjA=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <script src="src/services/pdf-import.service.js"></script>
 <script src="src/services/admin-state.service.js"></script>
+<script src="src/services/sale-mode.service.js"></script>
 <script>
 // FORCE CACHE PURGE & SW NUKING ON FIRST LOAD
 try {
@@ -811,6 +812,32 @@ body {
   border-left: 3px solid #cbd5e1;
   border-radius: 4px;
   white-space: pre-wrap; /* Preserves newlines and spaces from Google Sheets */
+}
+.pm-mode-section {
+  display: none;
+  flex-direction: column;
+  margin-top: 4px;
+}
+.pm-mode-options {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.pm-mode-btn {
+  border: 1.5px solid #cbd5e1;
+  background: #fff;
+  color: #334155;
+  border-radius: 7px;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pm-mode-btn.active {
+  border-color: #1e40af;
+  background: #eff6ff;
+  color: #1e40af;
 }
 .pm-section-label {
   font-size: 10px;
@@ -1903,6 +1930,11 @@ body.cart-has-items #cart-form {
         <div id="pm-price" class="pm-price">$10.00</div>
         <div id="pm-min" class="pm-min">Mínimo de compra: 1 unidad</div>
         <div id="pm-desc" class="pm-desc"></div>
+
+        <div id="pm-mode-section" class="pm-mode-section">
+          <div class="pm-section-label">Modo de venta:</div>
+          <div id="pm-mode-options" class="pm-mode-options"></div>
+        </div>
         
         <div class="pm-qty-section">
           <div class="pm-section-label">Cantidad:</div>
@@ -2413,6 +2445,13 @@ function processCSVRows(rows) {
       qty: (existing && existing.qty) || 0,
       outOfStock: false,
       unidad_min: uMin,
+      sale_modes: existing && existing.sale_modes,
+      unit_price: existing && existing.unit_price,
+      unit_min: existing && existing.unit_min,
+      display_price: existing && existing.display_price,
+      display_min: existing && existing.display_min,
+      units_per_display: existing && existing.units_per_display,
+      sale_mode: existing && existing.sale_mode,
       brand: ""
     });
   }
@@ -2963,10 +3002,26 @@ function cleanN(n) {
   return String(n || '').replace(/SIN TACC/g, '').replace(/SIN TAC/g, '').replace(/\s+/g, ' ').trim();
 }
 
+function resolveSaleSelection(product, requestedMode = product.sale_mode) {
+  if (!window.SaleMode) throw new Error('El servicio Unidad/Display no está disponible.');
+  const selection = window.SaleMode.selectSaleMode(product, requestedMode, product.qty);
+  product.sale_mode = selection.mode;
+  product.qty = selection.qty;
+  return selection;
+}
+
+function saleMinimumLabel(option) {
+  if (!option) return '';
+  if (option.mode === window.SaleMode.DISPLAY) {
+    return `Mín. compra: ${option.minQty} ${option.minQty === 1 ? 'display' : 'displays'}`;
+  }
+  return `Mín. compra: ${option.minQty} ${option.minQty === 1 ? 'unidad' : 'unidades'}`;
+}
+
 function renderCardAction(container, p) {
   container.replaceChildren();
-  if (p.outOfStock) {
-    container.appendChild(createTextElement('div', 'oos-label', 'SIN STOCK'));
+  if (!window.SaleMode.canPurchase(p, p.sale_mode)) {
+    container.appendChild(createTextElement('div', 'oos-label', p.outOfStock ? 'SIN STOCK' : 'NO DISPONIBLE'));
     return;
   }
   const button = createTextElement('button', 'btn-ver', 'Ver →');
@@ -2981,10 +3036,12 @@ function renderCardAction(container, p) {
 // RENDERS CARD WITH IMAGES & FALLBACK PLACEHOLDERS
 function mkCard(p) {
   const isST = p.name.includes('SIN TACC') || p.name.includes('SIN TAC');
+  const sale = resolveSaleSelection(p);
   const hq = p.qty > 0;
   const isOOS = p.outOfStock === true;
-  const pi = Math.floor(p.price);
-  const pd = String(Math.round((p.price % 1) * 100)).padStart(2, '0');
+  const activePrice = sale.option?.price || 0;
+  const pi = Math.floor(activePrice);
+  const pd = String(Math.round((activePrice % 1) * 100)).padStart(2, '0');
   
   const parsed = parseProductInfo(p);
   
@@ -2999,7 +3056,7 @@ function mkCard(p) {
     openProdModal(p.code);
   };
   
-  const uMin = p.unidad_min || 1;
+  const saleMin = sale.option?.minQty || 1;
   const desc = window.codeToDesc ? (window.codeToDesc[p.code] || '') : '';
 
   if (ADMIN_ON) {
@@ -3050,7 +3107,7 @@ function mkCard(p) {
   d.appendChild(createTextElement('div', 'card-title', parsed.name));
   d.appendChild(createTextElement('div', 'card-subtitle', '#' + p.code));
   if (desc) d.appendChild(createTextElement('div', 'card-description', desc));
-  if (uMin > 1) d.appendChild(createTextElement('div', 'card-min-info', `Mín. compra: ${uMin} u.`));
+  if (saleMin > 1) d.appendChild(createTextElement('div', 'card-min-info', saleMinimumLabel(sale.option)));
 
   const footer = document.createElement('div');
   footer.className = 'card-footer';
@@ -3066,14 +3123,11 @@ function mkCard(p) {
 
 function chQ(code, d) {
   const p = prods.find(x => x.code === code); if (!p) return;
-  if (p.outOfStock && d > 0) return;
-  
-  const step = p.unidad_min || 1;
-  if (d > 0) {
-    p.qty += step;
-  } else {
-    p.qty = Math.max(0, p.qty - step);
-  }
+  if (!window.SaleMode.canPurchase(p, p.sale_mode) && d > 0) return;
+
+  const selection = window.SaleMode.changeSaleQuantity(p, p.sale_mode, p.qty, d);
+  p.sale_mode = selection.mode;
+  p.qty = selection.qty;
 
   // Update card action container dynamically if quantity status changes
   const act = document.getElementById('act-' + code);
@@ -3089,13 +3143,64 @@ function chQ(code, d) {
 }
 
 // PRODUCT DETAILS MODAL JS FUNCTIONS
+function updateProductModalSale(product) {
+  const selection = resolveSaleSelection(product);
+  const option = selection.option;
+  const activePrice = option?.price || 0;
+  const pi = Math.floor(activePrice);
+  const pd = String(Math.round((activePrice % 1) * 100)).padStart(2, '0');
+  const modalPrice = document.getElementById('pm-price');
+  modalPrice.textContent = '$' + pi.toLocaleString('es-AR');
+  modalPrice.appendChild(createTextElement('span', '', ',' + pd));
+
+  const minEl = document.getElementById('pm-min');
+  if (option && option.minQty > 1) {
+    minEl.textContent = saleMinimumLabel(option);
+    minEl.style.display = 'inline-block';
+  } else {
+    minEl.style.display = 'none';
+  }
+
+  document.getElementById('pm-qty-val').textContent = product.qty;
+  const addBtn = document.getElementById('pm-add-btn');
+  if (product.outOfStock || !option) {
+    addBtn.textContent = product.outOfStock ? 'SIN STOCK' : 'NO DISPONIBLE';
+    addBtn.disabled = true;
+    addBtn.style.background = '#94a3b8';
+  } else {
+    addBtn.disabled = false;
+    addBtn.style.background = '#0f172a';
+    addBtn.textContent = product.qty > 0 ? '✓ Actualizar pedido' : 'Añadir al pedido';
+  }
+}
+
+function renderProductSaleModes(product) {
+  const options = window.SaleMode.getSaleOptions(product);
+  const section = document.getElementById('pm-mode-section');
+  const container = document.getElementById('pm-mode-options');
+  container.replaceChildren();
+  section.style.display = options.length > 1 || options[0]?.mode === window.SaleMode.DISPLAY ? 'flex' : 'none';
+  options.forEach(option => {
+    const button = createTextElement('button', 'pm-mode-btn' + (option.mode === product.sale_mode ? ' active' : ''), option.label);
+    button.type = 'button';
+    button.addEventListener('click', () => {
+      resolveSaleSelection(product, option.mode);
+      renderProductSaleModes(product);
+      updateProductModalSale(product);
+      updCart();
+      const card = document.getElementById('card-' + product.code);
+      if (card) card.replaceWith(mkCard(product));
+    });
+    container.appendChild(button);
+  });
+}
+
 function openProdModal(code) {
   const p = prods.find(x => x.code === code);
   if (!p) return;
   
   const parsed = parseProductInfo(p);
-  const pi = Math.floor(p.price);
-  const pd = String(Math.round((p.price % 1) * 100)).padStart(2, '0');
+  resolveSaleSelection(p);
   
   const modal = document.getElementById('prodModal');
   const imgEl = document.getElementById('pm-img');
@@ -3112,19 +3217,6 @@ function openProdModal(code) {
   document.getElementById('pm-brand').textContent = parsed.brand;
   document.getElementById('pm-title').textContent = parsed.name;
   document.getElementById('pm-code').textContent = '#' + p.code;
-  const modalPrice = document.getElementById('pm-price');
-  modalPrice.textContent = '$' + pi.toLocaleString('es-AR');
-  modalPrice.appendChild(createTextElement('span', '', ',' + pd));
-  
-  const minEl = document.getElementById('pm-min');
-  const uMin = p.unidad_min || 1;
-  if (uMin > 1) {
-    minEl.textContent = `Mín. compra: ${uMin} u.`;
-    minEl.style.display = 'inline-block';
-  } else {
-    minEl.style.display = 'none';
-  }
-  
   const descEl = document.getElementById('pm-desc');
   if (descEl) {
     const desc = window.codeToDesc ? (window.codeToDesc[p.code] || '') : '';
@@ -3132,40 +3224,25 @@ function openProdModal(code) {
     descEl.style.display = desc ? 'block' : 'none';
   }
   
-  // Qty Section
-  const qtyVal = document.getElementById('pm-qty-val');
-  qtyVal.textContent = p.qty;
-  
+  renderProductSaleModes(p);
+  updateProductModalSale(p);
+
   // Bind qty buttons inside modal
   document.getElementById('pm-qty-minus').onclick = function() {
     chQ(p.code, -1);
-    qtyVal.textContent = p.qty;
+    updateProductModalSale(p);
   };
   document.getElementById('pm-qty-plus').onclick = function() {
     chQ(p.code, 1);
-    qtyVal.textContent = p.qty;
+    updateProductModalSale(p);
   };
   
   // Large Add/Update button
   const addBtn = document.getElementById('pm-add-btn');
-  if (p.outOfStock) {
-    addBtn.textContent = "SIN STOCK";
-    addBtn.disabled = true;
-    addBtn.style.background = "#94a3b8";
-  } else {
-    addBtn.disabled = false;
-    addBtn.style.background = "#0f172a";
-    if (p.qty > 0) {
-      addBtn.textContent = "✓ Actualizar pedido";
-    } else {
-      addBtn.textContent = "Añadir al pedido";
-    }
-  }
-  
   addBtn.onclick = function() {
-    if (p.qty === 0 && !p.outOfStock) {
+    if (p.qty === 0 && window.SaleMode.canPurchase(p, p.sale_mode)) {
       chQ(p.code, 1);
-      qtyVal.textContent = p.qty;
+      updateProductModalSale(p);
     }
     closeProdModal();
   };
@@ -3183,10 +3260,14 @@ function closeProdModalBg(e) {
 
 function getCart() { return prods.filter(p => p.qty > 0) }
 
+function getCartSelection(product) {
+  return window.SaleMode.createCartSelection(product, product.sale_mode, product.qty);
+}
+
 function updCart() {
-  const items = getCart();
-  const tot = items.reduce((s, p) => s + p.qty * p.price, 0);
-  document.getElementById('ccnt').textContent = items.reduce((s, p) => s + p.qty, 0);
+  const items = getCart().map(getCartSelection).filter(Boolean);
+  const tot = items.reduce((sum, item) => sum + item.total, 0);
+  document.getElementById('ccnt').textContent = items.reduce((sum, item) => sum + item.qty, 0);
   document.getElementById('cta').textContent = '$' + tot.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   document.body.classList.toggle('cart-has-items', items.length > 0);
 }
@@ -3208,19 +3289,25 @@ function rendCart() {
     return;
   }
   items.forEach(p => {
-    const sub = (p.qty * p.price).toLocaleString('es-AR', { minimumFractionDigits: 2 });
+    const selection = getCartSelection(p);
+    if (!selection) return;
+    const sub = selection.total.toLocaleString('es-AR', { minimumFractionDigits: 2 });
     const item = document.createElement('div');
     item.className = 'cit';
     const nameBlock = document.createElement('div');
     nameBlock.className = 'cn';
     nameBlock.append(
       createTextElement('div', 'cna', cleanN(p.name)),
-      createTextElement('div', 'cco', `#${p.code} · ${p.category}`)
+      createTextElement('div', 'cco', `#${p.code} · ${p.category} · ${selection.sale_mode_label}`)
     );
     const priceBlock = document.createElement('div');
     priceBlock.className = 'cr';
     priceBlock.append(
-      createTextElement('div', 'cq', `x${p.qty} · $${p.price.toLocaleString('es-AR', { minimumFractionDigits: 2 })}`),
+      createTextElement('div', 'cq', `${window.SaleMode.formatSaleQuantity(selection.qty, {
+        mode: selection.sale_mode,
+        minQty: selection.min_qty,
+        unitsPerDisplay: selection.units_per_display
+      })} · $${selection.price.toLocaleString('es-AR', { minimumFractionDigits: 2 })}`),
       createTextElement('div', 'cs', '$' + sub)
     );
     const removeButton = createTextElement('button', 'crm', '✕');
@@ -3271,7 +3358,8 @@ function sendWA() {
     return;
   }
   
-  const tot = items.reduce((s, p) => s + p.qty * p.price, 0);
+  const selections = items.map(getCartSelection).filter(Boolean);
+  const tot = selections.reduce((sum, selection) => sum + selection.total, 0);
   let msg = '🛒 *PEDIDO BIANI*\n━━━━━━━━━━━━━━━━\n';
   msg += `👤 *Cliente:* ${name}\n`;
   msg += `🆔 *DNI/CUIT:* ${dni}\n`;
@@ -3282,8 +3370,15 @@ function sendWA() {
   msg += '━━━━━━━━━━━━━━━━\n';
   
   items.forEach(p => {
-    const sub = (p.qty * p.price).toLocaleString('es-AR', { minimumFractionDigits: 2 });
-    msg += `▪ *${cleanN(p.name)}*\n  Cód. ${p.code} · Cant: ${p.qty} · $${sub}\n`;
+    const selection = getCartSelection(p);
+    if (!selection) return;
+    const sub = selection.total.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const quantity = window.SaleMode.formatSaleQuantity(selection.qty, {
+      mode: selection.sale_mode,
+      minQty: selection.min_qty,
+      unitsPerDisplay: selection.units_per_display
+    });
+    msg += `▪ *${cleanN(p.name)}*\n  Cód. ${p.code} · Modo: ${selection.sale_mode_label} · Cantidad: ${quantity} · Total: $${sub}\n`;
   });
   msg += `━━━━━━━━━━━━━━━━\n💰 *TOTAL: $${tot.toLocaleString('es-AR', { minimumFractionDigits: 2 })}*\n📅 ${new Date().toLocaleDateString('es-AR')}`;
   window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank');
