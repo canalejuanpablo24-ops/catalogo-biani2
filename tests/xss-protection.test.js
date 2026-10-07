@@ -99,6 +99,7 @@ test('CSP authorizes every inline script by its exact SHA-256 hash', () => {
     assert.ok(scriptDirective, 'CSP must define script-src');
     assert.doesNotMatch(scriptDirective, /'unsafe-inline'|'unsafe-eval'/);
     const scripts = [...source.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)]
+      .filter(match => !/\ssrc\s*=/i.test(match[0].slice(0, match[0].indexOf('>') + 1)))
       .map(match => match[1].replace(/\r\n?/g, '\n'));
     assert.ok(scripts.length > 0, 'test expects inline scripts to hash');
     for (const script of scripts) {

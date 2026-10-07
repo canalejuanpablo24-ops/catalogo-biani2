@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-EobjE0jLHLnGkgzgpg6Ih/iROY0m4t73wALC/oSgiCk=' 'sha256-xxM39p361cZbfC3Fnziz0RQksT5JHlV6OQeLkiptH38='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-wb6rfB60DZulJgZ/tB+CRLDbtN+FmXVjHt00RnedXVA=' 'sha256-xxM39p361cZbfC3Fnziz0RQksT5JHlV6OQeLkiptH38='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<script src="src/services/pdf-import.service.js"></script>
 <script>
 // FORCE CACHE PURGE & SW NUKING ON FIRST LOAD
 try {
@@ -2072,7 +2073,7 @@ const DEFAULT_SHEET_ID = "179n3Fa7WUbA1ZlgtAVVlIaxbQdaP5CV49NhPY0Ulrn0"; // ← 
 const WA = '5492954324063'; // ← Reemplazar por WhatsApp de BIANI
 
 let prods = [];
-let filt = [], curG = '', curC = '', q = '', st = false, pending = [], pdfProds = [];
+let filt = [], curG = '', curC = '', q = '', st = false, pending = [], pdfProds = [], pdfAnalysis = null;
 
 // ADMIN STATE VARIABLES
 let ADMIN_ON = false;
@@ -3293,7 +3294,7 @@ function openMod() {
   document.getElementById('pdfIn').value = '';
   document.getElementById('cl').replaceChildren();
   document.getElementById('appBtn').disabled = true;
-  pending = []; pdfProds = [];
+  pending = []; pdfProds = []; pdfAnalysis = null;
 }
 function closeMod() { document.getElementById('mo').classList.remove('open') }
 function closeBg(e) { if (e.target === e.currentTarget) closeMod() }
@@ -3322,11 +3323,19 @@ async function handlePDF(file) {
       setP(30 + (i / pdf.numPages) * 45);
     }
     setPt('Detectando cambios...'); setP(80);
-    pdfProds = parseTxt(txt);
-    pending = detectCh(pdfProds);
-    setP(100); showCh(pending, pdfProds.length);
-    document.getElementById('appBtn').disabled = pending.length === 0;
-  } catch (e) { setPt('❌ Error: ' + e.message); console.error(e) }
+    if (!window.PdfImport) throw new Error('El validador seguro de PDF no está disponible.');
+    const extraction = window.PdfImport.parsePdfText(txt);
+    pdfProds = extraction.records;
+    pdfAnalysis = window.PdfImport.analyzePdfImport(prods, extraction);
+    pending = pdfAnalysis.changes;
+    setP(100); showCh(pdfAnalysis, extraction);
+    document.getElementById('appBtn').disabled = !pdfAnalysis.canApply || pending.length === 0;
+  } catch (e) {
+    pending = []; pdfProds = []; pdfAnalysis = null;
+    document.getElementById('appBtn').disabled = true;
+    setPt('❌ Error: ' + e.message);
+    console.error(e);
+  }
 }
 
 const TRUSTED_SCRIPT_URLS = new Map([
@@ -3357,47 +3366,48 @@ function ldSc(src) {
   });
 }
 function parseTxt(text) {
-  const res = [];
-  text.split('\n').forEach(line => {
-    line = line.trim();
-    const m = line.match(/^(\d{2,7})\s+(.+?)\s+([\d.]+,\d{2})$/);
-    if (m) res.push({ code: m[1], name: m[2].trim(), price: parseFloat(m[3].replace('.', '').replace(',', '.')) });
-  });
-  return res;
+  return window.PdfImport.parsePdfText(text).records;
 }
 function detectCh(np) {
-  const cm = {}; prods.forEach(p => cm[p.code] = p);
-  const npc = {}; np.forEach(n => npc[n.code] = true);
-  
-  const ch = np.map(n => {
-    const c = cm[n.code];
-    if (!c) return { type: 'new', code: n.code, name: n.name, op: null, np: n.price };
-    if (Math.abs(c.price - n.price) > 0.01) return { type: c.price < n.price ? 'up' : 'dn', code: n.code, name: n.name, op: c.price, np: n.price };
-    return null;
-  }).filter(Boolean);
-
-  prods.forEach(p => {
-    const baseCode = String(p.code).split('_')[0];
-    if (!npc[p.code] && !npc[baseCode] && !p.outOfStock) {
-      ch.push({ type: 'oos', code: p.code, name: p.name, op: p.price, np: p.price });
-    }
-  });
-
-  return ch;
+  return window.PdfImport.analyzePdfImport(prods, {
+    records: np,
+    unrecognized: [],
+    duplicateCodes: []
+  }).changes;
 }
-function showCh(ch, tot) {
+function showCh(analysis, extraction) {
+  const ch = analysis.changes;
   const ups = ch.filter(c => c.type === 'up').length, dns = ch.filter(c => c.type === 'dn').length, nws = ch.filter(c => c.type === 'new').length;
   const oos = ch.filter(c => c.type === 'oos').length;
   const progressText = document.getElementById('pt');
   progressText.replaceChildren(
     document.createTextNode('✅ PDF analizado · '),
     createTextElement('b', '', `${ch.length} cambios`),
-    document.createTextNode(` de ${tot} productos (↑${ups} subieron · ↓${dns} bajaron · +${nws} nuevos · ❌${oos} sin stock)`)
+    document.createTextNode(` de ${analysis.recordsDetected} registros (↑${ups} subieron · ↓${dns} bajaron · +${nws} nuevos · ❌${oos} sin stock)`)
   );
   const l = document.getElementById('cl');
   l.replaceChildren();
+  const summary = createTextElement('div', 'chi', `Detectados: ${analysis.recordsDetected} · Coincidentes: ${analysis.matched} · Precios modificados: ${analysis.priceChanges} · Nuevos: ${analysis.newProducts} · Posibles sin stock: ${analysis.oosCandidates} · No reconocidos: ${analysis.unrecognized} · Cobertura: ${analysis.coverage.toFixed(1)}%`);
+  summary.style.cssText = 'display:block;line-height:1.5;font-weight:700';
+  l.appendChild(summary);
+  if (!analysis.allowOutOfStock && analysis.oosCandidates > 0) {
+    const warning = createTextElement('div', 'chi', `⚠️ Marcado sin stock BLOQUEADO: se requiere al menos ${analysis.coverageThreshold}% de cobertura y una extracción sin errores.`);
+    warning.style.cssText = 'display:block;line-height:1.5;color:#92400e;background:#fef3c7';
+    l.appendChild(warning);
+  }
+  analysis.errors.forEach(error => {
+    const errorRow = createTextElement('div', 'chi', `❌ ${error}`);
+    errorRow.style.cssText = 'display:block;line-height:1.5;color:#991b1b;background:#fee2e2';
+    l.appendChild(errorRow);
+  });
+  if (extraction.unrecognized.length) {
+    const samples = extraction.unrecognized.slice(0, 3).map(item => `línea ${item.line}`).join(', ');
+    const detail = createTextElement('div', 'chi', `Registros no reconocidos: ${samples}${extraction.unrecognized.length > 3 ? '…' : ''}`);
+    detail.style.cssText = 'display:block;color:#991b1b';
+    l.appendChild(detail);
+  }
   if (!ch.length) {
-    l.appendChild(createTextElement('div', 'chi', '✅ Sin cambios — precios actualizados.'));
+    l.appendChild(createTextElement('div', 'chi', analysis.canApply ? '✅ Sin cambios para aplicar.' : '⛔ La importación no puede aplicarse.'));
     return;
   }
   ch.slice(0, 60).forEach(change => {
@@ -3427,27 +3437,36 @@ function showCh(ch, tot) {
   }
 }
 function appCh() {
-  const cm = {}; prods.forEach((p, i) => cm[p.code] = i);
-  pending.forEach(c => {
-    if (c.type === 'new') {
+  if (!pdfAnalysis || !pdfAnalysis.canApply) {
+    toast('⛔ El PDF no superó la validación y no se aplicó ningún cambio.', 'warn');
+    return;
+  }
+  const stockNotice = pdfAnalysis.allowOutOfStock
+    ? `\nProductos que se marcarán sin stock: ${pdfAnalysis.oosCandidates}.`
+    : '\nNo se marcará ningún producto sin stock porque el PDF no demostró ser una lista completa.';
+  const confirmed = window.confirm(`Confirmá la importación PDF:\n${pdfAnalysis.recordsDetected} registros detectados.\n${pending.length} cambios a aplicar.${stockNotice}\n\nLa operación se aplicará completa o no se aplicará.`);
+  if (!confirmed) return;
+
+  const previousProducts = prods;
+  try {
+    const nextProducts = window.PdfImport.applyPdfChangesTransaction(prods, pdfAnalysis, c => {
       const cat = window.codeToCat[c.code] || 'Ferretería y Varios';
       let img = "";
       if (window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, c.code)) {
         img = window.codeToImg[c.code];
       }
-      prods.push({ code: c.code, name: c.name, price: c.np, category: cat, image: img, qty: 0, outOfStock: false });
-    } else if (c.type === 'oos') {
-      const i = cm[c.code];
-      if (i !== undefined) prods[i].outOfStock = true;
-    } else {
-      const i = cm[c.code];
-      if (i !== undefined) {
-        prods[i].price = c.np;
-        prods[i].outOfStock = false;
-      }
-    }
-  });
-  buildNav(); applyF(); closeMod(); toast('✅ ' + pending.length + ' precios actualizados localmente. Publicá manualmente cuando estén revisados.', 'ok'); pending = []; pdfProds = [];
+      return { code: c.code, name: c.name, price: c.np, category: cat, image: img, qty: 0, outOfStock: false };
+    });
+    prods = nextProducts;
+    buildNav(); applyF(); closeMod();
+    toast('✅ ' + pending.length + ' cambios PDF aplicados localmente. Publicá manualmente cuando estén revisados.', 'ok');
+    pending = []; pdfProds = []; pdfAnalysis = null;
+  } catch (error) {
+    prods = previousProducts;
+    buildNav(); applyF();
+    console.error(error);
+    toast('⛔ No se aplicó ningún cambio: ' + error.message, 'warn');
+  }
 }
 function setP(v) { document.getElementById('pb').style.width = v + '%' }
 function setPt(t) { document.getElementById('pt').textContent = t }
