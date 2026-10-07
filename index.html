@@ -1869,7 +1869,7 @@ body.cart-has-items #cart-form {
             <div class="adm-img-placeholder">📷</div>
           </div>
           <div>
-            <input type="file" id="adm-img-input" accept="image/*" style="display: none;">
+            <input type="file" id="adm-img-input" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" style="display: none;">
             <button type="button" class="adm-img-btn" id="adm-img-btn">Elegir Foto</button>
           </div>
         </div>
@@ -3365,14 +3365,18 @@ function buildNav() {
 function renderNav2(counts) {
   const n2 = document.getElementById('nav2');
   if (!n2) return;
-  n2.innerHTML = '';
+  n2.replaceChildren();
   const cats = Object.keys(CI);
   
   const totalProds = prods.length;
   const allBtn = document.createElement('div');
   allBtn.className = `g2tab ${curC === '' || curC === 'all' ? 'active' : ''}`;
   allBtn.dataset.c = '';
-  allBtn.innerHTML = `<span class="ico">🛒</span> <span style="flex:1">Todos los productos</span> <span class="cnt">${totalProds}</span>`;
+  const allIcon = createTextElement('span', 'ico', '🛒');
+  const allLabel = createTextElement('span', '', 'Todos los productos');
+  allLabel.style.flex = '1';
+  const allCount = createTextElement('span', 'cnt', totalProds);
+  allBtn.append(allIcon, allLabel, allCount);
   allBtn.onclick = function() { selC(this, '') };
   n2.appendChild(allBtn);
   
@@ -3381,7 +3385,11 @@ function renderNav2(counts) {
     el.className = `g2tab ${curC === cat ? 'active' : ''}`;
     el.dataset.c = cat;
     const cnt = counts[cat] || 0;
-    el.innerHTML = `<span class="ico">${CI[cat] || '📦'}</span> <span style="flex:1">${cat}</span> <span class="cnt">${cnt}</span>`;
+    const icon = createTextElement('span', 'ico', CI[cat] || '📦');
+    const label = createTextElement('span', '', cat);
+    label.style.flex = '1';
+    const count = createTextElement('span', 'cnt', cnt);
+    el.append(icon, label, count);
     el.onclick = function() { selC(this, cat) };
     n2.appendChild(el);
   });
@@ -3720,10 +3728,13 @@ let renderIdx = 0;
 
 function renderProds() {
   const g = document.getElementById('grid');
-  g.innerHTML = '';
+  g.replaceChildren();
   document.getElementById('pcnt').textContent = filt.length.toLocaleString('es-AR');
   if (!filt.length) {
-    g.innerHTML = '<div class="empty"><div class="ei">🔍</div><p>No se encontraron productos</p></div>';
+    const empty = document.createElement('div');
+    empty.className = 'empty';
+    empty.append(createTextElement('div', 'ei', '🔍'), createTextElement('p', '', 'No se encontraron productos'));
+    g.appendChild(empty);
     return;
   }
   
@@ -3806,15 +3817,49 @@ function parseProductInfo(p) {
   };
 }
 
-function cleanN(n) {
-  return n.replace(/SIN TACC/g, '').replace(/SIN TAC/g, '').replace(/\s+/g, ' ').trim();
+function createTextElement(tagName, className, value) {
+  const element = document.createElement(tagName);
+  if (className) element.className = className;
+  element.textContent = value == null ? '' : String(value);
+  return element;
 }
 
-function getCardActionHTML(p) {
-  if (p.outOfStock) {
-    return `<div class="oos-label">SIN STOCK</div>`;
+function safeImageSource(value) {
+  const src = value == null ? '' : String(value).trim();
+  if (!src || /[\u0000-\u001F\u007F]/.test(src) || src.includes('\\')) return '';
+  if (/^data:image\/(?:png|jpe?g|gif|webp|avif);base64,[a-z0-9+/=\s]+$/i.test(src)) return src;
+  if (/^https?:\/\//i.test(src) || /^\/\//.test(src)) return src;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(src)) return '';
+  return src;
+}
+
+function setSafeImageSource(image, value) {
+  const safeSource = safeImageSource(value);
+  if (!safeSource) {
+    image.removeAttribute('src');
+    return false;
   }
-  return `<button class="btn-ver" onclick="openProdModal('${p.code}'); event.stopPropagation()">Ver →</button>`;
+  image.src = safeSource;
+  return true;
+}
+
+function cleanN(n) {
+  return String(n || '').replace(/SIN TACC/g, '').replace(/SIN TAC/g, '').replace(/\s+/g, ' ').trim();
+}
+
+function renderCardAction(container, p) {
+  container.replaceChildren();
+  if (p.outOfStock) {
+    container.appendChild(createTextElement('div', 'oos-label', 'SIN STOCK'));
+    return;
+  }
+  const button = createTextElement('button', 'btn-ver', 'Ver →');
+  button.type = 'button';
+  button.addEventListener('click', event => {
+    event.stopPropagation();
+    openProdModal(p.code);
+  });
+  container.appendChild(button);
 }
 
 // RENDERS CARD WITH IMAGES & FALLBACK PLACEHOLDERS
@@ -3838,43 +3883,68 @@ function mkCard(p) {
     openProdModal(p.code);
   };
   
-  let imgHTML = '';
-  if (p.image) {
-    imgHTML = `<div class="card-img-container"><img src="${p.image}" class="card-img" alt="${parsed.name}" loading="lazy"></div>`;
-  } else {
-    imgHTML = `<div class="card-img-container"><div class="card-img-placeholder">${CI[p.category] || '📦'}</div></div>`;
-  }
-
-  let minHTML = '';
   const uMin = p.unidad_min || 1;
-  if (uMin > 1) {
-    minHTML = `<div class="card-min-info">Mín. compra: ${uMin} u.</div>`;
+  const desc = window.codeToDesc ? (window.codeToDesc[p.code] || '') : '';
+
+  if (ADMIN_ON) {
+    const adminBar = document.createElement('div');
+    adminBar.className = 'adm-card-bar';
+    adminBar.appendChild(createTextElement('span', 'dh', '☰'));
+    const adminButtons = document.createElement('div');
+    adminButtons.className = 'adm-card-btns';
+
+    const editButton = createTextElement('button', 'adm-cb edit', '✏️');
+    editButton.type = 'button';
+    editButton.title = 'Editar producto';
+    editButton.addEventListener('click', event => {
+      event.stopPropagation();
+      openEditModal(p.code);
+    });
+
+    const deleteButton = createTextElement('button', 'adm-cb del', '🗑️');
+    deleteButton.type = 'button';
+    deleteButton.title = 'Eliminar producto';
+    deleteButton.addEventListener('click', event => {
+      event.stopPropagation();
+      admDelete(p.code);
+    });
+
+    adminButtons.append(editButton, deleteButton);
+    adminBar.appendChild(adminButtons);
+    d.appendChild(adminBar);
   }
 
-  const actionHTML = getCardActionHTML(p);
-  const desc = window.codeToDesc ? (window.codeToDesc[p.code] || '') : '';
-  const descHTML = desc ? `<div class="card-description">${desc}</div>` : '';
+  if (isST) d.appendChild(createTextElement('span', 'stbdg', 'SIN TACC'));
+  if (isOOS) d.appendChild(createTextElement('span', 'oos-badge', 'SIN STOCK'));
 
-  d.innerHTML = `${ADMIN_ON ? `
-  <div class="adm-card-bar">
-    <span class="dh">☰</span>
-    <div class="adm-card-btns">
-      <button class="adm-cb edit" title="Editar producto" onclick="event.stopPropagation(); openEditModal('${p.code}')">✏️</button>
-      <button class="adm-cb del" title="Eliminar producto" onclick="event.stopPropagation(); admDelete('${p.code}')">🗑️</button>
-    </div>
-  </div>` : ''}
-  ${isST ? '<span class="stbdg">SIN TACC</span>' : ''}
-  ${isOOS ? '<span class="oos-badge">SIN STOCK</span>' : ''}
-  ${imgHTML}
-  <div class="card-brand">${parsed.brand}</div>
-  <div class="card-title">${parsed.name}</div>
-  <div class="card-subtitle">#${p.code}</div>
-  ${descHTML}
-  ${minHTML}
-  <div class="card-footer">
-    <div class="card-price">$${pi.toLocaleString('es-AR')}<span>,${pd}</span></div>
-    <div id="act-${p.code}">${actionHTML}</div>
-  </div>`;
+  const imageContainer = document.createElement('div');
+  imageContainer.className = 'card-img-container';
+  const image = document.createElement('img');
+  image.className = 'card-img';
+  image.alt = parsed.name;
+  image.loading = 'lazy';
+  if (setSafeImageSource(image, p.image)) {
+    imageContainer.appendChild(image);
+  } else {
+    imageContainer.appendChild(createTextElement('div', 'card-img-placeholder', CI[p.category] || '📦'));
+  }
+  d.appendChild(imageContainer);
+
+  d.appendChild(createTextElement('div', 'card-brand', parsed.brand));
+  d.appendChild(createTextElement('div', 'card-title', parsed.name));
+  d.appendChild(createTextElement('div', 'card-subtitle', '#' + p.code));
+  if (desc) d.appendChild(createTextElement('div', 'card-description', desc));
+  if (uMin > 1) d.appendChild(createTextElement('div', 'card-min-info', `Mín. compra: ${uMin} u.`));
+
+  const footer = document.createElement('div');
+  footer.className = 'card-footer';
+  const price = createTextElement('div', 'card-price', '$' + pi.toLocaleString('es-AR'));
+  price.appendChild(createTextElement('span', '', ',' + pd));
+  const action = document.createElement('div');
+  action.id = 'act-' + p.code;
+  renderCardAction(action, p);
+  footer.append(price, action);
+  d.appendChild(footer);
   return d;
 }
 
@@ -3892,7 +3962,7 @@ function chQ(code, d) {
   // Update card action container dynamically if quantity status changes
   const act = document.getElementById('act-' + code);
   if (act) {
-    act.innerHTML = getCardActionHTML(p);
+    renderCardAction(act, p);
   }
 
   const cd = document.getElementById('card-' + code);
@@ -3914,18 +3984,21 @@ function openProdModal(code) {
   const modal = document.getElementById('prodModal');
   const imgEl = document.getElementById('pm-img');
   
-  if (p.image) {
-    imgEl.src = p.image;
+  if (setSafeImageSource(imgEl, p.image)) {
+    imgEl.alt = parsed.name;
     imgEl.style.display = 'block';
   } else {
-    imgEl.src = "";
+    imgEl.removeAttribute('src');
+    imgEl.alt = '';
     imgEl.style.display = 'none';
   }
   
   document.getElementById('pm-brand').textContent = parsed.brand;
   document.getElementById('pm-title').textContent = parsed.name;
   document.getElementById('pm-code').textContent = '#' + p.code;
-  document.getElementById('pm-price').innerHTML = `$${pi.toLocaleString('es-AR')}<span>,${pd}</span>`;
+  const modalPrice = document.getElementById('pm-price');
+  modalPrice.textContent = '$' + pi.toLocaleString('es-AR');
+  modalPrice.appendChild(createTextElement('span', '', ',' + pd));
   
   const minEl = document.getElementById('pm-min');
   const uMin = p.unidad_min || 1;
@@ -4010,11 +4083,36 @@ function togCart() {
 
 function rendCart() {
   const items = getCart(), c = document.getElementById('ci');
-  if (!items.length) { c.innerHTML = '<div class="ce"><span class="ei">🛒</span><p>El pedido está vacío</p></div>'; return }
-  c.innerHTML = items.map(p => {
+  c.replaceChildren();
+  if (!items.length) {
+    const empty = document.createElement('div');
+    empty.className = 'ce';
+    empty.append(createTextElement('span', 'ei', '🛒'), createTextElement('p', '', 'El pedido está vacío'));
+    c.appendChild(empty);
+    return;
+  }
+  items.forEach(p => {
     const sub = (p.qty * p.price).toLocaleString('es-AR', { minimumFractionDigits: 2 });
-    return `<div class="cit"><div class="cn"><div class="cna">${cleanN(p.name)}</div><div class="cco">#${p.code} · ${p.category}</div></div><div class="cr"><div class="cq">x${p.qty} · $${p.price.toLocaleString('es-AR', { minimumFractionDigits: 2 })}</div><div class="cs">$${sub}</div></div><button class="crm" onclick="remIt('${p.code}')">✕</button></div>`;
-  }).join('');
+    const item = document.createElement('div');
+    item.className = 'cit';
+    const nameBlock = document.createElement('div');
+    nameBlock.className = 'cn';
+    nameBlock.append(
+      createTextElement('div', 'cna', cleanN(p.name)),
+      createTextElement('div', 'cco', `#${p.code} · ${p.category}`)
+    );
+    const priceBlock = document.createElement('div');
+    priceBlock.className = 'cr';
+    priceBlock.append(
+      createTextElement('div', 'cq', `x${p.qty} · $${p.price.toLocaleString('es-AR', { minimumFractionDigits: 2 })}`),
+      createTextElement('div', 'cs', '$' + sub)
+    );
+    const removeButton = createTextElement('button', 'crm', '✕');
+    removeButton.type = 'button';
+    removeButton.addEventListener('click', () => remIt(p.code));
+    item.append(nameBlock, priceBlock, removeButton);
+    c.appendChild(item);
+  });
 }
 
 function remIt(code) {
@@ -4079,7 +4177,7 @@ function openMod() {
   document.getElementById('mo').classList.add('open');
   document.getElementById('up').classList.remove('vis');
   document.getElementById('pdfIn').value = '';
-  document.getElementById('cl').innerHTML = '';
+  document.getElementById('cl').replaceChildren();
   document.getElementById('appBtn').disabled = true;
   pending = []; pdfProds = [];
 }
@@ -4117,7 +4215,23 @@ async function handlePDF(file) {
   } catch (e) { setPt('❌ Error: ' + e.message); console.error(e) }
 }
 
-function ldSc(src) { return new Promise((r, j) => { const s = document.createElement('script'); s.src = src; s.onload = r; s.onerror = j; document.head.appendChild(s) }) }
+const TRUSTED_SCRIPT_URLS = new Set([
+  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js'
+]);
+function ldSc(src) {
+  return new Promise((resolve, reject) => {
+    if (!TRUSTED_SCRIPT_URLS.has(src)) {
+      reject(new Error('URL de script no autorizada'));
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
 function parseTxt(text) {
   const res = [];
   text.split('\n').forEach(line => {
@@ -4150,19 +4264,43 @@ function detectCh(np) {
 function showCh(ch, tot) {
   const ups = ch.filter(c => c.type === 'up').length, dns = ch.filter(c => c.type === 'dn').length, nws = ch.filter(c => c.type === 'new').length;
   const oos = ch.filter(c => c.type === 'oos').length;
-  setPt(`✅ PDF analizado · <b>${ch.length} cambios</b> de ${tot} productos (↑${ups} subieron · ↓${dns} bajaron · +${nws} nuevos · ❌${oos} sin stock)`);
+  const progressText = document.getElementById('pt');
+  progressText.replaceChildren(
+    document.createTextNode('✅ PDF analizado · '),
+    createTextElement('b', '', `${ch.length} cambios`),
+    document.createTextNode(` de ${tot} productos (↑${ups} subieron · ↓${dns} bajaron · +${nws} nuevos · ❌${oos} sin stock)`)
+  );
   const l = document.getElementById('cl');
-  if (!ch.length) { l.innerHTML = '<div class="chi">✅ Sin cambios — precios actualizados.</div>'; return }
-  l.innerHTML = ch.slice(0, 60).map(c => {
-    let b = '';
-    if (c.type === 'up') b = '<span class="bdg up">↑ SUBIÓ</span>';
-    else if (c.type === 'dn') b = '<span class="bdg dn">↓ BAJÓ</span>';
-    else if (c.type === 'new') b = '<span class="bdg nw">+ NUEVO</span>';
-    else if (c.type === 'oos') b = '<span class="bdg" style="background:#dc2626">SIN STOCK</span>';
-    const op = c.op ? '$' + c.op.toLocaleString('es-AR', { minimumFractionDigits: 2 }) : '-';
-    const np = c.type === 'oos' ? '-' : '$' + c.np.toLocaleString('es-AR', { minimumFractionDigits: 2 });
-    return `<div class="chi">${b}<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.name.substring(0, 42)}</span><span style="font-size:11px;white-space:nowrap">${c.type==='oos'?op:op+'→'+np}</span></div>`;
-  }).join('') + (ch.length > 60 ? `<div class="chi" style="color:#aaa">...y ${ch.length - 60} más</div>` : '');
+  l.replaceChildren();
+  if (!ch.length) {
+    l.appendChild(createTextElement('div', 'chi', '✅ Sin cambios — precios actualizados.'));
+    return;
+  }
+  ch.slice(0, 60).forEach(change => {
+    const row = document.createElement('div');
+    row.className = 'chi';
+    let badge;
+    if (change.type === 'up') badge = createTextElement('span', 'bdg up', '↑ SUBIÓ');
+    else if (change.type === 'dn') badge = createTextElement('span', 'bdg dn', '↓ BAJÓ');
+    else if (change.type === 'new') badge = createTextElement('span', 'bdg nw', '+ NUEVO');
+    else {
+      badge = createTextElement('span', 'bdg', 'SIN STOCK');
+      badge.style.background = '#dc2626';
+    }
+    const name = createTextElement('span', '', String(change.name || '').substring(0, 42));
+    name.style.cssText = 'flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+    const oldPrice = change.op ? '$' + change.op.toLocaleString('es-AR', { minimumFractionDigits: 2 }) : '-';
+    const newPrice = change.type === 'oos' ? '-' : '$' + change.np.toLocaleString('es-AR', { minimumFractionDigits: 2 });
+    const prices = createTextElement('span', '', change.type === 'oos' ? oldPrice : oldPrice + '→' + newPrice);
+    prices.style.cssText = 'font-size:11px;white-space:nowrap';
+    row.append(badge, name, prices);
+    l.appendChild(row);
+  });
+  if (ch.length > 60) {
+    const remaining = createTextElement('div', 'chi', `...y ${ch.length - 60} más`);
+    remaining.style.color = '#aaa';
+    l.appendChild(remaining);
+  }
 }
 function appCh() {
   const cm = {}; prods.forEach((p, i) => cm[p.code] = i);
@@ -4188,12 +4326,12 @@ function appCh() {
   buildNav(); applyF(); closeMod(); toast('✅ ' + pending.length + ' precios actualizados localmente. Publicá manualmente cuando estén revisados.', 'ok'); pending = []; pdfProds = [];
 }
 function setP(v) { document.getElementById('pb').style.width = v + '%' }
-function setPt(t) { document.getElementById('pt').innerHTML = t }
+function setPt(t) { document.getElementById('pt').textContent = t }
 
 let toastT;
 function toast(msg, cls = '') {
   const t = document.getElementById('toast');
-  t.innerHTML = msg;
+  t.textContent = msg;
   t.className = 'toast show' + (cls ? ' ' + cls : '');
   clearTimeout(toastT);
   toastT = setTimeout(() => t.classList.remove('show'), 3000);
@@ -4359,11 +4497,17 @@ function updateAdmStat() {
   const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
   const nedits = Object.keys(edits).length;
   
-  document.getElementById('adm-stat').innerHTML = 
-    `<strong>${prods.length}</strong> productos activos<br>` +
-    `<strong>${nedits}</strong> editados<br>` +
-    `<strong>${add}</strong> agregados<br>` +
-    `<strong>${del}</strong> eliminados`;
+  const stats = document.getElementById('adm-stat');
+  stats.replaceChildren();
+  [
+    [prods.length, ' productos activos'],
+    [nedits, ' editados'],
+    [add, ' agregados'],
+    [del, ' eliminados']
+  ].forEach(([value, label], index, rows) => {
+    stats.append(createTextElement('strong', '', value), document.createTextNode(label));
+    if (index < rows.length - 1) stats.appendChild(document.createElement('br'));
+  });
 }
 
 function initSortable() {
@@ -4480,11 +4624,12 @@ function closeEditModal() {
 
 function showImgPreview(src) {
   const w = document.getElementById('adm-img-prev-wrap');
-  if (src) {
-    w.innerHTML = `<img class="adm-img-prev" src="${src}">`;
-  } else {
-    w.innerHTML = '<div class="adm-img-placeholder">📷</div>';
-  }
+  w.replaceChildren();
+  const image = document.createElement('img');
+  image.className = 'adm-img-prev';
+  image.alt = 'Vista previa del producto';
+  if (setSafeImageSource(image, src)) w.appendChild(image);
+  else w.appendChild(createTextElement('div', 'adm-img-placeholder', '📷'));
 }
 
 function saveEditModal() {
@@ -4564,7 +4709,7 @@ function admReset() {
 function populateCategoriesDropdown() {
   const select = document.getElementById('ae-category');
   if (!select) return;
-  select.innerHTML = '';
+  select.replaceChildren();
   Object.keys(CI).sort().forEach(cat => {
     const opt = document.createElement('option');
     opt.value = cat;
@@ -4722,8 +4867,8 @@ async function deployToGitHub() {
   // Se permiten deploys sin cambios en localStorage para capturar actualizaciones de PDF
   
   const btn = document.getElementById('adm-deploy-btn');
-  const prevText = btn.innerHTML;
-  btn.innerHTML = '⏳ Conectando...';
+  const prevText = btn.textContent;
+  btn.textContent = '⏳ Conectando...';
   btn.disabled = true;
   
   try {
@@ -4823,7 +4968,7 @@ async function deployToGitHub() {
     
     if (imgUploads.length > 0) {
       for (let i = 0; i < imgUploads.length; i++) {
-        btn.innerHTML = `⏳ Subiendo imagen ${i+1}/${imgUploads.length}...`;
+        btn.textContent = `⏳ Subiendo imagen ${i+1}/${imgUploads.length}...`;
         const upload = imgUploads[i];
         const commaIdx = upload.dataUrl.indexOf(',');
         if (commaIdx !== -1) {
@@ -4847,7 +4992,7 @@ async function deployToGitHub() {
       }
     }
     
-    btn.innerHTML = '⏳ Actualizando referencias (code_to_image)...';
+    btn.textContent = '⏳ Actualizando referencias (code_to_image)...';
     let ctiFile = await getGHFile('code_to_image.json');
     let codeToImage = ctiFile ? ctiFile.content : {};
     let ctiChanged = false;
@@ -4869,7 +5014,7 @@ async function deployToGitHub() {
       await putGHFile('code_to_image.json', codeToImage, ctiFile ? ctiFile.sha : null, 'Update image references from browser admin');
     }
     
-    btn.innerHTML = '⏳ Actualizando catálogo...';
+    btn.textContent = '⏳ Actualizando catálogo...';
     let fallbackFile = await getGHFile('products_fallback.json');
     
     const newFallback = prods.map(p => {
@@ -4907,7 +5052,7 @@ async function deployToGitHub() {
     }
   } finally {
     token = '';
-    btn.innerHTML = prevText;
+    btn.textContent = prevText;
     btn.disabled = false;
     isDeploying = false;
   }
@@ -4937,6 +5082,12 @@ document.getElementById('adm-img-btn').addEventListener('click', function() {
 document.getElementById('adm-img-input').addEventListener('change', function(e) {
   const file = e.target.files[0];
   if (!file) return;
+  const allowedImageTypes = new Set(['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/avif']);
+  if (!allowedImageTypes.has(file.type)) {
+    toast('Formato de imagen no permitido', 'warn');
+    this.value = '';
+    return;
+  }
   const reader = new FileReader();
   reader.onload = function(ev) {
     const dataUrl = ev.target.result;
@@ -4957,7 +5108,7 @@ document.getElementById('adm-img-input').addEventListener('change', function(e) 
       pendingImg = out;
       showImgPreview(out);
     };
-    img.src = dataUrl;
+    if (!setSafeImageSource(img, dataUrl)) toast('Imagen no válida', 'warn');
   };
   reader.readAsDataURL(file);
   this.value = '';
