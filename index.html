@@ -2,8 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-wb6rfB60DZulJgZ/tB+CRLDbtN+FmXVjHt00RnedXVA=' 'sha256-xxM39p361cZbfC3Fnziz0RQksT5JHlV6OQeLkiptH38='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-IPDo77roDBuKNUrZ9xArxUd0WGi1NfgFxtWgtT4gEE8=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <script src="src/services/pdf-import.service.js"></script>
+<script src="src/services/admin-state.service.js"></script>
 <script>
 // FORCE CACHE PURGE & SW NUKING ON FIRST LOAD
 try {
@@ -2439,7 +2440,7 @@ function processCSVRows(rows) {
     "Higiene": 50, "Perfumería": 51, "Limpieza": 52, "Detergentes": 53
   };
 
-  const customOrder = window.pdfOrder || PDF_ORDER || JSON.parse(localStorage.getItem(LS_K.order) || 'null');
+  const customOrder = window.pdfOrder && window.pdfOrder.length ? window.pdfOrder : PDF_ORDER;
   if (customOrder && customOrder.length > 0) {
     const orderIndexMap = {};
     customOrder.forEach((code, idx) => { orderIndexMap[String(code)] = idx; });
@@ -3458,6 +3459,7 @@ function appCh() {
       return { code: c.code, name: c.name, price: c.np, category: cat, image: img, qty: 0, outOfStock: false };
     });
     prods = nextProducts;
+    loadAdminState(false);
     buildNav(); applyF(); closeMod();
     toast('✅ ' + pending.length + ' cambios PDF aplicados localmente. Publicá manualmente cuando estén revisados.', 'ok');
     pending = []; pdfProds = []; pdfAnalysis = null;
@@ -3498,76 +3500,46 @@ uz.addEventListener('drop', e => {
 /* ════════════════════════════════════════════
    ADMIN PANEL LOGIC
    ════════════════════════════════════════════ */
-function loadAdminState() {
+function readPersistedAdminState() {
+  if (!window.AdminState) throw new Error('El servicio de estado administrativo no está disponible.');
+  return window.AdminState.readAdminState(localStorage, LS_K);
+}
+
+function writePersistedAdminState(state) {
+  return window.AdminState.writeAdminState(localStorage, LS_K, state);
+}
+
+function loadAdminState(includeCanonicalEdits = true) {
   try {
-    // 1. Apply edits
-    const localEdits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
+    let state = readPersistedAdminState();
 
     // Sanitize localEdits for updated categories
     const fecovitaSet = new Set(['107', '108', '109', '110', '111', '112', '113', '114', '115', '116', '117', '118', '1334', '4195']);
-    let localEditsModified = false;
-    for (const code in localEdits) {
-      if (fecovitaSet.has(code) && localEdits[code].category !== 'Bebidas') {
-        localEdits[code].category = 'Bebidas';
-        localEditsModified = true;
+    for (const code in state.edits) {
+      if (fecovitaSet.has(code) && state.edits[code].category !== 'Bebidas') {
+        state.edits[code].category = 'Bebidas';
       }
     }
-    if (localEditsModified) {
-      localStorage.setItem(LS_K.edits, JSON.stringify(localEdits));
-    }
+    state = writePersistedAdminState(state);
 
-    const edits = { ...DEFAULT_EDITS, ...localEdits };
-    for (const c in edits) {
-      const p = prods.find(x => x.code === c);
-      if (p) {
-        if (edits[c].name) p.name = edits[c].name;
-        if (edits[c].price !== undefined) p.price = edits[c].price;
-        if (edits[c].category) p.category = normalizeCategory(edits[c].category, p.name, p.image);
-        if (edits[c].unidad_min !== undefined) p.unidad_min = edits[c].unidad_min;
-        if (edits[c].image !== undefined) {
-          const hasMapping = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, String(c));
-          if (!hasMapping) {
-            p.image = edits[c].image;
-          }
-        }
-      }
-    }
-    
-    // 2. Clear stale deleted items to ensure all Google Sheets products are shown
-    if (localStorage.getItem(LS_K.del)) {
-      localStorage.removeItem(LS_K.del);
-    }
-    
-    // 3. Add new
-    const added = JSON.parse(localStorage.getItem(LS_K.add) || '[]');
-    added.forEach(p => {
-      if (!prods.some(x => x.code === p.code)) {
-        prods.push({...p, qty: 0});
-      }
-    });
-    
-    // 4. Apply Category Priority Sequence & Brand Grouping
-    const CATEGORY_PRIORITY = {
-      "Caramelos": 1, "Pastillas": 2, "Chupetines": 3, "Gomitas": 4, "Turrones": 5, "Chicles": 6, "Chocolates": 7, "Pipas": 8, "Alfajores": 9,
-      "Galletitas": 10, "Cereales": 11, "Snacks": 12,
-      "Despensa": 20, "Jugos": 21, "Bebidas": 22,
-      "Yerbas": 30,
-      "Pegamentos": 40, "Bic": 41, "Pilas": 42, "Lámparas": 43, "Papelería": 44, "Varios": 45, "Nuevos y Sin Imagen": 46,
-      "Higiene": 50, "Perfumería": 51, "Limpieza": 52, "Detergentes": 53
-    };
-
-    // Apply Custom Order Sequence (Master PDF_ORDER prioritized)
-    const customOrder = window.pdfOrder || PDF_ORDER || JSON.parse(localStorage.getItem(LS_K.order) || 'null');
-    if (customOrder && customOrder.length > 0) {
-      const orderIndexMap = {};
-      customOrder.forEach((code, idx) => { orderIndexMap[String(code)] = idx; });
-
-      prods.sort((a, b) => {
-        const idxA = orderIndexMap[String(a.code)] !== undefined ? orderIndexMap[String(a.code)] : 999999;
-        const idxB = orderIndexMap[String(b.code)] !== undefined ? orderIndexMap[String(b.code)] : 999999;
-        return idxA - idxB;
-      });
-    }
+    const withoutMappedImages = edits => Object.fromEntries(
+      Object.entries(edits || {}).map(([code, patch]) => {
+        const applicablePatch = { ...patch };
+        const hasImageMapping = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, String(code));
+        if (hasImageMapping) delete applicablePatch.image;
+        return [code, applicablePatch];
+      })
+    );
+    const effectiveState = { ...state, edits: withoutMappedImages(state.edits) };
+    const canonicalEdits = includeCanonicalEdits ? withoutMappedImages(DEFAULT_EDITS) : {};
+    const fallbackOrder = window.pdfOrder && window.pdfOrder.length ? window.pdfOrder : PDF_ORDER;
+    prods = window.AdminState.reconstructCatalog(prods, canonicalEdits, effectiveState, fallbackOrder)
+      .map(product => ({
+        ...product,
+        category: normalizeCategory(product.category || 'Varios', product.name, product.image),
+        qty: Number.isFinite(product.qty) ? product.qty : 0,
+        unidad_min: product.unidad_min || 1
+      }));
   } catch (e) {
     console.warn("Error applying admin local state:", e);
   }
@@ -3635,10 +3607,10 @@ function exitAdmin() {
 }
 
 function updateAdmStat() {
-  const del = JSON.parse(localStorage.getItem(LS_K.del) || '[]').length;
-  const add = JSON.parse(localStorage.getItem(LS_K.add) || '[]').length;
-  const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
-  const nedits = Object.keys(edits).length;
+  const state = readPersistedAdminState();
+  const del = state.deleted.length;
+  const add = state.added.length;
+  const nedits = Object.keys(state.edits).length;
   
   const stats = document.getElementById('adm-stat');
   stats.replaceChildren();
@@ -3686,7 +3658,8 @@ function initSortable() {
 
 function saveOrder() {
   const order = prods.map(p => p.code);
-  localStorage.setItem(LS_K.order, JSON.stringify(order));
+  const state = window.AdminState.recordOrder(readPersistedAdminState(), order);
+  writePersistedAdminState(state);
 }
 
 function admDelete(code) {
@@ -3696,17 +3669,8 @@ function admDelete(code) {
   
   prods = prods.filter(x => x.code !== code);
   
-  const del = JSON.parse(localStorage.getItem(LS_K.del) || '[]');
-  if (!del.includes(code)) del.push(code);
-  localStorage.setItem(LS_K.del, JSON.stringify(del));
-  
-  let added = JSON.parse(localStorage.getItem(LS_K.add) || '[]');
-  added = added.filter(x => x.code !== code);
-  localStorage.setItem(LS_K.add, JSON.stringify(added));
-  
-  const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
-  delete edits[code];
-  localStorage.setItem(LS_K.edits, JSON.stringify(edits));
+  const state = window.AdminState.recordProductDeletion(readPersistedAdminState(), code);
+  writePersistedAdminState(state);
   
   updateAdmStat();
   
@@ -3802,9 +3766,9 @@ function saveEditModal() {
       p.unidad_min = uMin;
       if (pendingImg) p.image = pendingImg;
       
-      const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
-      edits[code] = { name: name, price: priceVal, category: category, image: p.image, unidad_min: uMin };
-      localStorage.setItem(LS_K.edits, JSON.stringify(edits));
+      const patch = { name: name, price: priceVal, category: category, image: p.image, unidad_min: uMin };
+      const state = window.AdminState.recordProductEdit(readPersistedAdminState(), code, patch);
+      writePersistedAdminState(state);
       
       const oldScrollY = window.scrollY;
       const oldCard = document.getElementById('card-' + editTarget);
@@ -3824,9 +3788,12 @@ function saveEditModal() {
     const newP = { code: code, name: name, price: priceVal, category: category, image: pendingImg || '', qty: 0, unidad_min: uMin };
     prods.unshift(newP);
     
-    const added = JSON.parse(localStorage.getItem(LS_K.add) || '[]');
-    added.push(newP);
-    localStorage.setItem(LS_K.add, JSON.stringify(added));
+    const state = window.AdminState.recordAddedProduct(
+      readPersistedAdminState(),
+      newP,
+      prods.map(product => product.code)
+    );
+    writePersistedAdminState(state);
     
     toast('✅ Producto agregado', 'ok');
   }
@@ -4287,16 +4254,14 @@ function executeCardMove(destCode, destCardEl) {
       moveSourceCard.category = destP.category;
       
       // Save this category edit in localStorage
-      const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
-      if (!edits[sourceCode]) {
-        edits[sourceCode] = {};
-      }
-      edits[sourceCode].name = moveSourceCard.name;
-      edits[sourceCode].price = moveSourceCard.price;
-      edits[sourceCode].image = moveSourceCard.image;
-      edits[sourceCode].category = destP.category;
-      
-      localStorage.setItem(LS_K.edits, JSON.stringify(edits));
+      const state = window.AdminState.recordProductEdit(readPersistedAdminState(), sourceCode, {
+        name: moveSourceCard.name,
+        price: moveSourceCard.price,
+        image: moveSourceCard.image,
+        category: destP.category,
+        unidad_min: moveSourceCard.unidad_min || 1
+      });
+      writePersistedAdminState(state);
       catChanged = true;
     }
     
@@ -4478,9 +4443,6 @@ document.getElementById('prodModalCloseBtn').addEventListener('click', closeProd
 // AGGRESSIVE PURGE OF STALE CLIENT STORAGE & SERVICE WORKERS
 document.getElementById('btn-scroll-top').addEventListener('click', scrollToTop);
 try {
-  // Purge old user custom order from localStorage if it's blocking the new master sequence
-  localStorage.removeItem('biani_order');
-  
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then(registrations => {
       for (let reg of registrations) {
