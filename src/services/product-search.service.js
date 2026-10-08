@@ -98,7 +98,7 @@
     const description = normalizeText(extraDescription || '');
     const image = normalizeText(product.image || '');
     const fullTarget = [code, name, category, description, image].filter(Boolean).join(' ');
-    const words = fullTarget.split(' ').filter(Boolean);
+    const words = Array.from(new Set(fullTarget.split(' ').filter(Boolean)));
     const prepared = {
       code: code,
       name: name,

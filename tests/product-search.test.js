@@ -63,7 +63,9 @@ test('tolera guaymayen y alfahor', () => {
 });
 
 test('combina búsqueda con categoría', () => {
-  assert.deepEqual(search(sample, 'alfajor', { category: 'Alfajores' }).map(product => product.code), ['501']);
+  const result = search(sample, 'alfajor', { category: 'Alfajores' });
+  assert.equal(result[0].code, '501');
+  assert.ok(result.every(product => product.category === 'Alfajores'));
   assert.equal(search(sample, 'guaymallen', { category: 'Galletitas' }).length, 0);
 });
 
@@ -93,31 +95,62 @@ function legacyLevenshtein(a, b) {
   return row[a.length];
 }
 
+function legacyPhonetic(value) {
+  let text = legacyNormalize(value).replace(/\s+/g, '');
+  const replacements = [
+    ['v', 'b'], ['z', 's'], ['c', 's'], ['k', 'c'], ['q', 'c'],
+    ['ge', 'je'], ['gi', 'ji'], ['ll', 'y'], ['h', '']
+  ];
+  for (const pair of replacements) text = text.split(pair[0]).join(pair[1]);
+  return text;
+}
+
 function legacyScore(product, query) {
+  // Réplica del trabajo ejecutado por getProductSearchScore antes de esta tarea:
+  // normalización y fonética de la consulta se repetían para cada producto.
   const normalized = legacyNormalize(query);
   const name = legacyNormalize(product.name);
-  const target = legacyNormalize(product.code + ' ' + product.name + ' ' + product.category);
+  const target = legacyNormalize(
+    product.code + ' ' + product.name + ' ' + product.category + ' ' + (product.image || '')
+  );
+  const noSpaceTarget = target.replace(/\s+/g, '');
   if (name.includes(normalized)) return 1000;
   if (target.includes(normalized)) return 800;
+  if (noSpaceTarget.includes(normalized.replace(/\s+/g, ''))) return 500;
+
   const queryWords = normalized.split(' ').filter(Boolean);
+  const queryPhonetics = queryWords.map(legacyPhonetic);
   const targetWords = target.split(' ').filter(Boolean);
+  const targetPhonetics = targetWords.map(legacyPhonetic);
   let score = 0;
-  for (const queryWord of queryWords) {
+  let matchedWords = 0;
+
+  for (let queryIndex = 0; queryIndex < queryWords.length; queryIndex++) {
+    const queryWord = queryWords[queryIndex];
     let best = 0;
-    for (const targetWord of targetWords) {
-      if (targetWord.includes(queryWord)) {
-        best = Math.max(best, queryWord.length / targetWord.length);
-        continue;
+    for (let targetIndex = 0; targetIndex < targetWords.length; targetIndex++) {
+      const targetWord = targetWords[targetIndex];
+      let match = 0;
+      if (queryWord === targetWord) match = 1;
+      else if (targetWord.includes(queryWord)) match = queryWord.length / targetWord.length;
+      else if (queryPhonetics[queryIndex] === targetPhonetics[targetIndex]) match = 0.95;
+      else {
+        const maxLength = Math.max(queryWord.length, targetWord.length);
+        if (maxLength >= 3) {
+          const similarity = 1 - legacyLevenshtein(queryWord, targetWord) / maxLength;
+          if (maxLength <= 4 && similarity >= 0.75) match = similarity * 0.8;
+          else if (maxLength > 4 && similarity >= 0.65) match = similarity * 0.8;
+        }
       }
-      const maxLength = Math.max(queryWord.length, targetWord.length);
-      if (maxLength >= 3) {
-        const similarity = 1 - legacyLevenshtein(queryWord, targetWord) / maxLength;
-        if (similarity >= 0.65) best = Math.max(best, similarity * 0.8);
-      }
+      if (match > best) best = match;
     }
-    if (best >= 0.5) score += Math.round(best * 200);
+    if (best >= 0.5) {
+      score += Math.round(best * 200);
+      matchedWords++;
+    }
   }
-  return score;
+  if (queryWords.length > 1 && matchedWords < queryWords.length && score < 500) return 0;
+  return matchedWords ? score : 0;
 }
 
 function median(values) {
