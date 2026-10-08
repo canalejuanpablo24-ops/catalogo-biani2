@@ -29,6 +29,8 @@ async function openCatalog(page) {
 
   await page.goto('/index.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#loader')).toHaveClass(/hidden/);
+  const startup = await page.evaluate(() => ({ error: window.__catalogLoadError || null, sheetSync: typeof window.SheetSync, count: eval('prods.length') }));
+  if (startup.count === 0) throw new Error('DIAGNÓSTICO DE ARRANQUE: ' + JSON.stringify(startup));
   await expect(page.locator('#nav2 .g2tab')).toHaveCount(28);
   await expect(page.locator('#pcnt')).not.toHaveText('0');
 
