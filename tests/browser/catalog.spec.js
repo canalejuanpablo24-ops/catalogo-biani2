@@ -90,7 +90,8 @@ for (const category of categories) {
 
 test('@all búsqueda y filtros combinados funcionan juntos', async ({ page }) => {
   const runtime = await openCatalog(page);
-  await page.locator('#stChk').check();
+  await page.locator('#stog').click();
+  await expect(page.locator('#stChk')).toBeChecked();
 
   let selectedCategory = '';
   for (const category of categories) {
@@ -117,7 +118,8 @@ test('@all búsqueda y filtros combinados funcionan juntos', async ({ page }) =>
   await expect(page.locator('#grid .empty')).toContainText('SIN TACC');
 
   await page.locator('#clearSearchBtn').click();
-  await page.locator('#stChk').uncheck();
+  await page.locator('#stog').click();
+  await expect(page.locator('#stChk')).not.toBeChecked();
   await selectCategory(page, '');
   await expect(page.locator('#ctitle')).toHaveText('Catálogo BIANI');
   await expect.poll(() => numericProductCount(page)).toBeGreaterThan(0);
