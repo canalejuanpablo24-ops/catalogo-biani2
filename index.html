@@ -2,10 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-TJwdmxZZJGMzd1coFf1SJsVdoRGm03R1vyiGwxdxUjA=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-qX4Veeh1KVG0n+b2PzrXgTmkOe+gTrM3goTRCU1P1mw=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <script src="src/services/pdf-import.service.js"></script>
 <script src="src/services/admin-state.service.js"></script>
 <script src="src/services/sale-mode.service.js"></script>
+<script src="src/services/category-filter.service.js"></script>
 <script>
 // FORCE CACHE PURGE & SW NUKING ON FIRST LOAD
 try {
@@ -1389,7 +1390,16 @@ body {
 .cat-cov {
   display: none;
 }
-
+.mobile-cat-selection {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.catalog-sidebar button {
+  font-family: inherit;
+  text-align: left;
+}
 @media (max-width: 850px) {
   .mobile-cat-btn {
     display: inline-flex;
@@ -1695,14 +1705,24 @@ body.cart-has-items #cart-form {
     <button id="clearSearchBtn" style="display:none; border:none; background:transparent; font-size:22px; color:#64748b; cursor:pointer; padding: 0 8px; font-weight:bold;">✕</button>
   </div>
 </div>
+<div class="cat-cov" id="catCov" aria-hidden="true"></div>
 <div class="catalog-container" style="max-width: 1280px; margin: 0 auto; padding: 16px;">
-  <div class="lay" style="width: 100%;">
-  <div class="tb" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
-    <div><div class="ctitle" id="ctitle" style="font-size: 22px; font-weight: 700; color: #0f172a;">Catálogo BIANI</div><div class="csub" style="font-size: 14px; color: #64748b;"><span id="pcnt">0</span> productos disponibles</div></div>
-    <label class="stog" id="stog" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; cursor: pointer; padding: 6px 12px; background: #e0f2fe; color: #0369a1; border-radius: 8px;"><input type="checkbox" id="stChk"> 🌾 Solo SIN TACC</label>
-  </div>
-  <div class="grid" id="grid"></div>
-</div>
+  <button type="button" class="mobile-cat-btn" id="btnOpenCats" aria-controls="catalogSidebar" aria-expanded="false">☰ Categorías: <span class="mobile-cat-selection" id="mobileSelectedCat">Todos</span></button>
+  <aside class="catalog-sidebar" id="catalogSidebar" aria-label="Categorías de productos">
+    <div class="sidebar-header-mobile">
+      <h3>Categorías</h3>
+      <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Cerrar categorías">✕</button>
+    </div>
+    <div class="sidebar-sec-title">Categorías</div>
+    <nav class="nav2" id="nav2" aria-label="Filtrar por categoría"></nav>
+  </aside>
+  <main class="lay" style="width: 100%;">
+    <div class="tb" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+      <div><div class="ctitle" id="ctitle" style="font-size: 22px; font-weight: 700; color: #0f172a;">Catálogo BIANI</div><div class="csub" style="font-size: 14px; color: #64748b;"><span id="pcnt">0</span> productos disponibles</div></div>
+      <label class="stog" id="stog" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; cursor: pointer; padding: 6px 12px; background: #e0f2fe; color: #0369a1; border-radius: 8px;"><input type="checkbox" id="stChk"> 🌾 Solo SIN TACC</label>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
 </div>
 <div class="cov" id="cov"></div>
 <div class="cp" id="cp">
@@ -2105,8 +2125,16 @@ const GR = {
 const DEFAULT_SHEET_ID = "179n3Fa7WUbA1ZlgtAVVlIaxbQdaP5CV49NhPY0Ulrn0"; // ← Podés ingresar tu ID por defecto de Google Sheets acá (ej: "1A2B3C4D...")
 const WA = '5492954324063'; // ← Reemplazar por WhatsApp de BIANI
 
+function getSavedCategory() {
+  try {
+    return sessionStorage.getItem('biani_selected_category') || '';
+  } catch (error) {
+    return '';
+  }
+}
+
 let prods = [];
-let filt = [], curG = '', curC = '', q = '', st = false, pending = [], pdfProds = [], pdfAnalysis = null;
+let filt = [], curG = '', curC = getSavedCategory(), q = '', st = false, pending = [], pdfProds = [], pdfAnalysis = null;
 
 // ADMIN STATE VARIABLES
 let ADMIN_ON = false;
@@ -2507,85 +2535,91 @@ function saveSheetId() {
 }
 
 function getCounts() {
-  const c = {};
-  prods.forEach(p => { c[p.category] = (c[p.category] || 0) + 1 });
-  return c;
+  return CategoryFilter.getCategoryCounts(prods);
 }
 
 function buildNav() {
-  const counts = getCounts();
-  renderNav2(counts);
+  curC = CategoryFilter.normalizeCategoryName(curC);
+  renderNav2(getCounts());
 }
 
 function renderNav2(counts) {
   const n2 = document.getElementById('nav2');
   if (!n2) return;
   n2.replaceChildren();
-  const cats = Object.keys(CI);
-  
-  const totalProds = prods.length;
-  const allBtn = document.createElement('div');
-  allBtn.className = `g2tab ${curC === '' || curC === 'all' ? 'active' : ''}`;
+
+  const categories = CategoryFilter.listCategories(prods);
+  const selectedKey = CategoryFilter.categoryKey(curC);
+  const allBtn = document.createElement('button');
+  allBtn.type = 'button';
+  allBtn.className = `g2tab ${selectedKey ? '' : 'active'}`;
   allBtn.dataset.c = '';
+  allBtn.setAttribute('aria-pressed', selectedKey ? 'false' : 'true');
   const allIcon = createTextElement('span', 'ico', '🛒');
-  const allLabel = createTextElement('span', '', 'Todos los productos');
+  const allLabel = createTextElement('span', '', 'Todos');
   allLabel.style.flex = '1';
-  const allCount = createTextElement('span', 'cnt', totalProds);
+  const allCount = createTextElement('span', 'cnt', prods.length);
   allBtn.append(allIcon, allLabel, allCount);
-  allBtn.onclick = function() { selC(this, '') };
+  allBtn.addEventListener('click', function() { selC(this, '') });
   n2.appendChild(allBtn);
-  
-  cats.forEach(cat => {
-    const el = document.createElement('div');
-    el.className = `g2tab ${curC === cat ? 'active' : ''}`;
+
+  categories.forEach(category => {
+    const cat = category.name;
+    const active = selectedKey === category.key;
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = `g2tab ${active ? 'active' : ''}`;
     el.dataset.c = cat;
-    const cnt = counts[cat] || 0;
+    el.setAttribute('aria-pressed', active ? 'true' : 'false');
     const icon = createTextElement('span', 'ico', CI[cat] || '📦');
     const label = createTextElement('span', '', cat);
     label.style.flex = '1';
-    const count = createTextElement('span', 'cnt', cnt);
+    const count = createTextElement('span', 'cnt', counts[cat] || category.count);
     el.append(icon, label, count);
-    el.onclick = function() { selC(this, cat) };
+    el.addEventListener('click', function() { selC(this, cat) });
     n2.appendChild(el);
   });
+
+  const mobileSelected = document.getElementById('mobileSelectedCat');
+  if (mobileSelected) mobileSelected.textContent = curC || 'Todos';
+}
+
+function setCategoryDrawer(open) {
+  const sb = document.getElementById('catalogSidebar');
+  const cov = document.getElementById('catCov');
+  const toggle = document.getElementById('btnOpenCats');
+  if (!sb || !cov) return;
+  sb.classList.toggle('open', open);
+  cov.classList.toggle('open', open);
+  cov.setAttribute('aria-hidden', open ? 'false' : 'true');
+  if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.body.style.overflow = open ? 'hidden' : '';
 }
 
 function toggleMobileCatMenu() {
   const sb = document.getElementById('catalogSidebar');
-  const cov = document.getElementById('catCov');
-  if (!sb || !cov) return;
-  const isOpen = sb.classList.contains('open');
-  if (isOpen) {
-    sb.classList.remove('open');
-    cov.classList.remove('open');
-    document.body.style.overflow = '';
-  } else {
-    sb.classList.add('open');
-    cov.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+  if (!sb) return;
+  setCategoryDrawer(!sb.classList.contains('open'));
 }
 
 function selC(el, c) {
-  document.querySelectorAll('.g2tab').forEach(t => t.classList.remove('active'));
-  if (el) el.classList.add('active');
-  curC = c;
-  curG = '';
-  q = '';
-  const sinp = document.getElementById('sinp');
-  if (sinp) sinp.value = '';
-  applyF();
-  const titleEl = document.getElementById('ctitle');
-  if (titleEl) titleEl.textContent = c || 'Catálogo BIANI';
-
-  // Close mobile sidebar drawer if open
-  const sb = document.getElementById('catalogSidebar');
-  const cov = document.getElementById('catCov');
-  if (sb && sb.classList.contains('open')) {
-    sb.classList.remove('open');
-    if (cov) cov.classList.remove('open');
-    document.body.style.overflow = '';
+  curC = CategoryFilter.normalizeCategoryName(c);
+  try {
+    if (curC) sessionStorage.setItem('biani_selected_category', curC);
+    else sessionStorage.removeItem('biani_selected_category');
+  } catch (error) {
+    // La selección continúa activa en memoria aunque el navegador bloquee sessionStorage.
   }
+
+  document.querySelectorAll('.g2tab').forEach(tab => {
+    const active = CategoryFilter.categoryKey(tab.dataset.c) === CategoryFilter.categoryKey(curC);
+    tab.classList.toggle('active', active);
+    tab.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+  const mobileSelected = document.getElementById('mobileSelectedCat');
+  if (mobileSelected) mobileSelected.textContent = curC || 'Todos';
+  applyF();
+  setCategoryDrawer(false);
 }
 
 function stripSpanishPlural(w) {
@@ -2849,32 +2883,27 @@ function clearSearch() {
 }
 
 function applyF() {
-  st = document.getElementById('stChk').checked;
-  document.getElementById('stog').classList.toggle('active', st);
-  let r = prods;
+  const stChk = document.getElementById('stChk');
+  st = Boolean(stChk && stChk.checked);
+  const stog = document.getElementById('stog');
+  if (stog) stog.classList.toggle('active', st);
 
   const trimmedQ = (q || '').trim();
+  filt = CategoryFilter.filterProducts(prods, {
+    category: curC,
+    query: trimmedQ,
+    onlySinTacc: st,
+    scoreProduct: getProductSearchScore
+  });
 
-  if (trimmedQ) {
-    const scoredList = [];
-    r.forEach(p => {
-      const s = getProductSearchScore(p, trimmedQ);
-      if (s > 0) {
-        scoredList.push({ score: s, prod: p });
-      }
-    });
-    scoredList.sort((a, b) => b.score - a.score);
-    r = scoredList.map(item => item.prod);
-    const titleEl = document.getElementById('ctitle');
-    if (titleEl) titleEl.textContent = `Búsqueda: "${trimmedQ}"`;
-  } else {
-    const titleEl = document.getElementById('ctitle');
-    if (titleEl) titleEl.textContent = 'Catálogo BIANI';
+  const titleEl = document.getElementById('ctitle');
+  if (titleEl) {
+    if (curC && trimmedQ) titleEl.textContent = `${curC} · Búsqueda: "${trimmedQ}"`;
+    else if (curC) titleEl.textContent = curC;
+    else if (trimmedQ) titleEl.textContent = `Búsqueda: "${trimmedQ}"`;
+    else titleEl.textContent = 'Catálogo BIANI';
   }
 
-  if (st) r = r.filter(p => (p.name || '').includes('SIN TACC') || (p.name || '').includes('SIN TAC'));
-
-  filt = r;
   renderProds();
 }
 
@@ -2888,7 +2917,14 @@ function renderProds() {
   if (!filt.length) {
     const empty = document.createElement('div');
     empty.className = 'empty';
-    empty.append(createTextElement('div', 'ei', '🔍'), createTextElement('p', '', 'No se encontraron productos'));
+    const activeFilters = [];
+    if (curC) activeFilters.push(`la categoría "${curC}"`);
+    if ((q || '').trim()) activeFilters.push(`la búsqueda "${q.trim()}"`);
+    if (st) activeFilters.push('el filtro SIN TACC');
+    const emptyMessage = activeFilters.length
+      ? `No hay productos que coincidan con ${activeFilters.join(', ')}.`
+      : 'No se encontraron productos.';
+    empty.append(createTextElement('div', 'ei', '🔍'), createTextElement('p', '', emptyMessage));
     g.appendChild(empty);
     return;
   }
@@ -4495,6 +4531,9 @@ document.getElementById('settingsBtn').addEventListener('click', openProtectedAd
 document.getElementById('cartBtn').addEventListener('click', togCart);
 document.getElementById('clearSearchBtn').addEventListener('click', clearSearch);
 document.getElementById('stChk').addEventListener('change', applyF);
+document.getElementById('btnOpenCats').addEventListener('click', toggleMobileCatMenu);
+document.getElementById('sidebarCloseBtn').addEventListener('click', () => setCategoryDrawer(false));
+document.getElementById('catCov').addEventListener('click', () => setCategoryDrawer(false));
 document.getElementById('cov').addEventListener('click', togCart);
 document.getElementById('cartCloseBtn').addEventListener('click', togCart);
 document.getElementById('sendWaBtn').addEventListener('click', sendWA);
