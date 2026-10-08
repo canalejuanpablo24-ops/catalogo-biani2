@@ -77,9 +77,10 @@ test('@all búsqueda respeta categoría y SIN TACC', async ({ page }) => {
   await expect(page.locator('#stChk')).toBeChecked();
   await searchFor(page, 'sin tacc');
   await expect(page.locator('#grid .card').first()).toBeVisible();
-  const titles = await page.locator('#grid .card-title').allInnerTexts();
-  expect(titles.length).toBeGreaterThan(0);
-  expect(titles.every(title => /SIN TAC/i.test(title))).toBe(true);
+  const visibleCards = page.locator('#grid .card');
+  const visibleCount = await visibleCards.count();
+  expect(visibleCount).toBeGreaterThan(0);
+  await expect(page.locator('#grid .card .stbdg')).toHaveCount(visibleCount);
 });
 
 test('@all escritura rápida no duplica búsquedas ni congela la interfaz', async ({ page }, testInfo) => {
