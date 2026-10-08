@@ -2,10 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-qX4Veeh1KVG0n+b2PzrXgTmkOe+gTrM3goTRCU1P1mw=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-FPNq/WKhLYBZevkRwSgJ+Pc80fiWXRL5/MPm/HCEOPI=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <script src="src/services/pdf-import.service.js"></script>
 <script src="src/services/admin-state.service.js"></script>
 <script src="src/services/sale-mode.service.js"></script>
+<script src="src/services/cart-persistence.service.js"></script>
 <script src="src/services/category-filter.service.js"></script>
 <script>
 // FORCE CACHE PURGE & SW NUKING ON FIRST LOAD
@@ -1390,6 +1391,38 @@ body {
 .cat-cov {
   display: none;
 }
+.cart-restore-notice {
+  max-width: 1280px;
+  margin: 12px auto 0;
+  padding: 11px 46px 11px 14px;
+  border: 1px solid #f59e0b;
+  border-radius: 10px;
+  background: #fffbeb;
+  color: #78350f;
+  font-size: 13px;
+  line-height: 1.45;
+  position: relative;
+}
+.cart-restore-notice[hidden] {
+  display: none;
+}
+.cart-restore-notice button {
+  position: absolute;
+  top: 7px;
+  right: 9px;
+  border: 0;
+  background: transparent;
+  color: #92400e;
+  font-size: 18px;
+  cursor: pointer;
+}
+.customer-storage-note, .dni-storage-note {
+  display: block;
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.35;
+}
 .mobile-cat-selection {
   max-width: 180px;
   overflow: hidden;
@@ -1705,6 +1738,10 @@ body.cart-has-items #cart-form {
     <button id="clearSearchBtn" style="display:none; border:none; background:transparent; font-size:22px; color:#64748b; cursor:pointer; padding: 0 8px; font-weight:bold;">✕</button>
   </div>
 </div>
+<div class="cart-restore-notice" id="cartRestoreNotice" role="status" aria-live="polite" hidden>
+  <span id="cartRestoreNoticeText"></span>
+  <button type="button" id="cartRestoreNoticeClose" aria-label="Cerrar aviso">✕</button>
+</div>
 <div class="cat-cov" id="catCov" aria-hidden="true"></div>
 <div class="catalog-container" style="max-width: 1280px; margin: 0 auto; padding: 16px;">
   <button type="button" class="mobile-cat-btn" id="btnOpenCats" aria-controls="catalogSidebar" aria-expanded="false">☰ Categorías: <span class="mobile-cat-selection" id="mobileSelectedCat">Todos</span></button>
@@ -1731,16 +1768,22 @@ body.cart-has-items #cart-form {
   <div id="cart-form">
     <div class="cf-field">
       <label for="c-name">Nombre y Apellido *</label>
-      <input type="text" id="c-name" placeholder="Ej: Juan Pérez" required>
+      <input type="text" id="c-name" placeholder="Ej: Juan Pérez" autocomplete="name" required>
     </div>
+    <div class="cf-field">
+      <label for="c-phone">Teléfono</label>
+      <input type="tel" id="c-phone" placeholder="Ej: 2954 123456" autocomplete="tel">
+    </div>
+    <span class="customer-storage-note">Nombre, dirección, teléfono y observaciones se guardan solamente en este dispositivo para recuperar el pedido.</span>
     <div class="cf-row">
       <div class="cf-field">
         <label for="c-dni">DNI o CUIT *</label>
-        <input type="text" id="c-dni" placeholder="Ej: 20-35678901-4" required>
+        <input type="text" id="c-dni" placeholder="Ej: 20-35678901-4" autocomplete="off" required>
+        <span class="dni-storage-note">Por seguridad, este dato no se guarda.</span>
       </div>
       <div class="cf-field">
         <label for="c-dir">Dirección de Entrega *</label>
-        <input type="text" id="c-dir" placeholder="Ej: Av. San Martín 123" required>
+        <input type="text" id="c-dir" placeholder="Ej: Av. San Martín 123" autocomplete="street-address" required>
       </div>
     </div>
     <div class="cf-field">
@@ -2319,6 +2362,7 @@ async function loadDatabase() {
               });
 
               loadAdminState();
+              restorePersistentCart();
               prepareAllSearchCache();
               buildNav();
               applyF();
@@ -2356,6 +2400,7 @@ async function loadDatabase() {
     });
 
     loadAdminState();
+    restorePersistentCart();
     prepareAllSearchCache();
     buildNav();
     applyF();
@@ -3294,6 +3339,110 @@ function closeProdModalBg(e) {
   if (e.target.id === 'prodModal') closeProdModal();
 }
 
+const CART_STORAGE_KEY = window.CartPersistence.CART_KEY;
+const CUSTOMER_STORAGE_KEY = window.CartPersistence.CUSTOMER_KEY;
+let cartPersistenceReady = false;
+let restoringPersistentCart = false;
+
+function readLocalStorage(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (error) {
+    console.warn('Persistencia local no disponible:', error);
+    return null;
+  }
+}
+
+function writeLocalStorage(key, value) {
+  try {
+    if (value == null) localStorage.removeItem(key);
+    else localStorage.setItem(key, value);
+    return true;
+  } catch (error) {
+    console.warn('No se pudo guardar el pedido localmente:', error);
+    return false;
+  }
+}
+
+function getCustomerFormData() {
+  return {
+    name: document.getElementById('c-name').value,
+    address: document.getElementById('c-dir').value,
+    phone: document.getElementById('c-phone').value,
+    observations: document.getElementById('c-obs').value
+  };
+}
+
+function saveCustomerData() {
+  const customer = window.CartPersistence.sanitizeCustomer(getCustomerFormData());
+  if (window.CartPersistence.hasCustomerData(customer)) {
+    writeLocalStorage(CUSTOMER_STORAGE_KEY, JSON.stringify(customer));
+  } else {
+    writeLocalStorage(CUSTOMER_STORAGE_KEY, null);
+  }
+}
+
+function restoreCustomerData() {
+  const stored = window.CartPersistence.parseStoredJson(readLocalStorage(CUSTOMER_STORAGE_KEY));
+  const customer = window.CartPersistence.sanitizeCustomer(stored || {});
+  document.getElementById('c-name').value = customer.name;
+  document.getElementById('c-dir').value = customer.address;
+  document.getElementById('c-phone').value = customer.phone;
+  document.getElementById('c-obs').value = customer.observations;
+}
+
+function savePersistentCart() {
+  if (!cartPersistenceReady || restoringPersistentCart) return;
+  const snapshot = window.CartPersistence.createCartSnapshot(getCart(), window.SaleMode);
+  writeLocalStorage(CART_STORAGE_KEY, snapshot.items.length ? JSON.stringify(snapshot) : null);
+}
+
+function showCartRestoreNotice(messages) {
+  const notice = document.getElementById('cartRestoreNotice');
+  const text = document.getElementById('cartRestoreNoticeText');
+  if (!notice || !text || !messages.length) {
+    if (notice) notice.hidden = true;
+    return;
+  }
+  text.textContent = messages.join(' ');
+  notice.hidden = false;
+}
+
+function restorePersistentCart(options = {}) {
+  const storedCart = readLocalStorage(CART_STORAGE_KEY);
+  const restoration = window.CartPersistence.restoreCart(prods, storedCart, window.SaleMode);
+
+  restoringPersistentCart = true;
+  prods.forEach(product => {
+    product.qty = 0;
+  });
+  restoration.items.forEach(item => {
+    const product = prods.find(candidate => String(candidate.code) === item.code);
+    if (!product) return;
+    product.sale_mode = item.sale_mode;
+    product.qty = item.qty;
+  });
+  restoringPersistentCart = false;
+  cartPersistenceReady = true;
+  if (options.persist !== false) savePersistentCart();
+  restoreCustomerData();
+
+  if (storedCart) {
+    const messages = [];
+    if (restoration.items.length) {
+      messages.push(`Restauramos ${restoration.items.length} ${restoration.items.length === 1 ? 'producto' : 'productos'} del pedido.`);
+    }
+    restoration.notices.forEach(notice => messages.push(notice.message));
+    showCartRestoreNotice(messages);
+  }
+}
+
+function clearPersistentCartAndCustomer() {
+  writeLocalStorage(CART_STORAGE_KEY, null);
+  writeLocalStorage(CUSTOMER_STORAGE_KEY, null);
+  showCartRestoreNotice([]);
+}
+
 function getCart() { return prods.filter(p => p.qty > 0) }
 
 function getCartSelection(product) {
@@ -3306,6 +3455,7 @@ function updCart() {
   document.getElementById('ccnt').textContent = items.reduce((sum, item) => sum + item.qty, 0);
   document.getElementById('cta').textContent = '$' + tot.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   document.body.classList.toggle('cart-has-items', items.length > 0);
+  savePersistentCart();
 }
 
 function togCart() {
@@ -3373,9 +3523,11 @@ function clrCart() {
   document.getElementById('c-name').value = '';
   document.getElementById('c-dni').value = '';
   document.getElementById('c-dir').value = '';
+  document.getElementById('c-phone').value = '';
   document.getElementById('c-obs').value = '';
+  clearPersistentCartAndCustomer();
   
-  updCart(); rendCart(); toast('Pedido vaciado');
+  updCart(); rendCart(); toast('Pedido y datos guardados eliminados');
 }
 
 function sendWA() {
@@ -3384,6 +3536,7 @@ function sendWA() {
   const name = document.getElementById('c-name').value.trim();
   const dni = document.getElementById('c-dni').value.trim();
   const dir = document.getElementById('c-dir').value.trim();
+  const phone = document.getElementById('c-phone').value.trim();
   const obs = document.getElementById('c-obs').value.trim();
   
   if (!name || !dni || !dir) {
@@ -3400,6 +3553,7 @@ function sendWA() {
   msg += `👤 *Cliente:* ${name}\n`;
   msg += `🆔 *DNI/CUIT:* ${dni}\n`;
   msg += `📍 *Dirección:* ${dir}\n`;
+  if (phone) msg += `📞 *Teléfono:* ${phone}\n`;
   if (obs) {
     msg += `💬 *Obs:* ${obs}\n`;
   }
@@ -4538,6 +4692,19 @@ document.getElementById('cov').addEventListener('click', togCart);
 document.getElementById('cartCloseBtn').addEventListener('click', togCart);
 document.getElementById('sendWaBtn').addEventListener('click', sendWA);
 document.getElementById('clearCartBtn').addEventListener('click', clrCart);
+['c-name', 'c-dir', 'c-phone', 'c-obs'].forEach(id => {
+  document.getElementById(id).addEventListener('input', saveCustomerData);
+});
+document.getElementById('cartRestoreNoticeClose').addEventListener('click', () => showCartRestoreNotice([]));
+window.addEventListener('storage', event => {
+  if (event.key === CART_STORAGE_KEY) {
+    restorePersistentCart({ persist: false });
+    applyF();
+    updCart();
+  } else if (event.key === CUSTOMER_STORAGE_KEY) {
+    restoreCustomerData();
+  }
+});
 document.getElementById('mo').addEventListener('click', closeBg);
 document.getElementById('settingsCloseBtn').addEventListener('click', closeMod);
 document.getElementById('quickAddBtn').addEventListener('click', () => {

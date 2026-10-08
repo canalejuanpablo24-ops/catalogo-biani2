@@ -91,9 +91,10 @@ test('Display incompleto se oculta en lugar de inferir datos comerciales', () =>
   assert.deepEqual(SaleMode.getSaleOptions(incomplete), []);
 });
 
-test('catálogo activo integra modo, total y WhatsApp sin persistir el carrito', () => {
+test('catálogo activo integra modo, total, WhatsApp y persistencia validada', () => {
   assert.match(indexSource, /window\.SaleMode\.selectSaleMode/);
   assert.match(indexSource, /window\.SaleMode\.createCartSelection/);
   assert.match(indexSource, /Modo: \$\{selection\.sale_mode_label\}/);
-  assert.doesNotMatch(indexSource, /localStorage\.setItem\([^\n]*(?:cart|carrito)/i);
+  assert.match(indexSource, /window\.CartPersistence\.createCartSnapshot/);
+  assert.match(indexSource, /restorePersistentCart\(\)/);
 });
