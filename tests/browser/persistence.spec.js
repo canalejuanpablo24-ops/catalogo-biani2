@@ -163,6 +163,7 @@ test('@desktop cambios de cantidad mínima ajustan y notifican', async ({ page }
 
 test('@desktop datos del cliente persisten pero el DNI no', async ({ page }) => {
   await openCatalog(page);
+  await addFirstProduct(page);
   await page.locator('#cartBtn').click();
   await page.locator('#c-name').fill('Cliente Persistente');
   await page.locator('#c-dir').fill('Calle Persistente 123');
