@@ -22,19 +22,35 @@
     }
   }
 
-  function createCartSnapshot(products, saleMode, now) {
+  function createCartSnapshot(products, saleMode, now, previousValue, acceptCurrentTerms) {
+    const previous = parseStoredJson(previousValue);
+    const previousItems = new Map();
+    if (previous && Array.isArray(previous.items)) {
+      previous.items.forEach(function (item) {
+        if (item && item.code != null) previousItems.set(String(item.code), item);
+      });
+    }
+
     const items = [];
     (Array.isArray(products) ? products : []).forEach(function (product) {
       if (!product || Number(product.qty) <= 0) return;
       const selection = saleMode.createCartSelection(product, product.sale_mode, product.qty);
       if (!selection) return;
+      const prior = previousItems.get(String(selection.code));
+      const preserveAcceptedTerms = !acceptCurrentTerms && prior && prior.sale_mode === selection.sale_mode;
       items.push({
         code: String(selection.code),
         qty: selection.qty,
         sale_mode: selection.sale_mode,
-        units_per_display: selection.units_per_display,
-        price_at_save: selection.price,
-        min_qty_at_save: selection.min_qty
+        units_per_display: preserveAcceptedTerms && prior.units_per_display !== undefined
+          ? prior.units_per_display
+          : selection.units_per_display,
+        price_at_save: preserveAcceptedTerms && Number.isFinite(Number(prior.price_at_save))
+          ? Number(prior.price_at_save)
+          : selection.price,
+        min_qty_at_save: preserveAcceptedTerms && Number.isSafeInteger(Number(prior.min_qty_at_save))
+          ? Number(prior.min_qty_at_save)
+          : selection.min_qty
       });
     });
     return {
@@ -66,12 +82,12 @@
     deduplicated.forEach(function (savedItem, code) {
       const product = byCode.get(code);
       if (!product) {
-        notices.push({ type: 'missing', code: code, message: `El producto #${code} ya no existe y fue quitado del carrito.` });
+        notices.push({ type: 'missing', code: code, message: `El producto #${code} ya no existe y requiere corrección antes de enviar.` });
         return;
       }
       const productName = cleanText(product.name || ('Producto #' + code), 160);
       if (product.outOfStock) {
-        notices.push({ type: 'out_of_stock', code: code, message: `${productName} quedó sin stock y fue quitado del carrito.` });
+        notices.push({ type: 'out_of_stock', code: code, message: `${productName} quedó sin stock y requiere corrección antes de enviar.` });
         return;
       }
 
@@ -80,19 +96,19 @@
         return candidate.mode === requestedMode;
       });
       if (!option) {
-        notices.push({ type: 'mode_unavailable', code: code, message: `${productName} ya no admite el modo de venta guardado y fue quitado del carrito.` });
+        notices.push({ type: 'mode_unavailable', code: code, message: `${productName} ya no admite el modo de venta guardado y requiere corrección antes de enviar.` });
         return;
       }
 
       const savedQuantity = Number(savedItem.qty);
       if (!Number.isSafeInteger(savedQuantity) || savedQuantity <= 0) {
-        notices.push({ type: 'invalid_quantity', code: code, message: `${productName} tenía una cantidad inválida y fue quitado del carrito.` });
+        notices.push({ type: 'invalid_quantity', code: code, message: `${productName} tiene una cantidad inválida y requiere corrección antes de enviar.` });
         return;
       }
 
       const quantity = saleMode.normalizeSaleQuantity(savedQuantity, option);
       if (!Number.isSafeInteger(quantity) || quantity <= 0) {
-        notices.push({ type: 'invalid_quantity', code: code, message: `${productName} no pudo recuperar una cantidad válida y fue quitado del carrito.` });
+        notices.push({ type: 'invalid_quantity', code: code, message: `${productName} no puede recuperar una cantidad válida y requiere corrección antes de enviar.` });
         return;
       }
 

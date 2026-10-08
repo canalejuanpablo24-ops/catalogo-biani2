@@ -132,3 +132,28 @@ test('integración borra almacenamiento y no persiste DNI', () => {
   assert.match(indexSource, /restorePersistentCart\(\)/);
   assert.match(indexSource, /savePersistentCart\(\)/);
 });
+
+
+test('guardados automáticos preservan la referencia comercial hasta aceptación explícita', () => {
+  const previous = CartPersistence.createCartSnapshot([unitProduct], SaleMode, 1000);
+  const changed = { ...unitProduct, price: 150, unidad_min: 5, qty: 5 };
+  const preserved = CartPersistence.createCartSnapshot(
+    [changed], SaleMode, 2000, previous, false
+  );
+  assert.equal(preserved.items[0].price_at_save, 100);
+  assert.equal(preserved.items[0].min_qty_at_save, 2);
+
+  const accepted = CartPersistence.createCartSnapshot(
+    [changed], SaleMode, 3000, preserved, true
+  );
+  assert.equal(accepted.items[0].price_at_save, 150);
+  assert.equal(accepted.items[0].min_qty_at_save, 5);
+});
+
+test('productos inválidos se informan como pendientes de corrección, no como borrados silenciosos', () => {
+  const stored = CartPersistence.createCartSnapshot([unitProduct], SaleMode, 1000);
+  const restored = CartPersistence.restoreCart([], stored, SaleMode);
+  assert.equal(restored.notices[0].type, 'missing');
+  assert.match(restored.notices[0].message, /requiere corrección/);
+  assert.doesNotMatch(restored.notices[0].message, /fue quitado/);
+});

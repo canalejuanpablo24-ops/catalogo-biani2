@@ -2,11 +2,12 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-HgVSKTaGBGRrXxoedAy335rMiiQCPdCxDNR2jAACmp4=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-lY8ltF8pB/dGaSeJ24GoFMs+zJSP2PR/xHMWWnZcQDI=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <script src="src/services/pdf-import.service.js"></script>
 <script src="src/services/admin-state.service.js"></script>
 <script src="src/services/sale-mode.service.js"></script>
 <script src="src/services/cart-persistence.service.js"></script>
+<script src="src/services/order-validation.service.js"></script>
 <script src="src/services/category-filter.service.js"></script>
 <script src="src/services/product-search.service.js"></script>
 <script>
@@ -2178,6 +2179,7 @@ function getSavedCategory() {
 }
 
 let prods = [];
+let catalogSyncState = { status: 'pending', message: 'Actualización del catálogo en curso.' };
 let filt = [], curG = '', curC = getSavedCategory(), q = '', st = false, pending = [], pdfProds = [], pdfAnalysis = null;
 
 // ADMIN STATE VARIABLES
@@ -2242,6 +2244,7 @@ function cleanSheetId(id) {
 async function loadDatabase() {
   showLoading(true);
   prods = [];
+  catalogSyncState = { status: 'pending', message: 'Actualización del catálogo en curso.' };
 
   const fetchWithTimeout = async (url, options = {}, timeoutMs = 15000) => {
     const controller = window.AbortController ? new AbortController() : null;
@@ -2333,7 +2336,10 @@ async function loadDatabase() {
 
     // Fetch live CSV from Google Sheets with fallbacks ASYNCHRONOUSLY
     const syncSheetsAsync = async () => {
-      if (!sheetId) return;
+      if (!sheetId) {
+        catalogSyncState = { status: 'failed', message: 'No hay una fuente externa configurada.' };
+        return;
+      }
       let sheetsSynced = false;
       const cacheBust = '&_t=' + Date.now();
       const urlsToTry = [
@@ -2354,6 +2360,7 @@ async function loadDatabase() {
             if (csvRows.length > 1) {
               processCSVRows(csvRows);
               sheetsSynced = true;
+              catalogSyncState = { status: 'confirmed', message: 'Catálogo confirmado con Google Sheets.', checkedAt: Date.now() };
               
               // Re-apply hardcoded minimum rules
               prods.forEach(p => {
@@ -2378,8 +2385,13 @@ async function loadDatabase() {
         }
       }
 
-      if (!sheetsSynced && !dataLoaded) {
-        toast("⚠️ Error al conectar con Google Sheets.", "warn");
+      if (!sheetsSynced) {
+        catalogSyncState = {
+          status: 'failed',
+          message: 'No se pudo confirmar stock y precios con Google Sheets.',
+          checkedAt: Date.now()
+        };
+        toast("⚠️ No se pudo confirmar el catálogo actualizado. El envío de pedidos queda bloqueado.", "warn");
       }
     };
     
@@ -2407,6 +2419,11 @@ async function loadDatabase() {
     applyF();
     updCart();
   } catch (err) {
+    catalogSyncState = {
+      status: 'failed',
+      message: 'Falló la carga del catálogo.',
+      checkedAt: Date.now()
+    };
     console.error("Error in loadDatabase:", err);
   } finally {
     showLoading(false);
@@ -3142,6 +3159,9 @@ const CART_STORAGE_KEY = window.CartPersistence.CART_KEY;
 const CUSTOMER_STORAGE_KEY = window.CartPersistence.CUSTOMER_KEY;
 let cartPersistenceReady = false;
 let restoringPersistentCart = false;
+const unresolvedCartItems = new Map();
+let orderSubmissionInProgress = false;
+let orderSubmissionResetTimer = null;
 
 function readLocalStorage(key) {
   try {
@@ -3190,9 +3210,20 @@ function restoreCustomerData() {
   document.getElementById('c-obs').value = customer.observations;
 }
 
-function savePersistentCart() {
+function savePersistentCart(options = {}) {
   if (!cartPersistenceReady || restoringPersistentCart) return;
-  const snapshot = window.CartPersistence.createCartSnapshot(getCart(), window.SaleMode);
+  const previousValue = readLocalStorage(CART_STORAGE_KEY);
+  const snapshot = window.CartPersistence.createCartSnapshot(
+    getCart(),
+    window.SaleMode,
+    Date.now(),
+    previousValue,
+    options.acceptCurrentTerms === true
+  );
+  const currentCodes = new Set(snapshot.items.map(item => String(item.code)));
+  unresolvedCartItems.forEach((item, code) => {
+    if (!currentCodes.has(code)) snapshot.items.push(item);
+  });
   writeLocalStorage(CART_STORAGE_KEY, snapshot.items.length ? JSON.stringify(snapshot) : null);
 }
 
@@ -3209,7 +3240,20 @@ function showCartRestoreNotice(messages) {
 
 function restorePersistentCart(options = {}) {
   const storedCart = readLocalStorage(CART_STORAGE_KEY);
+  const parsedStoredCart = window.CartPersistence.parseStoredJson(storedCart);
   const restoration = window.CartPersistence.restoreCart(prods, storedCart, window.SaleMode);
+  const blockingTypes = new Set([
+    'missing', 'out_of_stock', 'mode_unavailable', 'invalid_quantity'
+  ]);
+
+  unresolvedCartItems.clear();
+  if (parsedStoredCart && Array.isArray(parsedStoredCart.items)) {
+    restoration.notices.forEach(notice => {
+      if (!notice.code || !blockingTypes.has(notice.type)) return;
+      const storedItem = parsedStoredCart.items.find(item => String(item.code) === String(notice.code));
+      if (storedItem) unresolvedCartItems.set(String(notice.code), storedItem);
+    });
+  }
 
   restoringPersistentCart = true;
   prods.forEach(product => {
@@ -3237,6 +3281,7 @@ function restorePersistentCart(options = {}) {
 }
 
 function clearPersistentCartAndCustomer() {
+  unresolvedCartItems.clear();
   writeLocalStorage(CART_STORAGE_KEY, null);
   writeLocalStorage(CUSTOMER_STORAGE_KEY, null);
   showCartRestoreNotice([]);
@@ -3329,15 +3374,74 @@ function clrCart() {
   updCart(); rendCart(); toast('Pedido y datos guardados eliminados');
 }
 
+function getOrderCartSnapshot() {
+  const stored = window.CartPersistence.parseStoredJson(readLocalStorage(CART_STORAGE_KEY));
+  if (stored && Array.isArray(stored.items) && stored.items.length) return stored;
+  return window.CartPersistence.createCartSnapshot(
+    getCart(),
+    window.SaleMode,
+    Date.now(),
+    null,
+    true
+  );
+}
+
+function removeBlockedCartItems(codes) {
+  const removeCodes = new Set(codes.map(String));
+  prods.forEach(product => {
+    if (removeCodes.has(String(product.code))) product.qty = 0;
+  });
+  removeCodes.forEach(code => unresolvedCartItems.delete(code));
+
+  const stored = window.CartPersistence.parseStoredJson(readLocalStorage(CART_STORAGE_KEY));
+  if (stored && Array.isArray(stored.items)) {
+    stored.items = stored.items.filter(item => !removeCodes.has(String(item.code)));
+    writeLocalStorage(CART_STORAGE_KEY, stored.items.length ? JSON.stringify(stored) : null);
+  }
+  applyF();
+  updCart();
+  rendCart();
+  toast('Productos inválidos quitados por decisión del comprador', 'warn');
+}
+
+function acceptValidatedOrderChanges(validation) {
+  validation.items.forEach(entry => {
+    entry.product.sale_mode = entry.selection.sale_mode;
+    entry.product.qty = entry.selection.qty;
+  });
+  savePersistentCart({ acceptCurrentTerms: true });
+  updCart();
+  rendCart();
+}
+
+function releaseOrderSubmission() {
+  orderSubmissionInProgress = false;
+  const button = document.getElementById('sendWaBtn');
+  if (button) button.disabled = false;
+  if (orderSubmissionResetTimer) {
+    clearTimeout(orderSubmissionResetTimer);
+    orderSubmissionResetTimer = null;
+  }
+}
+
 function sendWA() {
-  const items = getCart(); if (!items.length) { toast('El pedido está vacío'); return }
-  
+  if (orderSubmissionInProgress) {
+    toast('El pedido ya se está preparando', 'warn');
+    return;
+  }
+
+  const snapshot = getOrderCartSnapshot();
+  if (!snapshot.items.length) {
+    toast('El pedido está vacío');
+    return;
+  }
+
   const name = document.getElementById('c-name').value.trim();
   const dni = document.getElementById('c-dni').value.trim();
   const dir = document.getElementById('c-dir').value.trim();
   const phone = document.getElementById('c-phone').value.trim();
   const obs = document.getElementById('c-obs').value.trim();
-  
+
   if (!name || !dni || !dir) {
     toast('⚠️ Completá los campos obligatorios (*)', 'warn');
     if (!name) document.getElementById('c-name').focus();
@@ -3345,32 +3449,68 @@ function sendWA() {
     else if (!dir) document.getElementById('c-dir').focus();
     return;
   }
-  
-  const selections = items.map(getCartSelection).filter(Boolean);
-  const tot = selections.reduce((sum, selection) => sum + selection.total, 0);
-  let msg = '🛒 *PEDIDO BIANI*\n━━━━━━━━━━━━━━━━\n';
-  msg += `👤 *Cliente:* ${name}\n`;
-  msg += `🆔 *DNI/CUIT:* ${dni}\n`;
-  msg += `📍 *Dirección:* ${dir}\n`;
-  if (phone) msg += `📞 *Teléfono:* ${phone}\n`;
-  if (obs) {
-    msg += `💬 *Obs:* ${obs}\n`;
+
+  const validation = window.OrderValidation.validateOrder(
+    snapshot,
+    prods,
+    window.SaleMode,
+    catalogSyncState
+  );
+
+  if (validation.blockers.length) {
+    const message = window.OrderValidation.formatBlockingMessage(validation.blockers);
+    const syncUnconfirmed = validation.blockers.some(blocker => blocker.type === 'sync_unconfirmed');
+    const removableCodes = validation.blockers
+      .filter(blocker => blocker.code)
+      .map(blocker => blocker.code);
+
+    if (syncUnconfirmed || removableCodes.length === 0) {
+      alert(message);
+    } else {
+      const removeConfirmed = confirm(
+        message + '\n\nEl pedido no fue enviado. ¿Querés quitar estos productos del carrito para poder corregirlo?'
+      );
+      if (removeConfirmed) removeBlockedCartItems(removableCodes);
+    }
+    return;
   }
-  msg += '━━━━━━━━━━━━━━━━\n';
-  
-  items.forEach(p => {
-    const selection = getCartSelection(p);
-    if (!selection) return;
-    const sub = selection.total.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const quantity = window.SaleMode.formatSaleQuantity(selection.qty, {
-      mode: selection.sale_mode,
-      minQty: selection.min_qty,
-      unitsPerDisplay: selection.units_per_display
-    });
-    msg += `▪ *${cleanN(p.name)}*\n  Cód. ${p.code} · Modo: ${selection.sale_mode_label} · Cantidad: ${quantity} · Total: $${sub}\n`;
-  });
-  msg += `━━━━━━━━━━━━━━━━\n💰 *TOTAL: $${tot.toLocaleString('es-AR', { minimumFractionDigits: 2 })}*\n📅 ${new Date().toLocaleDateString('es-AR')}`;
-  window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank');
+
+  if (validation.changes.length) {
+    const accepted = confirm(
+      window.OrderValidation.formatChangesMessage(validation.changes, validation.total)
+    );
+    if (!accepted) {
+      toast('El pedido no fue enviado; los cambios todavía no fueron aceptados', 'warn');
+      return;
+    }
+    acceptValidatedOrderChanges(validation);
+  }
+
+  orderSubmissionInProgress = true;
+  const button = document.getElementById('sendWaBtn');
+  if (button) button.disabled = true;
+
+  const message = window.OrderValidation.formatOrderMessage(
+    validation.items,
+    {
+      name: name,
+      dni: dni,
+      address: dir,
+      phone: phone,
+      observations: obs
+    },
+    window.SaleMode,
+    new Date()
+  );
+  const url = window.OrderValidation.buildWhatsAppUrl(WA, message);
+
+  try {
+    window.open(url, '_blank');
+    orderSubmissionResetTimer = setTimeout(releaseOrderSubmission, 2500);
+  } catch (error) {
+    releaseOrderSubmission();
+    toast('No se pudo abrir WhatsApp. Intentá nuevamente.', 'warn');
+  }
 }
 
 function openMod() {

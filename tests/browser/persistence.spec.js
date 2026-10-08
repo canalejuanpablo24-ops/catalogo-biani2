@@ -203,6 +203,7 @@ test('@desktop WhatsApp usa el carrito restaurado y los datos recuperados', asyn
   await expect(page.locator('#loader')).toHaveClass(/hidden/);
   await page.locator('#cartBtn').click();
   await page.locator('#c-dni').fill('20-12345678-9');
+  await page.evaluate(() => eval("catalogSyncState = { status: 'confirmed', message: 'Prueba controlada' }"));
   await page.locator('#sendWaBtn').click();
 
   await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrls[0] || '')).toContain('https://wa.me/');
