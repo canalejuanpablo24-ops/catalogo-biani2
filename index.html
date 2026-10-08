@@ -2,12 +2,13 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-FPNq/WKhLYBZevkRwSgJ+Pc80fiWXRL5/MPm/HCEOPI=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-HgVSKTaGBGRrXxoedAy335rMiiQCPdCxDNR2jAACmp4=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <script src="src/services/pdf-import.service.js"></script>
 <script src="src/services/admin-state.service.js"></script>
 <script src="src/services/sale-mode.service.js"></script>
 <script src="src/services/cart-persistence.service.js"></script>
 <script src="src/services/category-filter.service.js"></script>
+<script src="src/services/product-search.service.js"></script>
 <script>
 // FORCE CACHE PURGE & SW NUKING ON FIRST LOAD
 try {
@@ -2675,241 +2676,28 @@ function stripSpanishPlural(w) {
 }
 
 // HELPER FOR FUZZY & TYPO-TOLERANT SEARCH
-function normSearchText(str) {
-  if (!str) return '';
-  return String(str)
-    .toLowerCase()
-    .replace(/\ufffd/g, 'n')
-    .replace(/ñ/g, 'n')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+function normSearchText(value) {
+  return window.ProductSearch.normalizeText(value);
 }
 
-function levenshteinDist(a, b) {
-  if (a === b) return 0;
-  if (a.length === 0) return b.length;
-  if (b.length === 0) return a.length;
-
-  const row = Array(a.length + 1).fill(0).map((_, i) => i);
-  for (let i = 1; i <= b.length; i++) {
-    let prev = i;
-    for (let j = 1; j <= a.length; j++) {
-      const val = (b.charAt(i - 1) === a.charAt(j - 1)) ? row[j - 1] : Math.min(row[j - 1] + 1, prev + 1, row[j] + 1);
-      row[j - 1] = prev;
-      prev = val;
-    }
-    row[a.length] = prev;
-  }
-  return row[a.length];
-}
-
-function isWordFuzzyMatch(qWord, targetWords) {
-  if (!qWord || qWord.length === 0) return true;
-  
-  const qStem = stripSpanishPlural(qWord);
-
-  // 1. Direct substring, prefix or stem match in any target word
-  for (let i = 0; i < targetWords.length; i++) {
-    const tWord = targetWords[i];
-    const tStem = stripSpanishPlural(tWord);
-
-    if (tWord.includes(qWord) || tWord.includes(qStem) || qWord.includes(tWord) || qWord.includes(tStem) ||
-        tWord.startsWith(qWord) || tWord.startsWith(qStem) || tStem.startsWith(qStem)) {
-      return true;
-    }
-  }
-
-  // 2. Typo distance tolerance based on word length
-  const qLen = qStem.length;
-  if (qLen < 2) return false;
-
-  const maxDist = qLen <= 4 ? 1 : (qLen <= 7 ? 2 : 3);
-
-  for (let i = 0; i < targetWords.length; i++) {
-    const tWord = targetWords[i];
-    const tStem = stripSpanishPlural(tWord);
-    // Check full Levenshtein on word and stem
-    if (Math.abs(tWord.length - qLen) <= maxDist + 1) {
-      if (levenshteinDist(qWord, tWord) <= maxDist || levenshteinDist(qStem, tStem) <= maxDist) return true;
-    }
-    // Check prefix Levenshtein (e.g. "galet" matching "galletitas")
-    if (tWord.length > qLen && qLen >= 3) {
-      const tPrefix = tWord.substring(0, qLen);
-      if (levenshteinDist(qWord, tPrefix) <= 1 || levenshteinDist(qStem, tPrefix) <= 1) return true;
-    }
-  }
-
-  return false;
-}
-
-const SEARCH_SYNONYMS = {
-  'panal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
-  'panales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
-  'pañal': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
-  'pañales': ['panal', 'panales', 'pañal', 'pañales', 'duffy', 'baby', 'cotton', 'xg', 'xxg', 'plenitud', 'huggies', 'pampers'],
-  'gaseosa': ['gaseosa', 'gaseosas', 'coca', 'pepsi', 'manaos', 'secco', 'sprite', '7up', 'bebida', 'bebidas'],
-  'gaseosas': ['gaseosa', 'gaseosas', 'coca', 'pepsi', 'manaos', 'secco', 'sprite', '7up', 'bebida', 'bebidas'],
-  'galletita': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas'],
-  'galletitas': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley', 'dulces', 'saladas'],
-  'masita': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley'],
-  'masitas': ['galletita', 'galletitas', 'masitas', 'terabusi', 'bagley'],
-  'escoba': ['escoba', 'escobillon', 'capsa', 'palo', 'secador'],
-  'escobillon': ['escoba', 'escobillon', 'capsa', 'palo', 'secador'],
-  'vino': ['vino', 'vinos', 'tinto', 'blanco', 'malbec', 'cabernet', 'cordero', 'fecovita', 'estancia', 'bodega'],
-  'vinos': ['vino', 'vinos', 'tinto', 'blanco', 'malbec', 'cabernet', 'cordero', 'fecovita', 'estancia', 'bodega'],
-  'leche': ['leche', 'lacteo', 'serenisima'],
-  'yerba': ['yerba', 'yerbas', 'mate', 'playadito', 'taragui', 'rosamonte', 'amanda', 'romance', 'nobleza', 'canarias', 'mañanita', 'cbse', 'pipore'],
-  'yerbas': ['yerba', 'yerbas', 'mate', 'playadito', 'taragui', 'rosamonte', 'amanda', 'romance', 'nobleza', 'canarias', 'mañanita', 'cbse', 'pipore'],
-  'chocolates': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot'],
-  'chocolate': ['chocolate', 'chocolates', 'block', 'arcor', 'bon', 'shot'],
-  'terron': ['terron', 'terrones', 'terroncito', 'terroncitos', 'cubos'],
-  'terroncito': ['terron', 'terrones', 'terroncito', 'terroncitos', 'cubos'],
-  'terroncitos': ['terron', 'terrones', 'terroncito', 'terroncitos', 'cubos'],
-  'edulcorante': ['edulcorante', 'edulco', 'hileret', 'zucra', 'stevia', 'sweet', '1a10'],
-  'edulco': ['edulcorante', 'edulco', 'hileret', 'zucra', 'stevia', 'sweet', '1a10']
-};
-
-function normalizePhonetic(s) {
-  if (!s) return '';
-  let str = String(s).toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-  const replacements = [
-    ['v', 'b'], ['z', 's'], ['c', 's'], ['k', 'c'], ['q', 'c'],
-    ['ge', 'je'], ['gi', 'ji'], ['ll', 'y'], ['h', '']
-  ];
-  for (const pair of replacements) {
-    str = str.split(pair[0]).join(pair[1]);
-  }
-  return str.replace(/[^a-z0-9]/g, '');
-}
-
-function fuzzyWordMatch(qw, tw) {
-  if (qw === tw) return 1.0;
-  if (tw.includes(qw)) return qw.length / tw.length;
-  if (qw.includes(tw)) return tw.length / qw.length;
-  
-  const pq = normalizePhonetic(qw);
-  const pt = normalizePhonetic(tw);
-  if (pq === pt) return 0.95;
-  if (pt.includes(pq) && pq.length >= 3) return 0.85;
-
-  const maxLen = Math.max(qw.length, tw.length);
-  if (maxLen >= 3) {
-    const dist = levenshteinDist(qw, tw);
-    const sim = 1.0 - (dist / maxLen);
-    if (maxLen <= 4 && sim >= 0.75) return sim * 0.8;
-    else if (maxLen > 4 && sim >= 0.65) return sim * 0.8;
-  }
-
-  const maxLenP = Math.max(pq.length, pt.length);
-  if (maxLenP >= 3) {
-    const distP = levenshteinDist(pq, pt);
-    const simP = 1.0 - (distP / maxLenP);
-    if (maxLenP <= 4 && simP >= 0.75) return simP * 0.75;
-    else if (maxLenP > 4 && simP >= 0.65) return simP * 0.75;
-  }
-
-  return 0.0;
-}
-
-function prepareProductSearchCache(p, force = false) {
-  if (!p) return;
-  if (!force && p._fullTarget) return;
-  const extraDesc = (window.codeToDesc && window.codeToDesc[p.code]) ? window.codeToDesc[p.code] : '';
-  const imgFilename = String(p.image || '').toLowerCase();
-
-  p._nameNorm = normSearchText(p.name || '');
-  const catNorm = normSearchText(p.category || '');
-  const codeNorm = String(p.code || '').toLowerCase().trim();
-  const descNorm = normSearchText(extraDesc);
-  const imgNorm = normSearchText(imgFilename);
-
-  p._fullTarget = `${codeNorm} ${p._nameNorm} ${catNorm} ${descNorm} ${imgNorm}`;
-  p._noSpaceTarget = p._fullTarget.replace(/\s+/g, '');
-  p._targetWords = p._fullTarget.split(' ').filter(w => w.length > 0);
-  p._phoneticWords = p._targetWords.map(w => normalizePhonetic(w));
+function prepareProductSearchCache(product, force = false) {
+  if (!product) return;
+  const extraDescription = window.codeToDesc && window.codeToDesc[product.code]
+    ? window.codeToDesc[product.code]
+    : '';
+  window.ProductSearch.prepareProduct(product, extraDescription, force);
 }
 
 function prepareAllSearchCache(force = true) {
-  if (Array.isArray(prods)) {
-    prods.forEach(p => prepareProductSearchCache(p, force));
-  }
+  window.ProductSearch.prepareAll(prods, product => (
+    window.codeToDesc && window.codeToDesc[product.code]
+      ? window.codeToDesc[product.code]
+      : ''
+  ), force);
 }
 
 function getProductSearchScore(product, query) {
-  const normQ = normSearchText(query);
-  if (!normQ) return 1;
-
-  if (!product._fullTarget) {
-    prepareProductSearchCache(product);
-  }
-
-  const nameNorm = product._nameNorm;
-  const fullTarget = product._fullTarget;
-  const noSpaceTarget = product._noSpaceTarget;
-  const targetWords = product._targetWords;
-  const phoneticWords = product._phoneticWords;
-
-  // 1. Fast direct exact match short-circuit
-  if (nameNorm.includes(normQ)) return 1000;
-  if (fullTarget.includes(normQ)) return 800;
-
-  const noSpaceQ = normQ.replace(/\s+/g, '');
-  if (noSpaceTarget.includes(noSpaceQ)) return 500;
-
-  const queryWords = normQ.split(' ').filter(w => w.length > 0);
-  const pQWords = queryWords.map(w => normalizePhonetic(w));
-
-  let score = 0;
-  let matchedWordsCount = 0;
-
-  for (let qIdx = 0; qIdx < queryWords.length; qIdx++) {
-    const qWord = queryWords[qIdx];
-    const pQ = pQWords[qIdx];
-    const qStem = stripSpanishPlural(qWord);
-    let bestMatch = 0;
-
-    for (let i = 0; i < targetWords.length; i++) {
-      const tw = targetWords[i];
-      const pt = phoneticWords[i];
-
-      let m = 0;
-      if (qWord === tw) m = 1.0;
-      else if (tw.includes(qWord)) m = qWord.length / tw.length;
-      else if (pQ && pt && pQ === pt) m = 0.95;
-      else if (pQ && pt && pt.includes(pQ) && pQ.length >= 3) m = 0.85;
-      else {
-        const maxLen = Math.max(qWord.length, tw.length);
-        if (maxLen >= 3) {
-          const dist = levenshteinDist(qWord, tw);
-          const sim = 1.0 - (dist / maxLen);
-          if (maxLen <= 4 && sim >= 0.75) m = sim * 0.8;
-          else if (maxLen > 4 && sim >= 0.65) m = sim * 0.8;
-        }
-      }
-
-      if (m > bestMatch) bestMatch = m;
-    }
-
-    if (bestMatch >= 0.5) {
-      score += Math.round(bestMatch * 200);
-      matchedWordsCount++;
-    }
-  }
-
-  if (queryWords.length > 1 && matchedWordsCount < queryWords.length && score < 500) {
-    return 0;
-  }
-
-  if (matchedWordsCount === 0 && score === 0) {
-    return 0;
-  }
-
-  return score;
+  return window.ProductSearch.scoreProduct(product, query);
 }
 
 function matchesProductSearch(product, query) {
@@ -2921,6 +2709,10 @@ function clearSearch() {
   if (sinp) {
     sinp.value = '';
     q = '';
+    if (typeof searchDebounceTimer !== 'undefined' && searchDebounceTimer) {
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = null;
+    }
     const clearBtn = document.getElementById('clearSearchBtn');
     if (clearBtn) clearBtn.style.display = 'none';
     applyF();
@@ -2934,11 +2726,13 @@ function applyF() {
   if (stog) stog.classList.toggle('active', st);
 
   const trimmedQ = (q || '').trim();
+  const compiledQuery = window.ProductSearch.compileQuery(trimmedQ);
+  const searchStartedAt = performance.now();
   filt = CategoryFilter.filterProducts(prods, {
     category: curC,
     query: trimmedQ,
     onlySinTacc: st,
-    scoreProduct: getProductSearchScore
+    scoreProduct: product => getProductSearchScore(product, compiledQuery)
   });
 
   const titleEl = document.getElementById('ctitle');
@@ -2950,6 +2744,11 @@ function applyF() {
   }
 
   renderProds();
+
+  window.__searchPerf = window.__searchPerf || { executions: 0, lastDuration: 0, lastQuery: '' };
+  window.__searchPerf.executions += 1;
+  window.__searchPerf.lastDuration = performance.now() - searchStartedAt;
+  window.__searchPerf.lastQuery = trimmedQ;
 }
 
 let scrollListener = null;
@@ -3766,12 +3565,6 @@ function toast(msg, cls = '') {
   clearTimeout(toastT);
   toastT = setTimeout(() => t.classList.remove('show'), 3000);
 }
-
-let st2;
-document.getElementById('sinp').addEventListener('input', e => {
-  clearTimeout(st2);
-  st2 = setTimeout(() => { q = e.target.value; applyF() }, 200);
-});
 
 const uz = document.getElementById('uz');
 uz.addEventListener('dragover', e => { e.preventDefault(); uz.classList.add('drag') });
@@ -4654,8 +4447,9 @@ if (sinpInput) {
     
     if (searchDebounceTimer) clearTimeout(searchDebounceTimer);
     searchDebounceTimer = setTimeout(() => {
+      searchDebounceTimer = null;
       applyF();
-    }, 100);
+    }, 120);
   });
 }
 

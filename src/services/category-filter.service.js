@@ -77,6 +77,9 @@
       return !selectedKey || categoryKey(normalizeCategoryName(product && product.category)) === selectedKey;
     });
 
+    // Aplicar primero los filtros baratos reduce el trabajo del buscador difuso.
+    if (settings.onlySinTacc) result = result.filter(isSinTacc);
+
     if (query && typeof settings.scoreProduct === 'function') {
       result = result
         .map(function (product) {
@@ -86,8 +89,6 @@
         .sort(function (a, b) { return b.score - a.score; })
         .map(function (entry) { return entry.product; });
     }
-
-    if (settings.onlySinTacc) result = result.filter(isSinTacc);
     return result;
   }
 
