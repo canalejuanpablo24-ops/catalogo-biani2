@@ -150,7 +150,7 @@ test('@all carrito genera un pedido de WhatsApp sin abrir el servicio externo', 
   await page.locator('#c-dni').fill('20-12345678-9');
   await page.locator('#c-dir').fill('Calle Prueba 123');
   await page.locator('#c-obs').fill('Validación automática sin envío real');
-  await page.evaluate(() => eval("catalogSyncState = { status: 'confirmed', message: 'Prueba controlada' }"));
+  await page.evaluate(() => eval("catalogSyncState = { status: 'confirmed', message: 'Prueba controlada', checkedAt: Date.now(), lastSuccessAt: Date.now() }"));
   await page.locator('#sendWaBtn').click();
 
   await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrls[0] || '')).toContain('https://wa.me/');

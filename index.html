@@ -2,12 +2,13 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-lY8ltF8pB/dGaSeJ24GoFMs+zJSP2PR/xHMWWnZcQDI=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-+mtwaQOzcp3qEGbdm6Oq5oLIsOyWk3aZS1dAxjV1Qtc=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <script src="src/services/pdf-import.service.js"></script>
 <script src="src/services/admin-state.service.js"></script>
 <script src="src/services/sale-mode.service.js"></script>
 <script src="src/services/cart-persistence.service.js"></script>
 <script src="src/services/order-validation.service.js"></script>
+<script src="src/services/sheet-sync.service.js"></script>
 <script src="src/services/category-filter.service.js"></script>
 <script src="src/services/product-search.service.js"></script>
 <script>
@@ -2241,6 +2242,84 @@ function cleanSheetId(id) {
 }
 
 // DATA LOADER PIPELINE
+function readStoredJson(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function writeStoredJson(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch (error) {
+    console.warn('No se pudo guardar el estado de sincronización:', error);
+    return false;
+  }
+}
+
+function normalizeCatalogBase(products) {
+  return (products || []).map(product => {
+    let category = product.category || 'Varios';
+    const code = String(product.code || '').trim();
+    const hasImageMapping = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, code);
+    const image = hasImageMapping ? window.codeToImg[code] : product.image || '';
+    if (!image || !String(image).trim()) category = 'Nuevos y Sin Imagen';
+    else category = normalizeCategory(category, product.name, image);
+    return {
+      unidad_min: 1,
+      ...product,
+      code,
+      unidad_min: product.unidad_min || 1,
+      category,
+      image,
+      qty: 0
+    };
+  }).filter(product => product.code && product.name);
+}
+
+function applyCommercialMinimums(products) {
+  (products || []).forEach(product => {
+    const name = String(product.name || '').toUpperCase();
+    if (name.includes('GUAYMALLEN SIMPLE')) product.unidad_min = 20;
+    else if (name.includes('GUAYMALLEN RUBI')) product.unidad_min = 12;
+  });
+}
+
+function markSheetSyncFailure(message) {
+  const hasValidPrevious = Boolean(lastValidSheetMeta);
+  const fresh = hasValidPrevious && window.SheetSync.isFresh(lastValidSheetMeta);
+  catalogSyncState = {
+    ...(lastValidSheetMeta || {}),
+    status: fresh ? 'confirmed' : (hasValidPrevious ? 'stale' : 'failed'),
+    checkedAt: window.SheetSync.lastSuccessAt(lastValidSheetMeta) || Date.now(),
+    message
+  };
+  toast(
+    fresh
+      ? '⚠️ La actualización fue rechazada; se conserva el último catálogo válido reciente.'
+      : '⚠️ No se pudo confirmar un catálogo vigente. El envío de pedidos queda bloqueado.',
+    'warn'
+  );
+}
+
+function requestCatalogRefresh(options = {}) {
+  if (!catalogRefreshHandler) return Promise.resolve(false);
+  if (catalogRefreshPromise) return catalogRefreshPromise;
+  catalogRefreshPromise = Promise.resolve(catalogRefreshHandler(options))
+    .catch(error => {
+      markSheetSyncFailure('Falló la actualización de Google Sheets: ' + error.message);
+      return false;
+    })
+    .finally(() => {
+      catalogRefreshPromise = null;
+    });
+  return catalogRefreshPromise;
+}
+
 async function loadDatabase() {
   showLoading(true);
   prods = [];
@@ -2248,294 +2327,226 @@ async function loadDatabase() {
 
   const fetchWithTimeout = async (url, options = {}, timeoutMs = 15000) => {
     const controller = window.AbortController ? new AbortController() : null;
-    if (controller) options.signal = controller.signal;
+    const requestOptions = { ...options };
+    if (controller) requestOptions.signal = controller.signal;
     const timeoutId = setTimeout(() => {
       if (controller) controller.abort();
     }, timeoutMs);
     try {
-      const res = await fetch(url, options);
+      return await fetch(url, requestOptions);
+    } finally {
       clearTimeout(timeoutId);
-      return res;
-    } catch (err) {
-      clearTimeout(timeoutId);
-      throw err;
     }
   };
 
   try {
     let rawSheetId = '';
-    try { rawSheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID; } catch(e) { rawSheetId = DEFAULT_SHEET_ID; }
-    let sheetId = cleanSheetId(rawSheetId) || DEFAULT_SHEET_ID;
+    try { rawSheetId = localStorage.getItem('biani_sheet_id') || DEFAULT_SHEET_ID; } catch (e) { rawSheetId = DEFAULT_SHEET_ID; }
+    const sheetId = cleanSheetId(rawSheetId) || DEFAULT_SHEET_ID;
     const sheetInput = document.getElementById('sheetIdInp');
     if (sheetInput) sheetInput.value = sheetId;
-    
-    // Load category and image mappings first
+
     try {
       const [catRes, imgRes, descRes, defaultEditsRes] = await Promise.all([
-        fetchWithTimeout('code_to_category.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
-        fetchWithTimeout('code_to_image.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
-        fetchWithTimeout('code_to_description.json?v=' + Date.now()).then(r => r.json()).catch(() => ({})),
-        fetchWithTimeout('src/data/defaultEdits.json?v=' + Date.now()).then(r => r.json()).catch(() => ({}))
+        fetchWithTimeout('code_to_category.json?v=' + Date.now()).then(response => response.json()).catch(() => ({})),
+        fetchWithTimeout('code_to_image.json?v=' + Date.now()).then(response => response.json()).catch(() => ({})),
+        fetchWithTimeout('code_to_description.json?v=' + Date.now()).then(response => response.json()).catch(() => ({})),
+        fetchWithTimeout('src/data/defaultEdits.json?v=' + Date.now()).then(response => response.json()).catch(() => ({}))
       ]);
-      
-      // Normalize subcategories dynamically
-      for (const c in catRes) {
-        catRes[c] = normalizeCategory(catRes[c]);
-      }
-      
+      for (const code in catRes) catRes[code] = normalizeCategory(catRes[code]);
       window.codeToCat = catRes;
       window.codeToImg = imgRes;
       window.codeToDesc = descRes;
       DEFAULT_EDITS = defaultEditsRes;
-      window.pdfOrder = PDF_ORDER; // directly assign embedded array
-    } catch (e) {
-      console.error("Error loading JSON mappings:", e);
+      window.pdfOrder = PDF_ORDER;
+    } catch (error) {
+      console.error('Error loading JSON mappings:', error);
       window.codeToCat = {};
       window.codeToImg = {};
       window.codeToDesc = {};
       window.pdfOrder = [];
     }
 
-    // Load baseline fallback data first if empty
-    let dataLoaded = prods.length > 0;
-    if (!dataLoaded) {
-      try {
-        const fallbackRes = await fetchWithTimeout('products_fallback.json?v=' + Date.now());
-        if (fallbackRes.ok) {
-          const fallbackProds = await fallbackRes.json();
-          prods = fallbackProds.map(p => {
-            let cat = p.category || "Varios";
-            const hasImageMapping = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, p.code);
-            let image;
-            if (hasImageMapping) {
-              image = window.codeToImg[p.code];
-            } else {
-              image = p.image || "";
-            }
-            if (!image || image.trim() === "") {
-              cat = "Nuevos y Sin Imagen";
-            } else {
-              cat = normalizeCategory(cat, p.name, image);
-            }
-            return { 
-              unidad_min: 1,
-              ...p, 
-              unidad_min: p.unidad_min || 1,
-              category: cat, 
-              image: image, 
-              qty: 0 
-            };
-          });
-          dataLoaded = true;
-        }
-      } catch (e) {
-        console.error("Failed to load local fallback:", e);
-        prods = [];
+    let dataLoaded = false;
+    try {
+      const fallbackRes = await fetchWithTimeout('products_fallback.json?v=' + Date.now());
+      if (fallbackRes.ok) {
+        const fallbackProds = await fallbackRes.json();
+        canonicalBaseProducts = normalizeCatalogBase(fallbackProds);
+        dataLoaded = canonicalBaseProducts.length > 0;
       }
+    } catch (error) {
+      console.error('Failed to load local fallback:', error);
+      canonicalBaseProducts = [];
     }
 
-    // Fetch live CSV from Google Sheets with fallbacks ASYNCHRONOUSLY
+    const cachedSnapshot = readStoredJson(window.SheetSync.CATALOG_KEY);
+    const validSnapshot = window.SheetSync.validateCatalogSnapshot(cachedSnapshot);
+    const storedMeta = readStoredJson(window.SheetSync.META_KEY);
+    if (validSnapshot) {
+      activeBaseProducts = normalizeCatalogBase(validSnapshot.products);
+      lastValidSheetMeta = storedMeta;
+    } else {
+      activeBaseProducts = canonicalBaseProducts.map(product => ({ ...product, qty: 0 }));
+      lastValidSheetMeta = null;
+    }
+    prods = activeBaseProducts.map(product => ({ ...product, qty: 0 }));
+
+    if (lastValidSheetMeta) {
+      const fresh = window.SheetSync.isFresh(lastValidSheetMeta);
+      catalogSyncState = {
+        ...lastValidSheetMeta,
+        status: fresh ? 'confirmed' : 'stale',
+        checkedAt: window.SheetSync.lastSuccessAt(lastValidSheetMeta),
+        message: fresh
+          ? 'Catálogo restaurado desde la última sincronización válida.'
+          : 'La última sincronización válida está vencida.'
+      };
+    }
+
     const syncSheetsAsync = async () => {
       if (!sheetId) {
-        catalogSyncState = { status: 'failed', message: 'No hay una fuente externa configurada.' };
-        return;
+        markSheetSyncFailure('No hay una fuente externa configurada.');
+        return false;
       }
-      let sheetsSynced = false;
+
       const cacheBust = '&_t=' + Date.now();
       const urlsToTry = [
         `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv` + cacheBust,
         `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=Sheet1` + cacheBust,
         `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&gid=0` + cacheBust
       ];
+      const failures = [];
 
       for (const csvUrl of urlsToTry) {
         try {
           const response = await fetchWithTimeout(csvUrl, { cache: 'no-store' });
-          if (!response.ok) continue;
-          const csvText = await response.text();
-          
-          const trimmed = (csvText || '').trim();
-          if (trimmed && !trimmed.startsWith('<!DOCTYPE') && !trimmed.startsWith('<html') && (trimmed.includes(',') || trimmed.includes(';') || trimmed.includes('\t') || trimmed.includes('\n'))) {
-            const csvRows = parseCSV(trimmed);
-            if (csvRows.length > 1) {
-              processCSVRows(csvRows);
-              sheetsSynced = true;
-              catalogSyncState = { status: 'confirmed', message: 'Catálogo confirmado con Google Sheets.', checkedAt: Date.now() };
-              
-              // Re-apply hardcoded minimum rules
-              prods.forEach(p => {
-                const nm = (p.name || '').toUpperCase();
-                if (nm.includes("GUAYMALLEN SIMPLE")) p.unidad_min = 20;
-                else if (nm.includes("GUAYMALLEN RUBI")) p.unidad_min = 12;
-              });
-
-              loadAdminState();
-              restorePersistentCart();
-              prepareAllSearchCache();
-              buildNav();
-              applyF();
-              updCart();
-              
-              toast("🛒 Catálogo sincronizado en vivo desde Google Sheets", "ok");
-              break;
-            }
+          if (!response.ok) {
+            failures.push('HTTP ' + response.status);
+            continue;
           }
-        } catch (err) {
-          console.warn("Attempt failed for URL:", csvUrl, err);
+          const csvText = await response.text();
+          const analysis = window.SheetSync.analyzeCsvText(csvText, parseCSV, {
+            canonicalCount: canonicalBaseProducts.length,
+            canonicalCodes: canonicalBaseProducts.map(product => product.code),
+            lastValidMeta: lastValidSheetMeta
+          });
+          if (!analysis.canApply) {
+            failures.push(...analysis.reasons);
+            continue;
+          }
+
+          const csvRows = parseCSV(csvText.trim());
+          const candidate = processCSVRows(csvRows, activeBaseProducts.length ? activeBaseProducts : canonicalBaseProducts, false);
+          if (!candidate.length || candidate.length < analysis.records.length) {
+            failures.push('La conversión del CSV produjo un catálogo inconsistente.');
+            continue;
+          }
+
+          applyCommercialMinimums(candidate);
+          activeBaseProducts = candidate.map(product => ({ ...product, qty: 0 }));
+          const meta = window.SheetSync.createMeta(analysis.records);
+          lastValidSheetMeta = meta;
+          writeStoredJson(window.SheetSync.META_KEY, meta);
+          writeStoredJson(window.SheetSync.CATALOG_KEY, window.SheetSync.createCatalogSnapshot(activeBaseProducts, meta.lastSuccessAt));
+
+          prods = activeBaseProducts.map(product => ({ ...product, qty: 0 }));
+          loadAdminState();
+          restorePersistentCart();
+          prepareAllSearchCache();
+          buildNav();
+          applyF();
+          updCart();
+
+          catalogSyncState = {
+            ...meta,
+            status: 'confirmed',
+            checkedAt: meta.lastSuccessAt,
+            message: 'Catálogo confirmado con Google Sheets.'
+          };
+          toast('🛒 Catálogo sincronizado y validado desde Google Sheets', 'ok');
+          return true;
+        } catch (error) {
+          failures.push(error && error.message ? error.message : 'Error de red');
+          console.warn('Attempt failed for URL:', csvUrl, error);
         }
       }
 
-      if (!sheetsSynced) {
-        catalogSyncState = {
-          status: 'failed',
-          message: 'No se pudo confirmar stock y precios con Google Sheets.',
-          checkedAt: Date.now()
-        };
-        toast("⚠️ No se pudo confirmar el catálogo actualizado. El envío de pedidos queda bloqueado.", "warn");
-      }
+      const detail = failures.find(Boolean) || 'No se pudo acceder a Google Sheets.';
+      markSheetSyncFailure('No se pudo confirmar stock y precios con Google Sheets. ' + detail);
+      return false;
     };
-    
-    // Start background sync without awaiting
-    syncSheetsAsync();
 
-    if (!dataLoaded && prods.length === 0) {
-      toast("❌ No se pudo cargar ningún producto.", "warn");
-    }
+    catalogRefreshHandler = syncSheetsAsync;
+    requestCatalogRefresh({ background: true });
 
-    // Hardcoded minimum rules for initial load
-    prods.forEach(p => {
-      const nm = (p.name || '').toUpperCase();
-      if (nm.includes("GUAYMALLEN SIMPLE")) {
-        p.unidad_min = 20;
-      } else if (nm.includes("GUAYMALLEN RUBI")) {
-        p.unidad_min = 12;
-      }
-    });
+    if (!dataLoaded && prods.length === 0) toast('❌ No se pudo cargar ningún producto.', 'warn');
 
+    applyCommercialMinimums(prods);
     loadAdminState();
     restorePersistentCart();
     prepareAllSearchCache();
     buildNav();
     applyF();
     updCart();
-  } catch (err) {
+  } catch (error) {
     catalogSyncState = {
       status: 'failed',
       message: 'Falló la carga del catálogo.',
       checkedAt: Date.now()
     };
-    console.error("Error in loadDatabase:", err);
+    console.error('Error in loadDatabase:', error);
   } finally {
     showLoading(false);
   }
 }
 
-function processCSVRows(rows) {
-  if (!rows || rows.length === 0) return;
-  
-  // Normalize header strings of the first row to check if it's a header
-  const firstRow = rows[0].map(h => (h || '').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g,''));
-  
-  let codeIdx = firstRow.findIndex(h => h.includes('cod') || h.includes('id'));
-  let nameIdx = firstRow.findIndex(h => h.includes('art') || h.includes('nom') || h.includes('prod') || h.includes('det'));
-  let catIdx = firstRow.findIndex(h => h.includes('cat'));
-  let priceIdx = firstRow.findIndex(h => h.includes('prec') || h.includes('cost') || h.includes('val') || h.includes('monto'));
-  let minIdx = firstRow.findIndex(h => h.includes('cantidad minima') || h.includes('minima') || h.includes('minimo') || h.includes('cant_min') || h.includes('min'));
-  
-  let hasHeader = (codeIdx !== -1 || nameIdx !== -1 || priceIdx !== -1 || catIdx !== -1);
-  let startRowIdx = hasHeader ? 1 : 0;
-  
-  if (!hasHeader) {
-    const colCount = rows[0].length;
-    codeIdx = 0;
-    nameIdx = 1;
-    if (colCount === 3) {
-      catIdx = -1;
-      priceIdx = 2;
-    } else {
-      catIdx = 2;
-      priceIdx = 3;
-    }
-  } else {
-    if (codeIdx === -1) codeIdx = 0;
-    if (nameIdx === -1) nameIdx = 1;
-    if (priceIdx === -1) priceIdx = 2;
-  }
-  
-  // Fast lookup map for baseline products
+function processCSVRows(rows, baselineProducts = activeBaseProducts, applyResult = true) {
+  if (!rows || rows.length === 0) return [];
+  const columns = window.SheetSync.detectColumns(rows);
+  if (!columns) return [];
+
   const fallbackMap = {};
-  prods.forEach(p => { fallbackMap[String(p.code)] = p; });
+  (baselineProducts || []).forEach(product => { fallbackMap[String(product.code)] = product; });
 
   const sheetProds = [];
   const activeSheetCodes = new Set();
-  const codeOccurrences = {};
-  
-  for (let i = startRowIdx; i < rows.length; i++) {
-    const r = rows[i];
-    if (r.length <= Math.max(codeIdx, nameIdx, priceIdx)) continue;
-    
-    const rawCode = r[codeIdx] ? r[codeIdx].trim() : "";
-    const name = r[nameIdx] ? r[nameIdx].trim() : "";
-    if (!rawCode || !name) continue;
-    
-    let rawPrice = r[priceIdx] || "0";
-    let s = rawPrice.replace(/[^\d.,]/g, '');
-    if (s.includes('.') && s.includes(',')) {
-      if (s.indexOf(',') < s.indexOf('.')) {
-        s = s.replace(/,/g, '');
-      } else {
-        s = s.replace(/\./g, '').replace(',', '.');
-      }
-    } else if (s.includes(',')) {
-      s = s.replace(',', '.');
-    }
-    const price = parseFloat(s) || 0.0;
-    
-    codeOccurrences[rawCode] = (codeOccurrences[rawCode] || 0) + 1;
-    const count = codeOccurrences[rawCode];
-    const codeStr = count === 1 ? String(rawCode) : `${rawCode}_${count - 1}`;
-    
-    activeSheetCodes.add(codeStr);
-    activeSheetCodes.add(String(rawCode));
+  for (let index = columns.startRowIdx; index < rows.length; index += 1) {
+    const row = rows[index];
+    if (!Array.isArray(row) || row.length <= Math.max(columns.codeIdx, columns.nameIdx, columns.priceIdx)) continue;
+    const code = String(row[columns.codeIdx] || '').trim();
+    const name = String(row[columns.nameIdx] || '').trim();
+    const price = window.SheetSync.parsePrice(row[columns.priceIdx]);
+    if (!code || !name || !Number.isFinite(price) || price <= 0) continue;
+    if (activeSheetCodes.has(code)) throw new Error('Código duplicado en Google Sheets: ' + code);
+    activeSheetCodes.add(code);
 
-    const existing = fallbackMap[codeStr] || fallbackMap[rawCode];
-    
+    const existing = fallbackMap[code];
     let image;
-    const hasImageMappingCodeStr = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, codeStr);
-    const hasImageMappingRawCode = window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, String(rawCode));
+    if (window.codeToImg && Object.prototype.hasOwnProperty.call(window.codeToImg, code)) image = window.codeToImg[code];
+    else image = existing && existing.image || '';
 
-    if (hasImageMappingCodeStr) {
-      image = window.codeToImg[codeStr];
-    } else if (hasImageMappingRawCode) {
-      image = window.codeToImg[String(rawCode)];
-    } else {
-      image = (existing && existing.image) || "";
+    let category = '';
+    if (window.codeToCat && Object.prototype.hasOwnProperty.call(window.codeToCat, code)) category = window.codeToCat[code];
+    else if (existing && existing.category) category = existing.category;
+    if (!category && columns.categoryIdx !== -1 && columns.categoryIdx !== columns.priceIdx && row[columns.categoryIdx]) {
+      category = String(row[columns.categoryIdx]).trim();
     }
-    
-    let cat = "";
-    if (window.codeToCat && Object.prototype.hasOwnProperty.call(window.codeToCat, codeStr)) {
-      cat = window.codeToCat[codeStr];
-    } else if (window.codeToCat && Object.prototype.hasOwnProperty.call(window.codeToCat, String(rawCode))) {
-      cat = window.codeToCat[String(rawCode)];
-    } else if (existing && existing.category) {
-      cat = existing.category;
-    }
-    if (!cat && catIdx !== -1 && catIdx !== priceIdx && r[catIdx]) {
-      cat = r[catIdx].trim();
-    }
-    cat = normalizeCategory(cat || "Varios", name, image);
-    
-    const uMin = (minIdx !== -1 && r[minIdx]) ? (parseInt(r[minIdx]) || 1) : ((existing && existing.unidad_min) || 1);
+    category = normalizeCategory(category || 'Varios', name, image);
+
+    const minimum = columns.minimumIdx !== -1 && row[columns.minimumIdx]
+      ? parseInt(row[columns.minimumIdx], 10) || 1
+      : existing && existing.unidad_min || 1;
 
     sheetProds.push({
-      code: codeStr,
-      name: name,
-      category: cat,
-      price: price,
-      image: image,
-      qty: (existing && existing.qty) || 0,
+      code,
+      name,
+      category,
+      price,
+      image,
+      qty: 0,
       outOfStock: false,
-      unidad_min: uMin,
+      unidad_min: minimum,
       sale_modes: existing && existing.sale_modes,
       unit_price: existing && existing.unit_price,
       unit_min: existing && existing.unit_min,
@@ -2543,48 +2554,31 @@ function processCSVRows(rows) {
       display_min: existing && existing.display_min,
       units_per_display: existing && existing.units_per_display,
       sale_mode: existing && existing.sale_mode,
-      brand: ""
+      brand: existing && existing.brand || ''
     });
   }
 
-  // Soft Delete Rule: Products missing from Google Sheets stay in catalog with outOfStock = true
-  if (activeSheetCodes.size > 0 && prods.length > 0) {
-    const sheetCodeSet = new Set(sheetProds.map(p => p.code));
-    prods.forEach(p => {
-      const baseCode = String(p.code).split('_')[0];
-      if (!sheetCodeSet.has(p.code) && !activeSheetCodes.has(String(p.code)) && !activeSheetCodes.has(baseCode)) {
-        sheetProds.push({
-          ...p,
-          outOfStock: true
-        });
+  if (activeSheetCodes.size > 0 && baselineProducts && baselineProducts.length > 0) {
+    for (const product of baselineProducts) {
+      if (!activeSheetCodes.has(String(product.code))) {
+        sheetProds.push({ ...product, qty: 0, outOfStock: true });
       }
-    });
+    }
   }
-
-  const CATEGORY_PRIORITY = {
-    "Caramelos": 1, "Pastillas": 2, "Chupetines": 3, "Gomitas": 4, "Turrones": 5, "Chicles": 6, "Chocolates": 7, "Pipas": 8, "Alfajores": 9,
-    "Galletitas": 10, "Cereales": 11, "Snacks": 12,
-    "Despensa": 20, "Jugos": 21, "Bebidas": 22,
-    "Yerbas": 30,
-    "Pegamentos": 40, "Bic": 41, "Pilas": 42, "Lámparas": 43, "Papelería": 44, "Varios": 45, "Nuevos y Sin Imagen": 46,
-    "Higiene": 50, "Perfumería": 51, "Limpieza": 52, "Detergentes": 53
-  };
 
   const customOrder = window.pdfOrder && window.pdfOrder.length ? window.pdfOrder : PDF_ORDER;
   if (customOrder && customOrder.length > 0) {
     const orderIndexMap = {};
-    customOrder.forEach((code, idx) => { orderIndexMap[String(code)] = idx; });
-
+    customOrder.forEach((code, index) => { orderIndexMap[String(code)] = index; });
     sheetProds.sort((a, b) => {
-      const idxA = orderIndexMap[String(a.code)] !== undefined ? orderIndexMap[String(a.code)] : 999999;
-      const idxB = orderIndexMap[String(b.code)] !== undefined ? orderIndexMap[String(b.code)] : 999999;
-      return idxA - idxB;
+      const indexA = orderIndexMap[String(a.code)] !== undefined ? orderIndexMap[String(a.code)] : 999999;
+      const indexB = orderIndexMap[String(b.code)] !== undefined ? orderIndexMap[String(b.code)] : 999999;
+      return indexA - indexB;
     });
   }
 
-  if (sheetProds.length > 0) {
-    prods = sheetProds;
-  }
+  if (applyResult && sheetProds.length > 0) prods = sheetProds;
+  return sheetProds;
 }
 
 // GOOGLE SHEETS ID CONFIGURATION SAVING
@@ -3424,17 +3418,21 @@ function releaseOrderSubmission() {
   }
 }
 
-function sendWA() {
+async function sendWA() {
   if (orderSubmissionInProgress) {
     toast('El pedido ya se está preparando', 'warn');
     return;
   }
 
-  const snapshot = getOrderCartSnapshot();
-  if (!snapshot.items.length) {
+  const snapshotBeforeRefresh = getOrderCartSnapshot();
+  if (!snapshotBeforeRefresh.items.length) {
     toast('El pedido está vacío');
     return;
   }
+
+  orderSubmissionInProgress = true;
+  const button = document.getElementById('sendWaBtn');
+  if (button) button.disabled = true;
 
   const name = document.getElementById('c-name').value.trim();
   const dni = document.getElementById('c-dni').value.trim();
@@ -3447,9 +3445,22 @@ function sendWA() {
     if (!name) document.getElementById('c-name').focus();
     else if (!dni) document.getElementById('c-dni').focus();
     else if (!dir) document.getElementById('c-dir').focus();
+    releaseOrderSubmission();
     return;
   }
 
+  if (!window.SheetSync.isFresh(catalogSyncState)) {
+    toast('Actualizando stock y precios antes de preparar el pedido…');
+    await requestCatalogRefresh({ forOrder: true });
+  }
+
+  if (!window.SheetSync.isFresh(catalogSyncState)) {
+    alert('No se pudo confirmar stock y precios con información vigente. El pedido no fue enviado. Conservamos tu carrito para una revisión comercial.');
+    releaseOrderSubmission();
+    return;
+  }
+
+  const snapshot = getOrderCartSnapshot();
   const validation = window.OrderValidation.validateOrder(
     snapshot,
     prods,
@@ -3460,9 +3471,7 @@ function sendWA() {
   if (validation.blockers.length) {
     const message = window.OrderValidation.formatBlockingMessage(validation.blockers);
     const syncUnconfirmed = validation.blockers.some(blocker => blocker.type === 'sync_unconfirmed');
-    const removableCodes = validation.blockers
-      .filter(blocker => blocker.code)
-      .map(blocker => blocker.code);
+    const removableCodes = validation.blockers.filter(blocker => blocker.code).map(blocker => blocker.code);
 
     if (syncUnconfirmed || removableCodes.length === 0) {
       alert(message);
@@ -3472,33 +3481,23 @@ function sendWA() {
       );
       if (removeConfirmed) removeBlockedCartItems(removableCodes);
     }
+    releaseOrderSubmission();
     return;
   }
 
   if (validation.changes.length) {
-    const accepted = confirm(
-      window.OrderValidation.formatChangesMessage(validation.changes, validation.total)
-    );
+    const accepted = confirm(window.OrderValidation.formatChangesMessage(validation.changes, validation.total));
     if (!accepted) {
       toast('El pedido no fue enviado; los cambios todavía no fueron aceptados', 'warn');
+      releaseOrderSubmission();
       return;
     }
     acceptValidatedOrderChanges(validation);
   }
 
-  orderSubmissionInProgress = true;
-  const button = document.getElementById('sendWaBtn');
-  if (button) button.disabled = true;
-
   const message = window.OrderValidation.formatOrderMessage(
     validation.items,
-    {
-      name: name,
-      dni: dni,
-      address: dir,
-      phone: phone,
-      observations: obs
-    },
+    { name, dni, address: dir, phone, observations: obs },
     window.SaleMode,
     new Date()
   );
