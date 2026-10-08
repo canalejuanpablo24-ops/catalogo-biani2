@@ -136,8 +136,10 @@ test('@desktop productos sin stock se eliminan al restaurar', async ({ page, con
   await openCatalog(reopened, { outOfStockCode: code });
   await expect(reopened.locator('#cartRestoreNotice')).toContainText('sin stock');
   const restored = await storedCart(reopened);
-  expect(restored).toBeNull();
+  expect(restored.items).toHaveLength(1);
+  expect(restored.items[0].code).toBe(code);
   await expect(reopened.locator('#ccnt')).toHaveText('0');
+  await expect(reopened.locator('#cta')).toHaveText('$0,00');
 });
 
 test('@desktop cambios de cantidad mínima ajustan y notifican', async ({ page }) => {
