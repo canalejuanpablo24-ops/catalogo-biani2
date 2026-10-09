@@ -68,7 +68,9 @@ function parseArguments(argv) {
 
 function assertRepositoryState(mode) {
   const branch = git(['branch', '--show-current']);
-  if (branch !== 'codex-desarrollo') abort(`Rama no autorizada: ${branch || '(detached)'}`);
+  const ciSourceBranch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME || '';
+  const trustedCiCheck = mode === 'check' && process.env.GITHUB_ACTIONS === 'true' && ciSourceBranch === 'codex-desarrollo';
+  if (branch !== 'codex-desarrollo' && !trustedCiCheck) abort(`Rama no autorizada: ${branch || '(detached)'}`);
   if (mode === 'apply' && git(['status', '--porcelain'])) abort('El checkout debe estar limpio antes de aplicar un paquete.');
   return git(['rev-parse', 'HEAD']);
 }
