@@ -1,0 +1,105 @@
+name: Validate and deploy private BIANI QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex-desarrollo
+    paths:
+      - "index.html"
+      - "src/**"
+      - "imagenes/**"
+      - "code_to_category.json"
+      - "code_to_description.json"
+      - "code_to_image.json"
+      - "products_fallback.json"
+      - "scripts/build-qa-artifact.js"
+      - "tests/**"
+      - "package.json"
+      - "package-lock.json"
+      - "playwright.config.js"
+      - ".github/workflows/deploy-qa.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: biani-qa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate immutable QA artifact
+    if: github.ref == 'refs/heads/codex-desarrollo'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout event SHA
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Install project Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run desktop and mobile Playwright tests
+        run: npm run test:e2e
+
+      - name: Build and verify private QA artifact
+        run: npm run build:qa
+
+      - name: Upload verified QA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: biani-qa-${{ github.sha }}
+          path: dist-qa/
+          if-no-files-found: error
+          retention-days: 7
+          include-hidden-files: true
+
+  deploy:
+    name: Deploy protected Cloudflare Pages preview
+    needs: validate
+    if: github.ref == 'refs/heads/codex-desarrollo' && vars.CLOUDFLARE_QA_ACCESS_READY == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: biani-qa
+    permissions:
+      contents: read
+    steps:
+      - name: Download verified QA artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: biani-qa-${{ github.sha }}
+          path: dist-qa/
+
+      - name: Verify deployment gate and artifact
+        shell: bash
+        run: |
+          test "${{ vars.CLOUDFLARE_QA_ACCESS_READY }}" = "true"
+          test -f dist-qa/qa-build-manifest.json
+          grep -q '"testMode": true' dist-qa/qa-build-manifest.json
+          grep -q 'TEST_MODE: true' dist-qa/src/config/runtime.config.js
+          test ! -e dist-qa/CNAME
+
+      - name: Deploy codex-desarrollo preview to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist-qa --project-name=biani-qa --branch=codex-desarrollo --commit-hash=${{ github.sha }} --commit-dirty=false
