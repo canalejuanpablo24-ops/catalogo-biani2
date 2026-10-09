@@ -4,10 +4,11 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import '../src/services/admin-state.service.js';
 import '../src/services/admin-package.service.js';
 
-const ROOT = path.resolve(new URL('..', import.meta.url).pathname.replace(/^\/(?:[A-Za-z]:)/, value => value.slice(1)));
+const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const COMMIT = '8d94d0027b5543f5c7719ea6192adfebf280996d';
 
 test('el aplicador en simulación valida sin modificar archivos', async () => {
