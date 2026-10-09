@@ -41,6 +41,7 @@ function insideRoot(target, allowedRoot = ROOT) {
 
 function assertSafeTarget(target, allowedRoot = ROOT) {
   if (!insideRoot(target, allowedRoot)) abort(`Ruta de escritura fuera del directorio permitido: ${target}`);
+  if (fs.existsSync(allowedRoot) && fs.lstatSync(allowedRoot).isSymbolicLink()) abort(`No se permiten enlaces simbólicos: ${allowedRoot}`);
   let cursor = path.resolve(target);
   while (cursor !== path.resolve(allowedRoot)) {
     if (fs.existsSync(cursor) && fs.lstatSync(cursor).isSymbolicLink()) abort(`No se permiten enlaces simbólicos: ${cursor}`);
@@ -130,13 +131,26 @@ function updatedImageMap(current, changes) {
 
 function writeAtomically(target, content) {
   assertSafeTarget(target);
-  const temporary = `${target}.tmp-${process.pid}-${crypto.randomBytes(6).toString('hex')}`;
+  const suffix = `${process.pid}-${crypto.randomBytes(6).toString('hex')}`;
+  const temporary = `${target}.tmp-${suffix}`;
+  const backup = `${target}.bak-${suffix}`;
   assertSafeTarget(temporary);
+  assertSafeTarget(backup);
   fs.writeFileSync(temporary, content, { flag: 'wx' });
+  let movedOriginal = false;
   try {
+    if (fs.existsSync(target)) {
+      fs.renameSync(target, backup);
+      movedOriginal = true;
+    }
     fs.renameSync(temporary, target);
+    if (movedOriginal) fs.unlinkSync(backup);
+  } catch (error) {
+    if (!fs.existsSync(target) && movedOriginal && fs.existsSync(backup)) fs.renameSync(backup, target);
+    throw error;
   } finally {
     if (fs.existsSync(temporary)) fs.unlinkSync(temporary);
+    if (fs.existsSync(backup) && fs.existsSync(target)) fs.unlinkSync(backup);
   }
 }
 
