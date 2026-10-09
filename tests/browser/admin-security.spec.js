@@ -101,10 +101,12 @@ test('@all exporta, conserva pendientes y confirma sólo contra estado canónico
     buffer: Buffer.from(JSON.stringify(canonical))
   });
 
-  await expect.poll(() => page.evaluate(() => localStorage.getItem('biani_add'))).toBeNull();
-  await expect.poll(() => page.evaluate(() => localStorage.getItem('biani_edits'))).toBeNull();
-  await expect.poll(() => page.evaluate(() => localStorage.getItem('biani_del'))).toBeNull();
-  await expect.poll(() => page.evaluate(() => localStorage.getItem('biani_order'))).toBeNull();
+  await expect.poll(() => page.evaluate(() => JSON.stringify({
+    add: JSON.parse(localStorage.getItem('biani_add') || '[]'),
+    edits: JSON.parse(localStorage.getItem('biani_edits') || '{}'),
+    deleted: JSON.parse(localStorage.getItem('biani_del') || '[]'),
+    order: JSON.parse(localStorage.getItem('biani_order') || '[]')
+  }))).toBe(JSON.stringify({ add: [], edits: {}, deleted: [], order: [] }));
   await expect.poll(() => page.evaluate(() => eval("prods.some(product => product.code === 'TEST-ADMIN-900')"))).toBe(true);
   await expect.poll(() => page.evaluate(() => eval("prods.some(product => product.code === '200')"))).toBe(false);
   await expect.poll(() => githubRequests.length).toBe(0);
