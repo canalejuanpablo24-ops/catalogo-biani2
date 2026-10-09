@@ -8,15 +8,23 @@ const categories = [
   'Perfumería', 'Pilas', 'Pipas', 'Snacks', 'Turrones', 'Varios', 'Yerbas'
 ];
 
-async function openCatalog(page) {
+async function openCatalog(page, path = '/index.html') {
   const pageErrors = [];
   const cspErrors = [];
+  const whatsappRequests = [];
+  const popupUrls = [];
 
   page.on('pageerror', error => pageErrors.push(error.message));
   page.on('console', message => {
     const text = message.text();
     if (/content security policy|refused to/i.test(text)) cspErrors.push(text);
   });
+  page.on('request', request => {
+    if (/^(?:https?:\/\/(?:wa\.me|api\.whatsapp\.com)|whatsapp:)/i.test(request.url())) {
+      whatsappRequests.push(request.url());
+    }
+  });
+  page.on('popup', popup => popupUrls.push(popup.url()));
 
   await page.route('https://docs.google.com/**', route => route.abort('blockedbyclient'));
   await page.addInitScript(() => {
@@ -27,7 +35,7 @@ async function openCatalog(page) {
     };
   });
 
-  await page.goto('/index.html', { waitUntil: 'domcontentloaded' });
+  await page.goto(path, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#loader')).toHaveClass(/hidden/);
   await expect(page.locator('#nav2 .g2tab')).toHaveCount(28);
   await expect(page.locator('#pcnt')).not.toHaveText('0');
@@ -36,6 +44,8 @@ async function openCatalog(page) {
     assertCleanRuntime() {
       expect(pageErrors, 'uncaught browser errors').toEqual([]);
       expect(cspErrors, 'CSP browser errors').toEqual([]);
+      expect(whatsappRequests, 'solicitudes a WhatsApp').toEqual([]);
+      expect(popupUrls, 'ventanas emergentes').toEqual([]);
     }
   };
 }
@@ -127,8 +137,11 @@ test('@all búsqueda y filtros combinados funcionan juntos', async ({ page }) =>
   runtime.assertCleanRuntime();
 });
 
-test('@all carrito genera un pedido de WhatsApp sin abrir el servicio externo', async ({ page }) => {
+test('@all TEST_MODE conserva la validación real y muestra una vista previa sin WhatsApp', async ({ page }) => {
   const runtime = await openCatalog(page);
+  await expect(page.locator('#testModeBanner')).toHaveText('CATÁLOGO DE PRUEBA — PEDIDOS NO ENVIADOS');
+  await expect(page.locator('#sendWaBtn')).toHaveText('Revisar pedido (no se envía)');
+  await expect(page.locator('a[href^="https://wa.me"], a[href^="https://api.whatsapp.com"], a[href^="whatsapp:"]')).toHaveCount(0);
 
   const buyableCard = page.locator('#grid .card').filter({
     has: page.locator('button.btn-ver')
@@ -153,16 +166,25 @@ test('@all carrito genera un pedido de WhatsApp sin abrir el servicio externo', 
   await page.evaluate(() => eval("catalogSyncState = { status: 'confirmed', message: 'Prueba controlada', checkedAt: Date.now(), lastSuccessAt: Date.now() }"));
   await page.locator('#sendWaBtn').click();
 
-  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrls[0] || '')).toContain('https://wa.me/');
-  const openedUrl = await page.evaluate(() => window.__openedWhatsAppUrls[0]);
-  const message = new URL(openedUrl).searchParams.get('text');
-
+  await expect(page.locator('#testOrderPreview')).toBeVisible();
+  const message = await page.locator('#testOrderPreviewText').inputValue();
   expect(message).toContain('PEDIDO BIANI');
   expect(message).toContain('Cliente Prueba E2E');
   expect(message).toContain('Modo:');
   expect(message).toContain('Cantidad:');
   expect(message).toContain('TOTAL:');
+  await page.locator('#copyTestOrderBtn').click();
+  await expect(page.locator('#testOrderCopyStatus')).toContainText(/Pedido copiado|copiar manualmente/);
+  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrls.length)).toBe(0);
 
+  runtime.assertCleanRuntime();
+});
+
+test('@all TEST_MODE no puede desactivarse con parámetros de URL', async ({ page }) => {
+  const runtime = await openCatalog(page, '/index.html?testMode=false&TEST_MODE=0&whatsapp=1');
+  await expect(page.locator('#testModeBanner')).toHaveText('CATÁLOGO DE PRUEBA — PEDIDOS NO ENVIADOS');
+  await expect(page.locator('#sendWaBtn')).toHaveText('Revisar pedido (no se envía)');
+  await expect(page.locator('[data-whatsapp-contact]')).not.toHaveAttribute('href', /.+/);
   runtime.assertCleanRuntime();
 });
 
