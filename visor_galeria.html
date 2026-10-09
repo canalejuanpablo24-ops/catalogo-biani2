@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Zk67fgLMdDc498U5icSXj61D2+X+U7ehLLbjcCEkJgo='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'">
   <title>Visor de Galería y Catálogo · BIANI (6.588 Imágenes)</title>
   <!-- Google Fonts: Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -681,6 +682,29 @@
     const btnCopyFile = document.getElementById('btnCopyFile');
     const btnCopyPath = document.getElementById('btnCopyPath');
 
+    function createTextElement(tagName, className, value) {
+      const element = document.createElement(tagName);
+      if (className) element.className = className;
+      element.textContent = value == null ? '' : String(value);
+      return element;
+    }
+
+    function safeImageSource(value) {
+      const src = value == null ? '' : String(value).trim();
+      if (!src || /[\u0000-\u001F\u007F]/.test(src) || src.includes('\\')) return '';
+      if (/^https?:\/\//i.test(src) || /^\/\//.test(src)) return src;
+      if (/^[a-z][a-z0-9+.-]*:/i.test(src)) return '';
+      return src;
+    }
+
+    function setGalleryImageSource(image, value) {
+      image.src = safeImageSource(value) || 'icon-192.png';
+      image.onerror = () => {
+        image.onerror = null;
+        image.src = 'icon-192.png';
+      };
+    }
+
     // Fetch catalog metadata
     async function loadCatalog() {
       try {
@@ -702,7 +726,11 @@
         counts[c] = (counts[c] || 0) + 1;
       });
 
-      categoriesBar.innerHTML = `<button class="cat-tab active" data-cat="TODOS">Todos (${allImages.length.toLocaleString()})</button>`;
+      categoriesBar.replaceChildren();
+      const allButton = createTextElement('button', 'cat-tab active', `Todos (${allImages.length.toLocaleString()})`);
+      allButton.type = 'button';
+      allButton.dataset.cat = 'TODOS';
+      categoriesBar.appendChild(allButton);
       
       Object.keys(counts).sort().forEach(cat => {
         const btn = document.createElement('button');
@@ -750,16 +778,17 @@
     // Render gallery page by page
     function renderGallery() {
       if (currentPage === 1) {
-        galleryGrid.innerHTML = '';
+        galleryGrid.replaceChildren();
       }
 
       if (filteredImages.length === 0) {
-        galleryGrid.innerHTML = `
-          <div class="no-results">
-            <h3>No se encontraron imágenes</h3>
-            <p>Intenta modificar el término de búsqueda o selecciona otra categoría.</p>
-          </div>
-        `;
+        const empty = document.createElement('div');
+        empty.className = 'no-results';
+        empty.append(
+          createTextElement('h3', '', 'No se encontraron imágenes'),
+          createTextElement('p', '', 'Intenta modificar el término de búsqueda o selecciona otra categoría.')
+        );
+        galleryGrid.replaceChildren(empty);
         loadMoreBtn.style.display = 'none';
         pageInfo.textContent = '';
         return;
@@ -773,16 +802,24 @@
         const globalIdx = startIndex + idx;
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `
-          <div class="card-img-wrapper">
-            <img src="${img.path}" alt="${img.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/200x200?text=No+Disponible'">
-          </div>
-          <div class="card-body">
-            <span class="card-code">${img.code ? '#' + img.code : ''}</span>
-            <div class="card-title" title="${img.title}">${img.title}</div>
-            <div class="card-category">${img.category || 'General'}</div>
-          </div>
-        `;
+        const imageWrapper = document.createElement('div');
+        imageWrapper.className = 'card-img-wrapper';
+        const image = document.createElement('img');
+        image.alt = String(img.title || '');
+        image.loading = 'lazy';
+        setGalleryImageSource(image, img.path);
+        imageWrapper.appendChild(image);
+
+        const body = document.createElement('div');
+        body.className = 'card-body';
+        const title = createTextElement('div', 'card-title', img.title);
+        title.title = String(img.title || '');
+        body.append(
+          createTextElement('span', 'card-code', img.code ? '#' + img.code : ''),
+          title,
+          createTextElement('div', 'card-category', img.category || 'General')
+        );
+        card.append(imageWrapper, body);
         card.addEventListener('click', () => openModal(globalIdx));
         galleryGrid.appendChild(card);
       });
@@ -838,7 +875,7 @@
       const img = filteredImages[currentModalIndex];
       if (!img) return;
 
-      modalImg.src = img.path;
+      setGalleryImageSource(modalImg, img.path);
       modalTitle.textContent = img.title || img.filename;
       modalCode.textContent = img.code ? `#${img.code}` : 'N/A';
       modalCat.textContent = img.category || 'General';
