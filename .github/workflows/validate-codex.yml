@@ -27,30 +27,31 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - name: Checkout codex-desarrollo
+      - name: Checkout event commit
         uses: actions/checkout@v4
         with:
-          ref: codex-desarrollo
           persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
 
-      - name: Install project dependencies
-        run: npm ci || npm install
+      - name: Install locked project dependencies
+        run: npm ci
 
-      - name: Run lint and unit tests
-        run: npm run validate
+      - name: Run lint
+        run: npm run lint
 
-      - name: Install Playwright for validation only
-        run: |
-          npm install --no-save --no-package-lock @playwright/test@1.55.0
-          npx playwright install --with-deps chromium
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Install project Playwright Chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Run desktop and mobile browser tests
-        run: npx playwright test --config=playwright.config.js
+        run: npm run test:e2e
 
       - name: Upload Playwright report
         if: always()
