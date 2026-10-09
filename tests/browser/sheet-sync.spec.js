@@ -109,7 +109,7 @@ test('@desktop conserva el último catálogo válido si la red falla', async ({ 
   expect(after.status).toBe('confirmed');
 });
 
-test('@desktop una sincronización vencida se actualiza antes de abrir WhatsApp', async ({ page }) => {
+test('@desktop una sincronización vencida se actualiza antes de mostrar la vista previa', async ({ page }) => {
   let requests = 0;
   await routeSheets(page, () => {
     requests += 1;
@@ -133,7 +133,8 @@ test('@desktop una sincronización vencida se actualiza antes de abrir WhatsApp'
   await page.locator('#sendWaBtn').click();
 
   await expect.poll(() => requests, { timeout: 20_000 }).toBeGreaterThan(initialRequests);
-  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrls.length), { timeout: 20_000 }).toBe(1);
+  await expect(page.locator('#testOrderPreview')).toBeVisible();
+  expect(await page.evaluate(() => window.__openedWhatsAppUrls.length)).toBe(0);
   await expect.poll(() => syncStatus(page)).toBe('confirmed');
 });
 

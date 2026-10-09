@@ -102,7 +102,7 @@ test('@all producto eliminado o modo inválido bloquean el envío', async ({ pag
   expect((await storedItems(page)).some(item => String(item.code) === code)).toBe(true);
 });
 
-test('@all precio y mínimo cambiados requieren aceptación y actualizan el total', async ({ page }) => {
+test('@all precio y mínimo cambiados requieren aceptación y actualizan la vista previa', async ({ page }) => {
   await openCatalog(page);
   const code = await addFirstProduct(page);
   await fillCustomer(page);
@@ -124,10 +124,10 @@ test('@all precio y mínimo cambiados requieren aceptación y actualizan el tota
 
   await expect.poll(() => confirmation).toContain('precio');
   expect(confirmation).toContain('mínimo');
-  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrls.length)).toBe(1);
+  await expect(page.locator('#testOrderPreview')).toBeVisible();
+  expect(await page.evaluate(() => window.__openedWhatsAppUrls.length)).toBe(0);
 
-  const url = await page.evaluate(() => window.__openedWhatsAppUrls[0]);
-  const message = new URL(url).searchParams.get('text');
+  const message = await page.locator('#testOrderPreviewText').inputValue();
   const expectedTotal = current.price * current.minimum;
   expect(message).toContain('TOTAL: $' + expectedTotal.toLocaleString('es-AR', {
     minimumFractionDigits: 2,
@@ -138,7 +138,7 @@ test('@all precio y mínimo cambiados requieren aceptación y actualizan el tota
   expect(stored.min_qty_at_save).toBe(current.minimum);
 });
 
-test('@all cambio de unidades por display requiere aceptación explícita', async ({ page }) => {
+test('@all cambio de unidades por display requiere aceptación explícita sin abrir WhatsApp', async ({ page }) => {
   await openCatalog(page);
   const code = await addFirstProduct(page);
   await fillCustomer(page);
@@ -167,13 +167,14 @@ test('@all cambio de unidades por display requiere aceptación explícita', asyn
   await page.locator('#sendWaBtn').click();
 
   await expect.poll(() => confirmation).toContain('unidades por display');
-  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrls.length)).toBe(1);
-  const message = new URL(await page.evaluate(() => window.__openedWhatsAppUrls[0])).searchParams.get('text');
+  await expect(page.locator('#testOrderPreview')).toBeVisible();
+  expect(await page.evaluate(() => window.__openedWhatsAppUrls.length)).toBe(0);
+  const message = await page.locator('#testOrderPreviewText').inputValue();
   expect(message).toContain('Display');
   expect(message).toContain('24 u. c/u');
 });
 
-test('@all pulsaciones repetidas abren un solo pedido y preservan Unicode', async ({ page }) => {
+test('@all pulsaciones repetidas generan una sola vista previa y preservan Unicode', async ({ page }) => {
   await openCatalog(page);
   await addFirstProduct(page);
   await fillCustomer(page, '😊');
@@ -184,9 +185,9 @@ test('@all pulsaciones repetidas abren un solo pedido y preservan Unicode', asyn
     eval('sendWA()');
   });
 
-  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrls.length)).toBe(1);
-  const url = await page.evaluate(() => window.__openedWhatsAppUrls[0]);
-  const message = new URL(url).searchParams.get('text');
+  await expect(page.locator('#testOrderPreview')).toBeVisible();
+  expect(await page.evaluate(() => window.__openedWhatsAppUrls.length)).toBe(0);
+  const message = await page.locator('#testOrderPreviewText').inputValue();
   expect(message).toContain('José & María 😊');
   expect(message).toContain('Calle Ñandú 123');
   expect(message).toContain('Entregar rápido 😊');

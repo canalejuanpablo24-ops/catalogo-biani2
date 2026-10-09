@@ -192,7 +192,7 @@ test('@desktop datos del cliente persisten pero el DNI no', async ({ page }) => 
   await expect(page.locator('#c-dni')).toHaveValue('');
 });
 
-test('@desktop WhatsApp usa el carrito restaurado y los datos recuperados', async ({ page }) => {
+test('@desktop la vista previa usa el carrito restaurado y los datos recuperados', async ({ page }) => {
   await openCatalog(page);
   await addFirstProduct(page);
   await page.locator('#cartBtn').click();
@@ -208,9 +208,9 @@ test('@desktop WhatsApp usa el carrito restaurado y los datos recuperados', asyn
   await page.evaluate(() => eval("catalogSyncState = { status: 'confirmed', message: 'Prueba controlada', checkedAt: Date.now(), lastSuccessAt: Date.now() }"));
   await page.locator('#sendWaBtn').click();
 
-  await expect.poll(() => page.evaluate(() => window.__openedWhatsAppUrls[0] || '')).toContain('https://wa.me/');
-  const url = await page.evaluate(() => window.__openedWhatsAppUrls[0]);
-  const message = new URL(url).searchParams.get('text');
+  await expect(page.locator('#testOrderPreview')).toBeVisible();
+  expect(await page.evaluate(() => window.__openedWhatsAppUrls.length)).toBe(0);
+  const message = await page.locator('#testOrderPreviewText').inputValue();
   expect(message).toContain('Cliente Restaurado');
   expect(message).toContain('2954 654321');
   expect(message).toContain('Modo:');
