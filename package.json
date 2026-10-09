@@ -7,7 +7,10 @@
   "scripts": {
     "test": "node --test tests/*.test.js",
     "lint": "node ./scripts/lint_check.js",
-    "validate": "npm run lint && npm run test"
+    "validate": "npm run lint && npm run test && npm run test:e2e",
+    "test:e2e": "playwright test",
+    "admin:package:check": "node scripts/apply-admin-package.js --check",
+    "admin:package:apply": "node scripts/apply-admin-package.js --apply"
   },
   "keywords": [
     "catalogo",
@@ -17,5 +20,8 @@
     "ecommerce"
   ],
   "author": "BIANI",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "1.64.0"
+  }
 }
