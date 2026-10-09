@@ -50,6 +50,18 @@
     return Math.floor(value.length * 3 / 4) - (value.endsWith('==') ? 2 : value.endsWith('=') ? 1 : 0);
   }
 
+  function hasImageSignature(mime, payload) {
+    if (typeof root.atob !== 'function') fail('No se puede validar el contenido binario de la imagen.');
+    const binary = root.atob(payload);
+    const byte = index => binary.charCodeAt(index);
+    if (mime === 'image/png') return binary.length >= 8 && [137,80,78,71,13,10,26,10].every((value, index) => byte(index) === value);
+    if (mime === 'image/jpeg') return binary.length >= 3 && byte(0) === 255 && byte(1) === 216 && byte(2) === 255;
+    if (mime === 'image/gif') return binary.startsWith('GIF87a') || binary.startsWith('GIF89a');
+    if (mime === 'image/webp') return binary.length >= 12 && binary.slice(0, 4) === 'RIFF' && binary.slice(8, 12) === 'WEBP';
+    if (mime === 'image/avif') return binary.length >= 12 && binary.slice(4, 8) === 'ftyp' && /^(avif|avis|mif1|msf1)$/.test(binary.slice(8, 12));
+    return false;
+  }
+
   function validateImage(value) {
     if (value == null || value === '') return { value: '', bytes: 0 };
     if (typeof value !== 'string') fail('La imagen debe ser texto.');
@@ -58,6 +70,7 @@
       if (!match || !ALLOWED_IMAGE_TYPES.has(match[1])) fail('Formato de imagen embebida no permitido.');
       const bytes = base64Bytes(match[2]);
       if (bytes > MAX_IMAGE_BYTES) fail('Una imagen supera el límite de 5 MiB.');
+      if (!hasImageSignature(match[1], match[2])) fail('El contenido de la imagen no coincide con el MIME declarado.');
       return { value, bytes };
     }
     if (!/^imagenes\/[A-Za-z0-9][A-Za-z0-9._/-]*$/.test(value) || value.includes('..') || value.includes('//')) {
