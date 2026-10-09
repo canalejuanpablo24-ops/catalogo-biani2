@@ -318,7 +318,8 @@
   async function applyPackageToCanonical(rawCanonical, rawPackage, options = {}) {
     const canonical = validateCanonicalDocument(rawCanonical);
     const pkg = validatePackage(rawPackage);
-    const packageSha256 = await sha256Hex(stableStringify(pkg));
+    const packageSha256 = options.packageSha256 || await sha256Hex(stableStringify(pkg));
+    if (!/^[0-9a-f]{64}$/.test(packageSha256)) fail('Huella del paquete inválida.');
     const existing = canonical.appliedPackages.find(entry => entry.packageId === pkg.packageId);
     if (existing) {
       if (existing.sha256 !== packageSha256) fail('Conflicto: el identificador del paquete ya existe con otro contenido.');
