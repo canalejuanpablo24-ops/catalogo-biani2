@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-YKaqSMVFqTBiJpdI6eE6YhoxcMIIp8/yeTE6mPTvSX0=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com https://api.github.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-PVpqi/eKbSHV6spYFveenocgKOQmGLlrge3pDBQsV60=' 'sha256-kqkRYmCcqghlbU8CEqrEACtiXv0z3y4JYWT9keYV7e8=' 'sha256-xLya4KBjCS7EXKy75izlZlzg73zP5vW/+ABeaPeu5pk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://docs.google.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <script src="src/services/pdf-import.service.js"></script>
 <script src="src/services/admin-state.service.js"></script>
+<script src="src/services/admin-package.service.js"></script>
 <script src="src/services/sale-mode.service.js"></script>
 <script src="src/services/cart-persistence.service.js"></script>
 <script src="src/services/order-validation.service.js"></script>
@@ -1812,10 +1813,10 @@ body.cart-has-items #cart-form {
       <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 20px;">
         <h3 style="font-size: 14px; color: #0f172a; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
           <span>🔒 Panel de Administración</span>
-          <span style="font-size: 11px; background: #dcfce7; color: #166534; padding: 3px 8px; border-radius: 12px; font-weight: 700;">AUTENTICADO</span>
+          <span style="font-size: 11px; background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 12px; font-weight: 700;">CONTROL LOCAL</span>
         </h3>
         <p style="font-size: 12px; color: #475569; margin-bottom: 12px; line-height: 1.4;">
-          Acceso concedido mediante clave. Podés editar precios, títulos, categorías, imágenes, eliminar productos o reordenar tarjetas en el catálogo.
+          El PIN es sólo una barrera visual en este navegador; no autentica identidad ni protege frente a un usuario con acceso al código. Los cambios se guardan localmente hasta exportarlos y publicarlos mediante revisión.
         </p>
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
           <button class="bp" id="quickAddBtn" style="font-size: 12px; padding: 8px 10px; background: #e63946;">➕ Agregar Producto</button>
@@ -1863,13 +1864,14 @@ body.cart-has-items #cart-form {
 <div class="toast" id="toast"></div>
 
 <!-- ADMIN HTML COMPONENTS -->
-<div class="adm-badge" id="adm-badge">⚙️ Modo Administrador Activo · Los cambios se guardan localmente</div>
+<div class="adm-badge" id="adm-badge">⚙️ Edición local activa · El PIN no es autenticación real</div>
 
 <div class="adm-login" id="adm-login">
   <div class="adm-login-box">
     <div class="adm-login-hdr">
       <div class="ico">🔒</div>
-      <h3>Acceso Administrador</h3>
+      <h3>Edición administrativa local</h3>
+      <p style="font-size:11px;line-height:1.4;margin:8px 16px 0;color:#64748b;">El PIN sólo evita accesos accidentales. No verifica identidad ni brinda autenticación real.</p>
     </div>
     <div class="adm-login-body">
       <div class="pin-display">
@@ -1916,12 +1918,13 @@ body.cart-has-items #cart-form {
         <button class="adm-btn2 primary" id="adm-add-btn">➕ Agregar Producto</button>
         <button class="adm-btn2 neutral" id="adm-save-btn">💾 Guardar Orden</button>
         <button class="adm-btn2 neutral" id="adm-export-btn" style="background:#4f46e5;color:#fff;">📤 Exportar Cambios</button>
-        <button class="adm-btn2 neutral" id="adm-deploy-btn" style="background:#10b981;color:#fff;">🚀 Publicar en codex-desarrollo</button>
+        <button class="adm-btn2 neutral" id="adm-confirm-btn" style="background:#0f766e;color:#fff;">✅ Confirmar paquete publicado</button>
+        <input type="file" id="adm-confirm-input" accept="application/json" hidden>
         <button class="adm-btn2 danger" id="adm-reset-btn">🗑️ Restablecer Todo</button>
       </div>
     </div>
     <div class="adm-hint">
-      💡 Podés reordenar los productos en el catálogo arrastrándolos desde el icono de tres líneas (☰) en cada tarjeta.
+      💡 Podés reordenar productos arrastrándolos desde ☰. La exportación no publica ni borra cambios pendientes; la confirmación requiere un estado canónico revisado.
     </div>
   </div>
   <div class="adm-footer">
@@ -2195,6 +2198,12 @@ const LS_K = {order:'biani_order', edits:'biani_edits', del:'biani_del', add:'bi
 let sortInst = null;
 let editTarget = null;
 let pendingImg = null;
+const EMPTY_CANONICAL_ADMIN_DOCUMENT = {
+  kind: 'biani-admin-state', schemaVersion: 1, revision: 0,
+  sourceCommit: '8d94d0027b5543f5c7719ea6192adfebf280996d', updatedAt: null,
+  appliedPackages: [], state: { added: [], edits: {}, deleted: [], order: [] }
+};
+let CANONICAL_ADMIN_DOCUMENT = EMPTY_CANONICAL_ADMIN_DOCUMENT;
 
 function showLoading(show) {
   const loader = document.getElementById('loader');
@@ -2352,17 +2361,19 @@ async function loadDatabase() {
     if (sheetInput) sheetInput.value = sheetId;
 
     try {
-      const [catRes, imgRes, descRes, defaultEditsRes] = await Promise.all([
+      const [catRes, imgRes, descRes, defaultEditsRes, canonicalAdminRes] = await Promise.all([
         fetchWithTimeout('code_to_category.json?v=' + Date.now()).then(response => response.json()).catch(() => ({})),
         fetchWithTimeout('code_to_image.json?v=' + Date.now()).then(response => response.json()).catch(() => ({})),
         fetchWithTimeout('code_to_description.json?v=' + Date.now()).then(response => response.json()).catch(() => ({})),
-        fetchWithTimeout('src/data/defaultEdits.json?v=' + Date.now()).then(response => response.json()).catch(() => ({}))
+        fetchWithTimeout('src/data/defaultEdits.json?v=' + Date.now()).then(response => response.json()).catch(() => ({})),
+        fetchWithTimeout('src/data/admin-state.json?v=' + Date.now()).then(response => response.json()).catch(() => EMPTY_CANONICAL_ADMIN_DOCUMENT)
       ]);
       for (const code in catRes) catRes[code] = normalizeCategory(catRes[code]);
       window.codeToCat = catRes;
       window.codeToImg = imgRes;
       window.codeToDesc = descRes;
       DEFAULT_EDITS = defaultEditsRes;
+      CANONICAL_ADMIN_DOCUMENT = window.AdminPackage.validateCanonicalDocument(canonicalAdminRes);
       window.pdfOrder = PDF_ORDER;
     } catch (error) {
       console.error('Error loading JSON mappings:', error);
@@ -3733,16 +3744,15 @@ function writePersistedAdminState(state) {
 
 function loadAdminState(includeCanonicalEdits = true) {
   try {
-    let state = readPersistedAdminState();
+    let localState = readPersistedAdminState();
 
-    // Sanitize localEdits for updated categories
     const fecovitaSet = new Set(['107', '108', '109', '110', '111', '112', '113', '114', '115', '116', '117', '118', '1334', '4195']);
-    for (const code in state.edits) {
-      if (fecovitaSet.has(code) && state.edits[code].category !== 'Bebidas') {
-        state.edits[code].category = 'Bebidas';
+    for (const code in localState.edits) {
+      if (fecovitaSet.has(code) && localState.edits[code].category !== 'Bebidas') {
+        localState.edits[code].category = 'Bebidas';
       }
     }
-    state = writePersistedAdminState(state);
+    localState = writePersistedAdminState(localState);
 
     const withoutMappedImages = edits => Object.fromEntries(
       Object.entries(edits || {}).map(([code, patch]) => {
@@ -3752,10 +3762,12 @@ function loadAdminState(includeCanonicalEdits = true) {
         return [code, applicablePatch];
       })
     );
-    const effectiveState = { ...state, edits: withoutMappedImages(state.edits) };
-    const canonicalEdits = includeCanonicalEdits ? withoutMappedImages(DEFAULT_EDITS) : {};
-    const fallbackOrder = window.pdfOrder && window.pdfOrder.length ? window.pdfOrder : PDF_ORDER;
-    prods = window.AdminState.reconstructCatalog(prods, canonicalEdits, effectiveState, fallbackOrder)
+    const legacyCanonicalEdits = includeCanonicalEdits ? withoutMappedImages(DEFAULT_EDITS) : {};
+    const pdfOrder = window.pdfOrder && window.pdfOrder.length ? window.pdfOrder : PDF_ORDER;
+    const canonicalState = window.AdminPackage.validateCanonicalDocument(CANONICAL_ADMIN_DOCUMENT).state;
+    const canonicalCatalog = window.AdminState.reconstructCatalog(prods, legacyCanonicalEdits, canonicalState, pdfOrder);
+    const preservedOrder = canonicalState.order.length ? canonicalState.order : pdfOrder;
+    prods = window.AdminState.reconstructCatalog(canonicalCatalog, {}, localState, preservedOrder)
       .map(product => ({
         ...product,
         category: normalizeCategory(product.category || 'Varios', product.name, product.image),
@@ -3763,7 +3775,7 @@ function loadAdminState(includeCanonicalEdits = true) {
         unidad_min: product.unidad_min || 1
       }));
   } catch (e) {
-    console.warn("Error applying admin local state:", e);
+    console.warn('Error applying administrative state:', e);
   }
 }
 
@@ -4103,295 +4115,93 @@ document.getElementById('adm-panel-close').addEventListener('click', function() 
 
 document.getElementById('adm-exit').addEventListener('click', exitAdmin);
 document.getElementById('adm-add-btn').addEventListener('click', openAddModal);
-document.getElementById('adm-deploy-btn').addEventListener('click', deployToGitHub);
 document.getElementById('adm-save-btn').addEventListener('click', function() {
   saveOrder();
   updateAdmStat();
   toast('💾 Orden guardado', 'ok');
 });
 
+const ADMIN_PACKAGE_REPOSITORY = 'canalejuanpablo24-ops/catalogo-biani2';
+const ADMIN_EXPORT_RECEIPT_KEY = 'biani_last_admin_export';
+
+async function currentPendingState() {
+  let state = readPersistedAdminState();
+  state = window.AdminState.recordOrder(state, prods.map(product => String(product.code)));
+  return writePersistedAdminState(state);
+}
+
+function downloadJsonFile(fileName, value) {
+  const blob = new Blob([JSON.stringify(value, null, 2) + '\n'], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = fileName;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
 async function exportAdminConfig() {
-  const config = {
-    order: JSON.parse(localStorage.getItem(LS_K.order) || '[]'),
-    edits: JSON.parse(localStorage.getItem(LS_K.edits) || '{}'),
-    del: JSON.parse(localStorage.getItem(LS_K.del) || '[]'),
-    add: JSON.parse(localStorage.getItem(LS_K.add) || '[]')
-  };
-  const json = JSON.stringify(config, null, 2);
-  
-  let success = false;
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    try {
-      await navigator.clipboard.writeText(json);
-      success = true;
-    } catch (err) {
-      console.warn("navigator.clipboard failed, fallback to execCommand", err);
-    }
-  }
-
-  if (!success) {
-    const el = document.createElement('textarea');
-    el.value = json;
-    el.style.position = 'fixed';
-    el.style.left = '-9999px';
-    document.body.appendChild(el);
-    el.select();
-    try {
-      success = document.execCommand('copy');
-    } catch (e) {
-      success = false;
-    }
-    document.body.removeChild(el);
-  }
-
-  if (success) {
-    if (typeof toast === 'function') toast("📋 ¡Configuración copiada al portapapeles!", "ok");
-    alert("¡Configuración copiada al portapapeles! Pegala en el chat para que el asistente la guarde permanentemente.");
-  } else {
-    prompt("Copiá la siguiente configuración y pegala en el chat para guardar permanentemente:", json);
-  }
-}
-
-const ADMIN_GITHUB_BRANCH = 'codex-desarrollo';
-let isDeploying = false;
-
-// Elimina credenciales guardadas por versiones anteriores. Los tokens nunca se persisten.
-try {
-  localStorage.removeItem('biani_gh_token');
-} catch (e) {
-  console.warn('No se pudo limpiar el token legado de GitHub.', e);
-}
-
-async function deployToGitHub() {
-  if (isDeploying) {
-    toast('Ya hay una publicación en curso', 'warn');
-    return;
-  }
-  
-  const repo = 'canalejuanpablo24-ops/catalogo-biani2';
-  const branch = ADMIN_GITHUB_BRANCH;
-
-  if (branch !== 'codex-desarrollo') {
-    toast('Publicación bloqueada: rama no autorizada', 'warn');
-    return;
-  }
-
-  const confirmed = confirm(
-    `Se escribirán cambios únicamente en la rama "${branch}" del repositorio ${repo}.\n\n` +
-    'Esta acción puede crear varios commits y no publica en producción. ¿Querés continuar?'
-  );
-  if (!confirmed) return;
-  
-  let token = prompt(
-    `Ingresá tu GitHub Personal Access Token (PAT) para escribir en "${branch}":\n\n` +
-    'El token se usará solo durante esta operación y no se guardará en el navegador.'
-  );
-  if (!token) return;
-  token = token.trim();
-  if (!token) return;
-
-  isDeploying = true;
-
-  const edits = JSON.parse(localStorage.getItem(LS_K.edits) || '{}');
-  const add = JSON.parse(localStorage.getItem(LS_K.add) || '[]');
-  const del = JSON.parse(localStorage.getItem(LS_K.del) || '[]');
-  
-  // Se permiten deploys sin cambios en localStorage para capturar actualizaciones de PDF
-  
-  const btn = document.getElementById('adm-deploy-btn');
-  const prevText = btn.textContent;
-  btn.textContent = '⏳ Conectando...';
-  btn.disabled = true;
-  
   try {
-    async function getGHFile(path) {
-      const t = Date.now();
-      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}&t=${t}`, {
-        cache: 'no-store',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/vnd.github.v3+json'
-        }
-      });
-      if (res.status === 404) return null;
-      if (!res.ok) throw new Error(`Error al leer ${path}: ${res.statusText}`);
-      const data = await res.json();
-      
-      let contentStr = data.content;
-      if (!contentStr && data.git_url) {
-        const blobRes = await fetch(data.git_url, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json'
-          }
-        });
-        const blobData = await blobRes.json();
-        contentStr = blobData.content;
-      }
-      
-      const content = decodeURIComponent(escape(atob(contentStr)));
-      return { sha: data.sha, content: JSON.parse(content) };
-    }
-    
-    async function putGHFile(path, contentObj, sha, message) {
-      if (branch !== 'codex-desarrollo') throw new Error('Rama de escritura no autorizada');
-      const contentStr = JSON.stringify(contentObj, null, 2);
-      const base64Content = btoa(unescape(encodeURIComponent(contentStr)));
-      const body = {
-        message: message,
-        content: base64Content,
-        branch: branch
-      };
-      if (sha) body.sha = sha;
-      
-      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      });
-      if (!res.ok) {
-        const errData = await res.json();
-        throw new Error(`Error al subir ${path}: ${errData.message}`);
-      }
-    }
-    
-    async function putGHFileBase64(path, pureBase64, sha, message) {
-      if (branch !== 'codex-desarrollo') throw new Error('Rama de escritura no autorizada');
-      const body = {
-        message: message,
-        content: pureBase64,
-        branch: branch
-      };
-      if (sha) body.sha = sha;
-      
-      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      });
-      if (!res.ok) {
-        const errData = await res.json();
-        throw new Error(`Error al subir ${path}: ${errData.message}`);
-      }
-    }
-    
-    // 1. Identificar imágenes base64 para subida física
-    const imgUploads = [];
-    const processImage = (code, imgDataUrl) => {
-      if (imgDataUrl && imgDataUrl.startsWith('data:image/')) {
-        imgUploads.push({ code, dataUrl: imgDataUrl });
-      }
-    };
-    
-    for (const code of Object.keys(edits)) {
-      if (edits[code].image) processImage(code, edits[code].image);
-    }
-    for (const p of add) {
-      if (p.image) processImage(p.code, p.image);
-    }
-    
-    if (imgUploads.length > 0) {
-      for (let i = 0; i < imgUploads.length; i++) {
-        btn.textContent = `⏳ Subiendo imagen ${i+1}/${imgUploads.length}...`;
-        const upload = imgUploads[i];
-        const commaIdx = upload.dataUrl.indexOf(',');
-        if (commaIdx !== -1) {
-          const pureBase64 = upload.dataUrl.substring(commaIdx + 1);
-          const mimeMatch = upload.dataUrl.match(/^data:image\/(\w+);base64,/);
-          const ext = mimeMatch ? mimeMatch[1] : 'webp';
-          const timestamp = Date.now();
-          const fileName = `imagenes/up_${upload.code}_${timestamp}.${ext}`;
-          
-          await putGHFileBase64(fileName, pureBase64, null, `Upload new image for ${upload.code}`);
-          
-          // Actualizamos la referencia local en memoria para que se guarde correctamente en el JSON
-          if (edits[upload.code] && edits[upload.code].image === upload.dataUrl) {
-            edits[upload.code].image = fileName;
-          }
-          const addedProduct = add.find(x => x.code === upload.code);
-          if (addedProduct && addedProduct.image === upload.dataUrl) {
-            addedProduct.image = fileName;
-          }
-        }
-      }
-    }
-    
-    btn.textContent = '⏳ Actualizando referencias (code_to_image)...';
-    let ctiFile = await getGHFile('code_to_image.json');
-    let codeToImage = ctiFile ? ctiFile.content : {};
-    let ctiChanged = false;
-    
-    for (const code of Object.keys(edits)) {
-      if (edits[code].image) {
-        codeToImage[code] = edits[code].image;
-        ctiChanged = true;
-      }
-    }
-    for (const p of add) {
-      if (p.image) {
-        codeToImage[p.code] = p.image;
-        ctiChanged = true;
-      }
-    }
-    
-    if (ctiChanged) {
-      await putGHFile('code_to_image.json', codeToImage, ctiFile ? ctiFile.sha : null, 'Update image references from browser admin');
-    }
-    
-    btn.textContent = '⏳ Actualizando catálogo...';
-    let fallbackFile = await getGHFile('products_fallback.json');
-    
-    const newFallback = prods.map(p => {
-      let imgPath = p.image || '';
-      if (edits[p.code] && edits[p.code].image) imgPath = edits[p.code].image;
-      else if (add.find(x => x.code === p.code)?.image) imgPath = add.find(x => x.code === p.code).image;
-      else if (codeToImage[p.code]) imgPath = codeToImage[p.code];
-      
-      return {
-        code: p.code,
-        name: p.name,
-        category: p.category,
-        price: p.price,
-        image: imgPath,
-        qty: 0,
-        outOfStock: !!p.outOfStock,
-        unidad_min: p.unidad_min || 1
-      };
+    const pendingState = await currentPendingState();
+    const pkg = await window.AdminPackage.buildPackage(pendingState, {
+      repository: ADMIN_PACKAGE_REPOSITORY,
+      canonicalDocument: CANONICAL_ADMIN_DOCUMENT
     });
-    
-    await putGHFile('products_fallback.json', newFallback, fallbackFile ? fallbackFile.sha : null, 'Update catalog products from browser admin');
-    
-    localStorage.removeItem(LS_K.edits);
-    localStorage.removeItem(LS_K.add);
-    localStorage.removeItem(LS_K.del);
-    updateAdmStat();
-    
-    toast('✅ Cambios publicados en codex-desarrollo', 'ok');
-  } catch (e) {
-    console.error(e);
-    if (e.message.includes('Bad credentials')) {
-      toast('❌ Token inválido. No fue guardado.', 'warn');
-    } else {
-      toast('❌ Error al publicar en codex-desarrollo: ' + e.message, 'warn');
+    const packageSha256 = await window.AdminPackage.sha256Hex(window.AdminPackage.stableStringify(pkg));
+    const pendingStateSha256 = await window.AdminPackage.sha256Hex(window.AdminPackage.stableStringify(pendingState));
+    localStorage.setItem(ADMIN_EXPORT_RECEIPT_KEY, JSON.stringify({
+      packageId: pkg.packageId,
+      packageSha256,
+      pendingStateSha256
+    }));
+    downloadJsonFile('biani-admin-package.json', pkg);
+    toast('📦 Paquete validado y descargado. Los cambios locales continúan pendientes.', 'ok');
+  } catch (error) {
+    console.error(error);
+    toast('❌ No se pudo exportar: ' + error.message, 'warn');
+  }
+}
+
+async function confirmPublishedAdminState(file) {
+  if (!file) return;
+  try {
+    if (file.size > 5 * 1024 * 1024) throw new Error('El estado canónico supera el límite permitido.');
+    const receipt = JSON.parse(localStorage.getItem(ADMIN_EXPORT_RECEIPT_KEY) || 'null');
+    if (!receipt) throw new Error('No hay un paquete exportado pendiente de confirmación.');
+    const canonical = window.AdminPackage.validateCanonicalDocument(JSON.parse(await file.text()));
+    if (!window.AdminPackage.publishedEntry(canonical, receipt.packageId, receipt.packageSha256)) {
+      throw new Error('El estado canónico no contiene exactamente el paquete exportado.');
     }
+
+    const currentState = readPersistedAdminState();
+    const currentStateSha256 = await window.AdminPackage.sha256Hex(window.AdminPackage.stableStringify(currentState));
+    CANONICAL_ADMIN_DOCUMENT = canonical;
+    if (currentStateSha256 === receipt.pendingStateSha256) {
+      Object.values(LS_K).forEach(key => localStorage.removeItem(key));
+      localStorage.removeItem(ADMIN_EXPORT_RECEIPT_KEY);
+      toast('✅ Publicación verificada. Los cambios incorporados dejaron de estar pendientes.', 'ok');
+    } else {
+      toast('✅ Paquete verificado. Se conservan cambios locales posteriores a la exportación.', 'ok');
+    }
+    await loadDatabase();
+  } catch (error) {
+    console.error(error);
+    toast('❌ No se pudo confirmar la publicación: ' + error.message, 'warn');
   } finally {
-    token = '';
-    btn.textContent = prevText;
-    btn.disabled = false;
-    isDeploying = false;
+    document.getElementById('adm-confirm-input').value = '';
   }
 }
 
 const exportBtn = document.getElementById('adm-export-btn');
 if (exportBtn) exportBtn.addEventListener('click', exportAdminConfig);
+const confirmBtn = document.getElementById('adm-confirm-btn');
+const confirmInput = document.getElementById('adm-confirm-input');
+if (confirmBtn && confirmInput) {
+  confirmBtn.addEventListener('click', () => confirmInput.click());
+  confirmInput.addEventListener('change', () => confirmPublishedAdminState(confirmInput.files && confirmInput.files[0]));
+}
 document.getElementById('adm-reset-btn').addEventListener('click', admReset);
 document.getElementById('adm-modal-close').addEventListener('click', closeEditModal);
 document.getElementById('adm-modal-cancel').addEventListener('click', closeEditModal);
