@@ -16,6 +16,8 @@ test('el aplicador en simulación valida sin modificar archivos', async () => {
   const imageMapPath = path.join(ROOT, 'code_to_image.json');
   const productsPath = path.join(ROOT, 'products_fallback.json');
   const canonical = JSON.parse(fs.readFileSync(canonicalPath, 'utf8'));
+  const headCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).trim();
+  const packageBase = { ...canonical, sourceCommit: headCommit };
   const pkg = await globalThis.AdminPackage.buildPackage({
     added: [],
     edits: { '100': { name: 'Simulación segura', price: 150 } },
@@ -23,7 +25,7 @@ test('el aplicador en simulación valida sin modificar archivos', async () => {
     order: ['100']
   }, {
     repository: 'canalejuanpablo24-ops/catalogo-biani2',
-    canonicalDocument: canonical,
+    canonicalDocument: packageBase,
     packageId: 'package-cli-test-0001',
     exportedAt: '2026-10-08T22:00:00.000Z'
   });
