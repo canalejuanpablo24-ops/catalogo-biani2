@@ -1,0 +1,14 @@
+{
+  "kind": "biani-admin-state",
+  "schemaVersion": 1,
+  "revision": 0,
+  "sourceCommit": "8d94d0027b5543f5c7719ea6192adfebf280996d",
+  "updatedAt": null,
+  "appliedPackages": [],
+  "state": {
+    "added": [],
+    "edits": {},
+    "deleted": [],
+    "order": []
+  }
+}

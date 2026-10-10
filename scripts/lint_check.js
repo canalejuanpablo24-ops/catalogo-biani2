@@ -11,7 +11,8 @@ const jsonFiles = [
   'code_to_image.json',
   'products_fallback.json',
   'src/data/pdfOrder.json',
-  'src/data/defaultEdits.json'
+  'src/data/defaultEdits.json',
+  'src/data/admin-state.json'
 ];
 
 let hasErrors = false;
