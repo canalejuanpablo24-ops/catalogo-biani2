@@ -2,11 +2,6 @@ name: Prepare empty Cloudflare QA project
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - codex-desarrollo
-    paths:
-      - ".github/workflows/setup-cloudflare-qa.yml"
 
 permissions:
   contents: read
